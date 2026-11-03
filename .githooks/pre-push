@@ -3,7 +3,8 @@ set -eu
 ROOT="$(git rev-parse --show-toplevel)"
 if [ "${PUSHGATE_BYPASS:-0}" = "1" ]; then
   : "${PUSHGATE_BYPASS_REASON:?Explicit user-approved reason required}"
-  printf '%s %s %s\n' "$(date -u +%FT%TZ)" "$(git rev-parse HEAD)" "$PUSHGATE_BYPASS_REASON" >> "$ROOT/.pushgate/bypass.log"
+  mkdir -p "$ROOT/.pushgate/reports"
+  printf '%s %s %s\n' "$(date -u +%FT%TZ)" "$(git rev-parse HEAD)" "$PUSHGATE_BYPASS_REASON" >> "$ROOT/.pushgate/reports/bypass-runtime.log"
   echo "Backup-only push authorized by user. Gate remains INCOMPLETE; CI is not bypassed."
   exit 0
 fi

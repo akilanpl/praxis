@@ -24,3 +24,13 @@ Existing repository only; preserve the architecture and all evidence. Start on f
 Ignored work/ includes downloaded Chromium, small model weights, native PostgreSQL clusters, Gitleaks binary and virtualenvs. They are reproducible, not source. Private SQLite evidence is under .praxis/; shareable actual model reports/screenshots are tracked. No secrets, dependencies, caches or model binaries should be pushed.
 
 The latest push request is an urgent preservation handoff because the user's battery is low, not a declaration of release acceptance.
+
+## Battery-critical remote checkpoint
+
+Private GitHub repository: https://github.com/akilanpl/praxis
+Branch: feature/qa-hardening-release. Initial emergency backup commit: 9213301.
+User explicitly approved the backup-only push despite the incomplete gate. Ordinary hooks remain enabled; the exception is audited in .pushgate/bypass.log.
+
+Codex CLI authenticated successfully and listed zero existing tasks. Repository-specific cloud environment lookup returned HTTP 403, detail type repo_not_accessible, message Repository is not accessible. No cloud task was submitted. The user must enable access to this private repository in the Codex GitHub connection and create/select its cloud environment. Then submit a cloud task on feature/qa-hardening-release with: "Read CLOUD_HANDOFF.md completely and continue the final Praxis integration/acceptance mission. Preserve evidence, fix the incomplete gate, and do not claim public deployment or tests passed without execution."
+
+Do not substitute an unrelated cloud environment or change repository visibility to work around the missing authorization.
