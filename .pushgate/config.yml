@@ -1,0 +1,7 @@
+{
+  "min_tests": 100,
+  "thresholds": {"protected": 90, "feature": 80, "ratchet_drop": 2},
+  "coverage": {"line": 80, "branch": 70, "diff": 90},
+  "weights": {"S":5,"B":14,"A":12,"D":6,"F":8,"E":10,"X":8,"V":7,"Z":12,"P":5,"R":5,"C":3,"Y":3,"O":2},
+  "scope": "Local feature-branch code acceptance. Hosted deployment/Auth certification is separate and remains blocked without an approved cloud project."
+}

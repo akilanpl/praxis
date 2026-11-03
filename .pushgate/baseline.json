@@ -1,0 +1,106 @@
+{
+  "commit": "841d8a9",
+  "score": 67.3,
+  "status": "incomplete historical baseline; missing groups score zero, not a prior green gate",
+  "evidence": [
+    "evidence/verification/release-python-baseline.xml",
+    "841d8a9:evidence/verification/build-manifest.json"
+  ],
+  "test_count": 67,
+  "result": {
+    "score": 67.3,
+    "raw_score": 67.3,
+    "grade": "F",
+    "decision": "INCOMPLETE",
+    "groups": {
+      "S": {
+        "weight": 5,
+        "tests": 6,
+        "passed": 6,
+        "rate": 1.0
+      },
+      "B": {
+        "weight": 14,
+        "tests": 20,
+        "passed": 20,
+        "rate": 1.0
+      },
+      "A": {
+        "weight": 12,
+        "tests": 13,
+        "passed": 13,
+        "rate": 1.0
+      },
+      "D": {
+        "weight": 6,
+        "tests": 0,
+        "passed": 0,
+        "rate": 0
+      },
+      "F": {
+        "weight": 8,
+        "tests": 0,
+        "passed": 0,
+        "rate": 0
+      },
+      "E": {
+        "weight": 10,
+        "tests": 0,
+        "passed": 0,
+        "rate": 0
+      },
+      "X": {
+        "weight": 8,
+        "tests": 4,
+        "passed": 4,
+        "rate": 1.0
+      },
+      "V": {
+        "weight": 7,
+        "tests": 8,
+        "passed": 8,
+        "rate": 1.0
+      },
+      "Z": {
+        "weight": 12,
+        "tests": 9,
+        "passed": 9,
+        "rate": 1.0
+      },
+      "P": {
+        "weight": 5,
+        "tests": 0,
+        "passed": 0,
+        "rate": 0
+      },
+      "R": {
+        "weight": 5,
+        "tests": 3,
+        "passed": 2,
+        "rate": 0.6666666666666666
+      },
+      "C": {
+        "weight": 3,
+        "tests": 3,
+        "passed": 3,
+        "rate": 1.0
+      },
+      "Y": {
+        "weight": 3,
+        "tests": 1,
+        "passed": 1,
+        "rate": 1.0
+      },
+      "O": {
+        "weight": 2,
+        "tests": 0,
+        "passed": 0,
+        "rate": 0
+      }
+    },
+    "executed": 67,
+    "threshold": 90,
+    "ratchet_ok": false,
+    "scope": "Local feature-branch code acceptance. Hosted deployment/Auth certification is separate and remains blocked without an approved cloud project."
+  }
+}

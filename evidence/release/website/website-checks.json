@@ -1,0 +1,67 @@
+{
+  "trust": "demo",
+  "fixture": "owned source-controlled application, not generated model output",
+  "assertions": [
+    {
+      "name": "cart interaction",
+      "passed": true,
+      "expected": "1",
+      "actual": "1"
+    },
+    {
+      "name": "search filters items",
+      "passed": true,
+      "expected": 1,
+      "actual": 1
+    },
+    {
+      "name": "invalid email rejected",
+      "passed": true,
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "inputs have labels",
+      "passed": true,
+      "expected": true,
+      "actual": true
+    },
+    {
+      "name": "viewport 390 no overflow",
+      "passed": true,
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "viewport 1280 no overflow",
+      "passed": true,
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "no runtime errors",
+      "passed": true,
+      "expected": [],
+      "actual": []
+    }
+  ],
+  "passed": true,
+  "screenshots": [
+    {
+      "filename": "website-390.png",
+      "size": 16094,
+      "mime": "image/png",
+      "sha256": "879229354cc6284b6ca6d2a8cec8b24e9d27cc212a49f0d44c024b20bd41b9b1",
+      "width": 390,
+      "height": 800
+    },
+    {
+      "filename": "website-1280.png",
+      "size": 19375,
+      "mime": "image/png",
+      "sha256": "6b527b89ece7d0cdb1a39459c67535dbc98d4d324f27cb4485181fdbdcc7e6f3",
+      "width": 1280,
+      "height": 800
+    }
+  ]
+}

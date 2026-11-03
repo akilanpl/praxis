@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "environment": "loopback Python API; no external load",
+  "requests": 30,
+  "p50_ms": 0.27502100000000723,
+  "p95_ms": 0.3820000000000004,
+  "budget_p95_ms": 300
+}

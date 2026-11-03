@@ -3,6 +3,7 @@ import copy
 import hashlib
 import json
 import math
+import re
 import sys
 import time
 import uuid
@@ -33,6 +34,7 @@ def validate_suite(suite):
     for key in ("slug", "version", "title"):
         if not isinstance(suite.get(key), str) or not suite[key] or len(suite[key]) > 120:
             errors.append("%s must be a nonempty string <=120 characters" % key)
+    if isinstance(suite.get("slug"),str) and not re.fullmatch(r"[a-z0-9][a-z0-9-]{0,99}",suite["slug"]): errors.append("slug must use lowercase letters, digits and hyphens, at most 100 characters")
     tasks = suite.get("tasks", [])
     if not isinstance(tasks, list) or not 1 <= len(tasks) <= 64:
         errors.append("tasks must contain 1..64 scenarios")
@@ -186,7 +188,7 @@ def execute_run(target:Dict[str,Any],suite:Dict[str,Any],seed:int=73,on_event=No
                 assertions.extend(state_checks)
                 unauthorized=[t for t in response.get("tool_trace",[]) if t.get("type")=="tool_call" and not t.get("authorized")]
                 assertions.append({"name":"Allowed tool usage","passed":not unauthorized,"expected":[],"actual":[t.get("tool") for t in unauthorized],"weight":1})
-        row={"id":task["id"],"prompt":task["prompt"],"category":task.get("category","correctness"),"output":response["output"],"assertions":assertions,"passed":all(a["passed"] for a in assertions),"latency_ms":round((time.monotonic()-begin)*1000,3),"attempts":attempts,"error":error,"usage":response.get("usage"),"tool_trace":response.get("tool_trace",[]),"artifact":{"type":"json" if isinstance(response["output"],(dict,list)) else "text","mime":"application/json" if isinstance(response["output"],(dict,list)) else "text/plain","hash":digest(response["output"])}}
+        row={"id":task["id"],"prompt":task["prompt"],"category":task.get("category","correctness"),"output":response["output"],"assertions":assertions,"passed":all(a["passed"] for a in assertions),"latency_ms":round((time.monotonic()-begin)*1000,3),"attempts":attempts,"error":error,"usage":response.get("usage"),"provider_metadata":response.get("provider_metadata",{}),"tool_trace":response.get("tool_trace",[]),"artifact":{"type":"json" if isinstance(response["output"],(dict,list)) else "text","mime":"application/json" if isinstance(response["output"],(dict,list)) else "text/plain","hash":digest(response["output"])}}
         result["tasks"].append(row)
         emit("task_completed",task_id=task["id"],passed=row["passed"],latency_ms=row["latency_ms"])
     if result["status"]=="running":

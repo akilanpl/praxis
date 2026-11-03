@@ -24,3 +24,13 @@ class ApplicationTests(unittest.TestCase):
         for path in ('//evil.test','/../secret','/test\\secret','https://evil.test'):
             with self.assertRaises(AdapterError): invoke_application({'endpoint':'http://localhost'}, {'api_request':{'path':path}})
         with self.assertRaises(AdapterError): invoke_application({'endpoint':'http://name:secret@localhost'}, {'api_request':{'path':'/'}})
+
+class ApplicationDiagnosticsTests(unittest.TestCase):
+    def test_application_connection_uses_get_health_not_model_inference(self):
+        from praxis.adapters import diagnose
+        with patch('praxis.application.urllib.request.OpenerDirector.open',return_value=Response(b'{"status":"ok"}')) as call:
+            result=diagnose({'kind':'application','provider':'custom','endpoint':'http://localhost:9000','model':''})
+            self.assertTrue(result['ok'])
+            self.assertEqual(call.call_args.args[0].method,'GET')
+            self.assertEqual(call.call_args.args[0].full_url,'http://localhost:9000/health')
+            self.assertFalse(result['demo'])

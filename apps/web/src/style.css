@@ -4,3 +4,5 @@ table{border-collapse:collapse;width:100%;margin-top:24px;text-align:left}th,td{
 article img,article video{max-width:100%;height:auto;border-radius:6px}article audio{max-width:100%}summary{cursor:pointer;padding:12px 0}button{transition:opacity 300ms cubic-bezier(.22,1,.36,1)}
 
 button:disabled{opacity:.4;cursor:not-allowed}img,video,audio{max-width:100%}article table{table-layout:fixed}td code{font-size:12px}section{min-width:0}button,a,input,select{transition:opacity .3s cubic-bezier(.22,1,.36,1),transform .5s cubic-bezier(.22,1,.36,1)}
+
+input,select,textarea{min-width:0}button[aria-busy=true]{opacity:.6}td details pre{max-height:240px}

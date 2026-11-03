@@ -1,16 +1,16 @@
 [build-system]
-requires = ["setuptools>=61"]
+requires = ["setuptools>=84.1,<85"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "praxis"
 version = "0.1.0"
 description = "Artifact-first local AI evaluation laboratory"
-requires-python = ">=3.9"
+requires-python = ">=3.12"
 dependencies = ["pydantic>=1.10,<3", "jsonschema>=4.17,<5"]
 
 [project.optional-dependencies]
-test = ["pytest>=7,<9"]
+test = ["pytest>=9.0.3,<10", "pytest-cov>=7,<8", "pip-audit>=2.9,<3"]
 browser = ["playwright>=1.48,<2"]
 
 [project.scripts]

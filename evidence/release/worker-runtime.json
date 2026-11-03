@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "health": {
+    "service": "praxis",
+    "mode": "cloud-metadata",
+    "inference": false
+  },
+  "unconfigured_request": {
+    "status": 503,
+    "body": {
+      "error": "Supabase is not configured",
+      "request_id": "5b60f1d4-97d3-41f8-98cf-fead52bdc85a"
+    }
+  }
+}

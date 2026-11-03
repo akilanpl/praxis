@@ -4,6 +4,7 @@ import concurrent.futures
 import hashlib
 import hmac
 import json
+import math
 import os
 from pathlib import Path
 import secrets
@@ -79,6 +80,7 @@ class ControlPlane:
                 run.update(status='interrupted',error='Runner restarted; launch a new attempt. Evidence already recorded is preserved.')
                 self.store.update(run['id'],run)
     def auth(self, authorization):
+        if not authorization.startswith('Bearer '): raise APIError(401,'Bearer session required')
         token=authorization.removeprefix('Bearer ') if hasattr(authorization,'removeprefix') else authorization[7:]
         with self.store.connect() as db: row=db.execute('SELECT user_id FROM sessions WHERE token=? AND expires>?',(hashlib.sha256(token.encode()).hexdigest(),time.time())).fetchone()
         if not row: raise APIError(401,'Sign in to the local workspace')
@@ -186,10 +188,21 @@ class ControlPlane:
             if method=='POST':
                 if any(k.lower() in ('key','api_key','token','password','secret') for k in body): raise APIError(400,'Keep credentials in runner environment variables, never registry metadata')
                 if body.get('kind') not in ('model','agent','application') or body.get('provider') not in ('demo','demo-failing','openai','ollama','custom'): raise APIError(400,'Unsupported target kind or provider')
-                if not str(body.get('name','')).strip(): raise APIError(400,'Target name is required')
+                if not isinstance(body.get('name'),str) or not 1<=len(body['name'].strip())<=120: raise APIError(400,'Target name must contain 1–120 characters')
+                if not isinstance(body.get('model',''),str) or len(body.get('model',''))>200: raise APIError(400,'Model must be a string of at most 200 characters')
+                capabilities=body.get('capabilities',['text'])
+                if not isinstance(capabilities,list) or len(capabilities)>8 or any(not isinstance(c,str) or c not in ('text','json','tools','code','web','image','video','audio') for c in capabilities): raise APIError(400,'Invalid capability declarations')
+                if 'allow_mutation' in body and type(body['allow_mutation']) is not bool: raise APIError(400,'allow_mutation must be boolean')
+                for field,lower,upper in (('max_tokens',1,8192),('temperature',0,2),('timeout',0.1,120)):
+                    value=body.get(field,{'max_tokens':1024,'temperature':0,'timeout':20}[field])
+                    if type(value) not in (int,float) or not math.isfinite(value) or not lower<=value<=upper or (field=='max_tokens' and type(value) is not int): raise APIError(400,'Invalid '+field+' budget')
                 endpoint=body.get('endpoint','')
+                if not isinstance(endpoint,str): raise APIError(400,'Endpoint must be an HTTP(S) URL string')
                 if endpoint:
-                    p=urlparse(endpoint)
+                    try:
+                        p=urlparse(endpoint)
+                        port=p.port
+                    except ValueError: raise APIError(400,'Invalid endpoint URL or port')
                     if p.scheme not in ('http','https') or not p.hostname or p.username or p.password or p.query or p.fragment: raise APIError(400,'Endpoint must be HTTP(S) without embedded credentials or query parameters')
                 allowed={k:body[k] for k in ('name','kind','provider','endpoint','model','capabilities','max_tokens','temperature','timeout','allow_mutation') if k in body}
                 target=self.store.create('target',user,dict(allowed,revision=1,config_hash=digest(allowed)))
@@ -207,7 +220,7 @@ class ControlPlane:
                     if not validation["valid"]: raise ValueError("; ".join(validation["errors"]))
                 except Exception as exc: raise APIError(400,str(exc)[:500])
                 if any(s['slug']==body['slug'] and s['version']==body['version'] for s in self.suites(user)): raise APIError(409,'Suite slug and version already exist. Create a new version.')
-                return self.store.create('suite',user,body)
+                return self.store.create('suite',user,{k:v for k,v in body.items() if k not in ('id','created_at')})
         if len(parts)==3 and parts[1]=='suites' and method=='GET':
             suite=next((s for s in self.suites(user) if s['slug']==parts[2]),None)
             if not suite: raise APIError(404,'Suite not found')
@@ -218,15 +231,17 @@ class ControlPlane:
                 with self.store.lock:
                     if body.get('idempotency_key'):
                         for existing in self.store.all('run',user):
-                            if existing.get('idempotency_key')==body['idempotency_key']: return existing
+                            if existing.get('idempotency_key')==body['idempotency_key']:
+                                if existing.get('request_fingerprint') and existing['request_fingerprint']!=digest(body): raise APIError(409,'Idempotency key already belongs to a different request')
+                                return existing
                 target=self.store.get('target',body.get('target_id',''),user)
                 suites=[s for s in self.suites(user) if s['slug']==body.get('suite_slug') and (not body.get('suite_version') or s['version']==body['suite_version'])]
                 if not suites: raise APIError(400,'Suite not found')
                 if target['kind']=='application' and suites[0]['slug']!='http-application' and not all(t.get('api_request') for t in suites[0].get('tasks',[])): raise APIError(422,'Application targets require an HTTP contract suite or the isolated artifact checker')
                 if sum(r['status'] in ('queued','running') for r in self.store.all('run',user))>=2: raise APIError(429,'At most two active runs per account')
                 seed=body.get('seed',73)
-                if not isinstance(seed,int) or abs(seed)>2**31: raise APIError(400,'Seed must be a 32 bit integer')
-                run=self.store.create('run',user,{'target_id':target['id'],'target_name':target['name'],'suite_slug':suites[0]['slug'],'suite_version':suites[0]['version'],'suite_hash':digest(suites[0]),'config_hash':target['config_hash'],'conditions_hash':conditions(suites[0],target,seed),'seed':seed,'status':'queued','trust':'demo' if target['provider'].startswith('demo') else 'self-reported','public':body.get('public') is True,'idempotency_key':str(body.get('idempotency_key',''))[:100],'events':[]})
+                if type(seed) is not int or not -(2**31)<=seed<2**31: raise APIError(400,'Seed must be a 32 bit integer')
+                run=self.store.create('run',user,{'target_id':target['id'],'target_name':target['name'],'suite_slug':suites[0]['slug'],'suite_version':suites[0]['version'],'suite_hash':digest(suites[0]),'config_hash':target['config_hash'],'conditions_hash':conditions(suites[0],target,seed),'seed':seed,'status':'queued','trust':'demo' if target['provider'].startswith('demo') else 'self-reported','public':body.get('public') is True,'idempotency_key':str(body.get('idempotency_key',''))[:100],'request_fingerprint':digest(body),'events':[]})
                 self.cancel[run['id']]=threading.Event(); self.pool.submit(self.execute,run,target,suites[0]); self.store.audit(user,'run.create',run['id']); return run
         if len(parts)>=3 and parts[1]=='runs':
             run=self.store.get('run',parts[2],user)
@@ -238,7 +253,12 @@ class ControlPlane:
             if method=='GET': return self.store.all('world',user)
             if method=='POST':
                 level=body.get('max_level',3)
-                if not isinstance(level,int) or not 1<=level<=5: raise APIError(400,'World max_level must be 1–5')
+                if type(level) is not int or not 1<=level<=3: raise APIError(400,'World max_level must be 1–3')
+                domain=body.get('domain','support')
+                if not isinstance(domain,str) or domain not in ('support','customer-support','research','workflow','web-product'): raise APIError(400,'Unsupported world domain')
+                seed=body.get('seed',73)
+                if type(seed) is not int or not -(2**31)<=seed<2**31: raise APIError(400,'World seed must be a 32 bit integer')
+                if not isinstance(body.get('name','Support operations'),str) or not body.get('name','Support operations').strip(): raise APIError(400,'World name is required')
                 return self.store.create('world',user,{'name':str(body.get('name','Support operations'))[:100],'domain':'customer-support' if body.get('domain','support')=='support' else body.get('domain'),'max_level':level,'seed':body.get('seed',73)})
         if len(parts)>=3 and parts[1]=='worlds':
             world=self.store.get('world',parts[2],user)
@@ -296,13 +316,14 @@ class Handler(BaseHTTPRequestHandler):
             if origin and origin not in self.server.origins: raise APIError(403,'Origin denied')
             if self.command=='OPTIONS': data={'ok':True}
             else:
-                length=int(self.headers.get('Content-Length','0'))
+                try: length=int(self.headers.get('Content-Length','0'))
+                except ValueError: raise APIError(400,'Invalid Content-Length')
                 if length<0 or length>MAX_BODY: raise APIError(413,'Request exceeds 2 MB limit')
                 body={}
                 if length:
                     if 'application/json' not in self.headers.get('Content-Type',''): raise APIError(415,'Expected application/json')
-                    try: body=json.loads(self.rfile.read(length))
-                    except (ValueError,UnicodeDecodeError): raise APIError(400,'Invalid JSON')
+                    try: body=json.loads(self.rfile.read(length),parse_constant=lambda value: (_ for _ in ()).throw(ValueError('Non-finite JSON value')))
+                    except (ValueError,UnicodeDecodeError,RecursionError): raise APIError(400,'Invalid JSON')
                     if not isinstance(body,dict): raise APIError(400,'JSON object required')
                 path=urlparse(self.path).path
                 if not path.startswith('/api/'):
@@ -320,6 +341,7 @@ class Handler(BaseHTTPRequestHandler):
         raw=encoded(data).encode(); self.send_response(status); self.send_header('Content-Type','application/json'); self.send_header('Content-Length',str(len(raw))); self.send_header('X-Request-ID',request_id)
         if self.headers.get('Origin') in self.server.origins:
             self.send_header('Access-Control-Allow-Origin',self.headers['Origin']); self.send_header('Vary','Origin'); self.send_header('Access-Control-Allow-Headers','Authorization, Content-Type'); self.send_header('Access-Control-Allow-Methods','GET, POST, OPTIONS')
+        if status==429: self.send_header('Retry-After','60')
         self.security_headers(); self.end_headers(); self.wfile.write(raw)
     def security_headers(self):
         self.send_header('X-Content-Type-Options','nosniff'); self.send_header('Referrer-Policy','no-referrer'); self.send_header('Cache-Control','no-store')
@@ -333,4 +355,4 @@ def serve(path=None,port=8787):
     try: server.serve_forever()
     finally: app.pool.shutdown(wait=True); server.server_close()
 
-if __name__=='__main__': serve()
+if __name__=='__main__': serve(port=int(os.environ.get('PRAXIS_PORT','8787')))

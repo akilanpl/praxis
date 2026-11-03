@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "acceptance": "real HTTP model invocation, persisted raw outputs, per-assertion grading and usage; no score threshold assumed",
+  "model": "onnx-community/SmolLM2-135M-Instruct-ONNX",
+  "run_id": "17d721bc-aaf0-4559-a399-2c4d251075c5",
+  "url": "http://127.0.0.1:8787/runs/17d721bc-aaf0-4559-a399-2c4d251075c5",
+  "tasks": 8,
+  "benchmark_passed": 0,
+  "benchmark_total": 8,
+  "cost": "local CPU; no paid model API used",
+  "trust": "self-reported",
+  "evidence_hash": "675b67683c68bb2fb0f40c580e3e702339fe0cb8592506029484f2ff47a3ad8a"
+}

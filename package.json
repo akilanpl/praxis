@@ -13,5 +13,9 @@
     "test": ".venv/bin/python -m pytest tests -q && npm run test --workspace apps/api",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "verify": "npm test && npm run build"
+  },
+  "devDependencies": {
+    "@huggingface/transformers": "4.3.2",
+    "supabase": "3.0.0"
   }
 }

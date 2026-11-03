@@ -1,0 +1,7 @@
+.................................................................................................... [ 86%]
+...............                                                          [100%]
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.12.13-final-0 _______________
+
+Coverage JSON written to file evidence/release/coverage.json
+115 passed, 44 subtests passed in 4.40s

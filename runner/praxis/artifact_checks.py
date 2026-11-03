@@ -2,6 +2,7 @@
 import hashlib
 import json
 import mimetypes
+import os
 import struct
 from pathlib import Path
 
@@ -42,14 +43,15 @@ def check_owned_website(output_dir, html=None):
     checks=[]
     errors=[]
     with sync_playwright() as p:
-        browser=p.chromium.launch(headless=True)
+        external_browser=os.environ.get('PRAXIS_BROWSER_CDP')
+        browser=p.chromium.connect_over_cdp(external_browser) if external_browser else p.chromium.launch(headless=True)
         context=browser.new_context(viewport={"width":1280,"height":800},service_workers="block")
         context.route("**/*",lambda route:route.abort())
         page=context.new_page()
         page.on("pageerror",lambda error:errors.append(str(error)))
         page.set_content(OWNED_WEB_FIXTURE)
         page.get_by_role("button",name="Add book").click()
-        checks.append({"name":"cart interaction","passed":page.locator('#quantity').input_value()=="1","expected":"1","actual":page.locator('#quantity').input_value()})
+        checks.append({"name":"cart interaction","passed":page.locator('#quantity').inner_text()=="1","expected":"1","actual":page.locator('#quantity').inner_text()})
         page.get_by_label("Search").fill("red")
         checks.append({"name":"search filters items","passed":page.locator('article:visible').count()==1,"expected":1,"actual":page.locator('article:visible').count()})
         page.get_by_label("Email").fill("invalid")
@@ -64,7 +66,7 @@ def check_owned_website(output_dir, html=None):
             page.screenshot(path=str(folder/('website-%s.png'%width)),full_page=True)
         checks.append({"name":"no runtime errors","passed":not errors,"expected":[],"actual":errors})
         context.close()
-        browser.close()
+        if not external_browser: browser.close()
     (folder/'website.html').write_text(OWNED_WEB_FIXTURE)
     result={"trust":"demo","fixture":"owned source-controlled application, not generated model output","assertions":checks,"passed":all(c["passed"] for c in checks),"screenshots":[inspect_artifact(folder/('website-%s.png'%w)) for w in (390,1280)]}
     (folder/'website-checks.json').write_text(json.dumps(result,indent=2)+'\n')

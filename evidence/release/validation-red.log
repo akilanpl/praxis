@@ -1,0 +1,816 @@
+FFF..FFFFFFFFFFFFFFFFFFFF.FF.FFFFFFFFFFFFFFF                             [100%]
+=================================== FAILURES ===================================
+_________ test_invalid_target_has_no_persisted_side_effect[name-None] __________
+
+local = (<praxis.server.ControlPlane object at 0x109bd4be0>, <function local.<locals>.call at 0x10a20da60>)
+field = 'name', value = None
+
+    @pytest.mark.parametrize('field,value',[
+     ('name',None),('name',{}),('name',[]),('name',''),('name',' '*4),('name','x'*121),
+     ('endpoint',[]),('endpoint',True),('endpoint','http://host:badport'),
+     ('model',{}),('model',12),('capabilities','text'),('capabilities',['unknown']),
+     ('max_tokens',0),('max_tokens',8193),('max_tokens',True),('max_tokens',1.5),
+     ('temperature',-0.1),('temperature',2.1),('temperature',math.nan),('temperature','zero'),
+     ('timeout',0),('timeout',121),('timeout',math.inf),('allow_mutation','true'),
+    ],ids=lambda value:str(value)[:30])
+    def test_invalid_target_has_no_persisted_side_effect(local,field,value):
+        api,call=local
+        data={'name':'valid','kind':'model','provider':'demo','capabilities':['text']}
+        data[field]=value
+>       with pytest.raises(APIError) as exc:call('POST','/api/targets',data)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:28: Failed
+__________ test_invalid_target_has_no_persisted_side_effect[name-{}] ___________
+
+local = (<praxis.server.ControlPlane object at 0x109be5490>, <function local.<locals>.call at 0x10a231d30>)
+field = 'name', value = {}
+
+    @pytest.mark.parametrize('field,value',[
+     ('name',None),('name',{}),('name',[]),('name',''),('name',' '*4),('name','x'*121),
+     ('endpoint',[]),('endpoint',True),('endpoint','http://host:badport'),
+     ('model',{}),('model',12),('capabilities','text'),('capabilities',['unknown']),
+     ('max_tokens',0),('max_tokens',8193),('max_tokens',True),('max_tokens',1.5),
+     ('temperature',-0.1),('temperature',2.1),('temperature',math.nan),('temperature','zero'),
+     ('timeout',0),('timeout',121),('timeout',math.inf),('allow_mutation','true'),
+    ],ids=lambda value:str(value)[:30])
+    def test_invalid_target_has_no_persisted_side_effect(local,field,value):
+        api,call=local
+        data={'name':'valid','kind':'model','provider':'demo','capabilities':['text']}
+        data[field]=value
+>       with pytest.raises(APIError) as exc:call('POST','/api/targets',data)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:28: Failed
+__________ test_invalid_target_has_no_persisted_side_effect[name-[]] ___________
+
+local = (<praxis.server.ControlPlane object at 0x109fa11f0>, <function local.<locals>.call at 0x10a231ee0>)
+field = 'name', value = []
+
+    @pytest.mark.parametrize('field,value',[
+     ('name',None),('name',{}),('name',[]),('name',''),('name',' '*4),('name','x'*121),
+     ('endpoint',[]),('endpoint',True),('endpoint','http://host:badport'),
+     ('model',{}),('model',12),('capabilities','text'),('capabilities',['unknown']),
+     ('max_tokens',0),('max_tokens',8193),('max_tokens',True),('max_tokens',1.5),
+     ('temperature',-0.1),('temperature',2.1),('temperature',math.nan),('temperature','zero'),
+     ('timeout',0),('timeout',121),('timeout',math.inf),('allow_mutation','true'),
+    ],ids=lambda value:str(value)[:30])
+    def test_invalid_target_has_no_persisted_side_effect(local,field,value):
+        api,call=local
+        data={'name':'valid','kind':'model','provider':'demo','capabilities':['text']}
+        data[field]=value
+>       with pytest.raises(APIError) as exc:call('POST','/api/targets',data)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:28: Failed
+_ test_invalid_target_has_no_persisted_side_effect[name-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx] _
+
+local = (<praxis.server.ControlPlane object at 0x10a25eb50>, <function local.<locals>.call at 0x10a269790>)
+field = 'name'
+value = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+
+    @pytest.mark.parametrize('field,value',[
+     ('name',None),('name',{}),('name',[]),('name',''),('name',' '*4),('name','x'*121),
+     ('endpoint',[]),('endpoint',True),('endpoint','http://host:badport'),
+     ('model',{}),('model',12),('capabilities','text'),('capabilities',['unknown']),
+     ('max_tokens',0),('max_tokens',8193),('max_tokens',True),('max_tokens',1.5),
+     ('temperature',-0.1),('temperature',2.1),('temperature',math.nan),('temperature','zero'),
+     ('timeout',0),('timeout',121),('timeout',math.inf),('allow_mutation','true'),
+    ],ids=lambda value:str(value)[:30])
+    def test_invalid_target_has_no_persisted_side_effect(local,field,value):
+        api,call=local
+        data={'name':'valid','kind':'model','provider':'demo','capabilities':['text']}
+        data[field]=value
+>       with pytest.raises(APIError) as exc:call('POST','/api/targets',data)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:28: Failed
+________ test_invalid_target_has_no_persisted_side_effect[endpoint-[]] _________
+
+local = (<praxis.server.ControlPlane object at 0x10a056670>, <function local.<locals>.call at 0x10a269670>)
+field = 'endpoint', value = []
+
+    @pytest.mark.parametrize('field,value',[
+     ('name',None),('name',{}),('name',[]),('name',''),('name',' '*4),('name','x'*121),
+     ('endpoint',[]),('endpoint',True),('endpoint','http://host:badport'),
+     ('model',{}),('model',12),('capabilities','text'),('capabilities',['unknown']),
+     ('max_tokens',0),('max_tokens',8193),('max_tokens',True),('max_tokens',1.5),
+     ('temperature',-0.1),('temperature',2.1),('temperature',math.nan),('temperature','zero'),
+     ('timeout',0),('timeout',121),('timeout',math.inf),('allow_mutation','true'),
+    ],ids=lambda value:str(value)[:30])
+    def test_invalid_target_has_no_persisted_side_effect(local,field,value):
+        api,call=local
+        data={'name':'valid','kind':'model','provider':'demo','capabilities':['text']}
+        data[field]=value
+>       with pytest.raises(APIError) as exc:call('POST','/api/targets',data)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:28: Failed
+_______ test_invalid_target_has_no_persisted_side_effect[endpoint-True] ________
+
+local = (<praxis.server.ControlPlane object at 0x109bc8a60>, <function local.<locals>.call at 0x10a293040>)
+field = 'endpoint', value = True
+
+    @pytest.mark.parametrize('field,value',[
+     ('name',None),('name',{}),('name',[]),('name',''),('name',' '*4),('name','x'*121),
+     ('endpoint',[]),('endpoint',True),('endpoint','http://host:badport'),
+     ('model',{}),('model',12),('capabilities','text'),('capabilities',['unknown']),
+     ('max_tokens',0),('max_tokens',8193),('max_tokens',True),('max_tokens',1.5),
+     ('temperature',-0.1),('temperature',2.1),('temperature',math.nan),('temperature','zero'),
+     ('timeout',0),('timeout',121),('timeout',math.inf),('allow_mutation','true'),
+    ],ids=lambda value:str(value)[:30])
+    def test_invalid_target_has_no_persisted_side_effect(local,field,value):
+        api,call=local
+        data={'name':'valid','kind':'model','provider':'demo','capabilities':['text']}
+        data[field]=value
+>       with pytest.raises(APIError) as exc:call('POST','/api/targets',data)
+
+tests/test_release_validation.py:28:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/test_release_validation.py:12: in call
+    def call(method,path,body=None):return api.request(method,path,body or {},'Bearer '+account['token'])
+runner/praxis/server.py:161: in request
+    return self._request(method,path,body,authorization)
+runner/praxis/server.py:192: in _request
+    p=urlparse(endpoint)
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/parse.py:392: in urlparse
+    url, scheme, _coerce_result = _coerce_args(url, scheme)
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/parse.py:128: in _coerce_args
+    return _decode_args(args) + (_encode_result,)
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/parse.py:112: in _decode_args
+    return tuple(x.decode(encoding, errors) if x else '' for x in args)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+.0 = <tuple_iterator object at 0x109bc8e20>
+
+>   return tuple(x.decode(encoding, errors) if x else '' for x in args)
+E   AttributeError: 'bool' object has no attribute 'decode'
+
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/parse.py:112: AttributeError
+_ test_invalid_target_has_no_persisted_side_effect[endpoint-http://host:badport] _
+
+local = (<praxis.server.ControlPlane object at 0x10a054f70>, <function local.<locals>.call at 0x10a2b0ca0>)
+field = 'endpoint', value = 'http://host:badport'
+
+    @pytest.mark.parametrize('field,value',[
+     ('name',None),('name',{}),('name',[]),('name',''),('name',' '*4),('name','x'*121),
+     ('endpoint',[]),('endpoint',True),('endpoint','http://host:badport'),
+     ('model',{}),('model',12),('capabilities','text'),('capabilities',['unknown']),
+     ('max_tokens',0),('max_tokens',8193),('max_tokens',True),('max_tokens',1.5),
+     ('temperature',-0.1),('temperature',2.1),('temperature',math.nan),('temperature','zero'),
+     ('timeout',0),('timeout',121),('timeout',math.inf),('allow_mutation','true'),
+    ],ids=lambda value:str(value)[:30])
+    def test_invalid_target_has_no_persisted_side_effect(local,field,value):
+        api,call=local
+        data={'name':'valid','kind':'model','provider':'demo','capabilities':['text']}
+        data[field]=value
+>       with pytest.raises(APIError) as exc:call('POST','/api/targets',data)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:28: Failed
+__________ test_invalid_target_has_no_persisted_side_effect[model-{}] __________
+
+local = (<praxis.server.ControlPlane object at 0x10a412400>, <function local.<locals>.call at 0x10a288430>)
+field = 'model', value = {}
+
+    @pytest.mark.parametrize('field,value',[
+     ('name',None),('name',{}),('name',[]),('name',''),('name',' '*4),('name','x'*121),
+     ('endpoint',[]),('endpoint',True),('endpoint','http://host:badport'),
+     ('model',{}),('model',12),('capabilities','text'),('capabilities',['unknown']),
+     ('max_tokens',0),('max_tokens',8193),('max_tokens',True),('max_tokens',1.5),
+     ('temperature',-0.1),('temperature',2.1),('temperature',math.nan),('temperature','zero'),
+     ('timeout',0),('timeout',121),('timeout',math.inf),('allow_mutation','true'),
+    ],ids=lambda value:str(value)[:30])
+    def test_invalid_target_has_no_persisted_side_effect(local,field,value):
+        api,call=local
+        data={'name':'valid','kind':'model','provider':'demo','capabilities':['text']}
+        data[field]=value
+>       with pytest.raises(APIError) as exc:call('POST','/api/targets',data)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:28: Failed
+__________ test_invalid_target_has_no_persisted_side_effect[model-12] __________
+
+local = (<praxis.server.ControlPlane object at 0x109be54f0>, <function local.<locals>.call at 0x10a288a60>)
+field = 'model', value = 12
+
+    @pytest.mark.parametrize('field,value',[
+     ('name',None),('name',{}),('name',[]),('name',''),('name',' '*4),('name','x'*121),
+     ('endpoint',[]),('endpoint',True),('endpoint','http://host:badport'),
+     ('model',{}),('model',12),('capabilities','text'),('capabilities',['unknown']),
+     ('max_tokens',0),('max_tokens',8193),('max_tokens',True),('max_tokens',1.5),
+     ('temperature',-0.1),('temperature',2.1),('temperature',math.nan),('temperature','zero'),
+     ('timeout',0),('timeout',121),('timeout',math.inf),('allow_mutation','true'),
+    ],ids=lambda value:str(value)[:30])
+    def test_invalid_target_has_no_persisted_side_effect(local,field,value):
+        api,call=local
+        data={'name':'valid','kind':'model','provider':'demo','capabilities':['text']}
+        data[field]=value
+>       with pytest.raises(APIError) as exc:call('POST','/api/targets',data)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:28: Failed
+_____ test_invalid_target_has_no_persisted_side_effect[capabilities-text] ______
+
+local = (<praxis.server.ControlPlane object at 0x10a2cc970>, <function local.<locals>.call at 0x10a288c10>)
+field = 'capabilities', value = 'text'
+
+    @pytest.mark.parametrize('field,value',[
+     ('name',None),('name',{}),('name',[]),('name',''),('name',' '*4),('name','x'*121),
+     ('endpoint',[]),('endpoint',True),('endpoint','http://host:badport'),
+     ('model',{}),('model',12),('capabilities','text'),('capabilities',['unknown']),
+     ('max_tokens',0),('max_tokens',8193),('max_tokens',True),('max_tokens',1.5),
+     ('temperature',-0.1),('temperature',2.1),('temperature',math.nan),('temperature','zero'),
+     ('timeout',0),('timeout',121),('timeout',math.inf),('allow_mutation','true'),
+    ],ids=lambda value:str(value)[:30])
+    def test_invalid_target_has_no_persisted_side_effect(local,field,value):
+        api,call=local
+        data={'name':'valid','kind':'model','provider':'demo','capabilities':['text']}
+        data[field]=value
+>       with pytest.raises(APIError) as exc:call('POST','/api/targets',data)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:28: Failed
+__ test_invalid_target_has_no_persisted_side_effect[capabilities-['unknown']] __
+
+local = (<praxis.server.ControlPlane object at 0x10955b520>, <function local.<locals>.call at 0x10a288820>)
+field = 'capabilities', value = ['unknown']
+
+    @pytest.mark.parametrize('field,value',[
+     ('name',None),('name',{}),('name',[]),('name',''),('name',' '*4),('name','x'*121),
+     ('endpoint',[]),('endpoint',True),('endpoint','http://host:badport'),
+     ('model',{}),('model',12),('capabilities','text'),('capabilities',['unknown']),
+     ('max_tokens',0),('max_tokens',8193),('max_tokens',True),('max_tokens',1.5),
+     ('temperature',-0.1),('temperature',2.1),('temperature',math.nan),('temperature','zero'),
+     ('timeout',0),('timeout',121),('timeout',math.inf),('allow_mutation','true'),
+    ],ids=lambda value:str(value)[:30])
+    def test_invalid_target_has_no_persisted_side_effect(local,field,value):
+        api,call=local
+        data={'name':'valid','kind':'model','provider':'demo','capabilities':['text']}
+        data[field]=value
+>       with pytest.raises(APIError) as exc:call('POST','/api/targets',data)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:28: Failed
+________ test_invalid_target_has_no_persisted_side_effect[max_tokens-0] ________
+
+local = (<praxis.server.ControlPlane object at 0x10a2898e0>, <function local.<locals>.call at 0x10a28d5e0>)
+field = 'max_tokens', value = 0
+
+    @pytest.mark.parametrize('field,value',[
+     ('name',None),('name',{}),('name',[]),('name',''),('name',' '*4),('name','x'*121),
+     ('endpoint',[]),('endpoint',True),('endpoint','http://host:badport'),
+     ('model',{}),('model',12),('capabilities','text'),('capabilities',['unknown']),
+     ('max_tokens',0),('max_tokens',8193),('max_tokens',True),('max_tokens',1.5),
+     ('temperature',-0.1),('temperature',2.1),('temperature',math.nan),('temperature','zero'),
+     ('timeout',0),('timeout',121),('timeout',math.inf),('allow_mutation','true'),
+    ],ids=lambda value:str(value)[:30])
+    def test_invalid_target_has_no_persisted_side_effect(local,field,value):
+        api,call=local
+        data={'name':'valid','kind':'model','provider':'demo','capabilities':['text']}
+        data[field]=value
+>       with pytest.raises(APIError) as exc:call('POST','/api/targets',data)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:28: Failed
+______ test_invalid_target_has_no_persisted_side_effect[max_tokens-8193] _______
+
+local = (<praxis.server.ControlPlane object at 0x109f853d0>, <function local.<locals>.call at 0x10a28dc10>)
+field = 'max_tokens', value = 8193
+
+    @pytest.mark.parametrize('field,value',[
+     ('name',None),('name',{}),('name',[]),('name',''),('name',' '*4),('name','x'*121),
+     ('endpoint',[]),('endpoint',True),('endpoint','http://host:badport'),
+     ('model',{}),('model',12),('capabilities','text'),('capabilities',['unknown']),
+     ('max_tokens',0),('max_tokens',8193),('max_tokens',True),('max_tokens',1.5),
+     ('temperature',-0.1),('temperature',2.1),('temperature',math.nan),('temperature','zero'),
+     ('timeout',0),('timeout',121),('timeout',math.inf),('allow_mutation','true'),
+    ],ids=lambda value:str(value)[:30])
+    def test_invalid_target_has_no_persisted_side_effect(local,field,value):
+        api,call=local
+        data={'name':'valid','kind':'model','provider':'demo','capabilities':['text']}
+        data[field]=value
+>       with pytest.raises(APIError) as exc:call('POST','/api/targets',data)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:28: Failed
+______ test_invalid_target_has_no_persisted_side_effect[max_tokens-True] _______
+
+local = (<praxis.server.ControlPlane object at 0x109e5edf0>, <function local.<locals>.call at 0x10a28d310>)
+field = 'max_tokens', value = True
+
+    @pytest.mark.parametrize('field,value',[
+     ('name',None),('name',{}),('name',[]),('name',''),('name',' '*4),('name','x'*121),
+     ('endpoint',[]),('endpoint',True),('endpoint','http://host:badport'),
+     ('model',{}),('model',12),('capabilities','text'),('capabilities',['unknown']),
+     ('max_tokens',0),('max_tokens',8193),('max_tokens',True),('max_tokens',1.5),
+     ('temperature',-0.1),('temperature',2.1),('temperature',math.nan),('temperature','zero'),
+     ('timeout',0),('timeout',121),('timeout',math.inf),('allow_mutation','true'),
+    ],ids=lambda value:str(value)[:30])
+    def test_invalid_target_has_no_persisted_side_effect(local,field,value):
+        api,call=local
+        data={'name':'valid','kind':'model','provider':'demo','capabilities':['text']}
+        data[field]=value
+>       with pytest.raises(APIError) as exc:call('POST','/api/targets',data)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:28: Failed
+_______ test_invalid_target_has_no_persisted_side_effect[max_tokens-1.5] _______
+
+local = (<praxis.server.ControlPlane object at 0x10a25ea30>, <function local.<locals>.call at 0x10a28db80>)
+field = 'max_tokens', value = 1.5
+
+    @pytest.mark.parametrize('field,value',[
+     ('name',None),('name',{}),('name',[]),('name',''),('name',' '*4),('name','x'*121),
+     ('endpoint',[]),('endpoint',True),('endpoint','http://host:badport'),
+     ('model',{}),('model',12),('capabilities','text'),('capabilities',['unknown']),
+     ('max_tokens',0),('max_tokens',8193),('max_tokens',True),('max_tokens',1.5),
+     ('temperature',-0.1),('temperature',2.1),('temperature',math.nan),('temperature','zero'),
+     ('timeout',0),('timeout',121),('timeout',math.inf),('allow_mutation','true'),
+    ],ids=lambda value:str(value)[:30])
+    def test_invalid_target_has_no_persisted_side_effect(local,field,value):
+        api,call=local
+        data={'name':'valid','kind':'model','provider':'demo','capabilities':['text']}
+        data[field]=value
+>       with pytest.raises(APIError) as exc:call('POST','/api/targets',data)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:28: Failed
+______ test_invalid_target_has_no_persisted_side_effect[temperature--0.1] ______
+
+local = (<praxis.server.ControlPlane object at 0x10a412d30>, <function local.<locals>.call at 0x10a267b80>)
+field = 'temperature', value = -0.1
+
+    @pytest.mark.parametrize('field,value',[
+     ('name',None),('name',{}),('name',[]),('name',''),('name',' '*4),('name','x'*121),
+     ('endpoint',[]),('endpoint',True),('endpoint','http://host:badport'),
+     ('model',{}),('model',12),('capabilities','text'),('capabilities',['unknown']),
+     ('max_tokens',0),('max_tokens',8193),('max_tokens',True),('max_tokens',1.5),
+     ('temperature',-0.1),('temperature',2.1),('temperature',math.nan),('temperature','zero'),
+     ('timeout',0),('timeout',121),('timeout',math.inf),('allow_mutation','true'),
+    ],ids=lambda value:str(value)[:30])
+    def test_invalid_target_has_no_persisted_side_effect(local,field,value):
+        api,call=local
+        data={'name':'valid','kind':'model','provider':'demo','capabilities':['text']}
+        data[field]=value
+>       with pytest.raises(APIError) as exc:call('POST','/api/targets',data)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:28: Failed
+______ test_invalid_target_has_no_persisted_side_effect[temperature-2.1] _______
+
+local = (<praxis.server.ControlPlane object at 0x10a07bbe0>, <function local.<locals>.call at 0x10a267940>)
+field = 'temperature', value = 2.1
+
+    @pytest.mark.parametrize('field,value',[
+     ('name',None),('name',{}),('name',[]),('name',''),('name',' '*4),('name','x'*121),
+     ('endpoint',[]),('endpoint',True),('endpoint','http://host:badport'),
+     ('model',{}),('model',12),('capabilities','text'),('capabilities',['unknown']),
+     ('max_tokens',0),('max_tokens',8193),('max_tokens',True),('max_tokens',1.5),
+     ('temperature',-0.1),('temperature',2.1),('temperature',math.nan),('temperature','zero'),
+     ('timeout',0),('timeout',121),('timeout',math.inf),('allow_mutation','true'),
+    ],ids=lambda value:str(value)[:30])
+    def test_invalid_target_has_no_persisted_side_effect(local,field,value):
+        api,call=local
+        data={'name':'valid','kind':'model','provider':'demo','capabilities':['text']}
+        data[field]=value
+>       with pytest.raises(APIError) as exc:call('POST','/api/targets',data)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:28: Failed
+______ test_invalid_target_has_no_persisted_side_effect[temperature-nan] _______
+
+local = (<praxis.server.ControlPlane object at 0x10a28ef10>, <function local.<locals>.call at 0x10a267a60>)
+field = 'temperature', value = nan
+
+    @pytest.mark.parametrize('field,value',[
+     ('name',None),('name',{}),('name',[]),('name',''),('name',' '*4),('name','x'*121),
+     ('endpoint',[]),('endpoint',True),('endpoint','http://host:badport'),
+     ('model',{}),('model',12),('capabilities','text'),('capabilities',['unknown']),
+     ('max_tokens',0),('max_tokens',8193),('max_tokens',True),('max_tokens',1.5),
+     ('temperature',-0.1),('temperature',2.1),('temperature',math.nan),('temperature','zero'),
+     ('timeout',0),('timeout',121),('timeout',math.inf),('allow_mutation','true'),
+    ],ids=lambda value:str(value)[:30])
+    def test_invalid_target_has_no_persisted_side_effect(local,field,value):
+        api,call=local
+        data={'name':'valid','kind':'model','provider':'demo','capabilities':['text']}
+        data[field]=value
+>       with pytest.raises(APIError) as exc:call('POST','/api/targets',data)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:28: Failed
+______ test_invalid_target_has_no_persisted_side_effect[temperature-zero] ______
+
+local = (<praxis.server.ControlPlane object at 0x109f85070>, <function local.<locals>.call at 0x10a267d30>)
+field = 'temperature', value = 'zero'
+
+    @pytest.mark.parametrize('field,value',[
+     ('name',None),('name',{}),('name',[]),('name',''),('name',' '*4),('name','x'*121),
+     ('endpoint',[]),('endpoint',True),('endpoint','http://host:badport'),
+     ('model',{}),('model',12),('capabilities','text'),('capabilities',['unknown']),
+     ('max_tokens',0),('max_tokens',8193),('max_tokens',True),('max_tokens',1.5),
+     ('temperature',-0.1),('temperature',2.1),('temperature',math.nan),('temperature','zero'),
+     ('timeout',0),('timeout',121),('timeout',math.inf),('allow_mutation','true'),
+    ],ids=lambda value:str(value)[:30])
+    def test_invalid_target_has_no_persisted_side_effect(local,field,value):
+        api,call=local
+        data={'name':'valid','kind':'model','provider':'demo','capabilities':['text']}
+        data[field]=value
+>       with pytest.raises(APIError) as exc:call('POST','/api/targets',data)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:28: Failed
+_________ test_invalid_target_has_no_persisted_side_effect[timeout-0] __________
+
+local = (<praxis.server.ControlPlane object at 0x109be5280>, <function local.<locals>.call at 0x10a2d7a60>)
+field = 'timeout', value = 0
+
+    @pytest.mark.parametrize('field,value',[
+     ('name',None),('name',{}),('name',[]),('name',''),('name',' '*4),('name','x'*121),
+     ('endpoint',[]),('endpoint',True),('endpoint','http://host:badport'),
+     ('model',{}),('model',12),('capabilities','text'),('capabilities',['unknown']),
+     ('max_tokens',0),('max_tokens',8193),('max_tokens',True),('max_tokens',1.5),
+     ('temperature',-0.1),('temperature',2.1),('temperature',math.nan),('temperature','zero'),
+     ('timeout',0),('timeout',121),('timeout',math.inf),('allow_mutation','true'),
+    ],ids=lambda value:str(value)[:30])
+    def test_invalid_target_has_no_persisted_side_effect(local,field,value):
+        api,call=local
+        data={'name':'valid','kind':'model','provider':'demo','capabilities':['text']}
+        data[field]=value
+>       with pytest.raises(APIError) as exc:call('POST','/api/targets',data)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:28: Failed
+________ test_invalid_target_has_no_persisted_side_effect[timeout-121] _________
+
+local = (<praxis.server.ControlPlane object at 0x109fa1f70>, <function local.<locals>.call at 0x10a2d7c10>)
+field = 'timeout', value = 121
+
+    @pytest.mark.parametrize('field,value',[
+     ('name',None),('name',{}),('name',[]),('name',''),('name',' '*4),('name','x'*121),
+     ('endpoint',[]),('endpoint',True),('endpoint','http://host:badport'),
+     ('model',{}),('model',12),('capabilities','text'),('capabilities',['unknown']),
+     ('max_tokens',0),('max_tokens',8193),('max_tokens',True),('max_tokens',1.5),
+     ('temperature',-0.1),('temperature',2.1),('temperature',math.nan),('temperature','zero'),
+     ('timeout',0),('timeout',121),('timeout',math.inf),('allow_mutation','true'),
+    ],ids=lambda value:str(value)[:30])
+    def test_invalid_target_has_no_persisted_side_effect(local,field,value):
+        api,call=local
+        data={'name':'valid','kind':'model','provider':'demo','capabilities':['text']}
+        data[field]=value
+>       with pytest.raises(APIError) as exc:call('POST','/api/targets',data)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:28: Failed
+________ test_invalid_target_has_no_persisted_side_effect[timeout-inf] _________
+
+local = (<praxis.server.ControlPlane object at 0x10a2c0640>, <function local.<locals>.call at 0x10a2d79d0>)
+field = 'timeout', value = inf
+
+    @pytest.mark.parametrize('field,value',[
+     ('name',None),('name',{}),('name',[]),('name',''),('name',' '*4),('name','x'*121),
+     ('endpoint',[]),('endpoint',True),('endpoint','http://host:badport'),
+     ('model',{}),('model',12),('capabilities','text'),('capabilities',['unknown']),
+     ('max_tokens',0),('max_tokens',8193),('max_tokens',True),('max_tokens',1.5),
+     ('temperature',-0.1),('temperature',2.1),('temperature',math.nan),('temperature','zero'),
+     ('timeout',0),('timeout',121),('timeout',math.inf),('allow_mutation','true'),
+    ],ids=lambda value:str(value)[:30])
+    def test_invalid_target_has_no_persisted_side_effect(local,field,value):
+        api,call=local
+        data={'name':'valid','kind':'model','provider':'demo','capabilities':['text']}
+        data[field]=value
+>       with pytest.raises(APIError) as exc:call('POST','/api/targets',data)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:28: Failed
+____ test_invalid_target_has_no_persisted_side_effect[allow_mutation-true] _____
+
+local = (<praxis.server.ControlPlane object at 0x109e5e2e0>, <function local.<locals>.call at 0x10a267430>)
+field = 'allow_mutation', value = 'true'
+
+    @pytest.mark.parametrize('field,value',[
+     ('name',None),('name',{}),('name',[]),('name',''),('name',' '*4),('name','x'*121),
+     ('endpoint',[]),('endpoint',True),('endpoint','http://host:badport'),
+     ('model',{}),('model',12),('capabilities','text'),('capabilities',['unknown']),
+     ('max_tokens',0),('max_tokens',8193),('max_tokens',True),('max_tokens',1.5),
+     ('temperature',-0.1),('temperature',2.1),('temperature',math.nan),('temperature','zero'),
+     ('timeout',0),('timeout',121),('timeout',math.inf),('allow_mutation','true'),
+    ],ids=lambda value:str(value)[:30])
+    def test_invalid_target_has_no_persisted_side_effect(local,field,value):
+        api,call=local
+        data={'name':'valid','kind':'model','provider':'demo','capabilities':['text']}
+        data[field]=value
+>       with pytest.raises(APIError) as exc:call('POST','/api/targets',data)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:28: Failed
+____________ test_world_contract_rejects_unreplayable_inputs[body1] ____________
+
+local = (<praxis.server.ControlPlane object at 0x10a412a00>, <function local.<locals>.call at 0x10a2d3af0>)
+body = {'max_level': 4}
+
+    @pytest.mark.parametrize('body',[
+     {'max_level':0},{'max_level':4},{'max_level':True},{'max_level':1.5},
+     {'seed':True},{'seed':2147483648},{'seed':-2147483649},{'seed':'73'},
+     {'domain':'unknown'},{'domain':{}},{'name':''},{'name':{}},
+    ])
+    def test_world_contract_rejects_unreplayable_inputs(local,body):
+        api,call=local
+>       with pytest.raises(APIError) as exc:call('POST','/api/worlds',dict(name='world',domain='support',max_level=3,seed=73,**{})|body)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:39: Failed
+____________ test_world_contract_rejects_unreplayable_inputs[body2] ____________
+
+local = (<praxis.server.ControlPlane object at 0x10955b340>, <function local.<locals>.call at 0x10a2d31f0>)
+body = {'max_level': True}
+
+    @pytest.mark.parametrize('body',[
+     {'max_level':0},{'max_level':4},{'max_level':True},{'max_level':1.5},
+     {'seed':True},{'seed':2147483648},{'seed':-2147483649},{'seed':'73'},
+     {'domain':'unknown'},{'domain':{}},{'name':''},{'name':{}},
+    ])
+    def test_world_contract_rejects_unreplayable_inputs(local,body):
+        api,call=local
+>       with pytest.raises(APIError) as exc:call('POST','/api/worlds',dict(name='world',domain='support',max_level=3,seed=73,**{})|body)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:39: Failed
+____________ test_world_contract_rejects_unreplayable_inputs[body4] ____________
+
+local = (<praxis.server.ControlPlane object at 0x10955be20>, <function local.<locals>.call at 0x10a2d3700>)
+body = {'seed': True}
+
+    @pytest.mark.parametrize('body',[
+     {'max_level':0},{'max_level':4},{'max_level':True},{'max_level':1.5},
+     {'seed':True},{'seed':2147483648},{'seed':-2147483649},{'seed':'73'},
+     {'domain':'unknown'},{'domain':{}},{'name':''},{'name':{}},
+    ])
+    def test_world_contract_rejects_unreplayable_inputs(local,body):
+        api,call=local
+>       with pytest.raises(APIError) as exc:call('POST','/api/worlds',dict(name='world',domain='support',max_level=3,seed=73,**{})|body)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:39: Failed
+____________ test_world_contract_rejects_unreplayable_inputs[body5] ____________
+
+local = (<praxis.server.ControlPlane object at 0x10a2cc130>, <function local.<locals>.call at 0x10a2d3e50>)
+body = {'seed': 2147483648}
+
+    @pytest.mark.parametrize('body',[
+     {'max_level':0},{'max_level':4},{'max_level':True},{'max_level':1.5},
+     {'seed':True},{'seed':2147483648},{'seed':-2147483649},{'seed':'73'},
+     {'domain':'unknown'},{'domain':{}},{'name':''},{'name':{}},
+    ])
+    def test_world_contract_rejects_unreplayable_inputs(local,body):
+        api,call=local
+>       with pytest.raises(APIError) as exc:call('POST','/api/worlds',dict(name='world',domain='support',max_level=3,seed=73,**{})|body)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:39: Failed
+____________ test_world_contract_rejects_unreplayable_inputs[body6] ____________
+
+local = (<praxis.server.ControlPlane object at 0x10a2a4df0>, <function local.<locals>.call at 0x10a2d3d30>)
+body = {'seed': -2147483649}
+
+    @pytest.mark.parametrize('body',[
+     {'max_level':0},{'max_level':4},{'max_level':True},{'max_level':1.5},
+     {'seed':True},{'seed':2147483648},{'seed':-2147483649},{'seed':'73'},
+     {'domain':'unknown'},{'domain':{}},{'name':''},{'name':{}},
+    ])
+    def test_world_contract_rejects_unreplayable_inputs(local,body):
+        api,call=local
+>       with pytest.raises(APIError) as exc:call('POST','/api/worlds',dict(name='world',domain='support',max_level=3,seed=73,**{})|body)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:39: Failed
+____________ test_world_contract_rejects_unreplayable_inputs[body7] ____________
+
+local = (<praxis.server.ControlPlane object at 0x10a07baf0>, <function local.<locals>.call at 0x10a2d3a60>)
+body = {'seed': '73'}
+
+    @pytest.mark.parametrize('body',[
+     {'max_level':0},{'max_level':4},{'max_level':True},{'max_level':1.5},
+     {'seed':True},{'seed':2147483648},{'seed':-2147483649},{'seed':'73'},
+     {'domain':'unknown'},{'domain':{}},{'name':''},{'name':{}},
+    ])
+    def test_world_contract_rejects_unreplayable_inputs(local,body):
+        api,call=local
+>       with pytest.raises(APIError) as exc:call('POST','/api/worlds',dict(name='world',domain='support',max_level=3,seed=73,**{})|body)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:39: Failed
+____________ test_world_contract_rejects_unreplayable_inputs[body8] ____________
+
+local = (<praxis.server.ControlPlane object at 0x10a2a42b0>, <function local.<locals>.call at 0x10a2d3e50>)
+body = {'domain': 'unknown'}
+
+    @pytest.mark.parametrize('body',[
+     {'max_level':0},{'max_level':4},{'max_level':True},{'max_level':1.5},
+     {'seed':True},{'seed':2147483648},{'seed':-2147483649},{'seed':'73'},
+     {'domain':'unknown'},{'domain':{}},{'name':''},{'name':{}},
+    ])
+    def test_world_contract_rejects_unreplayable_inputs(local,body):
+        api,call=local
+>       with pytest.raises(APIError) as exc:call('POST','/api/worlds',dict(name='world',domain='support',max_level=3,seed=73,**{})|body)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:39: Failed
+____________ test_world_contract_rejects_unreplayable_inputs[body9] ____________
+
+local = (<praxis.server.ControlPlane object at 0x10a289790>, <function local.<locals>.call at 0x10a2d3af0>)
+body = {'domain': {}}
+
+    @pytest.mark.parametrize('body',[
+     {'max_level':0},{'max_level':4},{'max_level':True},{'max_level':1.5},
+     {'seed':True},{'seed':2147483648},{'seed':-2147483649},{'seed':'73'},
+     {'domain':'unknown'},{'domain':{}},{'name':''},{'name':{}},
+    ])
+    def test_world_contract_rejects_unreplayable_inputs(local,body):
+        api,call=local
+>       with pytest.raises(APIError) as exc:call('POST','/api/worlds',dict(name='world',domain='support',max_level=3,seed=73,**{})|body)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:39: Failed
+___________ test_world_contract_rejects_unreplayable_inputs[body10] ____________
+
+local = (<praxis.server.ControlPlane object at 0x10a2c23a0>, <function local.<locals>.call at 0x10a2d3dc0>)
+body = {'name': ''}
+
+    @pytest.mark.parametrize('body',[
+     {'max_level':0},{'max_level':4},{'max_level':True},{'max_level':1.5},
+     {'seed':True},{'seed':2147483648},{'seed':-2147483649},{'seed':'73'},
+     {'domain':'unknown'},{'domain':{}},{'name':''},{'name':{}},
+    ])
+    def test_world_contract_rejects_unreplayable_inputs(local,body):
+        api,call=local
+>       with pytest.raises(APIError) as exc:call('POST','/api/worlds',dict(name='world',domain='support',max_level=3,seed=73,**{})|body)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:39: Failed
+___________ test_world_contract_rejects_unreplayable_inputs[body11] ____________
+
+local = (<praxis.server.ControlPlane object at 0x10a2cb7f0>, <function local.<locals>.call at 0x10a2a2040>)
+body = {'name': {}}
+
+    @pytest.mark.parametrize('body',[
+     {'max_level':0},{'max_level':4},{'max_level':True},{'max_level':1.5},
+     {'seed':True},{'seed':2147483648},{'seed':-2147483649},{'seed':'73'},
+     {'domain':'unknown'},{'domain':{}},{'name':''},{'name':{}},
+    ])
+    def test_world_contract_rejects_unreplayable_inputs(local,body):
+        api,call=local
+>       with pytest.raises(APIError) as exc:call('POST','/api/worlds',dict(name='world',domain='support',max_level=3,seed=73,**{})|body)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:39: Failed
+______________ test_suite_clone_cannot_reuse_persisted_record_id _______________
+
+local = (<praxis.server.ControlPlane object at 0x10955b760>, <function local.<locals>.call at 0x10a2a21f0>)
+
+    def test_suite_clone_cannot_reuse_persisted_record_id(local):
+        api,call=local
+        suite=copy.deepcopy(next(s for s in call('GET','/api/suites') if s['slug']=='structured-agent'))
+        suite['slug']='private-source'
+        original=call('POST','/api/suites',suite)
+>       clone=call('POST','/api/suites',dict(original,slug='private-copy'))
+
+tests/test_release_validation.py:48:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/test_release_validation.py:12: in call
+    def call(method,path,body=None):return api.request(method,path,body or {},'Bearer '+account['token'])
+runner/praxis/server.py:161: in request
+    return self._request(method,path,body,authorization)
+runner/praxis/server.py:210: in _request
+    return self.store.create('suite',user,body)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <praxis.server.Store object at 0x10955bb80>, kind = 'suite'
+owner = '90a6c24f-0070-47b1-84fc-2316345013fe'
+data = {'created_at': 1793722780.26354, 'description': 'Public deterministic fixture suite; no held-out or official certifica...max_retries': 1, 'max_scenario_count': 64, 'max_wall_seconds': 120}, 'id': 'bc30a9da-4118-4241-98f6-61d537be4bbd', ...}
+
+    def create(self, kind, owner, data):
+        data = dict(data, id=data.get('id',uid()), created_at=time.time())
+>       with self.connect() as db: db.execute('INSERT INTO records VALUES(?,?,?,?,?)',(data['id'],kind,owner,encoded(data),data['created_at']))
+E       sqlite3.IntegrityError: UNIQUE constraint failed: records.id
+
+runner/praxis/server.py:53: IntegrityError
+__________________ test_idempotency_key_cannot_change_request __________________
+
+local = (<praxis.server.ControlPlane object at 0x10a38ca30>, <function local.<locals>.call at 0x10a2e68b0>)
+
+    def test_idempotency_key_cannot_change_request(local):
+        api,call=local
+        t=call('POST','/api/targets',{'name':'demo','kind':'model','provider':'demo'})
+        body={'target_id':t['id'],'suite_slug':'structured-agent','seed':73,'idempotency_key':str(uuid.uuid4())}
+        first=call('POST','/api/runs',body)
+>       with pytest.raises(APIError) as e:call('POST','/api/runs',dict(body,seed=74))
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:57: Failed
+_______________________ test_auth_requires_bearer_scheme _______________________
+
+local = (<praxis.server.ControlPlane object at 0x10a4c1a30>, <function local.<locals>.call at 0x10a4dfc10>)
+
+    def test_auth_requires_bearer_scheme(local):
+        api,call=local
+        account=api.request('POST','/api/auth/register',{'username':'raw-token-user','password':'local-test-password'},'')
+>       with pytest.raises(APIError) as e:api.request('GET','/api/me',{},account['token'])
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:64: Failed
+________________ test_suite_slug_safe_for_ui_routes[with/slash] ________________
+
+local = (<praxis.server.ControlPlane object at 0x10a2e01f0>, <function local.<locals>.call at 0x10a4df280>)
+slug = 'with/slash'
+
+    @pytest.mark.parametrize('slug',['with/slash','../traversal','with space','UPPERCASE'])
+    def test_suite_slug_safe_for_ui_routes(local,slug):
+        api,call=local
+        suite=copy.deepcopy(call('GET','/api/suites')[0]);suite['slug']=slug
+>       with pytest.raises(APIError) as e:call('POST','/api/suites',suite)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:71: Failed
+_______________ test_suite_slug_safe_for_ui_routes[../traversal] _______________
+
+local = (<praxis.server.ControlPlane object at 0x10a2f7b50>, <function local.<locals>.call at 0x10a4df790>)
+slug = '../traversal'
+
+    @pytest.mark.parametrize('slug',['with/slash','../traversal','with space','UPPERCASE'])
+    def test_suite_slug_safe_for_ui_routes(local,slug):
+        api,call=local
+        suite=copy.deepcopy(call('GET','/api/suites')[0]);suite['slug']=slug
+>       with pytest.raises(APIError) as e:call('POST','/api/suites',suite)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:71: Failed
+________________ test_suite_slug_safe_for_ui_routes[with space] ________________
+
+local = (<praxis.server.ControlPlane object at 0x10a4c1070>, <function local.<locals>.call at 0x10a4df4c0>)
+slug = 'with space'
+
+    @pytest.mark.parametrize('slug',['with/slash','../traversal','with space','UPPERCASE'])
+    def test_suite_slug_safe_for_ui_routes(local,slug):
+        api,call=local
+        suite=copy.deepcopy(call('GET','/api/suites')[0]);suite['slug']=slug
+>       with pytest.raises(APIError) as e:call('POST','/api/suites',suite)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:71: Failed
+________________ test_suite_slug_safe_for_ui_routes[UPPERCASE] _________________
+
+local = (<praxis.server.ControlPlane object at 0x10a2c2cd0>, <function local.<locals>.call at 0x10a4df310>)
+slug = 'UPPERCASE'
+
+    @pytest.mark.parametrize('slug',['with/slash','../traversal','with space','UPPERCASE'])
+    def test_suite_slug_safe_for_ui_routes(local,slug):
+        api,call=local
+        suite=copy.deepcopy(call('GET','/api/suites')[0]);suite['slug']=slug
+>       with pytest.raises(APIError) as e:call('POST','/api/suites',suite)
+E       Failed: DID NOT RAISE <class 'praxis.server.APIError'>
+
+tests/test_release_validation.py:71: Failed
+- generated xml file: /Users/akilan/Documents/Codex/2026-11-03/read-praxis-ultimate-master-prompt-md/outputs/praxis/evidence/release/validation-red.xml -
+=========================== short test summary info ============================
+FAILED tests/test_release_validation.py::test_invalid_target_has_no_persisted_side_effect[name-None]
+FAILED tests/test_release_validation.py::test_invalid_target_has_no_persisted_side_effect[name-{}]
+FAILED tests/test_release_validation.py::test_invalid_target_has_no_persisted_side_effect[name-[]]
+FAILED tests/test_release_validation.py::test_invalid_target_has_no_persisted_side_effect[name-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx]
+FAILED tests/test_release_validation.py::test_invalid_target_has_no_persisted_side_effect[endpoint-[]]
+FAILED tests/test_release_validation.py::test_invalid_target_has_no_persisted_side_effect[endpoint-True]
+FAILED tests/test_release_validation.py::test_invalid_target_has_no_persisted_side_effect[endpoint-http://host:badport]
+FAILED tests/test_release_validation.py::test_invalid_target_has_no_persisted_side_effect[model-{}]
+FAILED tests/test_release_validation.py::test_invalid_target_has_no_persisted_side_effect[model-12]
+FAILED tests/test_release_validation.py::test_invalid_target_has_no_persisted_side_effect[capabilities-text]
+FAILED tests/test_release_validation.py::test_invalid_target_has_no_persisted_side_effect[capabilities-['unknown']]
+FAILED tests/test_release_validation.py::test_invalid_target_has_no_persisted_side_effect[max_tokens-0]
+FAILED tests/test_release_validation.py::test_invalid_target_has_no_persisted_side_effect[max_tokens-8193]
+FAILED tests/test_release_validation.py::test_invalid_target_has_no_persisted_side_effect[max_tokens-True]
+FAILED tests/test_release_validation.py::test_invalid_target_has_no_persisted_side_effect[max_tokens-1.5]
+FAILED tests/test_release_validation.py::test_invalid_target_has_no_persisted_side_effect[temperature--0.1]
+FAILED tests/test_release_validation.py::test_invalid_target_has_no_persisted_side_effect[temperature-2.1]
+FAILED tests/test_release_validation.py::test_invalid_target_has_no_persisted_side_effect[temperature-nan]
+FAILED tests/test_release_validation.py::test_invalid_target_has_no_persisted_side_effect[temperature-zero]
+FAILED tests/test_release_validation.py::test_invalid_target_has_no_persisted_side_effect[timeout-0]
+FAILED tests/test_release_validation.py::test_invalid_target_has_no_persisted_side_effect[timeout-121]
+FAILED tests/test_release_validation.py::test_invalid_target_has_no_persisted_side_effect[timeout-inf]
+FAILED tests/test_release_validation.py::test_invalid_target_has_no_persisted_side_effect[allow_mutation-true]
+FAILED tests/test_release_validation.py::test_world_contract_rejects_unreplayable_inputs[body1]
+FAILED tests/test_release_validation.py::test_world_contract_rejects_unreplayable_inputs[body2]
+FAILED tests/test_release_validation.py::test_world_contract_rejects_unreplayable_inputs[body4]
+FAILED tests/test_release_validation.py::test_world_contract_rejects_unreplayable_inputs[body5]
+FAILED tests/test_release_validation.py::test_world_contract_rejects_unreplayable_inputs[body6]
+FAILED tests/test_release_validation.py::test_world_contract_rejects_unreplayable_inputs[body7]
+FAILED tests/test_release_validation.py::test_world_contract_rejects_unreplayable_inputs[body8]
+FAILED tests/test_release_validation.py::test_world_contract_rejects_unreplayable_inputs[body9]
+FAILED tests/test_release_validation.py::test_world_contract_rejects_unreplayable_inputs[body10]
+FAILED tests/test_release_validation.py::test_world_contract_rejects_unreplayable_inputs[body11]
+FAILED tests/test_release_validation.py::test_suite_clone_cannot_reuse_persisted_record_id
+FAILED tests/test_release_validation.py::test_idempotency_key_cannot_change_request
+FAILED tests/test_release_validation.py::test_auth_requires_bearer_scheme - F...
+FAILED tests/test_release_validation.py::test_suite_slug_safe_for_ui_routes[with/slash]
+FAILED tests/test_release_validation.py::test_suite_slug_safe_for_ui_routes[../traversal]
+FAILED tests/test_release_validation.py::test_suite_slug_safe_for_ui_routes[with space]
+FAILED tests/test_release_validation.py::test_suite_slug_safe_for_ui_routes[UPPERCASE]
+40 failed, 4 passed in 5.34s

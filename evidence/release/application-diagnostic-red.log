@@ -1,0 +1,17 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ ApplicationDiagnosticsTests.test_application_connection_uses_get_health_not_model_inference _
+
+self = <test_application.ApplicationDiagnosticsTests testMethod=test_application_connection_uses_get_health_not_model_inference>
+
+    def test_application_connection_uses_get_health_not_model_inference(self):
+        from praxis.adapters import diagnose
+        with patch('praxis.application.urllib.request.OpenerDirector.open',return_value=Response(b'{"status":"ok"}')) as call:
+            result=diagnose({'kind':'application','provider':'custom','endpoint':'http://localhost:9000','model':''})
+>           self.assertTrue(result['ok'])
+E           AssertionError: False is not true
+
+tests/test_application.py:33: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_application.py::ApplicationDiagnosticsTests::test_application_connection_uses_get_health_not_model_inference
+1 failed in 0.03s

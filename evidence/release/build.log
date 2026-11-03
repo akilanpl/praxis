@@ -1,0 +1,80 @@
+
+> praxis@0.1.0 build
+> .venv/bin/python scripts/build.py
+
+
+Building: npm run build --workspace apps/web
+
+> @praxis/web@0.1.0 build
+> tsc && vite build
+
+vite v6.4.5 building for production...
+transforming...
+../../node_modules/react-router/dist/development/index.mjs (11:0): Module level directives cause errors when bundled, "use client" in "../../node_modules/react-router/dist/development/index.mjs" was ignored.
+../../node_modules/react-router/dist/development/dom-export.mjs (1:0): Module level directives cause errors when bundled, "use client" in "../../node_modules/react-router/dist/development/dom-export.mjs" was ignored.
+✓ 40 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.47 kB │ gzip:  0.31 kB
+dist/assets/index-CpttBqPg.css    5.35 kB │ gzip:  1.78 kB
+dist/assets/index-CRig3Tlm.js   246.04 kB │ gzip: 78.62 kB
+✓ built in 350ms
+npm notice
+npm notice New minor version of npm available! 11.12.1 -> 11.21.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.21.1
+npm notice To update run: npm install -g npm@11.21.1
+npm notice
+
+Building: npm run typecheck --workspace packages/contracts
+
+> @praxis/contracts@0.1.0 typecheck
+> tsc --noEmit --target ES2022 --module ESNext --moduleResolution bundler src/index.ts
+
+npm notice
+npm notice New minor version of npm available! 11.12.1 -> 11.21.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.21.1
+npm notice To update run: npm install -g npm@11.21.1
+npm notice
+
+Building: npm run typecheck --workspace apps/api
+
+> @praxis/api@0.1.0 typecheck
+> tsc --noEmit
+
+npm notice
+npm notice New minor version of npm available! 11.12.1 -> 11.21.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.21.1
+npm notice To update run: npm install -g npm@11.21.1
+npm notice
+
+Building: /Users/akilan/Documents/Codex/2026-11-03/read-praxis-ultimate-master-prompt-md/outputs/praxis/node_modules/.bin/wrangler deploy --dry-run --config apps/api/wrangler.toml --outdir /Users/akilan/Documents/Codex/2026-11-03/read-praxis-ultimate-master-prompt-md/outputs/praxis/dist/worker
+
+ ⛅️ wrangler 4.157.0
+────────────────────
+Total Upload: 777.35 KiB / gzip: 122.06 KiB
+Your Worker has access to the following bindings:
+Binding                                           Resource
+env.ALLOWED_ORIGIN ("http://localhost:5173")      Environment Variable
+
+--dry-run: exiting now.
+
+Building: /Users/akilan/Documents/Codex/2026-11-03/read-praxis-ultimate-master-prompt-md/outputs/praxis/.venv/bin/python -m compileall -q runner/praxis scripts
+
+Building: /Users/akilan/Documents/Codex/2026-11-03/read-praxis-ultimate-master-prompt-md/outputs/praxis/.venv/bin/python -m pip wheel --no-deps --no-build-isolation --wheel-dir /Users/akilan/Documents/Codex/2026-11-03/read-praxis-ultimate-master-prompt-md/outputs/praxis/dist/runner .
+WARNING: The directory '/Users/akilan/Library/Caches/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+Processing ./.
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: praxis
+  Building wheel for praxis (pyproject.toml): started
+  Building wheel for praxis (pyproject.toml): finished with status 'done'
+  Created wheel for praxis: filename=praxis-0.1.0-py3-none-any.whl size=40520 sha256=451172ae5a1edcabb1498b89fef2e90fc50a5a56a6e12b4d226862227a48fe1c
+  Stored in directory: /private/var/folders/d8/q0y18_fs2xq18d1l7z52pcgm0000gn/T/pip-ephem-wheel-cache-bu54nkhg/wheels/a9/e7/98/cbeb79b0eb2fd96c0916101213cbc4a6b1a0d7800cef2245dd
+Successfully built praxis
+
+All components built. Manifest: dist/build-manifest.json
+npm notice
+npm notice New minor version of npm available! 11.12.1 -> 11.21.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.21.1
+npm notice To update run: npm install -g npm@11.21.1
+npm notice

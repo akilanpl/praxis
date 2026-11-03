@@ -1,0 +1,36 @@
+name: pushgate
+on: [push, pull_request]
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22', cache: npm}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: npm ci
+      - run: python -m venv .venv
+      - run: .venv/bin/python -m pip install --upgrade pip 'setuptools>=84.1,<85' wheel
+      - run: .venv/bin/python -m pip install -e '.[test,browser]'
+      - run: .venv/bin/python -m playwright install --with-deps chromium
+      - run: sudo apt-get update && sudo apt-get install -y postgresql
+      - name: Install official Gitleaks release
+        run: |
+          mkdir -p work/gitleaks
+          curl --fail --location --silent --show-error https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz -o work/gitleaks/tool.tar.gz
+          tar -xzf work/gitleaks/tool.tar.gz -C work/gitleaks
+      - uses: actions/cache@v4
+        with:
+          path: work/model-cache
+          key: praxis-cpu-models-135m-360m-q4-pinned-v1
+      - run: .pushgate/run.sh --mode=ci
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: praxis-release-evidence
+          path: |
+            .pushgate/reports/
+            evidence/release/

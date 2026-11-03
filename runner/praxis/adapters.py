@@ -41,7 +41,7 @@ def _post(url, payload, key=None, timeout=20):
         timeout_error=isinstance(exc.reason,(TimeoutError,socket.timeout))
         raise AdapterError("timeout" if timeout_error else "connection_error", "Provider connection failed or timed out") from None
     except (TimeoutError, OSError) as exc:
-        raise AdapterError("timeout" if isinstance(exc, TimeoutError) else "connection_error", "Provider connection failed or timed out") from None
+        raise AdapterError("timeout" if isinstance(exc, (TimeoutError, socket.timeout)) else "connection_error", "Provider connection failed or timed out") from None
     except (ValueError, KeyError):
         raise AdapterError("invalid_response", "Provider returned invalid JSON") from None
 
@@ -71,7 +71,7 @@ def invoke(target: Dict[str, Any], task: Dict[str, Any], seed=73):
             output = data["choices"][0]["message"]["content"]
         except (KeyError, IndexError, TypeError):
             raise AdapterError("invalid_response", "OpenAI-compatible response lacks choices.message.content")
-        return {"output": output, "usage": data.get("usage"), "adapter": "openai-compatible-v1", "tool_trace": []}
+        return {"output": output, "usage": data.get("usage"), "adapter": "openai-compatible-v1", "tool_trace": [], "provider_metadata": {k:data[k] for k in ("model","model_revision","runtime") if k in data}}
     if provider == "ollama":
         data = _post(endpoint + "/api/chat", {"model": model, "messages": [{"role": "user", "content": prompt}], "stream": False, "format": "json", "options": {"temperature": float(target.get("temperature", 0)), "seed": seed, "num_predict": max_tokens}}, key, timeout)
         try:
@@ -90,7 +90,13 @@ def diagnose(target):
     start = time.monotonic()
     task = {"prompt": 'Return {"ready":true}.', "output_schema": {"type": "object", "required": ["ready"]}, "passing_fixture": {"ready": True}, "failing_fixture": {"ready": False}}
     try:
-        response = invoke(target, task)
+        if target.get("kind")=="application":
+            from .application import invoke_application
+            response=invoke_application(target,{"api_request":{"path":"/health","method":"GET"}})
+            if not 200<=response["output"]["status"]<400:
+                return {"ok":False,"category":"application_http","error":"Owned application health endpoint did not succeed"}
+        else:
+            response = invoke(target, task)
         return {"ok": True, "provider": target.get("provider"), "demo": target.get("provider", "").startswith("demo"), "latency_ms": round((time.monotonic() - start) * 1000, 3), "adapter": response["adapter"]}
     except AdapterError as exc:
         return {"ok": False, "category": exc.category, "error": str(exc)}
