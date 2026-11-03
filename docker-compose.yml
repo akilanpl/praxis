@@ -1,0 +1,20 @@
+# Optional PostgreSQL for SQL development. This is not a Supabase Auth emulator.
+# Use the Supabase CLI for full Auth/PostgREST/RLS verification.
+services:
+  postgres:
+    image: postgres:17.4-alpine
+    environment:
+      POSTGRES_DB: praxis
+      POSTGRES_USER: praxis
+      POSTGRES_PASSWORD: ${LOCAL_POSTGRES_PASSWORD:?Set a local development password}
+    ports:
+      - "127.0.0.1:54322:5432"
+    volumes:
+      - praxis_postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U praxis -d praxis"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+volumes:
+  praxis_postgres:

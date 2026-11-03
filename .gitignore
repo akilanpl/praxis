@@ -1,0 +1,11 @@
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+.praxis/
+.env
+apps/web/dist/
+.wrangler/
+playwright-report/
+test-results/
+work/

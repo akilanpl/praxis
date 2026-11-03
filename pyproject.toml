@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "praxis"
+version = "0.1.0"
+description = "Artifact-first local AI evaluation laboratory"
+requires-python = ">=3.9"
+dependencies = ["pydantic>=1.10,<3", "jsonschema>=4.17,<5"]
+
+[project.optional-dependencies]
+test = ["pytest>=7,<9"]
+browser = ["playwright>=1.48,<2"]
+
+[project.scripts]
+praxis = "praxis.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "runner"}
+
+[tool.setuptools.packages.find]
+where = ["runner"]
+
+[tool.pytest.ini_options]
+pythonpath = ["runner"]
+testpaths = ["tests"]
+
+[tool.setuptools.data-files]
+"share/praxis/scenarios" = ["packages/scenarios/structured-agent-v1.json", "packages/scenarios/grounded-research-v1.json", "packages/scenarios/security-resilience-v1.json", "packages/scenarios/developer-contracts-v1.json", "packages/scenarios/agent-workflows-v1.json", "packages/scenarios/http-application-v1.json"]

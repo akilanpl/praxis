@@ -1,0 +1,9 @@
+name = "praxis-api"
+main = "src/index.ts"
+compatibility_date = "2025-04-01"
+workers_dev = false
+[vars]
+ALLOWED_ORIGIN = "http://localhost:5173"
+# Set SUPABASE_URL and SUPABASE_PUBLISHABLE_KEY through wrangler secret put.
+# No service-role key is accepted by this Worker.
+# No R2 public bucket binding: artifact serving remains disabled until access checks are configured.

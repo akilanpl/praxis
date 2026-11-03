@@ -1,0 +1,21 @@
+{
+  "openapi": "3.1.0",
+  "info": {"title": "Praxis cloud metadata API", "version": "0.1.0", "description": "Local application has additional routes; this specification covers the limited cloud metadata control plane only. No inference, cloud voting or artifact execution."},
+  "security": [{"bearerAuth": []}],
+  "components": {
+    "securitySchemes": {"bearerAuth": {"type": "http", "scheme": "bearer", "bearerFormat": "Supabase access token"}},
+    "schemas": {
+      "Target": {"type": "object", "additionalProperties": false, "required": ["name", "kind", "provider"], "properties": {"name": {"type": "string", "minLength": 1, "maxLength": 120}, "kind": {"enum": ["model", "agent", "application"]}, "provider": {"enum": ["demo", "demo-failing", "openai", "ollama", "custom"]}, "endpoint": {"type": "string", "format": "uri", "maxLength": 2048}, "model": {"type": "string", "maxLength": 200}, "capabilities": {"type": "array", "maxItems": 8, "items": {"enum": ["text", "json", "tools", "code", "web", "image", "video", "audio"]}}}},
+      "RunRequest": {"type": "object", "additionalProperties": false, "required": ["target_id", "suite_slug", "suite_version", "idempotency_key"], "properties": {"target_id": {"type": "string", "format": "uuid"}, "suite_slug": {"type": "string", "pattern": "^[a-z0-9-]{1,100}$"}, "suite_version": {"type": "string", "maxLength": 40}, "seed": {"type": "integer", "minimum": 0, "maximum": 2147483647, "default": 73}, "idempotency_key": {"type": "string", "format": "uuid"}}}
+    }
+  },
+  "paths": {
+    "/api/health": {"get": {"security": [], "responses": {"200": {"description": "Cloud metadata mode; inference false"}}}},
+    "/api/me": {"get": {"responses": {"200": {"description": "Authenticated user identifier"}, "401": {"description": "Invalid or absent Supabase token"}}}},
+    "/api/targets": {"get": {"responses": {"200": {"description": "At most 100 owner-scoped immutable target revisions"}}}, "post": {"requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/Target"}}}}, "responses": {"201": {"description": "Stored metadata; endpoint is never fetched"}, "400": {"description": "Invalid metadata or unknown/secret field"}}}},
+    "/api/runs": {"get": {"responses": {"200": {"description": "At most 100 owner-scoped run requests"}}}, "post": {"requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/RunRequest"}}}}, "responses": {"201": {"description": "Queued self-reported run request; local runner required"}, "409": {"description": "Idempotency key already exists"}}}},
+    "/api/runs/{id}": {"get": {"parameters": [{"in": "path", "name": "id", "required": true, "schema": {"type": "string", "format": "uuid"}}], "responses": {"200": {"description": "Owner-scoped run request"}, "404": {"description": "No accessible run"}}}},
+    "/api/evidence": {"post": {"description": "Submit up to 1 MiB structured evidence using EvidenceSchema in src/index.ts. Trust is server-assigned self-reported. Unknown fields forbidden.", "responses": {"201": {"description": "Evidence persisted"}, "409": {"description": "Duplicate run and manifest digest"}, "413": {"description": "Payload exceeds 1 MiB"}}}},
+    "/api/leaderboards": {"get": {"responses": {"200": {"description": "Empty official rankings with operator-pipeline-required reason"}}}}
+  }
+}

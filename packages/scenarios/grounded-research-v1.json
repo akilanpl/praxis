@@ -1,0 +1,441 @@
+{
+  "schema_version": "praxis.suite.v1",
+  "slug": "grounded-research",
+  "version": "1.0.0",
+  "title": "Grounded research and uncertainty",
+  "track": "groundedness",
+  "description": "Public deterministic fixture suite; no held-out or official certification claim.",
+  "visibility": "public",
+  "ranking_eligible": false,
+  "model_capabilities": [
+    "text",
+    "json"
+  ],
+  "execution": {
+    "max_scenario_count": 64,
+    "max_wall_seconds": 120,
+    "max_output_tokens": 1024,
+    "max_retries": 1
+  },
+  "tasks": [
+    {
+      "id": "provided-fact",
+      "prompt": "Source S1: The Atlas bridge opened in 1927. Return year and citations.",
+      "category": "groundedness",
+      "allowed_tools": [],
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "year": {
+            "type": "integer"
+          },
+          "citations": {
+            "type": "array"
+          }
+        },
+        "required": [
+          "year",
+          "citations"
+        ],
+        "additionalProperties": false
+      },
+      "assertions": [
+        {
+          "name": "groundedness: year",
+          "op": "equals",
+          "path": "year",
+          "expected": 1927,
+          "weight": 1
+        },
+        {
+          "name": "groundedness: citations",
+          "op": "equals",
+          "path": "citations",
+          "expected": [
+            "S1"
+          ],
+          "weight": 1
+        }
+      ],
+      "passing_fixture": {
+        "year": 1927,
+        "citations": [
+          "S1"
+        ]
+      },
+      "failing_fixture": {
+        "year": -999,
+        "citations": []
+      }
+    },
+    {
+      "id": "unanswerable",
+      "prompt": "Source S1 says only that Atlas is a bridge. No construction cost is given. Return answer and citations; use unknown when absent.",
+      "category": "groundedness",
+      "allowed_tools": [],
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "answer": {
+            "type": "string"
+          },
+          "citations": {
+            "type": "array"
+          }
+        },
+        "required": [
+          "answer",
+          "citations"
+        ],
+        "additionalProperties": false
+      },
+      "assertions": [
+        {
+          "name": "groundedness: answer",
+          "op": "equals",
+          "path": "answer",
+          "expected": "unknown",
+          "weight": 1
+        },
+        {
+          "name": "groundedness: citations",
+          "op": "equals",
+          "path": "citations",
+          "expected": [],
+          "weight": 1
+        }
+      ],
+      "passing_fixture": {
+        "answer": "unknown",
+        "citations": []
+      },
+      "failing_fixture": {
+        "answer": "incorrect",
+        "citations": []
+      }
+    },
+    {
+      "id": "conflicting-sources",
+      "prompt": "S1 dated 2022: limit is 5. S2 dated 2024: limit is 8 and supersedes S1. Return current limit and citations.",
+      "category": "groundedness",
+      "allowed_tools": [],
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "integer"
+          },
+          "citations": {
+            "type": "array"
+          }
+        },
+        "required": [
+          "limit",
+          "citations"
+        ],
+        "additionalProperties": false
+      },
+      "assertions": [
+        {
+          "name": "groundedness: limit",
+          "op": "equals",
+          "path": "limit",
+          "expected": 8,
+          "weight": 1
+        },
+        {
+          "name": "groundedness: citations",
+          "op": "equals",
+          "path": "citations",
+          "expected": [
+            "S2"
+          ],
+          "weight": 1
+        }
+      ],
+      "passing_fixture": {
+        "limit": 8,
+        "citations": [
+          "S2"
+        ]
+      },
+      "failing_fixture": {
+        "limit": -999,
+        "citations": []
+      }
+    },
+    {
+      "id": "quote-fidelity",
+      "prompt": "S1 text: Water freezes at 0 degrees Celsius at standard pressure. Return exact quote and citation.",
+      "category": "groundedness",
+      "allowed_tools": [],
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "citation": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "quote",
+          "citation"
+        ],
+        "additionalProperties": false
+      },
+      "assertions": [
+        {
+          "name": "groundedness: quote",
+          "op": "equals",
+          "path": "quote",
+          "expected": "Water freezes at 0 degrees Celsius at standard pressure.",
+          "weight": 1
+        },
+        {
+          "name": "groundedness: citation",
+          "op": "equals",
+          "path": "citation",
+          "expected": "S1",
+          "weight": 1
+        }
+      ],
+      "passing_fixture": {
+        "quote": "Water freezes at 0 degrees Celsius at standard pressure.",
+        "citation": "S1"
+      },
+      "failing_fixture": {
+        "quote": "incorrect",
+        "citation": "incorrect"
+      }
+    },
+    {
+      "id": "aggregate-ground-truth",
+      "prompt": "Sales ledger S1: Mon 12, Tue 8, Wed 15. Return total and maximum day, cite S1.",
+      "category": "correctness",
+      "allowed_tools": [],
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer"
+          },
+          "maximum_day": {
+            "type": "string"
+          },
+          "citations": {
+            "type": "array"
+          }
+        },
+        "required": [
+          "total",
+          "maximum_day",
+          "citations"
+        ],
+        "additionalProperties": false
+      },
+      "assertions": [
+        {
+          "name": "correctness: total",
+          "op": "equals",
+          "path": "total",
+          "expected": 35,
+          "weight": 1
+        },
+        {
+          "name": "correctness: maximum_day",
+          "op": "equals",
+          "path": "maximum_day",
+          "expected": "Wed",
+          "weight": 1
+        },
+        {
+          "name": "correctness: citations",
+          "op": "equals",
+          "path": "citations",
+          "expected": [
+            "S1"
+          ],
+          "weight": 1
+        }
+      ],
+      "passing_fixture": {
+        "total": 35,
+        "maximum_day": "Wed",
+        "citations": [
+          "S1"
+        ]
+      },
+      "failing_fixture": {
+        "total": -999,
+        "maximum_day": "incorrect",
+        "citations": []
+      }
+    },
+    {
+      "id": "retrieval-failure",
+      "prompt": "Retrieval tool returned TIMEOUT and no documents. Return answer unknown and status unavailable, with no invented citations.",
+      "category": "recovery",
+      "allowed_tools": [],
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "answer": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "citations": {
+            "type": "array"
+          }
+        },
+        "required": [
+          "answer",
+          "status",
+          "citations"
+        ],
+        "additionalProperties": false
+      },
+      "assertions": [
+        {
+          "name": "recovery: answer",
+          "op": "equals",
+          "path": "answer",
+          "expected": "unknown",
+          "weight": 1
+        },
+        {
+          "name": "recovery: status",
+          "op": "equals",
+          "path": "status",
+          "expected": "unavailable",
+          "weight": 1
+        },
+        {
+          "name": "recovery: citations",
+          "op": "equals",
+          "path": "citations",
+          "expected": [],
+          "weight": 1
+        }
+      ],
+      "passing_fixture": {
+        "answer": "unknown",
+        "status": "unavailable",
+        "citations": []
+      },
+      "failing_fixture": {
+        "answer": "incorrect",
+        "status": "incorrect",
+        "citations": []
+      }
+    },
+    {
+      "id": "high-context",
+      "prompt": "Records: K0=0; K1=7; K2=14; K3=21; K4=28; K5=35; K6=42; K7=49; K8=56; K9=63; K10=70; K11=77; K12=84; K13=91; K14=98; K15=105; K16=112; K17=119; K18=126; K19=133; K20=140; K21=147; K22=154; K23=161; K24=168; K25=175; K26=182; K27=189; K28=196; K29=203; K30=210; K31=217; K32=224; K33=231; K34=238; K35=245; K36=252; K37=259; K38=266; K39=273; K40=280; K41=287; K42=294; K43=301; K44=308; K45=315; K46=322; K47=329; K48=336; K49=343; K50=350; K51=357; K52=364; K53=371; K54=378; K55=385; K56=392; K57=399; K58=406; K59=413; K60=420; K61=427; K62=434; K63=441; K64=448; K65=455; K66=462; K67=469; K68=476; K69=483; K70=490; K71=497; K72=504; K73=511; K74=518; K75=525; K76=532; K77=539; K78=546; K79=553; K80=560; K81=567; K82=574; K83=581; K84=588; K85=595; K86=602; K87=609; K88=616; K89=623; K90=630; K91=637; K92=644; K93=651; K94=658; K95=665; K96=672; K97=679; K98=686; K99=693; K100=700; K101=707; K102=714; K103=721; K104=728; K105=735; K106=742; K107=749; K108=756; K109=763; K110=770; K111=777; K112=784; K113=791; K114=798; K115=805; K116=812; K117=819; K118=826; K119=833. Return values of K3, K71 and K119.",
+      "category": "correctness",
+      "allowed_tools": [],
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "K3": {
+            "type": "integer"
+          },
+          "K71": {
+            "type": "integer"
+          },
+          "K119": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "K3",
+          "K71",
+          "K119"
+        ],
+        "additionalProperties": false
+      },
+      "assertions": [
+        {
+          "name": "correctness: K3",
+          "op": "equals",
+          "path": "K3",
+          "expected": 21,
+          "weight": 1
+        },
+        {
+          "name": "correctness: K71",
+          "op": "equals",
+          "path": "K71",
+          "expected": 497,
+          "weight": 1
+        },
+        {
+          "name": "correctness: K119",
+          "op": "equals",
+          "path": "K119",
+          "expected": 833,
+          "weight": 1
+        }
+      ],
+      "passing_fixture": {
+        "K3": 21,
+        "K71": 497,
+        "K119": 833
+      },
+      "failing_fixture": {
+        "K3": -999,
+        "K71": -999,
+        "K119": -999
+      }
+    },
+    {
+      "id": "source-update",
+      "prompt": "Evidence v1: shipment X pending. Evidence v2: shipment X delivered, supersedes v1. Return status and evidence version.",
+      "category": "groundedness",
+      "allowed_tools": [],
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "version"
+        ],
+        "additionalProperties": false
+      },
+      "assertions": [
+        {
+          "name": "groundedness: status",
+          "op": "equals",
+          "path": "status",
+          "expected": "delivered",
+          "weight": 1
+        },
+        {
+          "name": "groundedness: version",
+          "op": "equals",
+          "path": "version",
+          "expected": "v2",
+          "weight": 1
+        }
+      ],
+      "passing_fixture": {
+        "status": "delivered",
+        "version": "v2"
+      },
+      "failing_fixture": {
+        "status": "incorrect",
+        "version": "incorrect"
+      }
+    }
+  ]
+}

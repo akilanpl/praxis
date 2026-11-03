@@ -1,0 +1,2 @@
+# Praxis integration rules
+Keep demo, self-reported and operator verified evidence separate. Never accept client-provided trust flags. Run Python tests and both TypeScript checks after changes. No secrets in persisted target metadata. Hosted services never execute user workloads. Untrusted executable artifacts require an external isolation boundary; reject absent isolation. Public deployment and paid operations require explicit user permission. Root owns integration; module owners work only in assigned paths.

@@ -1,0 +1,17 @@
+{
+  "name": "praxis",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/web",
+    "apps/api",
+    "packages/contracts"
+  ],
+  "scripts": {
+    "dev": "python3 scripts/dev.py",
+    "build": "npm run build --workspace apps/web && npm run typecheck --workspace apps/api",
+    "test": ".venv/bin/python -m pytest tests -q && npm run test --workspace apps/api",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "verify": "npm test && npm run build"
+  }
+}

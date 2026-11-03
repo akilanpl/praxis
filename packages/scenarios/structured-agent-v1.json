@@ -1,0 +1,429 @@
+{
+  "schema_version": "praxis.suite.v1",
+  "slug": "structured-agent",
+  "version": "1.0.0",
+  "title": "Structured agent reliability",
+  "track": "tool-use",
+  "description": "Public deterministic fixture suite; no held-out or official certification claim.",
+  "visibility": "public",
+  "ranking_eligible": false,
+  "model_capabilities": [
+    "text",
+    "json"
+  ],
+  "execution": {
+    "max_scenario_count": 64,
+    "max_wall_seconds": 120,
+    "max_output_tokens": 1024,
+    "max_retries": 1
+  },
+  "tasks": [
+    {
+      "id": "route-outage",
+      "prompt": "Policy: production outages are urgent technical tickets. A customer says all production requests return 503. Return priority and team.",
+      "category": "correctness",
+      "allowed_tools": [],
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "priority": {
+            "type": "string"
+          },
+          "team": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "priority",
+          "team"
+        ],
+        "additionalProperties": false
+      },
+      "assertions": [
+        {
+          "name": "correctness: priority",
+          "op": "equals",
+          "path": "priority",
+          "expected": "urgent",
+          "weight": 1
+        },
+        {
+          "name": "correctness: team",
+          "op": "equals",
+          "path": "team",
+          "expected": "technical",
+          "weight": 1
+        }
+      ],
+      "passing_fixture": {
+        "priority": "urgent",
+        "team": "technical"
+      },
+      "failing_fixture": {
+        "priority": "incorrect",
+        "team": "incorrect"
+      }
+    },
+    {
+      "id": "select-tool",
+      "prompt": "Available tools: calculator(expression), lookup_customer(id), send_email(to,body). Request: find customer C42. Return tool and arguments.",
+      "category": "tool_selection",
+      "allowed_tools": [
+        "lookup_customer"
+      ],
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "tool": {
+            "type": "string"
+          },
+          "arguments": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "tool",
+          "arguments"
+        ],
+        "additionalProperties": false
+      },
+      "assertions": [
+        {
+          "name": "tool_selection: tool",
+          "op": "equals",
+          "path": "tool",
+          "expected": "lookup_customer",
+          "weight": 1
+        },
+        {
+          "name": "tool_selection: arguments",
+          "op": "equals",
+          "path": "arguments",
+          "expected": {
+            "id": "C42"
+          },
+          "weight": 1
+        }
+      ],
+      "passing_fixture": {
+        "tool": "lookup_customer",
+        "arguments": {
+          "id": "C42"
+        }
+      },
+      "failing_fixture": {
+        "tool": "incorrect",
+        "arguments": {}
+      }
+    },
+    {
+      "id": "refund-workflow",
+      "prompt": "Policy: refunds require purchase lookup before refund. A $12 purchase P7 is within 30 days. Return ordered tools and final amount.",
+      "category": "tool_selection",
+      "allowed_tools": [
+        "lookup_purchase",
+        "issue_refund"
+      ],
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "tools": {
+            "type": "array"
+          },
+          "amount": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "tools",
+          "amount"
+        ],
+        "additionalProperties": false
+      },
+      "assertions": [
+        {
+          "name": "tool_selection: tools",
+          "op": "equals",
+          "path": "tools",
+          "expected": [
+            "lookup_purchase",
+            "issue_refund"
+          ],
+          "weight": 1
+        },
+        {
+          "name": "tool_selection: amount",
+          "op": "equals",
+          "path": "amount",
+          "expected": 12,
+          "weight": 1
+        }
+      ],
+      "passing_fixture": {
+        "tools": [
+          "lookup_purchase",
+          "issue_refund"
+        ],
+        "amount": 12
+      },
+      "failing_fixture": {
+        "tools": [],
+        "amount": -999
+      }
+    },
+    {
+      "id": "json-boundary",
+      "prompt": "Extract exactly these fields: order ORD-8, quantity three, paid yes. Output order, quantity integer, paid boolean.",
+      "category": "schema",
+      "allowed_tools": [],
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "order": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "integer"
+          },
+          "paid": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "order",
+          "quantity",
+          "paid"
+        ],
+        "additionalProperties": false
+      },
+      "assertions": [
+        {
+          "name": "schema: order",
+          "op": "equals",
+          "path": "order",
+          "expected": "ORD-8",
+          "weight": 1
+        },
+        {
+          "name": "schema: quantity",
+          "op": "equals",
+          "path": "quantity",
+          "expected": 3,
+          "weight": 1
+        },
+        {
+          "name": "schema: paid",
+          "op": "equals",
+          "path": "paid",
+          "expected": true,
+          "weight": 1
+        }
+      ],
+      "passing_fixture": {
+        "order": "ORD-8",
+        "quantity": 3,
+        "paid": true
+      },
+      "failing_fixture": {
+        "order": "incorrect",
+        "quantity": -999,
+        "paid": false
+      }
+    },
+    {
+      "id": "deduplicate-events",
+      "prompt": "Process event IDs [a,b,a,c,b] exactly once in arrival order. Return processed list and count.",
+      "category": "state",
+      "allowed_tools": [],
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "processed": {
+            "type": "array"
+          },
+          "count": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "processed",
+          "count"
+        ],
+        "additionalProperties": false
+      },
+      "assertions": [
+        {
+          "name": "state: processed",
+          "op": "equals",
+          "path": "processed",
+          "expected": [
+            "a",
+            "b",
+            "c"
+          ],
+          "weight": 1
+        },
+        {
+          "name": "state: count",
+          "op": "equals",
+          "path": "count",
+          "expected": 3,
+          "weight": 1
+        }
+      ],
+      "passing_fixture": {
+        "processed": [
+          "a",
+          "b",
+          "c"
+        ],
+        "count": 3
+      },
+      "failing_fixture": {
+        "processed": [],
+        "count": -999
+      }
+    },
+    {
+      "id": "schedule-dependency",
+      "prompt": "Tasks: fetch has no dependency; validate depends on fetch; publish depends on validate. Return execution order.",
+      "category": "state",
+      "allowed_tools": [],
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "order": {
+            "type": "array"
+          }
+        },
+        "required": [
+          "order"
+        ],
+        "additionalProperties": false
+      },
+      "assertions": [
+        {
+          "name": "state: order",
+          "op": "equals",
+          "path": "order",
+          "expected": [
+            "fetch",
+            "validate",
+            "publish"
+          ],
+          "weight": 1
+        }
+      ],
+      "passing_fixture": {
+        "order": [
+          "fetch",
+          "validate",
+          "publish"
+        ]
+      },
+      "failing_fixture": {
+        "order": []
+      }
+    },
+    {
+      "id": "inventory-reservation",
+      "prompt": "Stock starts 5. Reserve 3, then release 1. Return available and reserved. Release restores stock.",
+      "category": "state",
+      "allowed_tools": [],
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "available": {
+            "type": "integer"
+          },
+          "reserved": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "available",
+          "reserved"
+        ],
+        "additionalProperties": false
+      },
+      "assertions": [
+        {
+          "name": "state: available",
+          "op": "equals",
+          "path": "available",
+          "expected": 3,
+          "weight": 1
+        },
+        {
+          "name": "state: reserved",
+          "op": "equals",
+          "path": "reserved",
+          "expected": 2,
+          "weight": 1
+        }
+      ],
+      "passing_fixture": {
+        "available": 3,
+        "reserved": 2
+      },
+      "failing_fixture": {
+        "available": -999,
+        "reserved": -999
+      }
+    },
+    {
+      "id": "pagination",
+      "prompt": "Pages are {items:[1,2],next:B}, B:{items:[3],next:null}. Return all items and calls.",
+      "category": "state",
+      "allowed_tools": [],
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array"
+          },
+          "calls": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "items",
+          "calls"
+        ],
+        "additionalProperties": false
+      },
+      "assertions": [
+        {
+          "name": "state: items",
+          "op": "equals",
+          "path": "items",
+          "expected": [
+            1,
+            2,
+            3
+          ],
+          "weight": 1
+        },
+        {
+          "name": "state: calls",
+          "op": "equals",
+          "path": "calls",
+          "expected": 2,
+          "weight": 1
+        }
+      ],
+      "passing_fixture": {
+        "items": [
+          1,
+          2,
+          3
+        ],
+        "calls": 2
+      },
+      "failing_fixture": {
+        "items": [],
+        "calls": -999
+      }
+    }
+  ]
+}

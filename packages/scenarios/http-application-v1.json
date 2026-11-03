@@ -1,0 +1,194 @@
+{
+  "schema_version": "praxis.suite.v1",
+  "slug": "http-application",
+  "title": "Executable HTTP application contracts",
+  "version": "1.0.0",
+  "track": "application",
+  "description": "User-controlled conventional REST contract suite: /health, missing route and opt-in POST /orders validation. Adapt paths in a private clone for your app.",
+  "model_capabilities": [
+    "application-http"
+  ],
+  "execution": {
+    "max_scenario_count": 4,
+    "max_wall_seconds": 120,
+    "max_retries": 0
+  },
+  "tasks": [
+    {
+      "id": "health-contract",
+      "prompt": "Execute the HTTP contract check against the explicitly connected application. Never use model inference.",
+      "category": "application_http",
+      "api_request": {
+        "path": "/health",
+        "method": "GET"
+      },
+      "output_schema": {
+        "type": "object",
+        "required": [
+          "status",
+          "content_type",
+          "body",
+          "latency_ms"
+        ]
+      },
+      "assertions": [
+        {
+          "name": "status",
+          "op": "equals",
+          "path": "status",
+          "expected": 200
+        },
+        {
+          "name": "body.status",
+          "op": "equals",
+          "path": "body.status",
+          "expected": "ok"
+        }
+      ],
+      "passing_fixture": {
+        "status": 200,
+        "content_type": "application/json",
+        "body": {
+          "status": "ok"
+        },
+        "latency_ms": 1
+      },
+      "failing_fixture": {
+        "status": 500,
+        "content_type": "text/plain",
+        "body": {},
+        "latency_ms": 1
+      }
+    },
+    {
+      "id": "missing-route",
+      "prompt": "Execute the HTTP contract check against the explicitly connected application. Never use model inference.",
+      "category": "application_http",
+      "api_request": {
+        "path": "/praxis-nonexistent-path",
+        "method": "GET"
+      },
+      "output_schema": {
+        "type": "object",
+        "required": [
+          "status",
+          "content_type",
+          "body",
+          "latency_ms"
+        ]
+      },
+      "assertions": [
+        {
+          "name": "status",
+          "op": "equals",
+          "path": "status",
+          "expected": 404
+        }
+      ],
+      "passing_fixture": {
+        "status": 404,
+        "content_type": "application/json",
+        "body": {
+          "status": "ok"
+        },
+        "latency_ms": 1
+      },
+      "failing_fixture": {
+        "status": 500,
+        "content_type": "text/plain",
+        "body": {},
+        "latency_ms": 1
+      }
+    },
+    {
+      "id": "json-content-type",
+      "prompt": "Execute the HTTP contract check against the explicitly connected application. Never use model inference.",
+      "category": "application_http",
+      "api_request": {
+        "path": "/health",
+        "method": "GET"
+      },
+      "output_schema": {
+        "type": "object",
+        "required": [
+          "status",
+          "content_type",
+          "body",
+          "latency_ms"
+        ]
+      },
+      "assertions": [
+        {
+          "name": "content_type",
+          "op": "equals",
+          "path": "content_type",
+          "expected": "application/json"
+        }
+      ],
+      "passing_fixture": {
+        "status": 200,
+        "content_type": "application/json",
+        "body": {
+          "status": "ok"
+        },
+        "latency_ms": 1
+      },
+      "failing_fixture": {
+        "status": 500,
+        "content_type": "text/plain",
+        "body": {},
+        "latency_ms": 1
+      }
+    },
+    {
+      "id": "invalid-order",
+      "prompt": "Execute the HTTP contract check against the explicitly connected application. Never use model inference.",
+      "category": "application_http",
+      "api_request": {
+        "path": "/orders",
+        "method": "POST",
+        "json": {
+          "quantity": 0
+        }
+      },
+      "output_schema": {
+        "type": "object",
+        "required": [
+          "status",
+          "content_type",
+          "body",
+          "latency_ms"
+        ]
+      },
+      "assertions": [
+        {
+          "name": "status",
+          "op": "equals",
+          "path": "status",
+          "expected": 422
+        },
+        {
+          "name": "body.field",
+          "op": "equals",
+          "path": "body.field",
+          "expected": "quantity"
+        }
+      ],
+      "passing_fixture": {
+        "status": 422,
+        "content_type": "application/json",
+        "body": {
+          "status": "ok",
+          "field": "quantity"
+        },
+        "latency_ms": 1
+      },
+      "failing_fixture": {
+        "status": 500,
+        "content_type": "text/plain",
+        "body": {},
+        "latency_ms": 1
+      }
+    }
+  ]
+}

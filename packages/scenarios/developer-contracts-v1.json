@@ -1,0 +1,389 @@
+{
+  "schema_version": "praxis.suite.v1",
+  "slug": "developer-contracts",
+  "version": "1.0.0",
+  "title": "Developer and application contracts",
+  "track": "contracts",
+  "description": "Public deterministic fixture suite; no held-out or official certification claim.",
+  "visibility": "public",
+  "ranking_eligible": false,
+  "model_capabilities": [
+    "text",
+    "json"
+  ],
+  "execution": {
+    "max_scenario_count": 64,
+    "max_wall_seconds": 120,
+    "max_output_tokens": 1024,
+    "max_retries": 1
+  },
+  "tasks": [
+    {
+      "id": "repair-boundary",
+      "prompt": "Function intended to return even numbers currently filters n%2==1. Return replacement condition and expected result for [-2,-1,0,1,2]. This tests code reasoning, not executable code.",
+      "category": "code_reasoning",
+      "allowed_tools": [],
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "condition": {
+            "type": "string"
+          },
+          "result": {
+            "type": "array"
+          }
+        },
+        "required": [
+          "condition",
+          "result"
+        ],
+        "additionalProperties": false
+      },
+      "assertions": [
+        {
+          "name": "code_reasoning: condition",
+          "op": "equals",
+          "path": "condition",
+          "expected": "n % 2 == 0",
+          "weight": 1
+        },
+        {
+          "name": "code_reasoning: result",
+          "op": "equals",
+          "path": "result",
+          "expected": [
+            -2,
+            0,
+            2
+          ],
+          "weight": 1
+        }
+      ],
+      "passing_fixture": {
+        "condition": "n % 2 == 0",
+        "result": [
+          -2,
+          0,
+          2
+        ]
+      },
+      "failing_fixture": {
+        "condition": "incorrect",
+        "result": []
+      }
+    },
+    {
+      "id": "api-validation",
+      "prompt": "POST /orders requires quantity positive integer. Body {quantity:0}. Return HTTP status and error field.",
+      "category": "api_contract",
+      "allowed_tools": [],
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer"
+          },
+          "field": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "field"
+        ],
+        "additionalProperties": false
+      },
+      "assertions": [
+        {
+          "name": "api_contract: status",
+          "op": "equals",
+          "path": "status",
+          "expected": 422,
+          "weight": 1
+        },
+        {
+          "name": "api_contract: field",
+          "op": "equals",
+          "path": "field",
+          "expected": "quantity",
+          "weight": 1
+        }
+      ],
+      "passing_fixture": {
+        "status": 422,
+        "field": "quantity"
+      },
+      "failing_fixture": {
+        "status": -999,
+        "field": "incorrect"
+      }
+    },
+    {
+      "id": "api-idempotency",
+      "prompt": "POST request with key K creates O1. Same key K replayed with same payload. Return created_count and order IDs.",
+      "category": "api_contract",
+      "allowed_tools": [],
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "created_count": {
+            "type": "integer"
+          },
+          "orders": {
+            "type": "array"
+          }
+        },
+        "required": [
+          "created_count",
+          "orders"
+        ],
+        "additionalProperties": false
+      },
+      "assertions": [
+        {
+          "name": "api_contract: created_count",
+          "op": "equals",
+          "path": "created_count",
+          "expected": 1,
+          "weight": 1
+        },
+        {
+          "name": "api_contract: orders",
+          "op": "equals",
+          "path": "orders",
+          "expected": [
+            "O1",
+            "O1"
+          ],
+          "weight": 1
+        }
+      ],
+      "passing_fixture": {
+        "created_count": 1,
+        "orders": [
+          "O1",
+          "O1"
+        ]
+      },
+      "failing_fixture": {
+        "created_count": -999,
+        "orders": []
+      }
+    },
+    {
+      "id": "form-validation",
+      "prompt": "Signup fields: email required valid format, password minimum 12 characters. Input email=bad password=short. Return invalid fields in alphabetical order.",
+      "category": "ui_contract",
+      "allowed_tools": [],
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "invalid": {
+            "type": "array"
+          }
+        },
+        "required": [
+          "invalid"
+        ],
+        "additionalProperties": false
+      },
+      "assertions": [
+        {
+          "name": "ui_contract: invalid",
+          "op": "equals",
+          "path": "invalid",
+          "expected": [
+            "email",
+            "password"
+          ],
+          "weight": 1
+        }
+      ],
+      "passing_fixture": {
+        "invalid": [
+          "email",
+          "password"
+        ]
+      },
+      "failing_fixture": {
+        "invalid": []
+      }
+    },
+    {
+      "id": "cart-calculation",
+      "prompt": "Cart: 2 books at 12 each, 1 pen at 3. Shipping free if subtotal>=25 otherwise 5. Return subtotal,shipping,total.",
+      "category": "ui_contract",
+      "allowed_tools": [],
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "subtotal": {
+            "type": "integer"
+          },
+          "shipping": {
+            "type": "integer"
+          },
+          "total": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "subtotal",
+          "shipping",
+          "total"
+        ],
+        "additionalProperties": false
+      },
+      "assertions": [
+        {
+          "name": "ui_contract: subtotal",
+          "op": "equals",
+          "path": "subtotal",
+          "expected": 27,
+          "weight": 1
+        },
+        {
+          "name": "ui_contract: shipping",
+          "op": "equals",
+          "path": "shipping",
+          "expected": 0,
+          "weight": 1
+        },
+        {
+          "name": "ui_contract: total",
+          "op": "equals",
+          "path": "total",
+          "expected": 27,
+          "weight": 1
+        }
+      ],
+      "passing_fixture": {
+        "subtotal": 27,
+        "shipping": 0,
+        "total": 27
+      },
+      "failing_fixture": {
+        "subtotal": -999,
+        "shipping": -999,
+        "total": -999
+      }
+    },
+    {
+      "id": "responsive-contract",
+      "prompt": "Layout rule: viewport below 640 uses 1 column; 640 to 1023 uses 2; 1024+ uses 3. Return columns for widths 390,768,1280.",
+      "category": "ui_contract",
+      "allowed_tools": [],
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "columns": {
+            "type": "array"
+          }
+        },
+        "required": [
+          "columns"
+        ],
+        "additionalProperties": false
+      },
+      "assertions": [
+        {
+          "name": "ui_contract: columns",
+          "op": "equals",
+          "path": "columns",
+          "expected": [
+            1,
+            2,
+            3
+          ],
+          "weight": 1
+        }
+      ],
+      "passing_fixture": {
+        "columns": [
+          1,
+          2,
+          3
+        ]
+      },
+      "failing_fixture": {
+        "columns": []
+      }
+    },
+    {
+      "id": "accessibility-contract",
+      "prompt": "Form has inputs id=email and id=phone. Visible labels only reference email. Return unlabeled input IDs.",
+      "category": "accessibility",
+      "allowed_tools": [],
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "unlabeled": {
+            "type": "array"
+          }
+        },
+        "required": [
+          "unlabeled"
+        ],
+        "additionalProperties": false
+      },
+      "assertions": [
+        {
+          "name": "accessibility: unlabeled",
+          "op": "equals",
+          "path": "unlabeled",
+          "expected": [
+            "phone"
+          ],
+          "weight": 1
+        }
+      ],
+      "passing_fixture": {
+        "unlabeled": [
+          "phone"
+        ]
+      },
+      "failing_fixture": {
+        "unlabeled": []
+      }
+    },
+    {
+      "id": "search-state",
+      "prompt": "Items: Red book, Blue pen, Red pen. Filter query red, case insensitive. Return matching names in original order.",
+      "category": "ui_contract",
+      "allowed_tools": [],
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "matches": {
+            "type": "array"
+          }
+        },
+        "required": [
+          "matches"
+        ],
+        "additionalProperties": false
+      },
+      "assertions": [
+        {
+          "name": "ui_contract: matches",
+          "op": "equals",
+          "path": "matches",
+          "expected": [
+            "Red book",
+            "Red pen"
+          ],
+          "weight": 1
+        }
+      ],
+      "passing_fixture": {
+        "matches": [
+          "Red book",
+          "Red pen"
+        ]
+      },
+      "failing_fixture": {
+        "matches": []
+      }
+    }
+  ]
+}
