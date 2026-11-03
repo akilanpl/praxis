@@ -23,6 +23,8 @@ class APIError(Exception):
 def uid(): return str(uuid.uuid4())
 def encoded(value): return json.dumps(value, sort_keys=True, separators=(',', ':'), ensure_ascii=False)
 def digest(value): return hashlib.sha256(encoded(value).encode()).hexdigest()
+def conditions(suite,target,seed):
+    return digest({'suite':suite,'seed':seed,'target_kind':target.get('kind','model'),'max_tokens':target.get('max_tokens',1024),'temperature':target.get('temperature',0),'timeout':target.get('timeout',20)})
 
 class Store:
     def __init__(self, path):
@@ -111,7 +113,7 @@ class ControlPlane:
             for task in result.get('tasks',[]):
                 content=task.get('output','')
                 if not isinstance(content,str): content=encoded(content)
-                self.store.create('artifact',self.store.owner(run['id']),{'run_id':run['id'],'task_id':task.get('id'), 'target_id':target['id'],'suite_slug':suite['slug'],'suite_version':suite['version'],'conditions':digest({'suite':suite,'seed':run['seed']}),'content':content,'mime':'application/json' if content.lstrip().startswith(('{','[')) else 'text/plain','sha256':hashlib.sha256(content.encode()).hexdigest(),'size':len(content.encode()),'trust':result['trust'],'public':run.get('public',False)})
+                self.store.create('artifact',self.store.owner(run['id']),{'run_id':run['id'],'task_id':task.get('id'), 'target_id':target['id'],'suite_slug':suite['slug'],'suite_version':suite['version'],'conditions':conditions(suite,target,run['seed']),'content':content,'mime':'application/json' if content.lstrip().startswith(('{','[')) else 'text/plain','sha256':hashlib.sha256(content.encode()).hexdigest(),'size':len(content.encode()),'trust':result['trust'],'public':run.get('public',False)})
         except Exception as exc:
             run.update(status='failed',error=type(exc).__name__+': '+str(exc)[:300],finished_at=time.time())
         self.store.update(run['id'],run)
@@ -224,7 +226,7 @@ class ControlPlane:
                 if sum(r['status'] in ('queued','running') for r in self.store.all('run',user))>=2: raise APIError(429,'At most two active runs per account')
                 seed=body.get('seed',73)
                 if not isinstance(seed,int) or abs(seed)>2**31: raise APIError(400,'Seed must be a 32 bit integer')
-                run=self.store.create('run',user,{'target_id':target['id'],'target_name':target['name'],'suite_slug':suites[0]['slug'],'suite_version':suites[0]['version'],'suite_hash':digest(suites[0]),'config_hash':target['config_hash'],'seed':seed,'status':'queued','trust':'demo' if target['provider'].startswith('demo') else 'self-reported','public':body.get('public') is True,'idempotency_key':str(body.get('idempotency_key',''))[:100],'events':[]})
+                run=self.store.create('run',user,{'target_id':target['id'],'target_name':target['name'],'suite_slug':suites[0]['slug'],'suite_version':suites[0]['version'],'suite_hash':digest(suites[0]),'config_hash':target['config_hash'],'conditions_hash':conditions(suites[0],target,seed),'seed':seed,'status':'queued','trust':'demo' if target['provider'].startswith('demo') else 'self-reported','public':body.get('public') is True,'idempotency_key':str(body.get('idempotency_key',''))[:100],'events':[]})
                 self.cancel[run['id']]=threading.Event(); self.pool.submit(self.execute,run,target,suites[0]); self.store.audit(user,'run.create',run['id']); return run
         if len(parts)>=3 and parts[1]=='runs':
             run=self.store.get('run',parts[2],user)
@@ -323,7 +325,7 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header('Content-Security-Policy',"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self' data:; font-src 'self'; connect-src 'self' http://localhost:8787 http://127.0.0.1:8787; frame-src 'none'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'")
 
 def serve(path=None,port=8787):
-    db=path or os.environ.get('PRAXIS_DB',str(ROOT/'.praxis'/'praxis.sqlite'))
+    db=path or (os.environ.get('PRAXIS_DB') or str(ROOT/'.praxis'/'praxis.sqlite'))
     app=ControlPlane(db); server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
     server.app=app; server.web_root=ROOT/'apps'/'web'/'dist'; server.origins={f'http://localhost:{port}',f'http://127.0.0.1:{port}','http://localhost:5173','http://127.0.0.1:5173'}
     print(f'Praxis secure local workspace: http://127.0.0.1:{port}',flush=True)

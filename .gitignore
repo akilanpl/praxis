@@ -9,3 +9,6 @@ apps/web/dist/
 playwright-report/
 test-results/
 work/
+
+*.egg-info/
+.pytest_cache/

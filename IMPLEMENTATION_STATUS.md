@@ -1,5 +1,7 @@
-# Implementation tracker
+# Integrated implementation status
 
-Integrated build underway. Owners: root local API, security, integration and evidence; engine agent Python execution/scenarios/worlds; web agent React product; cloud agent contracts/Worker/Postgres configuration.
+Implemented and integrated: loopback authenticated SQLite workspace; target registries; suite JSON authoring/cloning/versioning; OpenAI-compatible/Ollama/custom adapters; local background execution and persisted reports; executable permissioned agents; HTTP application contracts; deterministic adaptive state/replay; inert artifacts and measured WAV/PNG metadata; comparable blind Arena with duplicate-vote prevention; scoped preference calculations; distinct empty official objective track; Worker metadata API and RLS schema source.
 
-Verification claims are recorded only after commands execute. No hosted resources authorized or deployed.
+Verification: Python logic/HTTP-parser tests and TypeScript security tests pass. Production frontend and Worker typecheck pass. Persisted integration proof passes. Socket-based HTTP integration and Chromium/browser checks are blocked by the managed environment; full test gate is not green. No genuine inference or Postgres/RLS execution verified. See VERIFICATION.md.
+
+Unsupported: complete hosted workflows, cloud organizations/R2/queues, trusted operator runs/official rankings, robust arbitrary code or website sandbox execution, external-model-driven adaptive worlds, streaming/resume, held-out datasets, learned judges, multimodal generation/quality inference, production moderation and retention. These are not presented as working features. No public deployment or remote Git operation performed.

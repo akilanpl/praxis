@@ -1,0 +1,187 @@
+{
+  "mode": "in-process control-plane API with SQLite; HTTP transport/browser unverified",
+  "inference": "none; labeled deterministic fixture providers",
+  "runs": [
+    {
+      "id": "abbe2ebb-c7e7-448c-ac9b-5ba7abd09f5f",
+      "provider": "demo",
+      "kind": "model",
+      "suite": "structured-agent",
+      "summary": {
+        "assertions_passed": 24,
+        "assertions_total": 24,
+        "confidence_interval": [
+          0.6756,
+          1
+        ],
+        "dimensions": {
+          "correctness": {
+            "passed": 1,
+            "total": 1
+          },
+          "schema": {
+            "passed": 1,
+            "total": 1
+          },
+          "state": {
+            "passed": 4,
+            "total": 4
+          },
+          "tool_selection": {
+            "passed": 2,
+            "total": 2
+          }
+        },
+        "executed": 8,
+        "failed": 0,
+        "latency_p50_ms": 1.29,
+        "latency_p95_ms": 1.433,
+        "not_run": 0,
+        "pass_rate": 1.0,
+        "passed": 8,
+        "total": 8,
+        "weighted_assertion_rate": 1.0
+      },
+      "evidence_hash": "031e8ed4b9eff3fa439eb3cbec4a7d8b4c910096e9227bac368fcf6e7e01972f"
+    },
+    {
+      "id": "dad0ffba-0fdc-4384-84fe-3253c1049884",
+      "provider": "demo-failing",
+      "kind": "model",
+      "suite": "structured-agent",
+      "summary": {
+        "assertions_passed": 8,
+        "assertions_total": 24,
+        "confidence_interval": [
+          0,
+          0.3244
+        ],
+        "dimensions": {
+          "correctness": {
+            "passed": 0,
+            "total": 1
+          },
+          "schema": {
+            "passed": 0,
+            "total": 1
+          },
+          "state": {
+            "passed": 0,
+            "total": 4
+          },
+          "tool_selection": {
+            "passed": 0,
+            "total": 2
+          }
+        },
+        "executed": 8,
+        "failed": 8,
+        "latency_p50_ms": 1.438,
+        "latency_p95_ms": 2.279,
+        "not_run": 0,
+        "pass_rate": 0.0,
+        "passed": 0,
+        "total": 8,
+        "weighted_assertion_rate": 0.3333333333333333
+      },
+      "evidence_hash": "e8d53f28e14c34ee7199d88fce04de05e5f0875df67d554d4efcf270f42b5f69"
+    },
+    {
+      "id": "65de9845-218f-4dc4-b1c3-94f6c06ea488",
+      "provider": "demo",
+      "kind": "agent",
+      "suite": "agent-workflows",
+      "summary": {
+        "assertions_passed": 20,
+        "assertions_total": 20,
+        "confidence_interval": [
+          0.5101,
+          1
+        ],
+        "dimensions": {
+          "executable_tool_use": {
+            "passed": 4,
+            "total": 4
+          }
+        },
+        "executed": 4,
+        "failed": 0,
+        "latency_p50_ms": 1.619,
+        "latency_p95_ms": 1.689,
+        "not_run": 0,
+        "pass_rate": 1.0,
+        "passed": 4,
+        "total": 4,
+        "weighted_assertion_rate": 1.0
+      },
+      "evidence_hash": "61123ec75021203067ce0dbf9d64b39d9e766d1de6d0b64935d318f392a16b99"
+    }
+  ],
+  "world": {
+    "replay_hash": "d4c244d504f284ed5c6cbeae0408449bf115c505641b22db9e5ecd1343e698cd",
+    "entities": [
+      1,
+      5,
+      12
+    ],
+    "identical_replay": true
+  },
+  "arena": {
+    "match": {
+      "id": "992db3e4-2e10-4625-8806-25405e230f1f",
+      "a": {
+        "content": "{\"order\":\"incorrect\",\"paid\":false,\"quantity\":-999}",
+        "mime": "application/json"
+      },
+      "b": {
+        "content": "{\"order\":\"ORD-8\",\"paid\":true,\"quantity\":3}",
+        "mime": "application/json"
+      },
+      "condition": {
+        "task": "json-boundary",
+        "suite": "structured-agent",
+        "version": "1.0.0"
+      },
+      "demo": true
+    },
+    "vote": {
+      "choice": "a",
+      "a": "demo-failing model",
+      "b": "demo model",
+      "ratings": [
+        {
+          "target_id": "94d43c7f-0d00-49cf-a382-a8eaec6b5f0d",
+          "name": "demo-failing model",
+          "rating": 1012.0,
+          "votes": 1,
+          "sample_size": 1,
+          "group": "65a796a48e0099893b6091a8b35f36b126307dc8a42aa086bcfa676b4c887c98:demo",
+          "trust": "demo",
+          "status": "insufficient evidence",
+          "uncertainty": "Not a confidence interval; sparse Elo ratings are descriptive only"
+        },
+        {
+          "target_id": "498b22e2-6afc-4045-a53a-df364b65ef9d",
+          "name": "demo model",
+          "rating": 988.0,
+          "votes": 1,
+          "sample_size": 1,
+          "group": "65a796a48e0099893b6091a8b35f36b126307dc8a42aa086bcfa676b4c887c98:demo",
+          "trust": "demo",
+          "status": "insufficient evidence",
+          "uncertainty": "Not a confidence interval; sparse Elo ratings are descriptive only"
+        }
+      ],
+      "demo": true
+    },
+    "duplicate_vote_status": 409,
+    "official_objective_entries": 0
+  },
+  "media": {
+    "mime": "audio/wav",
+    "duration_seconds": 1.0,
+    "size": 16044,
+    "sha256": "56d4af65701c26df20bd4021eda95b6e830348ce3a746086079fe89285548dc9"
+  },
+  "status": "passed"
+}

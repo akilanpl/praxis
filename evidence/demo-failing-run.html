@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'"><title>Praxis run report</title><style>body{font:16px system-ui;margin:32px;max-width:960px;color:#18221e}article{border:1px solid #ccc;padding:16px;margin:16px 0;break-inside:avoid}pre{white-space:pre-wrap;overflow-wrap:anywhere}h1{font-size:36px}@media print{body{margin:0}}</style><h1>Praxis evaluation report</h1><p>Trust: demo · suite structured-agent v1.0.0 · seed 73</p><p>Passed 0 / 8. Cost: unknown. Self-reported and demo results are excluded from official rankings.</p><p>Evidence hash: e8d53f28e14c34ee7199d88fce04de05e5f0875df67d554d4efcf270f42b5f69</p><article><h2>route-outage — FAIL</h2><p>2.279 ms</p><ul><li>PASS JSON schema</li><li>FAIL correctness: priority</li><li>FAIL correctness: team</li></ul><pre>{
+  &quot;priority&quot;: &quot;incorrect&quot;,
+  &quot;team&quot;: &quot;incorrect&quot;
+}</pre></article><article><h2>select-tool — FAIL</h2><p>1.987 ms</p><ul><li>PASS JSON schema</li><li>FAIL tool_selection: tool</li><li>FAIL tool_selection: arguments</li></ul><pre>{
+  &quot;arguments&quot;: {},
+  &quot;tool&quot;: &quot;incorrect&quot;
+}</pre></article><article><h2>refund-workflow — FAIL</h2><p>1.185 ms</p><ul><li>PASS JSON schema</li><li>FAIL tool_selection: tools</li><li>FAIL tool_selection: amount</li></ul><pre>{
+  &quot;amount&quot;: -999,
+  &quot;tools&quot;: []
+}</pre></article><article><h2>json-boundary — FAIL</h2><p>1.309 ms</p><ul><li>PASS JSON schema</li><li>FAIL schema: order</li><li>FAIL schema: quantity</li><li>FAIL schema: paid</li></ul><pre>{
+  &quot;order&quot;: &quot;incorrect&quot;,
+  &quot;paid&quot;: false,
+  &quot;quantity&quot;: -999
+}</pre></article><article><h2>deduplicate-events — FAIL</h2><p>1.438 ms</p><ul><li>PASS JSON schema</li><li>FAIL state: processed</li><li>FAIL state: count</li></ul><pre>{
+  &quot;count&quot;: -999,
+  &quot;processed&quot;: []
+}</pre></article><article><h2>schedule-dependency — FAIL</h2><p>2.173 ms</p><ul><li>PASS JSON schema</li><li>FAIL state: order</li></ul><pre>{
+  &quot;order&quot;: []
+}</pre></article><article><h2>inventory-reservation — FAIL</h2><p>0.143 ms</p><ul><li>PASS JSON schema</li><li>FAIL state: available</li><li>FAIL state: reserved</li></ul><pre>{
+  &quot;available&quot;: -999,
+  &quot;reserved&quot;: -999
+}</pre></article><article><h2>pagination — FAIL</h2><p>0.127 ms</p><ul><li>PASS JSON schema</li><li>FAIL state: items</li><li>FAIL state: calls</li></ul><pre>{
+  &quot;calls&quot;: -999,
+  &quot;items&quot;: []
+}</pre></article></html>

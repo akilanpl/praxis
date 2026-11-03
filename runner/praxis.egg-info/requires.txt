@@ -1,8 +1,0 @@
-pydantic<3,>=1.10
-jsonschema<5,>=4.17
-
-[browser]
-playwright<2,>=1.48
-
-[test]
-pytest<9,>=7

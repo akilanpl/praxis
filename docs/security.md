@@ -1,0 +1,11 @@
+# Threat model and limits
+
+The supported local deployment is a single user's computer and loopback-only HTTP service. It is not a public multi-tenant hosting system. Do not port-forward it. Host allowlists resist DNS rebinding; browser origins are exact allowlisted; no cookie authority is used; bearer authorization plus JSON-only mutations avoids ambient-authority CSRF. Secrets are never accepted in target registry fields and URL userinfo/query/fragment are forbidden. Provider redirects are denied. Model credentials are process environment values, not client inputs. Untrusted endpoint responses are size bounded; outputs render as escaped text. CSP denies frames, objects, external scripts and off-origin connections.
+
+Uploads inspect signatures and a bounded amount of media metadata. They are not malware scans or perceptual quality certification. Only source-controlled owned website fixtures can execute in the current browser harness. A blank browser context with blocked network is useful containment but not an OS security sandbox. Arbitrary untrusted code and HTML execution are refused. A separately provisioned hardened executor is required to support these workloads safely.
+
+SQLite belongs to the host user. Local user/record isolation is tested; organizations and collaborative project roles are not implemented in the local app. PostgreSQL schema contains RLS and ownership constraints, but has not been applied or executed here. Never claim those policies are verified based only on source review.
+
+Provider endpoint calls originate from the explicitly user-controlled local runner. Loopback is intentionally permitted for Ollama and owned applications. Hosted Workers never fetch user endpoints. This local endpoint reachability must not be copied into public hosted infrastructure.
+
+Auth/request and active-run limits are local process limits; they are not distributed abuse controls. Lists cap at 500. No production log collection, automatic deletion/retention, runner enrollment, adversarial bot detection or public moderation service is implemented. Back up `.praxis/` only to a location appropriate for private prompts. Logout revokes local sessions. No cloud deployment, paid provisioning, third-party key changes, public publishing or remote mutation occurred.

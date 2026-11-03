@@ -79,3 +79,23 @@ class LocalAPITests(unittest.TestCase):
         with self.assertRaises(APIError): self.call('POST','/api/worlds/'+world['id']+'/replay',token=self.bob['token'])
 
 if __name__=='__main__': unittest.main()
+
+class ConcurrencyTests(unittest.TestCase):
+    setUp=LocalAPITests.setUp
+    tearDown=LocalAPITests.tearDown
+    call=LocalAPITests.call
+    target=LocalAPITests.target
+    seed_artifacts=LocalAPITests.seed_artifacts
+    def test_concurrent_match_assignment_reuses_one_pair(self):
+        self.seed_artifacts()
+        with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+            matches=list(pool.map(lambda _:self.call('GET','/api/arena',token=self.bob['token']),range(4)))
+        self.assertEqual(len({m['id'] for m in matches}),1)
+    def test_idempotent_run_request(self):
+        target=self.target(); payload={'target_id':target['id'],'suite_slug':'structured-agent','idempotency_key':'retry-1'}
+        with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+            runs=list(pool.map(lambda _:self.call('POST','/api/runs',payload),range(4)))
+        self.assertEqual(len({r['id'] for r in runs}),1)
+    def test_invalid_suite_rejected(self):
+        with self.assertRaises(APIError) as error: self.call('POST','/api/suites',{'slug':'bad','version':'1','title':'bad','tasks':[]})
+        self.assertEqual(error.exception.status,400)

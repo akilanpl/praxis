@@ -1,0 +1,2145 @@
+{
+  "schema_version": "praxis.world.v1",
+  "domain": "customer-support",
+  "seed": 73,
+  "spec": {
+    "domain": "customer-support",
+    "max_level": 3,
+    "seed": 73
+  },
+  "trust": "demo",
+  "policy": "built-in deterministic reference policy, not external model inference",
+  "levels": [
+    {
+      "level": 1,
+      "entities": 1,
+      "constraints": {
+        "auto_refund_limit": 50,
+        "approval_required_above_limit": true
+      },
+      "completed": 1,
+      "pass_rate": 1.0,
+      "assertions": [
+        {
+          "name": "refund authorization T00",
+          "passed": true,
+          "expected": "refund",
+          "actual": "refund"
+        }
+      ],
+      "initial_hash": "cb00d07bc45fb96ce699dabf74b3e797ba00f1c198f1b11b343d791813171aec",
+      "final_hash": "036d0f89f5a9cc3435f81b33f140d7e0d1339b0987af3098eb9f2fba2cc4a952",
+      "perturbations": []
+    },
+    {
+      "level": 2,
+      "entities": 5,
+      "constraints": {
+        "auto_refund_limit": 50,
+        "approval_required_above_limit": true
+      },
+      "completed": 5,
+      "pass_rate": 1.0,
+      "assertions": [
+        {
+          "name": "refund authorization T00",
+          "passed": true,
+          "expected": "refund",
+          "actual": "refund"
+        },
+        {
+          "name": "refund authorization T01",
+          "passed": true,
+          "expected": "escalate",
+          "actual": "escalate"
+        },
+        {
+          "name": "refund authorization T02",
+          "passed": true,
+          "expected": "escalate",
+          "actual": "escalate"
+        },
+        {
+          "name": "refund authorization T03",
+          "passed": true,
+          "expected": "escalate",
+          "actual": "escalate"
+        },
+        {
+          "name": "refund authorization T04",
+          "passed": true,
+          "expected": "refund",
+          "actual": "refund"
+        }
+      ],
+      "initial_hash": "5c72e9074ce9c9126c4d8413bda16d0347387930b9b9549036d951b47c484c27",
+      "final_hash": "3cb087646fed9ed0eb8ca3ae5f304176eec78e02b0d622ed9cdd837ace7d2133",
+      "perturbations": [
+        "multi_entity_dependencies"
+      ]
+    },
+    {
+      "level": 3,
+      "entities": 12,
+      "constraints": {
+        "auto_refund_limit": 50,
+        "approval_required_above_limit": true
+      },
+      "completed": 12,
+      "pass_rate": 1.0,
+      "assertions": [
+        {
+          "name": "refund authorization T00",
+          "passed": true,
+          "expected": "escalate",
+          "actual": "escalate"
+        },
+        {
+          "name": "refund authorization T01",
+          "passed": true,
+          "expected": "refund",
+          "actual": "refund"
+        },
+        {
+          "name": "refund authorization T02",
+          "passed": true,
+          "expected": "escalate",
+          "actual": "escalate"
+        },
+        {
+          "name": "refund authorization T03",
+          "passed": true,
+          "expected": "refund",
+          "actual": "refund"
+        },
+        {
+          "name": "refund authorization T04",
+          "passed": true,
+          "expected": "escalate",
+          "actual": "escalate"
+        },
+        {
+          "name": "refund authorization T05",
+          "passed": true,
+          "expected": "escalate",
+          "actual": "escalate"
+        },
+        {
+          "name": "refund authorization T06",
+          "passed": true,
+          "expected": "escalate",
+          "actual": "escalate"
+        },
+        {
+          "name": "refund authorization T07",
+          "passed": true,
+          "expected": "escalate",
+          "actual": "escalate"
+        },
+        {
+          "name": "refund authorization T08",
+          "passed": true,
+          "expected": "refund",
+          "actual": "refund"
+        },
+        {
+          "name": "refund authorization T09",
+          "passed": true,
+          "expected": "escalate",
+          "actual": "escalate"
+        },
+        {
+          "name": "refund authorization T10",
+          "passed": true,
+          "expected": "refund",
+          "actual": "refund"
+        },
+        {
+          "name": "refund authorization T11",
+          "passed": true,
+          "expected": "escalate",
+          "actual": "escalate"
+        }
+      ],
+      "initial_hash": "fae7df0ad5c22403d26a2d1404a341d5459b9ada3ab3b13a81c7d11f8d045052",
+      "final_hash": "a3ac24920786d692abfb36054a000d94a8a77ff0ebc81adedfcfea6eae33570f",
+      "perturbations": [
+        "tool_outage",
+        "missing_record"
+      ]
+    }
+  ],
+  "snapshots": [
+    {
+      "index": 0,
+      "state": {
+        "domain": "customer-support",
+        "level": 1,
+        "tickets": [
+          {
+            "id": "T00",
+            "amount": 40,
+            "customer": "C0",
+            "status": "open",
+            "record_available": true
+          }
+        ],
+        "policy": {
+          "auto_refund_limit": 50,
+          "approval_required_above_limit": true
+        },
+        "outage_remaining": 0
+      },
+      "hash": "cb00d07bc45fb96ce699dabf74b3e797ba00f1c198f1b11b343d791813171aec"
+    },
+    {
+      "index": 1,
+      "state": {
+        "domain": "customer-support",
+        "level": 1,
+        "tickets": [
+          {
+            "id": "T00",
+            "amount": 40,
+            "customer": "C0",
+            "status": "refunded",
+            "record_available": true
+          }
+        ],
+        "policy": {
+          "auto_refund_limit": 50,
+          "approval_required_above_limit": true
+        },
+        "outage_remaining": 0
+      },
+      "hash": "036d0f89f5a9cc3435f81b33f140d7e0d1339b0987af3098eb9f2fba2cc4a952"
+    },
+    {
+      "index": 2,
+      "state": {
+        "domain": "customer-support",
+        "level": 2,
+        "tickets": [
+          {
+            "id": "T00",
+            "amount": 12,
+            "customer": "C0",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T01",
+            "amount": 120,
+            "customer": "C1",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T02",
+            "amount": 75,
+            "customer": "C2",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T03",
+            "amount": 120,
+            "customer": "C3",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T04",
+            "amount": 25,
+            "customer": "C0",
+            "status": "open",
+            "record_available": true
+          }
+        ],
+        "policy": {
+          "auto_refund_limit": 50,
+          "approval_required_above_limit": true
+        },
+        "outage_remaining": 0
+      },
+      "hash": "5c72e9074ce9c9126c4d8413bda16d0347387930b9b9549036d951b47c484c27"
+    },
+    {
+      "index": 3,
+      "state": {
+        "domain": "customer-support",
+        "level": 2,
+        "tickets": [
+          {
+            "id": "T00",
+            "amount": 12,
+            "customer": "C0",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T01",
+            "amount": 120,
+            "customer": "C1",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T02",
+            "amount": 75,
+            "customer": "C2",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T03",
+            "amount": 120,
+            "customer": "C3",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T04",
+            "amount": 25,
+            "customer": "C0",
+            "status": "open",
+            "record_available": true
+          }
+        ],
+        "policy": {
+          "auto_refund_limit": 50,
+          "approval_required_above_limit": true
+        },
+        "outage_remaining": 0
+      },
+      "hash": "810b529ac7ce1c4ae61c2eb60140d072c93cee14b1d6f8f433ff4bdedbb5acad"
+    },
+    {
+      "index": 4,
+      "state": {
+        "domain": "customer-support",
+        "level": 2,
+        "tickets": [
+          {
+            "id": "T00",
+            "amount": 12,
+            "customer": "C0",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T01",
+            "amount": 120,
+            "customer": "C1",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T02",
+            "amount": 75,
+            "customer": "C2",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T03",
+            "amount": 120,
+            "customer": "C3",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T04",
+            "amount": 25,
+            "customer": "C0",
+            "status": "open",
+            "record_available": true
+          }
+        ],
+        "policy": {
+          "auto_refund_limit": 50,
+          "approval_required_above_limit": true
+        },
+        "outage_remaining": 0
+      },
+      "hash": "0da8c6b4397bba9346ae2ad12442fcf422d2f4474bf28edeb5d0e2472bc441b7"
+    },
+    {
+      "index": 5,
+      "state": {
+        "domain": "customer-support",
+        "level": 2,
+        "tickets": [
+          {
+            "id": "T00",
+            "amount": 12,
+            "customer": "C0",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T01",
+            "amount": 120,
+            "customer": "C1",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T02",
+            "amount": 75,
+            "customer": "C2",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T03",
+            "amount": 120,
+            "customer": "C3",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T04",
+            "amount": 25,
+            "customer": "C0",
+            "status": "open",
+            "record_available": true
+          }
+        ],
+        "policy": {
+          "auto_refund_limit": 50,
+          "approval_required_above_limit": true
+        },
+        "outage_remaining": 0
+      },
+      "hash": "abb9045c8d1aaf4be3e0e7e8fe5ab3bbc96e2a2eb68c84e923abd96880d03d7a"
+    },
+    {
+      "index": 6,
+      "state": {
+        "domain": "customer-support",
+        "level": 2,
+        "tickets": [
+          {
+            "id": "T00",
+            "amount": 12,
+            "customer": "C0",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T01",
+            "amount": 120,
+            "customer": "C1",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T02",
+            "amount": 75,
+            "customer": "C2",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T03",
+            "amount": 120,
+            "customer": "C3",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T04",
+            "amount": 25,
+            "customer": "C0",
+            "status": "open",
+            "record_available": true
+          }
+        ],
+        "policy": {
+          "auto_refund_limit": 50,
+          "approval_required_above_limit": true
+        },
+        "outage_remaining": 0
+      },
+      "hash": "50a43d0edf7770f445a9cd65cd3599a386e0926261286b8ce87f491ec7316804"
+    },
+    {
+      "index": 7,
+      "state": {
+        "domain": "customer-support",
+        "level": 2,
+        "tickets": [
+          {
+            "id": "T00",
+            "amount": 12,
+            "customer": "C0",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T01",
+            "amount": 120,
+            "customer": "C1",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T02",
+            "amount": 75,
+            "customer": "C2",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T03",
+            "amount": 120,
+            "customer": "C3",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T04",
+            "amount": 25,
+            "customer": "C0",
+            "status": "refunded",
+            "record_available": true
+          }
+        ],
+        "policy": {
+          "auto_refund_limit": 50,
+          "approval_required_above_limit": true
+        },
+        "outage_remaining": 0
+      },
+      "hash": "3cb087646fed9ed0eb8ca3ae5f304176eec78e02b0d622ed9cdd837ace7d2133"
+    },
+    {
+      "index": 8,
+      "state": {
+        "domain": "customer-support",
+        "level": 3,
+        "tickets": [
+          {
+            "id": "T00",
+            "amount": 75,
+            "customer": "C0",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T01",
+            "amount": 40,
+            "customer": "C1",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T02",
+            "amount": 120,
+            "customer": "C2",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T03",
+            "amount": 12,
+            "customer": "C3",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T04",
+            "amount": 75,
+            "customer": "C0",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T05",
+            "amount": 75,
+            "customer": "C1",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T06",
+            "amount": 120,
+            "customer": "C2",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T07",
+            "amount": 120,
+            "customer": "C3",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T08",
+            "amount": 25,
+            "customer": "C0",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T09",
+            "amount": 75,
+            "customer": "C1",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T10",
+            "amount": 12,
+            "customer": "C2",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T11",
+            "amount": 12,
+            "customer": "C3",
+            "status": "open",
+            "record_available": false
+          }
+        ],
+        "policy": {
+          "auto_refund_limit": 50,
+          "approval_required_above_limit": true
+        },
+        "outage_remaining": 1
+      },
+      "hash": "fae7df0ad5c22403d26a2d1404a341d5459b9ada3ab3b13a81c7d11f8d045052"
+    },
+    {
+      "index": 9,
+      "state": {
+        "domain": "customer-support",
+        "level": 3,
+        "tickets": [
+          {
+            "id": "T00",
+            "amount": 75,
+            "customer": "C0",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T01",
+            "amount": 40,
+            "customer": "C1",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T02",
+            "amount": 120,
+            "customer": "C2",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T03",
+            "amount": 12,
+            "customer": "C3",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T04",
+            "amount": 75,
+            "customer": "C0",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T05",
+            "amount": 75,
+            "customer": "C1",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T06",
+            "amount": 120,
+            "customer": "C2",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T07",
+            "amount": 120,
+            "customer": "C3",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T08",
+            "amount": 25,
+            "customer": "C0",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T09",
+            "amount": 75,
+            "customer": "C1",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T10",
+            "amount": 12,
+            "customer": "C2",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T11",
+            "amount": 12,
+            "customer": "C3",
+            "status": "open",
+            "record_available": false
+          }
+        ],
+        "policy": {
+          "auto_refund_limit": 50,
+          "approval_required_above_limit": true
+        },
+        "outage_remaining": 0
+      },
+      "hash": "35597faf2817ac685d8385d47c10d0e78e3dad7a2f2959a604f55fe38d399e45"
+    },
+    {
+      "index": 10,
+      "state": {
+        "domain": "customer-support",
+        "level": 3,
+        "tickets": [
+          {
+            "id": "T00",
+            "amount": 75,
+            "customer": "C0",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T01",
+            "amount": 40,
+            "customer": "C1",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T02",
+            "amount": 120,
+            "customer": "C2",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T03",
+            "amount": 12,
+            "customer": "C3",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T04",
+            "amount": 75,
+            "customer": "C0",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T05",
+            "amount": 75,
+            "customer": "C1",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T06",
+            "amount": 120,
+            "customer": "C2",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T07",
+            "amount": 120,
+            "customer": "C3",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T08",
+            "amount": 25,
+            "customer": "C0",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T09",
+            "amount": 75,
+            "customer": "C1",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T10",
+            "amount": 12,
+            "customer": "C2",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T11",
+            "amount": 12,
+            "customer": "C3",
+            "status": "open",
+            "record_available": false
+          }
+        ],
+        "policy": {
+          "auto_refund_limit": 50,
+          "approval_required_above_limit": true
+        },
+        "outage_remaining": 0
+      },
+      "hash": "2fe5056769353e8f1f2a52330673213491b3a3826de9ee038069cb64124a87fb"
+    },
+    {
+      "index": 11,
+      "state": {
+        "domain": "customer-support",
+        "level": 3,
+        "tickets": [
+          {
+            "id": "T00",
+            "amount": 75,
+            "customer": "C0",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T01",
+            "amount": 40,
+            "customer": "C1",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T02",
+            "amount": 120,
+            "customer": "C2",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T03",
+            "amount": 12,
+            "customer": "C3",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T04",
+            "amount": 75,
+            "customer": "C0",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T05",
+            "amount": 75,
+            "customer": "C1",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T06",
+            "amount": 120,
+            "customer": "C2",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T07",
+            "amount": 120,
+            "customer": "C3",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T08",
+            "amount": 25,
+            "customer": "C0",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T09",
+            "amount": 75,
+            "customer": "C1",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T10",
+            "amount": 12,
+            "customer": "C2",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T11",
+            "amount": 12,
+            "customer": "C3",
+            "status": "open",
+            "record_available": false
+          }
+        ],
+        "policy": {
+          "auto_refund_limit": 50,
+          "approval_required_above_limit": true
+        },
+        "outage_remaining": 0
+      },
+      "hash": "90452fc77b5fff100c865d018f3bc8e28122598fc1a1ab0f29917db4e16b4cab"
+    },
+    {
+      "index": 12,
+      "state": {
+        "domain": "customer-support",
+        "level": 3,
+        "tickets": [
+          {
+            "id": "T00",
+            "amount": 75,
+            "customer": "C0",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T01",
+            "amount": 40,
+            "customer": "C1",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T02",
+            "amount": 120,
+            "customer": "C2",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T03",
+            "amount": 12,
+            "customer": "C3",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T04",
+            "amount": 75,
+            "customer": "C0",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T05",
+            "amount": 75,
+            "customer": "C1",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T06",
+            "amount": 120,
+            "customer": "C2",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T07",
+            "amount": 120,
+            "customer": "C3",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T08",
+            "amount": 25,
+            "customer": "C0",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T09",
+            "amount": 75,
+            "customer": "C1",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T10",
+            "amount": 12,
+            "customer": "C2",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T11",
+            "amount": 12,
+            "customer": "C3",
+            "status": "open",
+            "record_available": false
+          }
+        ],
+        "policy": {
+          "auto_refund_limit": 50,
+          "approval_required_above_limit": true
+        },
+        "outage_remaining": 0
+      },
+      "hash": "2a6d218b381204ffd2caaa62ef7ed7259f759009ddb8af9331920ef246d15a2d"
+    },
+    {
+      "index": 13,
+      "state": {
+        "domain": "customer-support",
+        "level": 3,
+        "tickets": [
+          {
+            "id": "T00",
+            "amount": 75,
+            "customer": "C0",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T01",
+            "amount": 40,
+            "customer": "C1",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T02",
+            "amount": 120,
+            "customer": "C2",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T03",
+            "amount": 12,
+            "customer": "C3",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T04",
+            "amount": 75,
+            "customer": "C0",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T05",
+            "amount": 75,
+            "customer": "C1",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T06",
+            "amount": 120,
+            "customer": "C2",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T07",
+            "amount": 120,
+            "customer": "C3",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T08",
+            "amount": 25,
+            "customer": "C0",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T09",
+            "amount": 75,
+            "customer": "C1",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T10",
+            "amount": 12,
+            "customer": "C2",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T11",
+            "amount": 12,
+            "customer": "C3",
+            "status": "open",
+            "record_available": false
+          }
+        ],
+        "policy": {
+          "auto_refund_limit": 50,
+          "approval_required_above_limit": true
+        },
+        "outage_remaining": 0
+      },
+      "hash": "c159de77606c06a78e32107a0475524efd14f69d0bdaac56936e9e625e3a6e79"
+    },
+    {
+      "index": 14,
+      "state": {
+        "domain": "customer-support",
+        "level": 3,
+        "tickets": [
+          {
+            "id": "T00",
+            "amount": 75,
+            "customer": "C0",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T01",
+            "amount": 40,
+            "customer": "C1",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T02",
+            "amount": 120,
+            "customer": "C2",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T03",
+            "amount": 12,
+            "customer": "C3",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T04",
+            "amount": 75,
+            "customer": "C0",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T05",
+            "amount": 75,
+            "customer": "C1",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T06",
+            "amount": 120,
+            "customer": "C2",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T07",
+            "amount": 120,
+            "customer": "C3",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T08",
+            "amount": 25,
+            "customer": "C0",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T09",
+            "amount": 75,
+            "customer": "C1",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T10",
+            "amount": 12,
+            "customer": "C2",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T11",
+            "amount": 12,
+            "customer": "C3",
+            "status": "open",
+            "record_available": false
+          }
+        ],
+        "policy": {
+          "auto_refund_limit": 50,
+          "approval_required_above_limit": true
+        },
+        "outage_remaining": 0
+      },
+      "hash": "b2a57dd9a269b7a27dc16d8b41060be0c39d83d14c1f599032427cda5bae3f19"
+    },
+    {
+      "index": 15,
+      "state": {
+        "domain": "customer-support",
+        "level": 3,
+        "tickets": [
+          {
+            "id": "T00",
+            "amount": 75,
+            "customer": "C0",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T01",
+            "amount": 40,
+            "customer": "C1",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T02",
+            "amount": 120,
+            "customer": "C2",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T03",
+            "amount": 12,
+            "customer": "C3",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T04",
+            "amount": 75,
+            "customer": "C0",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T05",
+            "amount": 75,
+            "customer": "C1",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T06",
+            "amount": 120,
+            "customer": "C2",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T07",
+            "amount": 120,
+            "customer": "C3",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T08",
+            "amount": 25,
+            "customer": "C0",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T09",
+            "amount": 75,
+            "customer": "C1",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T10",
+            "amount": 12,
+            "customer": "C2",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T11",
+            "amount": 12,
+            "customer": "C3",
+            "status": "open",
+            "record_available": false
+          }
+        ],
+        "policy": {
+          "auto_refund_limit": 50,
+          "approval_required_above_limit": true
+        },
+        "outage_remaining": 0
+      },
+      "hash": "dc9790584e6d5d82e412ccc2bb45d79026474b2fc07ff4ea0d1448ff66abc014"
+    },
+    {
+      "index": 16,
+      "state": {
+        "domain": "customer-support",
+        "level": 3,
+        "tickets": [
+          {
+            "id": "T00",
+            "amount": 75,
+            "customer": "C0",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T01",
+            "amount": 40,
+            "customer": "C1",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T02",
+            "amount": 120,
+            "customer": "C2",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T03",
+            "amount": 12,
+            "customer": "C3",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T04",
+            "amount": 75,
+            "customer": "C0",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T05",
+            "amount": 75,
+            "customer": "C1",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T06",
+            "amount": 120,
+            "customer": "C2",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T07",
+            "amount": 120,
+            "customer": "C3",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T08",
+            "amount": 25,
+            "customer": "C0",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T09",
+            "amount": 75,
+            "customer": "C1",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T10",
+            "amount": 12,
+            "customer": "C2",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T11",
+            "amount": 12,
+            "customer": "C3",
+            "status": "open",
+            "record_available": false
+          }
+        ],
+        "policy": {
+          "auto_refund_limit": 50,
+          "approval_required_above_limit": true
+        },
+        "outage_remaining": 0
+      },
+      "hash": "9787ed38abcdff1045a02033e17a591f216602581ca39f4b6903fbdb0ddc2a82"
+    },
+    {
+      "index": 17,
+      "state": {
+        "domain": "customer-support",
+        "level": 3,
+        "tickets": [
+          {
+            "id": "T00",
+            "amount": 75,
+            "customer": "C0",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T01",
+            "amount": 40,
+            "customer": "C1",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T02",
+            "amount": 120,
+            "customer": "C2",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T03",
+            "amount": 12,
+            "customer": "C3",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T04",
+            "amount": 75,
+            "customer": "C0",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T05",
+            "amount": 75,
+            "customer": "C1",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T06",
+            "amount": 120,
+            "customer": "C2",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T07",
+            "amount": 120,
+            "customer": "C3",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T08",
+            "amount": 25,
+            "customer": "C0",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T09",
+            "amount": 75,
+            "customer": "C1",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T10",
+            "amount": 12,
+            "customer": "C2",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T11",
+            "amount": 12,
+            "customer": "C3",
+            "status": "open",
+            "record_available": false
+          }
+        ],
+        "policy": {
+          "auto_refund_limit": 50,
+          "approval_required_above_limit": true
+        },
+        "outage_remaining": 0
+      },
+      "hash": "a60986792eabe602c958b5afb382f43414ec196f5e3eb30881b534f2d23daeb3"
+    },
+    {
+      "index": 18,
+      "state": {
+        "domain": "customer-support",
+        "level": 3,
+        "tickets": [
+          {
+            "id": "T00",
+            "amount": 75,
+            "customer": "C0",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T01",
+            "amount": 40,
+            "customer": "C1",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T02",
+            "amount": 120,
+            "customer": "C2",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T03",
+            "amount": 12,
+            "customer": "C3",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T04",
+            "amount": 75,
+            "customer": "C0",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T05",
+            "amount": 75,
+            "customer": "C1",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T06",
+            "amount": 120,
+            "customer": "C2",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T07",
+            "amount": 120,
+            "customer": "C3",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T08",
+            "amount": 25,
+            "customer": "C0",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T09",
+            "amount": 75,
+            "customer": "C1",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T10",
+            "amount": 12,
+            "customer": "C2",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T11",
+            "amount": 12,
+            "customer": "C3",
+            "status": "open",
+            "record_available": false
+          }
+        ],
+        "policy": {
+          "auto_refund_limit": 50,
+          "approval_required_above_limit": true
+        },
+        "outage_remaining": 0
+      },
+      "hash": "9295830877cd38183de846abd087347d6b5b2d7bad9a21ad2c95a8629408c587"
+    },
+    {
+      "index": 19,
+      "state": {
+        "domain": "customer-support",
+        "level": 3,
+        "tickets": [
+          {
+            "id": "T00",
+            "amount": 75,
+            "customer": "C0",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T01",
+            "amount": 40,
+            "customer": "C1",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T02",
+            "amount": 120,
+            "customer": "C2",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T03",
+            "amount": 12,
+            "customer": "C3",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T04",
+            "amount": 75,
+            "customer": "C0",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T05",
+            "amount": 75,
+            "customer": "C1",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T06",
+            "amount": 120,
+            "customer": "C2",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T07",
+            "amount": 120,
+            "customer": "C3",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T08",
+            "amount": 25,
+            "customer": "C0",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T09",
+            "amount": 75,
+            "customer": "C1",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T10",
+            "amount": 12,
+            "customer": "C2",
+            "status": "open",
+            "record_available": true
+          },
+          {
+            "id": "T11",
+            "amount": 12,
+            "customer": "C3",
+            "status": "open",
+            "record_available": false
+          }
+        ],
+        "policy": {
+          "auto_refund_limit": 50,
+          "approval_required_above_limit": true
+        },
+        "outage_remaining": 0
+      },
+      "hash": "2e893b3f3855c0603a742abd3a749ba8489409d42e943fa6ca285a6e7a908ee6"
+    },
+    {
+      "index": 20,
+      "state": {
+        "domain": "customer-support",
+        "level": 3,
+        "tickets": [
+          {
+            "id": "T00",
+            "amount": 75,
+            "customer": "C0",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T01",
+            "amount": 40,
+            "customer": "C1",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T02",
+            "amount": 120,
+            "customer": "C2",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T03",
+            "amount": 12,
+            "customer": "C3",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T04",
+            "amount": 75,
+            "customer": "C0",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T05",
+            "amount": 75,
+            "customer": "C1",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T06",
+            "amount": 120,
+            "customer": "C2",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T07",
+            "amount": 120,
+            "customer": "C3",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T08",
+            "amount": 25,
+            "customer": "C0",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T09",
+            "amount": 75,
+            "customer": "C1",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T10",
+            "amount": 12,
+            "customer": "C2",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T11",
+            "amount": 12,
+            "customer": "C3",
+            "status": "open",
+            "record_available": false
+          }
+        ],
+        "policy": {
+          "auto_refund_limit": 50,
+          "approval_required_above_limit": true
+        },
+        "outage_remaining": 0
+      },
+      "hash": "9b72b0d08651363fe6a95eff4942c24464b851585553be6d4bab7a3694fb118a"
+    },
+    {
+      "index": 21,
+      "state": {
+        "domain": "customer-support",
+        "level": 3,
+        "tickets": [
+          {
+            "id": "T00",
+            "amount": 75,
+            "customer": "C0",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T01",
+            "amount": 40,
+            "customer": "C1",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T02",
+            "amount": 120,
+            "customer": "C2",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T03",
+            "amount": 12,
+            "customer": "C3",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T04",
+            "amount": 75,
+            "customer": "C0",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T05",
+            "amount": 75,
+            "customer": "C1",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T06",
+            "amount": 120,
+            "customer": "C2",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T07",
+            "amount": 120,
+            "customer": "C3",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T08",
+            "amount": 25,
+            "customer": "C0",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T09",
+            "amount": 75,
+            "customer": "C1",
+            "status": "escalated",
+            "record_available": true
+          },
+          {
+            "id": "T10",
+            "amount": 12,
+            "customer": "C2",
+            "status": "refunded",
+            "record_available": true
+          },
+          {
+            "id": "T11",
+            "amount": 12,
+            "customer": "C3",
+            "status": "escalated",
+            "record_available": false
+          }
+        ],
+        "policy": {
+          "auto_refund_limit": 50,
+          "approval_required_above_limit": true
+        },
+        "outage_remaining": 0
+      },
+      "hash": "a3ac24920786d692abfb36054a000d94a8a77ff0ebc81adedfcfea6eae33570f"
+    }
+  ],
+  "transitions": [
+    {
+      "step": 1,
+      "level": 1,
+      "action": {
+        "tool": "resolve_ticket",
+        "id": "T00",
+        "action": "refund"
+      },
+      "outcome": "refunded",
+      "before_hash": "cb00d07bc45fb96ce699dabf74b3e797ba00f1c198f1b11b343d791813171aec",
+      "after_hash": "036d0f89f5a9cc3435f81b33f140d7e0d1339b0987af3098eb9f2fba2cc4a952"
+    },
+    {
+      "step": 2,
+      "level": 2,
+      "action": {
+        "tool": "resolve_ticket",
+        "id": "T00",
+        "action": "refund"
+      },
+      "outcome": "refunded",
+      "before_hash": "5c72e9074ce9c9126c4d8413bda16d0347387930b9b9549036d951b47c484c27",
+      "after_hash": "810b529ac7ce1c4ae61c2eb60140d072c93cee14b1d6f8f433ff4bdedbb5acad"
+    },
+    {
+      "step": 3,
+      "level": 2,
+      "action": {
+        "tool": "resolve_ticket",
+        "id": "T01",
+        "action": "escalate"
+      },
+      "outcome": "escalated",
+      "before_hash": "810b529ac7ce1c4ae61c2eb60140d072c93cee14b1d6f8f433ff4bdedbb5acad",
+      "after_hash": "0da8c6b4397bba9346ae2ad12442fcf422d2f4474bf28edeb5d0e2472bc441b7"
+    },
+    {
+      "step": 4,
+      "level": 2,
+      "action": {
+        "tool": "resolve_ticket",
+        "id": "T02",
+        "action": "escalate"
+      },
+      "outcome": "escalated",
+      "before_hash": "0da8c6b4397bba9346ae2ad12442fcf422d2f4474bf28edeb5d0e2472bc441b7",
+      "after_hash": "abb9045c8d1aaf4be3e0e7e8fe5ab3bbc96e2a2eb68c84e923abd96880d03d7a"
+    },
+    {
+      "step": 5,
+      "level": 2,
+      "action": {
+        "tool": "resolve_ticket",
+        "id": "T03",
+        "action": "escalate"
+      },
+      "outcome": "escalated",
+      "before_hash": "abb9045c8d1aaf4be3e0e7e8fe5ab3bbc96e2a2eb68c84e923abd96880d03d7a",
+      "after_hash": "50a43d0edf7770f445a9cd65cd3599a386e0926261286b8ce87f491ec7316804"
+    },
+    {
+      "step": 6,
+      "level": 2,
+      "action": {
+        "tool": "resolve_ticket",
+        "id": "T04",
+        "action": "refund"
+      },
+      "outcome": "refunded",
+      "before_hash": "50a43d0edf7770f445a9cd65cd3599a386e0926261286b8ce87f491ec7316804",
+      "after_hash": "3cb087646fed9ed0eb8ca3ae5f304176eec78e02b0d622ed9cdd837ace7d2133"
+    },
+    {
+      "step": 7,
+      "level": 3,
+      "action": {
+        "tool": "resolve_ticket",
+        "id": "T00",
+        "action": "escalate"
+      },
+      "outcome": "transient_failure_retry_scheduled",
+      "before_hash": "fae7df0ad5c22403d26a2d1404a341d5459b9ada3ab3b13a81c7d11f8d045052",
+      "after_hash": "35597faf2817ac685d8385d47c10d0e78e3dad7a2f2959a604f55fe38d399e45"
+    },
+    {
+      "step": 8,
+      "level": 3,
+      "action": {
+        "tool": "resolve_ticket",
+        "id": "T00",
+        "action": "escalate"
+      },
+      "outcome": "escalated",
+      "before_hash": "35597faf2817ac685d8385d47c10d0e78e3dad7a2f2959a604f55fe38d399e45",
+      "after_hash": "2fe5056769353e8f1f2a52330673213491b3a3826de9ee038069cb64124a87fb"
+    },
+    {
+      "step": 9,
+      "level": 3,
+      "action": {
+        "tool": "resolve_ticket",
+        "id": "T01",
+        "action": "refund"
+      },
+      "outcome": "refunded",
+      "before_hash": "2fe5056769353e8f1f2a52330673213491b3a3826de9ee038069cb64124a87fb",
+      "after_hash": "90452fc77b5fff100c865d018f3bc8e28122598fc1a1ab0f29917db4e16b4cab"
+    },
+    {
+      "step": 10,
+      "level": 3,
+      "action": {
+        "tool": "resolve_ticket",
+        "id": "T02",
+        "action": "escalate"
+      },
+      "outcome": "escalated",
+      "before_hash": "90452fc77b5fff100c865d018f3bc8e28122598fc1a1ab0f29917db4e16b4cab",
+      "after_hash": "2a6d218b381204ffd2caaa62ef7ed7259f759009ddb8af9331920ef246d15a2d"
+    },
+    {
+      "step": 11,
+      "level": 3,
+      "action": {
+        "tool": "resolve_ticket",
+        "id": "T03",
+        "action": "refund"
+      },
+      "outcome": "refunded",
+      "before_hash": "2a6d218b381204ffd2caaa62ef7ed7259f759009ddb8af9331920ef246d15a2d",
+      "after_hash": "c159de77606c06a78e32107a0475524efd14f69d0bdaac56936e9e625e3a6e79"
+    },
+    {
+      "step": 12,
+      "level": 3,
+      "action": {
+        "tool": "resolve_ticket",
+        "id": "T04",
+        "action": "escalate"
+      },
+      "outcome": "escalated",
+      "before_hash": "c159de77606c06a78e32107a0475524efd14f69d0bdaac56936e9e625e3a6e79",
+      "after_hash": "b2a57dd9a269b7a27dc16d8b41060be0c39d83d14c1f599032427cda5bae3f19"
+    },
+    {
+      "step": 13,
+      "level": 3,
+      "action": {
+        "tool": "resolve_ticket",
+        "id": "T05",
+        "action": "escalate"
+      },
+      "outcome": "escalated",
+      "before_hash": "b2a57dd9a269b7a27dc16d8b41060be0c39d83d14c1f599032427cda5bae3f19",
+      "after_hash": "dc9790584e6d5d82e412ccc2bb45d79026474b2fc07ff4ea0d1448ff66abc014"
+    },
+    {
+      "step": 14,
+      "level": 3,
+      "action": {
+        "tool": "resolve_ticket",
+        "id": "T06",
+        "action": "escalate"
+      },
+      "outcome": "escalated",
+      "before_hash": "dc9790584e6d5d82e412ccc2bb45d79026474b2fc07ff4ea0d1448ff66abc014",
+      "after_hash": "9787ed38abcdff1045a02033e17a591f216602581ca39f4b6903fbdb0ddc2a82"
+    },
+    {
+      "step": 15,
+      "level": 3,
+      "action": {
+        "tool": "resolve_ticket",
+        "id": "T07",
+        "action": "escalate"
+      },
+      "outcome": "escalated",
+      "before_hash": "9787ed38abcdff1045a02033e17a591f216602581ca39f4b6903fbdb0ddc2a82",
+      "after_hash": "a60986792eabe602c958b5afb382f43414ec196f5e3eb30881b534f2d23daeb3"
+    },
+    {
+      "step": 16,
+      "level": 3,
+      "action": {
+        "tool": "resolve_ticket",
+        "id": "T08",
+        "action": "refund"
+      },
+      "outcome": "refunded",
+      "before_hash": "a60986792eabe602c958b5afb382f43414ec196f5e3eb30881b534f2d23daeb3",
+      "after_hash": "9295830877cd38183de846abd087347d6b5b2d7bad9a21ad2c95a8629408c587"
+    },
+    {
+      "step": 17,
+      "level": 3,
+      "action": {
+        "tool": "resolve_ticket",
+        "id": "T09",
+        "action": "escalate"
+      },
+      "outcome": "escalated",
+      "before_hash": "9295830877cd38183de846abd087347d6b5b2d7bad9a21ad2c95a8629408c587",
+      "after_hash": "2e893b3f3855c0603a742abd3a749ba8489409d42e943fa6ca285a6e7a908ee6"
+    },
+    {
+      "step": 18,
+      "level": 3,
+      "action": {
+        "tool": "resolve_ticket",
+        "id": "T10",
+        "action": "refund"
+      },
+      "outcome": "refunded",
+      "before_hash": "2e893b3f3855c0603a742abd3a749ba8489409d42e943fa6ca285a6e7a908ee6",
+      "after_hash": "9b72b0d08651363fe6a95eff4942c24464b851585553be6d4bab7a3694fb118a"
+    },
+    {
+      "step": 19,
+      "level": 3,
+      "action": {
+        "tool": "resolve_ticket",
+        "id": "T11",
+        "action": "escalate"
+      },
+      "outcome": "escalated",
+      "before_hash": "9b72b0d08651363fe6a95eff4942c24464b851585553be6d4bab7a3694fb118a",
+      "after_hash": "a3ac24920786d692abfb36054a000d94a8a77ff0ebc81adedfcfea6eae33570f"
+    }
+  ],
+  "steps": 19,
+  "status": "completed",
+  "budgets": {
+    "max_steps": 64,
+    "max_level": 3
+  },
+  "evaluation": {
+    "entities_completed": 18,
+    "entities_total": 18
+  },
+  "replay_hash": "d4c244d504f284ed5c6cbeae0408449bf115c505641b22db9e5ecd1343e698cd"
+}
