@@ -1,0 +1,1 @@
+2026-11-03: User explicitly approved immediate backup-only push to PRIVATE akilanpl/praxis despite incomplete release gate, because battery is low. No release/deployment success claimed. Future bypasses require fresh explicit user authorization.
