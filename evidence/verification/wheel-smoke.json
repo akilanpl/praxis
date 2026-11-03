@@ -1,0 +1,1 @@
+{"status": "passed", "installation": "isolated wheel installation, outside source checkout", "suites": 6, "scenarios": 40, "model_fixture_passed": 8, "agent_fixture_passed": 4, "world_entity_levels": [1, 5, 12], "real_inference": false}

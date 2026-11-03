@@ -24,6 +24,8 @@ npm run build
 
 Open `http://127.0.0.1:8787`. SQLite records and immutable deduplicated uploaded objects live in `.praxis/`. The current execution environment denies socket binding and Chromium IPC; run these startup/browser commands in a normal local terminal. The source, build, in-process API and database logic have been exercised here.
 
+`npm run build` now builds every shipped component: `apps/web/dist/`, `dist/worker/index.js`, and `dist/runner/praxis-0.1.0-py3-none-any.whl`. `dist/build-manifest.json` records artifact hashes, scenario counts and exit codes. This build never publishes anything. The runner wheel is the CLI/library distribution; the complete local web server is started from this repository.
+
 ## Evaluate a model
 
 1. Open Models → Create target. Choose OpenAI-compatible (`openai`), Ollama or custom HTTP. Keep API keys out of the registry. The OpenAI endpoint is its base URL including `/v1`; Ollama uses `http://127.0.0.1:11434`.
@@ -63,7 +65,7 @@ Objective leaderboards remain empty until an operator-controlled trusted runner 
 
 ```sh
 npm test                                 # full suite, including real loopback adapter tests
-npm run build                            # web production build + Worker typecheck
+npm run build                            # web + contracts + Worker bundle + Python runner wheel
 npm run typecheck --workspace packages/contracts
 .venv/bin/python scripts/integration_proof.py
 ```

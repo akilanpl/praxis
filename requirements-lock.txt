@@ -20,3 +20,7 @@ rpds-py==0.27.1
 tomli==2.5.0
 typing-inspection==0.4.2
 typing_extensions==4.16.0
+
+# Tools required for local no-isolation wheel builds
+setuptools==82.0.1
+wheel==0.48.0

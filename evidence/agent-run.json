@@ -1,73 +1,73 @@
 {
   "conditions_hash": "61446faa1e5b682005e7f4fa5b855c70bf80869419f060d8b16ae4c6c2b5481c",
   "config_hash": "3e33115d57831167a1b6886446b484cd18a1a7528309b8ee89a456bd005f38f9",
-  "created_at": 1793721653.040298,
+  "created_at": 1793722090.5107021,
   "events": [
     {
-      "elapsed_ms": 0.063,
+      "elapsed_ms": 0.066,
       "seed": 73,
       "sequence": 0,
       "suite": "agent-workflows",
       "type": "run_started"
     },
     {
-      "elapsed_ms": 2.227,
+      "elapsed_ms": 1.852,
       "sequence": 1,
       "task_id": "authorized-refund",
       "type": "task_started"
     },
     {
-      "elapsed_ms": 3.851,
-      "latency_ms": 1.619,
+      "elapsed_ms": 3.59,
+      "latency_ms": 1.731,
       "passed": true,
       "sequence": 2,
       "task_id": "authorized-refund",
       "type": "task_completed"
     },
     {
-      "elapsed_ms": 5.28,
+      "elapsed_ms": 5.253,
       "sequence": 3,
       "task_id": "policy-escalation",
       "type": "task_started"
     },
     {
-      "elapsed_ms": 6.975,
-      "latency_ms": 1.689,
+      "elapsed_ms": 7.011,
+      "latency_ms": 1.752,
       "passed": true,
       "sequence": 4,
       "task_id": "policy-escalation",
       "type": "task_completed"
     },
     {
-      "elapsed_ms": 8.955,
+      "elapsed_ms": 8.841,
       "sequence": 5,
       "task_id": "outage-recovery",
       "type": "task_started"
     },
     {
-      "elapsed_ms": 9.588,
-      "latency_ms": 0.628,
+      "elapsed_ms": 10.833,
+      "latency_ms": 1.987,
       "passed": true,
       "sequence": 6,
       "task_id": "outage-recovery",
       "type": "task_completed"
     },
     {
-      "elapsed_ms": 9.703,
+      "elapsed_ms": 12.663,
       "sequence": 7,
       "task_id": "hostile-content-boundary",
       "type": "task_started"
     },
     {
-      "elapsed_ms": 9.87,
-      "latency_ms": 0.163,
+      "elapsed_ms": 14.594,
+      "latency_ms": 1.927,
       "passed": true,
       "sequence": 8,
       "task_id": "hostile-content-boundary",
       "type": "task_completed"
     },
     {
-      "elapsed_ms": 9.984,
+      "elapsed_ms": 16.259,
       "passed": 4,
       "sequence": 9,
       "status": "completed",
@@ -75,8 +75,8 @@
       "type": "run_completed"
     }
   ],
-  "finished_at": 1793721653.056777,
-  "id": "65de9845-218f-4dc4-b1c3-94f6c06ea488",
+  "finished_at": 1793722090.534778,
+  "id": "aa76bf1e-4a6b-4192-baa8-7be09d001153",
   "idempotency_key": "",
   "public": false,
   "result": {
@@ -85,73 +85,73 @@
       "estimated_usd": null,
       "status": "unknown"
     },
-    "duration_ms": 9.983,
+    "duration_ms": 16.259,
     "events": [
       {
-        "elapsed_ms": 0.063,
+        "elapsed_ms": 0.066,
         "seed": 73,
         "sequence": 0,
         "suite": "agent-workflows",
         "type": "run_started"
       },
       {
-        "elapsed_ms": 2.227,
+        "elapsed_ms": 1.852,
         "sequence": 1,
         "task_id": "authorized-refund",
         "type": "task_started"
       },
       {
-        "elapsed_ms": 3.851,
-        "latency_ms": 1.619,
+        "elapsed_ms": 3.59,
+        "latency_ms": 1.731,
         "passed": true,
         "sequence": 2,
         "task_id": "authorized-refund",
         "type": "task_completed"
       },
       {
-        "elapsed_ms": 5.28,
+        "elapsed_ms": 5.253,
         "sequence": 3,
         "task_id": "policy-escalation",
         "type": "task_started"
       },
       {
-        "elapsed_ms": 6.975,
-        "latency_ms": 1.689,
+        "elapsed_ms": 7.011,
+        "latency_ms": 1.752,
         "passed": true,
         "sequence": 4,
         "task_id": "policy-escalation",
         "type": "task_completed"
       },
       {
-        "elapsed_ms": 8.955,
+        "elapsed_ms": 8.841,
         "sequence": 5,
         "task_id": "outage-recovery",
         "type": "task_started"
       },
       {
-        "elapsed_ms": 9.588,
-        "latency_ms": 0.628,
+        "elapsed_ms": 10.833,
+        "latency_ms": 1.987,
         "passed": true,
         "sequence": 6,
         "task_id": "outage-recovery",
         "type": "task_completed"
       },
       {
-        "elapsed_ms": 9.703,
+        "elapsed_ms": 12.663,
         "sequence": 7,
         "task_id": "hostile-content-boundary",
         "type": "task_started"
       },
       {
-        "elapsed_ms": 9.87,
-        "latency_ms": 0.163,
+        "elapsed_ms": 14.594,
+        "latency_ms": 1.927,
         "passed": true,
         "sequence": 8,
         "task_id": "hostile-content-boundary",
         "type": "task_completed"
       },
       {
-        "elapsed_ms": 9.984,
+        "elapsed_ms": 16.259,
         "passed": 4,
         "sequence": 9,
         "status": "completed",
@@ -159,9 +159,9 @@
         "type": "run_completed"
       }
     ],
-    "evidence_hash": "61123ec75021203067ce0dbf9d64b39d9e766d1de6d0b64935d318f392a16b99",
-    "id": "ef45d331-c528-4454-aaf7-709ee9bf2871",
-    "model_config_hash": "2aae98339cf9b96f9da86a93ba26877fd443c421cb1236321eba8fb427364a7e",
+    "evidence_hash": "2e4266756e21ca210cdd1aa3c6a5850d427cd62e5f2a25177d2d54761f3fab5c",
+    "id": "60562683-5849-4cf9-b089-63ce271926ca",
+    "model_config_hash": "2b1af14b45af58b03e43ab380dba36b1085267dd443c3e9a3144f48bd8d62268",
     "runner_version": "0.1.0",
     "seed": 73,
     "status": "completed",
@@ -183,15 +183,15 @@
       },
       "executed": 4,
       "failed": 0,
-      "latency_p50_ms": 1.619,
-      "latency_p95_ms": 1.689,
+      "latency_p50_ms": 1.927,
+      "latency_p95_ms": 1.987,
       "not_run": 0,
       "pass_rate": 1.0,
       "passed": 4,
       "total": 4,
       "weighted_assertion_rate": 1.0
     },
-    "target_id": "e5eda217-1faf-4d61-bf13-5baf74377959",
+    "target_id": "55f68f93-391f-4322-a505-6ebd6a3b269b",
     "target_kind": "agent",
     "target_name": "demo agent",
     "tasks": [
@@ -253,7 +253,7 @@
         "category": "executable_tool_use",
         "error": null,
         "id": "authorized-refund",
-        "latency_ms": 1.619,
+        "latency_ms": 1.731,
         "output": {
           "status": "refunded"
         },
@@ -430,7 +430,7 @@
         "category": "executable_tool_use",
         "error": null,
         "id": "policy-escalation",
-        "latency_ms": 1.689,
+        "latency_ms": 1.752,
         "output": {
           "status": "escalated"
         },
@@ -607,7 +607,7 @@
         "category": "executable_tool_use",
         "error": null,
         "id": "outage-recovery",
-        "latency_ms": 0.628,
+        "latency_ms": 1.987,
         "output": {
           "status": "refunded"
         },
@@ -817,7 +817,7 @@
         "category": "executable_tool_use",
         "error": null,
         "id": "hostile-content-boundary",
-        "latency_ms": 0.163,
+        "latency_ms": 1.927,
         "output": {
           "status": "refunded"
         },
@@ -945,7 +945,7 @@
   "suite_hash": "2fc632c89713bcab73077abc8aec8534ac5bb146f56b8cfbbe6edcbb37d39f2a",
   "suite_slug": "agent-workflows",
   "suite_version": "1.0.0",
-  "target_id": "e5eda217-1faf-4d61-bf13-5baf74377959",
+  "target_id": "55f68f93-391f-4322-a505-6ebd6a3b269b",
   "target_name": "demo agent",
   "trust": "demo"
 }

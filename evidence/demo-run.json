@@ -1,129 +1,129 @@
 {
   "conditions_hash": "65a796a48e0099893b6091a8b35f36b126307dc8a42aa086bcfa676b4c887c98",
   "config_hash": "2902ee45dab17d057bd25e7e1813a1ac78b46cbce1827e147647694afa53d863",
-  "created_at": 1793721652.9369879,
+  "created_at": 1793722090.3911622,
   "events": [
     {
-      "elapsed_ms": 0.081,
+      "elapsed_ms": 0.08,
       "seed": 73,
       "sequence": 0,
       "suite": "structured-agent",
       "type": "run_started"
     },
     {
-      "elapsed_ms": 2.386,
+      "elapsed_ms": 3.187,
       "sequence": 1,
       "task_id": "route-outage",
       "type": "task_started"
     },
     {
-      "elapsed_ms": 3.826,
-      "latency_ms": 1.433,
+      "elapsed_ms": 5.167,
+      "latency_ms": 1.973,
       "passed": true,
       "sequence": 2,
       "task_id": "route-outage",
       "type": "task_completed"
     },
     {
-      "elapsed_ms": 5.067,
+      "elapsed_ms": 6.292,
       "sequence": 3,
       "task_id": "select-tool",
       "type": "task_started"
     },
     {
-      "elapsed_ms": 6.365,
-      "latency_ms": 1.29,
+      "elapsed_ms": 7.885,
+      "latency_ms": 1.585,
       "passed": true,
       "sequence": 4,
       "task_id": "select-tool",
       "type": "task_completed"
     },
     {
-      "elapsed_ms": 7.48,
+      "elapsed_ms": 8.997,
       "sequence": 5,
       "task_id": "refund-workflow",
       "type": "task_started"
     },
     {
-      "elapsed_ms": 8.787,
-      "latency_ms": 1.302,
+      "elapsed_ms": 10.424,
+      "latency_ms": 1.419,
       "passed": true,
       "sequence": 6,
       "task_id": "refund-workflow",
       "type": "task_completed"
     },
     {
-      "elapsed_ms": 10.016,
+      "elapsed_ms": 11.703,
       "sequence": 7,
       "task_id": "json-boundary",
       "type": "task_started"
     },
     {
-      "elapsed_ms": 11.318,
-      "latency_ms": 1.298,
+      "elapsed_ms": 12.96,
+      "latency_ms": 1.25,
       "passed": true,
       "sequence": 8,
       "task_id": "json-boundary",
       "type": "task_completed"
     },
     {
-      "elapsed_ms": 12.511,
+      "elapsed_ms": 13.562,
       "sequence": 9,
       "task_id": "deduplicate-events",
       "type": "task_started"
     },
     {
-      "elapsed_ms": 13.736,
-      "latency_ms": 1.22,
+      "elapsed_ms": 16.051,
+      "latency_ms": 2.478,
       "passed": true,
       "sequence": 10,
       "task_id": "deduplicate-events",
       "type": "task_completed"
     },
     {
-      "elapsed_ms": 14.913,
+      "elapsed_ms": 18.314,
       "sequence": 11,
       "task_id": "schedule-dependency",
       "type": "task_started"
     },
     {
-      "elapsed_ms": 16.05,
-      "latency_ms": 1.133,
+      "elapsed_ms": 19.677,
+      "latency_ms": 1.357,
       "passed": true,
       "sequence": 12,
       "task_id": "schedule-dependency",
       "type": "task_completed"
     },
     {
-      "elapsed_ms": 17.175,
+      "elapsed_ms": 21.743,
       "sequence": 13,
       "task_id": "inventory-reservation",
       "type": "task_started"
     },
     {
-      "elapsed_ms": 18.37,
-      "latency_ms": 1.189,
+      "elapsed_ms": 22.984,
+      "latency_ms": 1.23,
       "passed": true,
       "sequence": 14,
       "task_id": "inventory-reservation",
       "type": "task_completed"
     },
     {
-      "elapsed_ms": 19.562,
+      "elapsed_ms": 25.239,
       "sequence": 15,
       "task_id": "pagination",
       "type": "task_started"
     },
     {
-      "elapsed_ms": 20.709,
-      "latency_ms": 1.142,
+      "elapsed_ms": 27.296,
+      "latency_ms": 2.05,
       "passed": true,
       "sequence": 16,
       "task_id": "pagination",
       "type": "task_completed"
     },
     {
-      "elapsed_ms": 21.847,
+      "elapsed_ms": 27.96,
       "passed": 8,
       "sequence": 17,
       "status": "completed",
@@ -131,8 +131,8 @@
       "type": "run_completed"
     }
   ],
-  "finished_at": 1793721652.9668171,
-  "id": "abbe2ebb-c7e7-448c-ac9b-5ba7abd09f5f",
+  "finished_at": 1793722090.426938,
+  "id": "9332b35c-73e8-4c9d-920b-b842d271dd12",
   "idempotency_key": "",
   "public": true,
   "result": {
@@ -141,129 +141,129 @@
       "estimated_usd": null,
       "status": "unknown"
     },
-    "duration_ms": 21.846,
+    "duration_ms": 27.959,
     "events": [
       {
-        "elapsed_ms": 0.081,
+        "elapsed_ms": 0.08,
         "seed": 73,
         "sequence": 0,
         "suite": "structured-agent",
         "type": "run_started"
       },
       {
-        "elapsed_ms": 2.386,
+        "elapsed_ms": 3.187,
         "sequence": 1,
         "task_id": "route-outage",
         "type": "task_started"
       },
       {
-        "elapsed_ms": 3.826,
-        "latency_ms": 1.433,
+        "elapsed_ms": 5.167,
+        "latency_ms": 1.973,
         "passed": true,
         "sequence": 2,
         "task_id": "route-outage",
         "type": "task_completed"
       },
       {
-        "elapsed_ms": 5.067,
+        "elapsed_ms": 6.292,
         "sequence": 3,
         "task_id": "select-tool",
         "type": "task_started"
       },
       {
-        "elapsed_ms": 6.365,
-        "latency_ms": 1.29,
+        "elapsed_ms": 7.885,
+        "latency_ms": 1.585,
         "passed": true,
         "sequence": 4,
         "task_id": "select-tool",
         "type": "task_completed"
       },
       {
-        "elapsed_ms": 7.48,
+        "elapsed_ms": 8.997,
         "sequence": 5,
         "task_id": "refund-workflow",
         "type": "task_started"
       },
       {
-        "elapsed_ms": 8.787,
-        "latency_ms": 1.302,
+        "elapsed_ms": 10.424,
+        "latency_ms": 1.419,
         "passed": true,
         "sequence": 6,
         "task_id": "refund-workflow",
         "type": "task_completed"
       },
       {
-        "elapsed_ms": 10.016,
+        "elapsed_ms": 11.703,
         "sequence": 7,
         "task_id": "json-boundary",
         "type": "task_started"
       },
       {
-        "elapsed_ms": 11.318,
-        "latency_ms": 1.298,
+        "elapsed_ms": 12.96,
+        "latency_ms": 1.25,
         "passed": true,
         "sequence": 8,
         "task_id": "json-boundary",
         "type": "task_completed"
       },
       {
-        "elapsed_ms": 12.511,
+        "elapsed_ms": 13.562,
         "sequence": 9,
         "task_id": "deduplicate-events",
         "type": "task_started"
       },
       {
-        "elapsed_ms": 13.736,
-        "latency_ms": 1.22,
+        "elapsed_ms": 16.051,
+        "latency_ms": 2.478,
         "passed": true,
         "sequence": 10,
         "task_id": "deduplicate-events",
         "type": "task_completed"
       },
       {
-        "elapsed_ms": 14.913,
+        "elapsed_ms": 18.314,
         "sequence": 11,
         "task_id": "schedule-dependency",
         "type": "task_started"
       },
       {
-        "elapsed_ms": 16.05,
-        "latency_ms": 1.133,
+        "elapsed_ms": 19.677,
+        "latency_ms": 1.357,
         "passed": true,
         "sequence": 12,
         "task_id": "schedule-dependency",
         "type": "task_completed"
       },
       {
-        "elapsed_ms": 17.175,
+        "elapsed_ms": 21.743,
         "sequence": 13,
         "task_id": "inventory-reservation",
         "type": "task_started"
       },
       {
-        "elapsed_ms": 18.37,
-        "latency_ms": 1.189,
+        "elapsed_ms": 22.984,
+        "latency_ms": 1.23,
         "passed": true,
         "sequence": 14,
         "task_id": "inventory-reservation",
         "type": "task_completed"
       },
       {
-        "elapsed_ms": 19.562,
+        "elapsed_ms": 25.239,
         "sequence": 15,
         "task_id": "pagination",
         "type": "task_started"
       },
       {
-        "elapsed_ms": 20.709,
-        "latency_ms": 1.142,
+        "elapsed_ms": 27.296,
+        "latency_ms": 2.05,
         "passed": true,
         "sequence": 16,
         "task_id": "pagination",
         "type": "task_completed"
       },
       {
-        "elapsed_ms": 21.847,
+        "elapsed_ms": 27.96,
         "passed": 8,
         "sequence": 17,
         "status": "completed",
@@ -271,9 +271,9 @@
         "type": "run_completed"
       }
     ],
-    "evidence_hash": "031e8ed4b9eff3fa439eb3cbec4a7d8b4c910096e9227bac368fcf6e7e01972f",
-    "id": "460d1165-b8eb-4c1c-b1bd-2963f0e3b5c5",
-    "model_config_hash": "733b27a5cc7c76cdefc01221f985dcf3250d1afadd21def8439318a7e110952f",
+    "evidence_hash": "606c67f2306f911ad9ef49a8a2249015fb5999ebf7ea227dbddd381b19b3a623",
+    "id": "f93987dc-acab-47fe-946f-85a958604a1b",
+    "model_config_hash": "02b93d471acbf81f06ce234424e439d1ac8d28050da72767d625f8921ba2ca0e",
     "runner_version": "0.1.0",
     "seed": 73,
     "status": "completed",
@@ -307,15 +307,15 @@
       },
       "executed": 8,
       "failed": 0,
-      "latency_p50_ms": 1.29,
-      "latency_p95_ms": 1.433,
+      "latency_p50_ms": 1.585,
+      "latency_p95_ms": 2.478,
       "not_run": 0,
       "pass_rate": 1.0,
       "passed": 8,
       "total": 8,
       "weighted_assertion_rate": 1.0
     },
-    "target_id": "498b22e2-6afc-4045-a53a-df364b65ef9d",
+    "target_id": "f433148d-063f-4c49-b030-d9f60df18128",
     "target_kind": "model",
     "target_name": "demo model",
     "tasks": [
@@ -367,7 +367,7 @@
         "category": "correctness",
         "error": null,
         "id": "route-outage",
-        "latency_ms": 1.433,
+        "latency_ms": 1.973,
         "output": {
           "priority": "urgent",
           "team": "technical"
@@ -429,7 +429,7 @@
         "category": "tool_selection",
         "error": null,
         "id": "select-tool",
-        "latency_ms": 1.29,
+        "latency_ms": 1.585,
         "output": {
           "arguments": {
             "id": "C42"
@@ -495,7 +495,7 @@
         "category": "tool_selection",
         "error": null,
         "id": "refund-workflow",
-        "latency_ms": 1.302,
+        "latency_ms": 1.419,
         "output": {
           "amount": 12,
           "tools": [
@@ -567,7 +567,7 @@
         "category": "schema",
         "error": null,
         "id": "json-boundary",
-        "latency_ms": 1.298,
+        "latency_ms": 1.25,
         "output": {
           "order": "ORD-8",
           "paid": true,
@@ -634,7 +634,7 @@
         "category": "state",
         "error": null,
         "id": "deduplicate-events",
-        "latency_ms": 1.22,
+        "latency_ms": 2.478,
         "output": {
           "count": 3,
           "processed": [
@@ -693,7 +693,7 @@
         "category": "state",
         "error": null,
         "id": "schedule-dependency",
-        "latency_ms": 1.133,
+        "latency_ms": 1.357,
         "output": {
           "order": [
             "fetch",
@@ -754,7 +754,7 @@
         "category": "state",
         "error": null,
         "id": "inventory-reservation",
-        "latency_ms": 1.189,
+        "latency_ms": 1.23,
         "output": {
           "available": 3,
           "reserved": 2
@@ -820,7 +820,7 @@
         "category": "state",
         "error": null,
         "id": "pagination",
-        "latency_ms": 1.142,
+        "latency_ms": 2.05,
         "output": {
           "calls": 2,
           "items": [
@@ -843,7 +843,7 @@
   "suite_hash": "2f1b713a2732b49eb39518b31dca6c68871e13b98955369ee830f53b5ebe3b3c",
   "suite_slug": "structured-agent",
   "suite_version": "1.0.0",
-  "target_id": "498b22e2-6afc-4045-a53a-df364b65ef9d",
+  "target_id": "f433148d-063f-4c49-b030-d9f60df18128",
   "target_name": "demo model",
   "trust": "demo"
 }

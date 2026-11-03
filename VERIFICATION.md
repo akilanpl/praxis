@@ -4,7 +4,7 @@
 
 | Command or demonstration | Actual result | Scope / limitation |
 |---|---|---|
-| `npm run build` | PASS | React production build and TypeScript Worker typecheck. Web JS gzip ~78 KiB. React Router emits harmless ignored `use client` bundle warnings. |
+| `npm run build` | PASS | React production build, shared contracts, TypeScript Worker typecheck, bundled Worker, Python compilation and distributable runner wheel (6 suites / 40 scenarios). Web JS gzip ~78 KiB. React Router emits harmless ignored `use client` bundle warnings. |
 | `npm run typecheck --workspace packages/contracts` | PASS | Shared Zod contracts compile. |
 | `npm run test --workspace apps/api` | PASS, 14 tests | Mocked Supabase transport; auth rejection, ownership, secret rejection, size/origin boundaries, no endpoint proxying, no trust escalation. Not a live Supabase test. |
 | `.venv/bin/python -m pytest tests -q` | 54 passed, 7 environment errors | Seven loopback HTTP adapter tests cannot bind: `PermissionError: [Errno 1] Operation not permitted`. These tests remain enabled; nothing was skipped to turn the full gate green. |
@@ -27,3 +27,9 @@ Commands and raw output: `evidence/verification/commands.json` and adjacent logs
 No robust untrusted code/app executor; arbitrary executable HTML/code is refused. No real-model-driven world policy, generated media inference/quality scoring, automatic pricing, streaming, individual-task resume, YAML authoring, held-out official suites, collaborative organization runtime, official trusted runner enrollment, public moderation/anti-bot pipeline, retention/deletion workflow, R2 signing or full hosted feature parity. Video codec/duration inspection is unknown. The Worker handles authenticated metadata/evidence only and cannot serve as a replacement for the complete local API.
 
 Cost: no paid inference, provisioned cloud compute or deployment. Reasonable local open-source dependencies and Chromium were downloaded. Source is in local Git commits only. See README.md for exact startup and re-verification commands on a normal local machine.
+
+## Build completeness follow-up
+
+The root `npm run build` now builds all existing components, rather than only the frontend and Worker typecheck. It emits a fail-fast manifest with hashes and validates that the wheel contains all six suite files and 40 scenarios. `scripts/setup.sh` and CI now install the Python packaging tools required by the unified build. This does not resolve the unsupported features or environment-blocked acceptance checks listed above.
+
+The distributable wheel was installed into `work/wheel-smoke`, then imported and executed outside the source checkout with no inherited PYTHONPATH. Six suites / 40 scenarios loaded; 8 model-fixture tasks and 4 executable agent-fixture tasks passed; world levels were 1/5/12 entities. This verifies packaging and demo execution, not real inference. See `evidence/verification/wheel-smoke.json`.

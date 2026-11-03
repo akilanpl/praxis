@@ -1,0 +1,92 @@
+{
+  "status": "passed",
+  "remote_deployment": false,
+  "steps": [
+    {
+      "command": [
+        "npm",
+        "run",
+        "build",
+        "--workspace",
+        "apps/web"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "typecheck",
+        "--workspace",
+        "packages/contracts"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "typecheck",
+        "--workspace",
+        "apps/api"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/Users/akilan/Documents/Codex/2026-11-03/read-praxis-ultimate-master-prompt-md/outputs/praxis/node_modules/.bin/wrangler",
+        "deploy",
+        "--dry-run",
+        "--config",
+        "apps/api/wrangler.toml",
+        "--outdir",
+        "/Users/akilan/Documents/Codex/2026-11-03/read-praxis-ultimate-master-prompt-md/outputs/praxis/dist/worker"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/Users/akilan/Documents/Codex/2026-11-03/read-praxis-ultimate-master-prompt-md/outputs/praxis/.venv/bin/python",
+        "-m",
+        "compileall",
+        "-q",
+        "runner/praxis",
+        "scripts"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/Users/akilan/Documents/Codex/2026-11-03/read-praxis-ultimate-master-prompt-md/outputs/praxis/.venv/bin/python",
+        "-m",
+        "pip",
+        "wheel",
+        "--no-deps",
+        "--no-build-isolation",
+        "--wheel-dir",
+        "/Users/akilan/Documents/Codex/2026-11-03/read-praxis-ultimate-master-prompt-md/outputs/praxis/dist/runner",
+        "."
+      ],
+      "exit_code": 0
+    }
+  ],
+  "suites": 6,
+  "scenarios": 40,
+  "artifacts": [
+    {
+      "path": "apps/web/dist/index.html",
+      "bytes": 466,
+      "sha256": "e8e82f53f4363b7246ef89895974196c26c5e75826dff9a45a7c3764c9fab0e1"
+    },
+    {
+      "path": "dist/worker/index.js",
+      "bytes": 796002,
+      "sha256": "ef666ddf42b3a23fae63aeca68a2b3a62aadb89267353f43517e9c3c877f44f4"
+    },
+    {
+      "path": "dist/runner/praxis-0.1.0-py3-none-any.whl",
+      "bytes": 39578,
+      "sha256": "f14a8ae1d36050f179adc8319559439a4a77e655b3e8b72a5cff90d71cd57a91"
+    }
+  ]
+}

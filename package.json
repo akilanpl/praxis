@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "dev": "python3 scripts/dev.py",
-    "build": "npm run build --workspace apps/web && npm run typecheck --workspace apps/api",
+    "build": ".venv/bin/python scripts/build.py",
     "test": ".venv/bin/python -m pytest tests -q && npm run test --workspace apps/api",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "verify": "npm test && npm run build"

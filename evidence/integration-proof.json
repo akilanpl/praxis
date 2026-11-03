@@ -3,7 +3,7 @@
   "inference": "none; labeled deterministic fixture providers",
   "runs": [
     {
-      "id": "abbe2ebb-c7e7-448c-ac9b-5ba7abd09f5f",
+      "id": "9332b35c-73e8-4c9d-920b-b842d271dd12",
       "provider": "demo",
       "kind": "model",
       "suite": "structured-agent",
@@ -34,18 +34,18 @@
         },
         "executed": 8,
         "failed": 0,
-        "latency_p50_ms": 1.29,
-        "latency_p95_ms": 1.433,
+        "latency_p50_ms": 1.585,
+        "latency_p95_ms": 2.478,
         "not_run": 0,
         "pass_rate": 1.0,
         "passed": 8,
         "total": 8,
         "weighted_assertion_rate": 1.0
       },
-      "evidence_hash": "031e8ed4b9eff3fa439eb3cbec4a7d8b4c910096e9227bac368fcf6e7e01972f"
+      "evidence_hash": "606c67f2306f911ad9ef49a8a2249015fb5999ebf7ea227dbddd381b19b3a623"
     },
     {
-      "id": "dad0ffba-0fdc-4384-84fe-3253c1049884",
+      "id": "f220db8d-4c2c-45f2-8a10-29e57bc203e6",
       "provider": "demo-failing",
       "kind": "model",
       "suite": "structured-agent",
@@ -76,18 +76,18 @@
         },
         "executed": 8,
         "failed": 8,
-        "latency_p50_ms": 1.438,
-        "latency_p95_ms": 2.279,
+        "latency_p50_ms": 1.328,
+        "latency_p95_ms": 1.975,
         "not_run": 0,
         "pass_rate": 0.0,
         "passed": 0,
         "total": 8,
         "weighted_assertion_rate": 0.3333333333333333
       },
-      "evidence_hash": "e8d53f28e14c34ee7199d88fce04de05e5f0875df67d554d4efcf270f42b5f69"
+      "evidence_hash": "3586346c639c8d47d4c8043509ce0d227a94eca6bb0b455e8322af360b5c1006"
     },
     {
-      "id": "65de9845-218f-4dc4-b1c3-94f6c06ea488",
+      "id": "aa76bf1e-4a6b-4192-baa8-7be09d001153",
       "provider": "demo",
       "kind": "agent",
       "suite": "agent-workflows",
@@ -106,15 +106,15 @@
         },
         "executed": 4,
         "failed": 0,
-        "latency_p50_ms": 1.619,
-        "latency_p95_ms": 1.689,
+        "latency_p50_ms": 1.927,
+        "latency_p95_ms": 1.987,
         "not_run": 0,
         "pass_rate": 1.0,
         "passed": 4,
         "total": 4,
         "weighted_assertion_rate": 1.0
       },
-      "evidence_hash": "61123ec75021203067ce0dbf9d64b39d9e766d1de6d0b64935d318f392a16b99"
+      "evidence_hash": "2e4266756e21ca210cdd1aa3c6a5850d427cd62e5f2a25177d2d54761f3fab5c"
     }
   ],
   "world": {
@@ -128,17 +128,17 @@
   },
   "arena": {
     "match": {
-      "id": "992db3e4-2e10-4625-8806-25405e230f1f",
+      "id": "8ad2e68c-f2a8-4baf-ae66-bdfd57162883",
       "a": {
-        "content": "{\"order\":\"incorrect\",\"paid\":false,\"quantity\":-999}",
+        "content": "{\"arguments\":{},\"tool\":\"incorrect\"}",
         "mime": "application/json"
       },
       "b": {
-        "content": "{\"order\":\"ORD-8\",\"paid\":true,\"quantity\":3}",
+        "content": "{\"arguments\":{\"id\":\"C42\"},\"tool\":\"lookup_customer\"}",
         "mime": "application/json"
       },
       "condition": {
-        "task": "json-boundary",
+        "task": "select-tool",
         "suite": "structured-agent",
         "version": "1.0.0"
       },
@@ -150,7 +150,7 @@
       "b": "demo model",
       "ratings": [
         {
-          "target_id": "94d43c7f-0d00-49cf-a382-a8eaec6b5f0d",
+          "target_id": "7dec1e50-2982-4ebf-a33b-74e6dba13217",
           "name": "demo-failing model",
           "rating": 1012.0,
           "votes": 1,
@@ -161,7 +161,7 @@
           "uncertainty": "Not a confidence interval; sparse Elo ratings are descriptive only"
         },
         {
-          "target_id": "498b22e2-6afc-4045-a53a-df364b65ef9d",
+          "target_id": "f433148d-063f-4c49-b030-d9f60df18128",
           "name": "demo model",
           "rating": 988.0,
           "votes": 1,
