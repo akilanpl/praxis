@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "production_access": false,
+  "engine": "native PostgreSQL",
+  "auth_scope": "RLS with local auth.uid/JWT-claim compatibility fixture, not hosted Supabase Auth",
+  "checks": [
+    {
+      "name": "schema applies to empty PostgreSQL database",
+      "passed": true
+    },
+    {
+      "name": "ownership, trust forgery, foreign-parent and immutable grants regression",
+      "passed": true
+    },
+    {
+      "name": "RLS enabled on every application table",
+      "passed": true,
+      "tables": 28
+    },
+    {
+      "name": "run/evidence persistence, duplicate votes and write denial",
+      "passed": true
+    }
+  ],
+  "version": "psql (PostgreSQL) 15.19 (Homebrew)",
+  "server_stopped": true
+}

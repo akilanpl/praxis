@@ -1,27 +1,10 @@
 {
-  "status": "passed",
+  "status": "blocked",
   "production_access": false,
   "engine": "native PostgreSQL",
   "auth_scope": "RLS with local auth.uid/JWT-claim compatibility fixture, not hosted Supabase Auth",
-  "checks": [
-    {
-      "name": "schema applies to empty PostgreSQL database",
-      "passed": true
-    },
-    {
-      "name": "ownership, trust forgery, foreign-parent and immutable grants regression",
-      "passed": true
-    },
-    {
-      "name": "RLS enabled on every application table",
-      "passed": true,
-      "tables": 28
-    },
-    {
-      "name": "run/evidence persistence, duplicate votes and write denial",
-      "passed": true
-    }
-  ],
+  "checks": [],
   "version": "psql (PostgreSQL) 15.19 (Homebrew)",
+  "error": "2026-11-03 22:09:48.047 IST [16106] FATAL:  could not create shared memory segment: Operation not permitted\n2026-11-03 22:09:48.047 IST [16106] DETAIL:  Failed system call was shmget(key=35860535, size=56, 03600).\nchild process exited with exit code 1\ninitdb: removing data directory \"/Users/akilan/Documents/Codex/2026-11-03/read-praxis-ultimate-master-prompt-md/outputs/praxis/work/postgres-acceptance-v2dt_5xy/data\"\n",
   "server_stopped": true
 }

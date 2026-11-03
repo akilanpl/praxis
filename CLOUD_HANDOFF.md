@@ -1,0 +1,26 @@
+# Continue Praxis in Codex Cloud
+
+Existing repository only; preserve the architecture and all evidence. Start on feature/qa-hardening-release.
+
+## Verified work
+- Main lineage: 57a3575 -> a9e85fa -> a4435f1 -> 841d8a9. c65d89c contains real acceptance work.
+- Python 3.12.13 runtime replaces insecure/EOL 3.9 environment; frozen dependencies in requirements-lock.txt. Older environment remains ignored under work/.
+- Latest full Python run: 116 top-level tests passed (44 additional nested subtests), including real loopback HTTP adapters. Worker suite: 14 passed.
+- Two real pinned CPU ONNX models, SmolLM2 135M and 360M, ran through an OpenAI-compatible endpoint and persisted raw inputs/outputs, usage, timings and assertions. Both scored 0/8 on strict structured-agent. This is not a fabricated success score.
+- Complete Chromium journey previously PASSED: registration, two real connections, suite runs, reports, matched comparison, 1/5/12-entity world replay, inert HTML/WAV upload, other-owned blinded voting, identity reveal and duplicate rejection. Evidence under evidence/release/browser/.
+- Native PostgreSQL 15.19 host run passed schema application, ownership/forgery checks, all 28 RLS tables, run/evidence persistence and vote uniqueness. Uses local auth.uid claim fixture; hosted Supabase Auth is NOT verified. Successful host evidence preserved in postgres-host-passed.json.
+- Builds and installed runner wheel succeeded. Wheel loads 6 suites/40 definitions and executed 12 demo fixture tasks; do not claim 40 real-model executions.
+- Latest Python and Node dependency audits found no known vulnerabilities. Gitleaks scanned history/staged source with no leaks after omitting public idempotency nonces. Provider keys are not tracked.
+
+## Immediate blockers and next actions
+1. Read .pushgate/reports/c65d89c*.json and associated logs if available locally; the committed release evidence includes the earlier passing browser run. Latest gate is INCOMPLETE: macOS sandbox denies native PostgreSQL shared memory; a later browser attempt timed out waiting for Continue to become stable. Do not label that attempt passed. Diagnose isolated browser contexts, background tab animation scheduling and Playwright/Chrome version compatibility; never force-click or disable security to green tests.
+2. Linux cloud should remove macOS IPC/shared-memory limitations. Run npm ci; create Python 3.12 venv; pip install --upgrade pip 'setuptools>=84.1,<85' wheel; pip install -e '.[test,browser]'; install Chromium with Playwright and native PostgreSQL.
+3. Run .pushgate/run.sh. It starts bounded real CPU model servers if missing, runs build/wheel/116 Python/14 Worker/native DB/browser/audits, and records a deterministic score. No paid model API needed. Keep root hooks enabled. The QA branch threshold is 80; unknown whole-product diff coverage conservatively caps the score at 89; main/release threshold is 90. No production readiness is implied.
+4. Fix remaining regression/acceptance defects; preserve before/after evidence. Update README/VERIFICATION/IMPLEMENTATION_STATUS, which retain older historical limitations and Python version text.
+5. Public deployment is NOT performed. Cloudflare CLI is unauthenticated, no approved dedicated Praxis Supabase project exists, and the Worker remains metadata-only. Frontend Supabase auth/runner dispatch and hosted feature parity are unfinished. Do not mutate unrelated connected Supabase projects or publish a static UI as a fully working cloud product. Obtain specific deployment authority/credentials; no paid resources without approval.
+6. Continue meaningful commits, full security testing and exact deployed smoke if deployment becomes authorized. Do not merge to main without an accepted protected-branch gate.
+
+## Local-only resources not in Git
+Ignored work/ includes downloaded Chromium, small model weights, native PostgreSQL clusters, Gitleaks binary and virtualenvs. They are reproducible, not source. Private SQLite evidence is under .praxis/; shareable actual model reports/screenshots are tracked. No secrets, dependencies, caches or model binaries should be pushed.
+
+The latest push request is an urgent preservation handoff because the user's battery is low, not a declaration of release acceptance.

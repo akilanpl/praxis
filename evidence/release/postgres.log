@@ -1,7 +1,7 @@
 $ /opt/homebrew/bin/psql --version
 psql (PostgreSQL) 15.19 (Homebrew)
 
-$ /opt/homebrew/bin/initdb -D /Users/akilan/Documents/Codex/2026-11-03/read-praxis-ultimate-master-prompt-md/outputs/praxis/work/postgres-acceptance-449qhzcn/data --auth-local=trust --auth-host=scram-sha-256 --no-locale -E UTF8 -U praxis_test
+$ /opt/homebrew/bin/initdb -D /Users/akilan/Documents/Codex/2026-11-03/read-praxis-ultimate-master-prompt-md/outputs/praxis/work/postgres-acceptance-v2dt_5xy/data --auth-local=trust --auth-host=scram-sha-256 --no-locale -E UTF8 -U praxis_test
 The files belonging to this database system will be owned by user "akilan".
 This user must also own the server process.
 
@@ -10,119 +10,14 @@ The default text search configuration will be set to "english".
 
 Data page checksums are disabled.
 
-creating directory /Users/akilan/Documents/Codex/2026-11-03/read-praxis-ultimate-master-prompt-md/outputs/praxis/work/postgres-acceptance-449qhzcn/data ... ok
+creating directory /Users/akilan/Documents/Codex/2026-11-03/read-praxis-ultimate-master-prompt-md/outputs/praxis/work/postgres-acceptance-v2dt_5xy/data ... ok
 creating subdirectories ... ok
-selecting dynamic shared memory implementation ... posix
-selecting default max_connections ... 100
-selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... sysv
+selecting default max_connections ... 20
+selecting default shared_buffers ... 400kB
 selecting default time zone ... Asia/Kolkata
 creating configuration files ... ok
-running bootstrap script ... ok
-performing post-bootstrap initialization ... ok
-syncing data to disk ... ok
-
-Success. You can now start the database server using:
-
-    /opt/homebrew/bin/pg_ctl -D /Users/akilan/Documents/Codex/2026-11-03/read-praxis-ultimate-master-prompt-md/outputs/praxis/work/postgres-acceptance-449qhzcn/data -l logfile start
-
-
-$ /opt/homebrew/bin/pg_ctl -D /Users/akilan/Documents/Codex/2026-11-03/read-praxis-ultimate-master-prompt-md/outputs/praxis/work/postgres-acceptance-449qhzcn/data -l /Users/akilan/Documents/Codex/2026-11-03/read-praxis-ultimate-master-prompt-md/outputs/praxis/work/postgres-acceptance-449qhzcn/postgres.log -o -k /private/tmp/praxis-pg-5mck0r_g -h '' -p 55439 -w start
-waiting for server to start.... done
-server started
-
-$ /opt/homebrew/bin/psql -X -v ON_ERROR_STOP=1 -h /private/tmp/praxis-pg-5mck0r_g -p 55439 -U praxis_test -d postgres -At
-CREATE ROLE
-CREATE ROLE
-CREATE SCHEMA
-CREATE TABLE
-CREATE FUNCTION
-GRANT
-
-$ /opt/homebrew/bin/psql -X -v ON_ERROR_STOP=1 -h /private/tmp/praxis-pg-5mck0r_g -p 55439 -U praxis_test -d postgres -f /Users/akilan/Documents/Codex/2026-11-03/read-praxis-ultimate-master-prompt-md/outputs/praxis/supabase/schema.sql
-BEGIN
-CREATE EXTENSION
-CREATE TABLE
-CREATE TABLE
-CREATE TABLE
-CREATE TABLE
-CREATE TABLE
-CREATE TABLE
-CREATE TABLE
-CREATE TABLE
-CREATE TABLE
-CREATE TABLE
-CREATE TABLE
-CREATE TABLE
-CREATE TABLE
-CREATE TABLE
-CREATE TABLE
-CREATE TABLE
-CREATE TABLE
-CREATE TABLE
-CREATE TABLE
-CREATE TABLE
-CREATE TABLE
-CREATE TABLE
-CREATE TABLE
-CREATE TABLE
-CREATE TABLE
-CREATE TABLE
-CREATE TABLE
-CREATE TABLE
-DO
-GRANT
-CREATE POLICY
-CREATE POLICY
-COMMIT
-
-$ /opt/homebrew/bin/psql -X -v ON_ERROR_STOP=1 -h /private/tmp/praxis-pg-5mck0r_g -p 55439 -U praxis_test -d postgres -f /Users/akilan/Documents/Codex/2026-11-03/read-praxis-ultimate-master-prompt-md/outputs/praxis/supabase/tests/ownership.sql
-BEGIN
-INSERT 0 2
-INSERT 0 1
-SET
-              set_config
---------------------------------------
- 00000000-0000-4000-8000-000000000002
-(1 row)
-
-DO
-              set_config
---------------------------------------
- 00000000-0000-4000-8000-000000000001
-(1 row)
-
-DO
-ROLLBACK
-
-$ /opt/homebrew/bin/psql -X -v ON_ERROR_STOP=1 -h /private/tmp/praxis-pg-5mck0r_g -p 55439 -U praxis_test -d postgres -At
-28
-
-$ /opt/homebrew/bin/psql -X -v ON_ERROR_STOP=1 -h /private/tmp/praxis-pg-5mck0r_g -p 55439 -U praxis_test -d postgres -f /Users/akilan/Documents/Codex/2026-11-03/read-praxis-ultimate-master-prompt-md/outputs/praxis/supabase/tests/persistence.sql
-BEGIN
-INSERT 0 2
-SET
-              set_config
---------------------------------------
- 10000000-0000-4000-8000-000000000001
-(1 row)
-
-INSERT 0 1
-INSERT 0 1
-INSERT 0 1
-DO
-              set_config
---------------------------------------
- 10000000-0000-4000-8000-000000000002
-(1 row)
-
-DO
-RESET
-INSERT 0 2
-INSERT 0 1
-INSERT 0 1
-DO
-ROLLBACK
-
-$ /opt/homebrew/bin/pg_ctl -D /Users/akilan/Documents/Codex/2026-11-03/read-praxis-ultimate-master-prompt-md/outputs/praxis/work/postgres-acceptance-449qhzcn/data -m fast -w stop
-waiting for server to shut down.... done
-server stopped
+running bootstrap script ... 2026-11-03 22:09:48.047 IST [16106] FATAL:  could not create shared memory segment: Operation not permitted
+2026-11-03 22:09:48.047 IST [16106] DETAIL:  Failed system call was shmget(key=35860535, size=56, 03600).
+child process exited with exit code 1
+initdb: removing data directory "/Users/akilan/Documents/Codex/2026-11-03/read-praxis-ultimate-master-prompt-md/outputs/praxis/work/postgres-acceptance-v2dt_5xy/data"
