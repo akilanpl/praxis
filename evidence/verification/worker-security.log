@@ -1,0 +1,26 @@
+
+> @praxis/api@0.1.0 test
+> node --import tsx --test test/*.test.ts
+
+✔ health accurately states metadata-only mode (17.113875ms)
+✔ unauthenticated request is denied before network access (0.196042ms)
+✔ invalid authenticated identity denied (0.470209ms)
+✔ expired token denied (0.220042ms)
+✔ malicious origin denied (0.246583ms)
+✔ secret target fields rejected (1.181584ms)
+✔ arbitrary endpoints stored but never fetched (0.44775ms)
+✔ client cannot promote evidence to verified (1.565791ms)
+✔ foreign target cannot create a run (0.509541ms)
+✔ oversize payload rejected (1.172417ms)
+✔ duplicate evidence returns conflict (0.238709ms)
+✔ security headers accompany failures (0.123583ms)
+✔ malformed endpoint returns validation error (0.181459ms)
+✔ credential-bearing endpoints rejected (0.310291ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 170.163541

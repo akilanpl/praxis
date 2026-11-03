@@ -1,0 +1,4 @@
+
+> @praxis/contracts@0.1.0 typecheck
+> tsc --noEmit --target ES2022 --module ESNext --moduleResolution bundler src/index.ts
+

@@ -1,0 +1,32 @@
+{
+  "python-full": {
+    "command": ".venv/bin/python -m pytest tests -q",
+    "exit_code": 1,
+    "status": "blocked or failed; inspect log",
+    "log": "evidence/verification/python-full.log"
+  },
+  "worker-security": {
+    "command": "npm run test --workspace apps/api",
+    "exit_code": 0,
+    "status": "passed",
+    "log": "evidence/verification/worker-security.log"
+  },
+  "build": {
+    "command": "npm run build",
+    "exit_code": 0,
+    "status": "passed",
+    "log": "evidence/verification/build.log"
+  },
+  "contracts": {
+    "command": "npm run typecheck --workspace packages/contracts",
+    "exit_code": 0,
+    "status": "passed",
+    "log": "evidence/verification/contracts.log"
+  },
+  "browser-http": {
+    "command": ".venv/bin/python scripts/browser_check.py",
+    "exit_code": 1,
+    "status": "blocked or failed; inspect log",
+    "log": "evidence/verification/browser-http.log"
+  }
+}

@@ -255,7 +255,8 @@ class ControlPlane:
             from .artifact_checks import check_owned_website
             from .media import ingest
             folder=Path(self.store.path).parent/'website-checks'/uid()
-            proof=check_owned_website(folder)
+            try: proof=check_owned_website(folder)
+            except Exception: raise APIError(503,'Owned website check could not execute. Install browser extras and Chromium, and ensure this environment permits browser startup. No browser pass is recorded.')
             artifacts=[]
             for filename in ('website-390.png','website-1280.png','website.html','website-checks.json'):
                 item=ingest(self.store,user,{'filename':filename,'content_base64':base64.b64encode((folder/filename).read_bytes()).decode()})

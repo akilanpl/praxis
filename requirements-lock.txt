@@ -9,7 +9,7 @@ packaging==26.3
 playwright==1.60.0
 pluggy==1.6.0
 # Editable Git install with no remote (praxis==0.1.0)
--e /Users/akilan/Documents/Codex/2026-11-03/read-praxis-ultimate-master-prompt-md/outputs/praxis
+-e .
 pydantic==2.13.5
 pydantic_core==2.46.5
 pyee==13.0.1

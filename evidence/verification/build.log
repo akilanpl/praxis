@@ -1,0 +1,23 @@
+
+> praxis@0.1.0 build
+> npm run build --workspace apps/web && npm run typecheck --workspace apps/api
+
+
+> @praxis/web@0.1.0 build
+> tsc && vite build
+
+vite v6.4.5 building for production...
+transforming...
+✓ 40 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.47 kB │ gzip:  0.32 kB
+dist/assets/index-DO_YDTTE.css    5.25 kB │ gzip:  1.75 kB
+dist/assets/index-CXve9H32.js   244.35 kB │ gzip: 78.07 kB
+✓ built in 363ms
+
+> @praxis/api@0.1.0 typecheck
+> tsc --noEmit
+
+../../node_modules/react-router/dist/development/index.mjs (11:0): Module level directives cause errors when bundled, "use client" in "../../node_modules/react-router/dist/development/index.mjs" was ignored.
+../../node_modules/react-router/dist/development/dom-export.mjs (1:0): Module level directives cause errors when bundled, "use client" in "../../node_modules/react-router/dist/development/dom-export.mjs" was ignored.
