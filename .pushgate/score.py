@@ -17,7 +17,7 @@ def score(report):
     if any(t['sev']=='P0' and t['status']!='pass' for t in tests):value=min(value,69)
     if sum(t['status']=='flaky' for t in tests)/max(1,len(tests))>.02:value=min(value,89)
     cov=report.get('coverage',{})
-    if cov.get('line',0)<80 or cov.get('diff',0)<90:value=min(value,89)
+    if (cov.get('line') or 0)<80 or (cov.get('diff') or 0)<90:value=min(value,89)
     threshold=CONFIG['thresholds']['protected'] if report.get('branch') in ('main','master') or report.get('branch','').startswith(('release/','hotfix/')) else CONFIG['thresholds']['feature']
     executed=sum(t['status'] in ('pass','fail','flaky') for t in tests)
     incomplete=(not report.get('environment_started') or any(not g['tests'] for g in groups.values()) or any(t['status'] in ('skip','notrun') for t in tests) or executed<CONFIG['min_tests'])
