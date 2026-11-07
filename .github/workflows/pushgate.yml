@@ -27,6 +27,8 @@ jobs:
           path: work/model-cache
           key: praxis-cpu-models-135m-360m-q4-pinned-v1
       - run: .pushgate/run.sh --mode=ci
+        env:
+          PRAXIS_COVERAGE_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:

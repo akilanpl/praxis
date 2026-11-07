@@ -10,6 +10,8 @@ import sys
 import time
 import urllib.request
 import xml.etree.ElementTree as ET
+from diff_coverage import measure_diff
+
 ROOT=Path(__file__).resolve().parents[1]
 os.chdir(ROOT)
 SHA=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
@@ -58,12 +60,21 @@ def healthy(port,model):
 try:
     ok,_=stage('build',['npm','run','build']);add('All component production build','S01','pass' if ok else 'fail','P0')
     ok,_=stage('wheel',[P,'scripts/verify_wheel.py']);add('Isolated runner wheel installation and bundled execution','S01','pass' if ok else 'fail','P0')
+    coverage_path = OUT / 'coverage.json'
+    coverage_path.unlink(missing_ok=True)
     ok,_=stage('python',[P,'-m','pytest','tests','-q','--cov=praxis','--cov-branch','--cov-report=json:'+str(OUT/'coverage.json'),'--junitxml='+str(OUT/'python.xml')]);junit(OUT/'python.xml')
-    if (OUT/'coverage.json').exists():
-        cov=json.loads((OUT/'coverage.json').read_text())['totals']
-        report['coverage']={'line':100*cov['covered_lines']/cov['num_statements'],'branch':100*cov['covered_branches']/cov['num_branches'],'diff':None}
-    # Unknown whole-product diff coverage is conservatively scored below its cap.
-    report['coverage']['diff']=report['coverage'].get('diff') or 0
+    if ok and coverage_path.exists():
+        coverage = json.loads(coverage_path.read_text())
+        totals = coverage['totals']
+        diff, diff_status = measure_diff(ROOT, os.environ.get('PRAXIS_COVERAGE_BASE'), coverage.get('files'))
+        report['coverage'] = {
+            'line': 100 * totals['covered_lines'] / totals['num_statements'] if totals['num_statements'] else None,
+            'branch': 100 * totals['covered_branches'] / totals['num_branches'] if totals['num_branches'] else None,
+            'diff': diff,
+            'diff_status': diff_status,
+        }
+    else:
+        report['coverage'] = {'diff': None, 'diff_status': 'coverage run failed or report missing'}
     ok,output=stage('worker',['node','--import','tsx','--test','--test-reporter=tap','apps/api/test/security.test.ts'])
     rows=re.findall(r'^(ok|not ok) \d+ - (.+)$',output,re.M)
     for state,name in rows:add(name,'A07' if 'token' in name or 'unauthenticated' in name else 'Z07','pass' if state=='ok' else 'fail','P0')
@@ -129,7 +140,7 @@ finally:
     result=report['result']
     lines=['# Push Gate Report','Commit: '+SHA+' | Branch: '+BRANCH+' | Seed: 73','',f"## Result: {result['decision']} — Score {result['score']} / 100 — Grade {result['grade']}",'',report['scope'],'','| Group | Weight | Tests | Passed | Rate |','|---|---:|---:|---:|---:|']
     for group,row in result['groups'].items():lines.append(f"| {group} | {row['weight']} | {row['tests']} | {row['passed']} | {row['rate']:.3f} |")
-    lines+=['','Coverage: '+json.dumps(report['coverage']), 'Whole-product diff coverage is unmeasured and conservatively applies the 89-point cap.','Production deployment, hosted Supabase Auth and official trust certification are not verified by this local code gate.']
+    lines+=['','Coverage: '+json.dumps(report['coverage']), 'Changed runtime line evidence: '+report['coverage'].get('diff_status','unavailable')+'.','Production deployment, hosted Supabase Auth and official trust certification are not verified by this local code gate.']
     (OUT/(SHA+'.md')).write_text('\n'.join(lines)+'\n')
     print(json.dumps(result,indent=2))
 raise SystemExit(0 if report['result']['decision']=='PASS' else 1)
