@@ -27,3 +27,21 @@ if path.exists():
     for test in value.get("tests", []):
         if test["status"] != "pass":
             emit(test["id"] + " " + test["name"] + " " + test["status"])
+    targets = Path(".pushgate/reports/coverage-targets.json")
+    if targets.exists():
+        coverage = json.loads(targets.read_text())
+        emit("coverage diagnostics " + json.dumps({
+            "python": coverage.get("python"),
+            "changed_lines": coverage.get("typescript", {}).get("changed_line_pct"),
+            "security_branches": coverage.get("typescript", {}).get("security_branch_pct"),
+            "missing_sources": len(coverage.get("typescript", {}).get("missing_source_files", [])),
+        }))
+    postgres = Path("work/acceptance") / sha / "postgres.json"
+    if postgres.exists():
+        database = json.loads(postgres.read_text())
+        emit("disposable database checks completed=" + str(len(database.get("checks", []))))
+        # This receipt comes only from our constant-fixture, disposable DB script.
+        # Remove quoted SQL values and paths; never expose arbitrary test logs.
+        error = re.sub(r"'[^']*'|\"[^\"]*\"|/\S+", "_", database.get("error", ""))
+        if error:
+            emit("disposable database failure " + error[:400])

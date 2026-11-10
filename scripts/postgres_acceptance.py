@@ -24,7 +24,7 @@ result = {'status':'running','production_access':False,'engine':'native PostgreS
 result.update(source_identity())
 log = []
 def run(args, **kwargs):
-    p = subprocess.run(args,cwd=ROOT,capture_output=True,text=True,**kwargs)
+    p = subprocess.run(args,cwd=ROOT,capture_output=True,text=True,timeout=180,**kwargs)
     log.append('$ '+' '.join(str(a) for a in args)+'\n'+p.stdout+p.stderr)
     if p.returncode:
         raise RuntimeError((p.stderr or p.stdout)[-1600:])
@@ -60,7 +60,7 @@ grant usage on schema auth,public to authenticated,anon;
     result['checks'].append({'name':'RLS enabled on every application table','passed':True,'tables':tables})
     run(base+['-f',str(ROOT/'supabase/tests/persistence.sql')])
     result['checks'].append({'name':'run/evidence persistence, duplicate votes and write denial','passed':True})
-    result['checks'].extend(check_reliability(base+['-At'],run,os.environ,lambda:run([pg_ctl,'-D',str(cluster),'-m','fast','-w','restart'])))
+    result['checks'].extend(check_reliability(base+['-At'],run,os.environ,lambda:run([pg_ctl,'-D',str(cluster),'-l',str(folder/'postgres.log'),'-m','fast','-w','restart'])))
     result['status']='passed'
 except Exception as exc:
     result.update(status='blocked' if 'Operation not permitted' in str(exc) or 'unavailable' in str(exc) else 'failed',error=str(exc))

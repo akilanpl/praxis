@@ -29,3 +29,5 @@ Integrated local accounts, model/agent/application registry, versioned suite aut
 Post-publication CI follow-up: root `npm test` now runs Python, measured TypeScript tests, and the Node Worker tests. The Vitest Worker file uses `.vitest.ts` so Node's `*.test.ts` discovery cannot execute it with the wrong runner. No tests were removed. Bounded failure identifiers are emitted to GitHub checks without raw exception bodies or credentials.
 
 The release gate explicitly sets the checkout runner import path for subprocesses instead of depending on a pre-existing editable installation. Installed-wheel acceptance remains a separate isolated check.
+
+CI follow-up: use the PR/default-branch review baseline for changed-source coverage across documentation pushes. Native PostgreSQL commands are time-bounded, and restart explicitly retains the disposable server log path. A real PostgreSQL container check verified restart and queries with the log option; Docker exec did not reproduce the suspected native inherited-pipe hang, so the next native CI run remains authoritative.
