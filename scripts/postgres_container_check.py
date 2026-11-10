@@ -1,3 +1,5 @@
+from evidence_identity import source_identity
+from db_reliability import check_reliability
 """Disposable real PostgreSQL in the managed Docker daemon, isolated from network."""
 import json
 import os
@@ -11,6 +13,7 @@ IMAGE=os.environ.get('PRAXIS_POSTGRES_IMAGE','postgres:17-alpine')
 NAME='praxis-rls-'+uuid.uuid4().hex[:10]
 DOCKER=['docker','--host=unix:///var/run/docker.sock']
 result={'status':'running','scope':'real PostgreSQL; local auth.uid/JWT claim fixture, NOT hosted Supabase Auth','network':'none','checks':[]}
+result.update(source_identity())
 logs=[];started=False
 # Explicit local daemon, preserving registry config but never selecting a remote context.
 env={k:v for k,v in os.environ.items() if k not in ('DOCKER_HOST','DOCKER_CONTEXT','DOCKER_TLS','DOCKER_TLS_VERIFY','DOCKER_CERT_PATH')}
@@ -42,6 +45,14 @@ grant usage on schema auth,public to authenticated,anon;""")
     tables=int(run(sql,input="select count(*) from pg_tables where schemaname='public' and rowsecurity;").strip())
     assert tables==28,tables
     result['checks'].append({'name':'RLS enabled on all 28 tables','passed':True})
+    def restart():
+        run(DOCKER+['restart','--time','10',NAME])
+        for _ in range(100):
+            ready=subprocess.run(DOCKER+['exec',NAME,'pg_isready','-U','postgres'],capture_output=True,env=env)
+            if ready.returncode==0:return
+            time.sleep(.1)
+        raise RuntimeError('Restart readiness deadline exceeded')
+    result['checks'].extend(check_reliability(sql,run,env,restart))
     result['status']='passed'
 except Exception as e:
     result.update(status='failed',error=str(e));raise

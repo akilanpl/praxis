@@ -1,3 +1,4 @@
+from evidence_identity import source_identity
 """Full browser -> HTTP -> SQLite journey, with explicit real/fixture mode."""
 import argparse
 import base64
@@ -24,6 +25,7 @@ env=dict(os.environ,PRAXIS_DB=str(ROOT/'work'/('browser-'+name+'.sqlite')),PRAXI
 log=open(ROOT/'work'/('browser-api-'+name+'.log'),'w')
 process=subprocess.Popen([str(ROOT/'.venv/bin/python'),'-m','praxis.server'],cwd=ROOT,env=env,stdout=log,stderr=log)
 result={'status':'running','mode':'explicit fixture automation; no real inference' if args.fixture_only else 'two real local CPU models; no mocked backend','checks':[],'screenshots':[]}
+result.update(source_identity())
 token=''
 def http(method,path,body=None):
     req=urllib.request.Request(base+path,method=method,data=json.dumps(body).encode() if body is not None else None,headers={'Content-Type':'application/json','Authorization':'Bearer '+token})
@@ -46,6 +48,7 @@ try:
         context=browser.new_context(viewport={'width':1280,'height':900},service_workers='block')
         page=context.new_page();errors=[];dialogs=[]
         page.on('pageerror',lambda error:errors.append(str(error)))
+        page.on('console',lambda message:errors.append(message.text) if message.type=='error' else None)
         page.on('dialog',lambda dialog:(dialogs.append(dialog.message),dialog.dismiss()))
         def register(prefix):
             global token
@@ -92,6 +95,10 @@ try:
             page.get_by_role('button',name='Export evidence').click()
             runs.append(run)
             screenshot(page,'report-'+str(len(runs)))
+            for width in (390,768,1280):
+                page.set_viewport_size({'width':width,'height':900})
+                assert not page.evaluate('document.documentElement.scrollWidth > innerWidth'),width
+                screenshot(page,'report-'+str(len(runs))+'-'+str(width))
             record('Connect, diagnose, execute, persist and inspect '+target_name,run_id=run_id,benchmark_passed=run['result']['summary']['passed'],benchmark_total=8,trust=run['trust'])
         assert runs[0]['conditions_hash']==runs[1]['conditions_hash']
         page.goto(base+'/compare')
@@ -168,13 +175,13 @@ try:
             expect(page.locator('main h1')).to_be_visible()
         record('Visible navigation and branded missing-page route render without runtime errors')
         page.goto(base+'/dashboard')
-        for width in (390,1280):
+        for width in (390,768,1280):
             page.set_viewport_size({'width':width,'height':900})
             assert not page.evaluate('document.documentElement.scrollWidth > innerWidth'),width
             screenshot(page,'dashboard-'+str(width))
         assert not errors,errors
         assert not dialogs,dialogs
-        record('390/1280 viewport checks and zero uncaught page errors')
+        record('390/768/1280 viewport checks, report layouts and zero browser errors')
         for i,run in enumerate(runs):
             (folder/('run-'+str(i+1)+'.json')).write_text(json.dumps({k:v for k,v in run.items() if k!='idempotency_key'},indent=2)+'\n')
         context.close()

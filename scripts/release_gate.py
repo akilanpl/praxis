@@ -9,7 +9,9 @@ import subprocess
 import sys
 import time
 import urllib.request
-import xml.etree.ElementTree as ET
+from defusedxml import ElementTree as ET
+from evidence_identity import source_identity
+from acceptance_receipts import accepted_receipt
 from diff_coverage import measure_diff
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -17,11 +19,13 @@ os.chdir(ROOT)
 SHA=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
 BRANCH=subprocess.check_output(['git','branch','--show-current'],text=True).strip()
 OUT=ROOT/'.pushgate/reports';OUT.mkdir(parents=True,exist_ok=True)
-EVIDENCE=Path(os.environ.get('PRAXIS_EVIDENCE_DIR',str(ROOT/'evidence/final/gate'))).resolve();EVIDENCE.mkdir(parents=True,exist_ok=True)
-ENV=dict(os.environ,PRAXIS_EVIDENCE_DIR=str(EVIDENCE),PYTHONPYCACHEPREFIX=str(ROOT/'work/pycache'),PIP_CACHE_DIR=str(ROOT/'work/pip-cache'))
+EVIDENCE=Path(os.environ.get('PRAXIS_EVIDENCE_DIR',str(ROOT/'work/acceptance'/SHA))).resolve();EVIDENCE.mkdir(parents=True,exist_ok=True)
+ENV=dict(os.environ,PRAXIS_TS_COVERAGE_DIR=str(OUT/'typescript'),PRAXIS_EVIDENCE_DIR=str(EVIDENCE),PYTHONPYCACHEPREFIX=str(ROOT/'work/pycache'),PIP_CACHE_DIR=str(ROOT/'work/pip-cache'))
 if sys.platform=='darwin':ENV.setdefault('PRAXIS_BROWSER_CDP','http://127.0.0.1:9333')
 P=ROOT/'.venv/bin/python'
 report={'commit':SHA,'branch':BRANCH,'seed':73,'scope':'local code acceptance; no claim of hosted Auth or production deployment','tests':[],'stages':[],'environment_started':True,'security_clear':True,'coverage':{}}
+report.update(source_identity())
+if not __debug__: raise RuntimeError('Verification requires Python assertions enabled')
 owned=[];start=time.monotonic()
 def add(name,family,status,sev='P1',duration=0):report['tests'].append({'id':family+'.'+str(len(report['tests'])+1),'name':name,'family':family,'sev':sev,'status':status,'duration_ms':duration,'retries':0})
 def stage(name,command):
@@ -68,13 +72,22 @@ try:
     ok,_=stage('build',['npm','run','build']);add('All component production build','S01','pass' if ok else 'fail','P0')
     ok,_=stage('frontend-lint',['npm','run','lint']);add('Frontend compiler unused-code lint','S01','pass' if ok else 'fail','P0')
     ok,_=stage('wheel',[P,'scripts/verify_wheel.py']);add('Isolated runner wheel installation and bundled execution','S01','pass' if ok else 'fail','P0')
+    (EVIDENCE/'suite-matrix.json').unlink(missing_ok=True)
+    ok,_=stage('suite-matrix',[P,'scripts/suite_acceptance.py'])
+    valid,_=accepted_receipt(EVIDENCE/'suite-matrix.json',SHA)
+    add('All public scenarios positive and negative execution','B01','pass' if ok and valid else 'fail','P0')
     coverage_path = OUT / 'coverage.json'
     coverage_path.unlink(missing_ok=True)
     ok,_=stage('python',[P,'-m','pytest','tests','-q','--cov=praxis','--cov-branch','--cov-report=json:'+str(OUT/'coverage.json'),'--junitxml='+str(OUT/'python.xml')]);junit(OUT/'python.xml')
+    ts_ok,_=stage('typescript',['npm','run','test:typescript']);add('Controlled frontend and Worker TypeScript coverage tests','F02','pass' if ts_ok else 'fail','P0')
     if ok and coverage_path.exists():
         coverage = json.loads(coverage_path.read_text())
         totals = coverage['totals']
-        diff, diff_status = measure_diff(ROOT, os.environ.get('PRAXIS_COVERAGE_BASE'), coverage.get('files'))
+        merged_files=dict(coverage.get('files',{}))
+        ts_path=OUT/'typescript/coverage-final.json'
+        if ts_ok and ts_path.exists():merged_files.update(json.loads(ts_path.read_text()))
+        diff, diff_status = measure_diff(ROOT, os.environ.get('PRAXIS_COVERAGE_BASE'), merged_files)
+        target_ok,_=stage('coverage-targets',[P,'scripts/coverage_acceptance.py','--python',coverage_path,'--typescript',ts_path,'--base',os.environ.get('PRAXIS_COVERAGE_BASE',''),'--output',OUT/'coverage-targets.json']);add('Python and changed TypeScript coverage targets','S02','pass' if target_ok else 'fail','P0')
         report['coverage'] = {
             'line': 100 * totals['covered_lines'] / totals['num_statements'] if totals['num_statements'] else None,
             'branch': 100 * totals['covered_branches'] / totals['num_branches'] if totals['num_branches'] else None,
@@ -92,8 +105,10 @@ try:
     ok,_=stage('npm-audit',['npm','audit','--json','--cache','./work/npm-cache']);add('Node dependency advisory audit','S06','pass' if ok else 'fail','P0');report['security_clear']&=ok
     ok,_=stage('python-audit',[P,'-m','pip_audit','--skip-editable','--cache-dir','work/pip-audit-cache','--format','json','--output',str(OUT/'python-audit.json')]);add('Python dependency advisory audit','S06','pass' if ok else 'fail','P0');report['security_clear']&=ok
     postgres_script='scripts/postgres_acceptance.py' if shutil.which('psql') else 'scripts/postgres_container_check.py'
+    (EVIDENCE/'postgres.json').unlink(missing_ok=True)
     ok,_=stage('postgres',[P,postgres_script])
-    pg=receipt(EVIDENCE/'postgres.json')
+    valid,pg=accepted_receipt(EVIDENCE/'postgres.json',SHA,4)
+    ok=ok and valid
     for item in pg.get('checks',[]):add(item['name'],'D01','pass' if item['passed'] else 'fail','P0')
     if not ok:add('Disposable native PostgreSQL environment','D01','notrun' if pg['status']=='blocked' else 'fail','P0');report['environment_started']=False
     for port,model in [(8788,'onnx-community/SmolLM2-135M-Instruct-ONNX'),(8789,'onnx-community/SmolLM2-360M-Instruct-ONNX')]:
@@ -106,8 +121,10 @@ try:
                 if healthy(port,model):break
                 time.sleep(.2)
             if not healthy(port,model):report['environment_started']=False
+    (EVIDENCE/'browser/result.json').unlink(missing_ok=True)
     ok,_=stage('browser',[P,'scripts/browser_check.py'])
-    browser=receipt(EVIDENCE/'browser/result.json')
+    valid,browser=accepted_receipt(EVIDENCE/'browser/result.json',SHA,10)
+    ok=ok and valid
     for item in browser.get('checks',[]):
         group='F04' if 'viewport' in item['name'] or 'navigation' in item['name'] else 'E04'
         add(item['name'],group,'pass' if item['passed'] else 'fail','P0')
@@ -116,7 +133,10 @@ try:
     if ok:
         for item in json.loads((OUT/'website/website-checks.json').read_text())['assertions']:add(item['name'],'F06','pass' if item['passed'] else 'fail')
     else:add('Owned website artifact browser checks','F06','notrun','P0')
-    ok,_=stage('project-website',[P,'scripts/website_check.py']);add('Project website production browser acceptance','F06','pass' if ok else 'fail','P0')
+    (EVIDENCE/'website/result.json').unlink(missing_ok=True)
+    ok,_=stage('project-website',[P,'scripts/website_check.py'])
+    valid,_=accepted_receipt(EVIDENCE/'website/result.json',SHA,5)
+    add('Project website production browser acceptance','F06','pass' if ok and valid else 'fail','P0')
     # Performance and operational health on a fresh, bounded local API.
     e=dict(ENV,PRAXIS_PORT='8794',PRAXIS_DB=str(ROOT/'work'/('gate-'+SHA+'.sqlite')))
     log=open(OUT/'health-api.log','w');proc=subprocess.Popen([str(P),'-m','praxis.server'],env=e,stdout=log,stderr=log);owned.append((proc,log))

@@ -1,3 +1,5 @@
+from evidence_identity import source_identity
+from db_reliability import check_reliability
 """Disposable PostgreSQL migration/RLS acceptance. Never connects to an existing DB."""
 import json
 import os
@@ -15,10 +17,11 @@ work.mkdir(exist_ok=True)
 folder = Path(tempfile.mkdtemp(prefix='postgres-acceptance-', dir=str(work)))
 cluster = folder / 'data'
 # Unix sockets must stay below macOS's 103-byte pathname limit.
-socket = Path(tempfile.mkdtemp(prefix='praxis-pg-', dir='/private/tmp' if Path('/private/tmp').exists() else '/tmp'))
+socket = Path(tempfile.mkdtemp(prefix='praxis-pg-', dir=os.environ.get('PRAXIS_PG_SOCKET_DIR')))
 os.chmod(socket,0o700)
 started = False
 result = {'status':'running','production_access':False,'engine':'native PostgreSQL','auth_scope':'RLS with local auth.uid/JWT-claim compatibility fixture, not hosted Supabase Auth','checks':[]}
+result.update(source_identity())
 log = []
 def run(args, **kwargs):
     p = subprocess.run(args,cwd=ROOT,capture_output=True,text=True,**kwargs)
@@ -57,6 +60,7 @@ grant usage on schema auth,public to authenticated,anon;
     result['checks'].append({'name':'RLS enabled on every application table','passed':True,'tables':tables})
     run(base+['-f',str(ROOT/'supabase/tests/persistence.sql')])
     result['checks'].append({'name':'run/evidence persistence, duplicate votes and write denial','passed':True})
+    result['checks'].extend(check_reliability(base+['-At'],run,os.environ,lambda:run([pg_ctl,'-D',str(cluster),'-m','fast','-w','restart'])))
     result['status']='passed'
 except Exception as exc:
     result.update(status='blocked' if 'Operation not permitted' in str(exc) or 'unavailable' in str(exc) else 'failed',error=str(exc))

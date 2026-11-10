@@ -1,3 +1,4 @@
+from evidence_identity import source_identity
 """Install the built runner away from the checkout and execute bundled suites."""
 import json
 import os
@@ -25,6 +26,7 @@ assert [l["entities"] for l in run_world({})["levels"]]==[1,5,12]
 print(json.dumps({"status":"passed","suites":6,"scenarios_loaded":40,"fixture_tasks_executed":12,"world_entity_levels":[1,5,12],"scope":"isolated installed package; locked dependencies reused locally; no model inference"}))
 '''
 r=subprocess.run([str(python),'-c',code],cwd=folder,env=env,text=True,capture_output=True,check=True)
+proof=json.loads(r.stdout);proof.update(source_identity());r.stdout=json.dumps(proof)+'\n'
 print(r.stdout)
 out=Path(os.environ.get('PRAXIS_EVIDENCE_DIR',str(ROOT/'evidence/release')));out.mkdir(parents=True,exist_ok=True)
 (out/'wheel.json').write_text(r.stdout)

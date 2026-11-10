@@ -1,3 +1,4 @@
+from evidence_identity import source_identity
 """Real inference against an explicitly user-owned loopback endpoint, no mocks."""
 import json
 import os
@@ -40,5 +41,6 @@ name='real-'+MODEL.split('/')[-1]
 (FOLDER/(name+'.json')).write_text(json.dumps({k:v for k,v in run.items() if k!='idempotency_key'},indent=2)+'\n')
 (FOLDER/(name+'.html')).write_text(report_html(run['result']))
 result={'status':'passed','acceptance':'real HTTP model invocation, persisted raw outputs, per-assertion grading and usage; no score threshold assumed','model':MODEL,'run_id':run['id'],'url':BASE+'/runs/'+run['id'],'tasks':len(rows),'benchmark_passed':run['result']['summary']['passed'],'benchmark_total':8,'cost':'local CPU; no paid model API used','trust':'self-reported','evidence_hash':run['result']['evidence_hash']}
+result.update(source_identity())
 (FOLDER/(name+'-acceptance.json')).write_text(json.dumps(result,indent=2)+'\n')
 print(json.dumps(result,indent=2))

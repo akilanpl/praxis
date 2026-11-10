@@ -60,3 +60,14 @@ def test_unknown_diff_keeps_existing_protected_branch_cap():
     assert result["decision"] == "FAIL"
     report["coverage"]["diff"] = 90
     assert scorer.score(report)["decision"] == "PASS"
+
+
+def test_typescript_and_website_executable_lines_are_measured(tmp_path):
+    def git(*args):return subprocess.check_output(['git',*args],cwd=tmp_path,text=True).strip()
+    git('init','-q');git('config','user.name','Coverage Test');git('config','user.email','coverage@example.test')
+    p=tmp_path/'apps/website/src/main.tsx';p.parent.mkdir(parents=True);p.write_text('export const initial = 0;\n');git('add','.');git('commit','-qm','base');base=git('rev-parse','HEAD')
+    p.write_text('export const initial = 0;\nexport const covered = 1;\nexport const missing = 2;\n');git('commit','-qam','changed executable lines')
+    evidence={'apps/website/src/main.tsx':{'statementMap':{'0':{'start':{'line':1}},'1':{'start':{'line':2}},'2':{'start':{'line':3}}},'s':{'0':1,'1':1,'2':0}}}
+    assert measure(tmp_path,base,evidence)==(50.0,'1/2 changed executable runtime lines')
+    evidence['apps/website/src/main.tsx']['s']['2']=1
+    assert measure(tmp_path,base,evidence)==(100.0,'2/2 changed executable runtime lines')

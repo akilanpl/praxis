@@ -4,7 +4,7 @@ import re
 import subprocess
 from pathlib import Path
 
-RUNTIME_ROOTS = ("runner/praxis/", "apps/web/", "apps/api/", "packages/contracts/")
+RUNTIME_ROOTS = ("runner/praxis/", "apps/web/", "apps/api/", "apps/website/", "packages/contracts/")
 SOURCE_SUFFIXES = {".py", ".js", ".jsx", ".mjs", ".cjs", ".ts", ".tsx", ".svelte", ".vue"}
 HUNK = re.compile(r"^@@ .* \+(\d+)(?:,(\d+))? @@", re.MULTILINE)
 SHA = re.compile(r"[0-9a-f]{40}")
@@ -45,11 +45,22 @@ def measure_diff(root, base, coverage_files):
             if not changed:
                 continue
             evidence = files.get((root / path).resolve())
-            if path.suffix != ".py" or evidence is None:
+            if evidence is None:
                 return None, f"no executable-line coverage for {name}"
-            executed = set(evidence["executed_lines"])
-            missed = set(evidence["missing_lines"])
-            excluded = set(evidence.get("excluded_lines", []))
+            if path.suffix==".py":
+                executed = set(evidence["executed_lines"])
+                missed = set(evidence["missing_lines"])
+                excluded = set(evidence.get("excluded_lines", []))
+            elif path.suffix in (".ts",".tsx",".js",".jsx") and "statementMap" in evidence:
+                counts={}
+                for key,statement in evidence["statementMap"].items():
+                    line=statement["start"]["line"]
+                    counts[line]=max(counts.get(line,0),evidence["s"][key])
+                executed={line for line,count in counts.items() if count>0}
+                missed=set(counts)-executed
+                excluded=set()
+            else:
+                return None, f"no executable-line coverage for {name}"
             if changed & excluded:
                 return None, f"changed lines excluded from coverage in {name}"
             total += len(changed & (executed | missed))

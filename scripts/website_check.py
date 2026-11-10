@@ -1,3 +1,4 @@
+from evidence_identity import source_identity
 """Production website acceptance in disposable Chromium; no deployed site implied."""
 import functools
 import http.server
@@ -14,6 +15,7 @@ class Static(http.server.SimpleHTTPRequestHandler):
 server=http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Static,directory=str(ROOT/'apps/website/dist')))
 thread=threading.Thread(target=server.serve_forever);thread.start()
 result={'status':'running','scope':'built repository website over loopback HTTP; no public deployment','checks':[]}
+result.update(source_identity())
 def check(name,passed,**evidence):
     result['checks'].append({'name':name,'passed':bool(passed),**evidence})
     assert passed,name
