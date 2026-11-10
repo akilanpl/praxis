@@ -1,3 +1,11 @@
+# Current independent review handoff — 2026-11-10
+
+Remain in the same managed Cloud checkout `/workspace/praxis`, branch `codex/praxis-final-release`. Original six commits through `8a2fe33` are preserved. PR #2 was already merged to main `914d226` before review. The user explicitly requests branch-only publication: no new PR, no merge, no main push or force push. GitHub access was restored using private CLI config outside this repository; never print credential files or tokens, and do not reuse historical Mac procedures or credential-blocker claims below as current state.
+
+Read `docs/qa/INDEPENDENT_PR_REVIEW.md`, `PRODUCTION_READINESS_REVIEW.md`, current `VERIFICATION.md` and `evidence/review`. Core findings are repaired with new commits. Exact tested source and final gate receipts are recorded there. TypeScript coverage now includes both frontends, Worker and contracts; Python coverage traces actual Playwright greenlets. Failed mobile/regression receipts remain evidence. SAST warnings remain unsuppressed and triaged. No deployment/paid resources/remote migrations are authorized or performed.
+
+---
+
 # Current cloud handoff — 2026-11-10
 
 The historical handoff below is retained for provenance. Current work uses managed Codex Cloud `/workspace/praxis`, origin `https://github.com/akilanpl/praxis.git`, branch `codex/praxis-final-release`, based on main `8f1e884`. Do not follow historical Mac/Terminal paths or backup exceptions: all source, dependencies, browser artifacts and Git operations for this mission stay in cloud. No deployment or paid resources are authorized.

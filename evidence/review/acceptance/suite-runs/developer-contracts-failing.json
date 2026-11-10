@@ -1,0 +1,666 @@
+{
+  "id": "c0eae6b5-482d-4890-a9c0-6988fa0dd6df",
+  "runner_version": "0.1.0",
+  "adapter_version": "1",
+  "target_id": null,
+  "target_name": "Explicit deterministic regression fixture",
+  "target_kind": "model",
+  "model_config_hash": "565da5906c4db9e27e7a55251f64637e15ebf526e3521bebdfaf2d701e197dfe",
+  "suite_slug": "developer-contracts",
+  "suite_version": "1.0.0",
+  "suite_hash": "09c077d1270a764cc2e844c3dde9ac18f635cbde1cd48626467a971cd6480206",
+  "seed": 73,
+  "trust": "demo",
+  "tasks": [
+    {
+      "id": "repair-boundary",
+      "prompt": "Function intended to return even numbers currently filters n%2==1. Return replacement condition and expected result for [-2,-1,0,1,2]. This tests code reasoning, not executable code.",
+      "category": "code_reasoning",
+      "output": {
+        "condition": "incorrect",
+        "result": []
+      },
+      "assertions": [
+        {
+          "name": "JSON schema",
+          "passed": true,
+          "expected": {
+            "type": "object",
+            "properties": {
+              "condition": {
+                "type": "string"
+              },
+              "result": {
+                "type": "array"
+              }
+            },
+            "required": [
+              "condition",
+              "result"
+            ],
+            "additionalProperties": false
+          },
+          "actual": "valid",
+          "weight": 1
+        },
+        {
+          "name": "code_reasoning: condition",
+          "passed": false,
+          "expected": "n % 2 == 0",
+          "actual": "incorrect",
+          "weight": 1
+        },
+        {
+          "name": "code_reasoning: result",
+          "passed": false,
+          "expected": [
+            -2,
+            0,
+            2
+          ],
+          "actual": [],
+          "weight": 1
+        }
+      ],
+      "passed": false,
+      "latency_ms": 0.058,
+      "attempts": 1,
+      "error": null,
+      "usage": null,
+      "provider_metadata": {},
+      "tool_trace": [],
+      "artifact": {
+        "type": "json",
+        "mime": "application/json",
+        "hash": "eed2d59e84ad62b38018ffbf28442c6e205c57ac83c7d693669bd98acbef18d2"
+      }
+    },
+    {
+      "id": "api-validation",
+      "prompt": "POST /orders requires quantity positive integer. Body {quantity:0}. Return HTTP status and error field.",
+      "category": "api_contract",
+      "output": {
+        "status": -999,
+        "field": "incorrect"
+      },
+      "assertions": [
+        {
+          "name": "JSON schema",
+          "passed": true,
+          "expected": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "integer"
+              },
+              "field": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "status",
+              "field"
+            ],
+            "additionalProperties": false
+          },
+          "actual": "valid",
+          "weight": 1
+        },
+        {
+          "name": "api_contract: status",
+          "passed": false,
+          "expected": 422,
+          "actual": -999,
+          "weight": 1
+        },
+        {
+          "name": "api_contract: field",
+          "passed": false,
+          "expected": "quantity",
+          "actual": "incorrect",
+          "weight": 1
+        }
+      ],
+      "passed": false,
+      "latency_ms": 0.026,
+      "attempts": 1,
+      "error": null,
+      "usage": null,
+      "provider_metadata": {},
+      "tool_trace": [],
+      "artifact": {
+        "type": "json",
+        "mime": "application/json",
+        "hash": "e33e6616f19b82023f673c9e08e687e0ce512fa3f1179044d31d5d4c222aa13b"
+      }
+    },
+    {
+      "id": "api-idempotency",
+      "prompt": "POST request with key K creates O1. Same key K replayed with same payload. Return created_count and order IDs.",
+      "category": "api_contract",
+      "output": {
+        "created_count": -999,
+        "orders": []
+      },
+      "assertions": [
+        {
+          "name": "JSON schema",
+          "passed": true,
+          "expected": {
+            "type": "object",
+            "properties": {
+              "created_count": {
+                "type": "integer"
+              },
+              "orders": {
+                "type": "array"
+              }
+            },
+            "required": [
+              "created_count",
+              "orders"
+            ],
+            "additionalProperties": false
+          },
+          "actual": "valid",
+          "weight": 1
+        },
+        {
+          "name": "api_contract: created_count",
+          "passed": false,
+          "expected": 1,
+          "actual": -999,
+          "weight": 1
+        },
+        {
+          "name": "api_contract: orders",
+          "passed": false,
+          "expected": [
+            "O1",
+            "O1"
+          ],
+          "actual": [],
+          "weight": 1
+        }
+      ],
+      "passed": false,
+      "latency_ms": 0.023,
+      "attempts": 1,
+      "error": null,
+      "usage": null,
+      "provider_metadata": {},
+      "tool_trace": [],
+      "artifact": {
+        "type": "json",
+        "mime": "application/json",
+        "hash": "d3a0e92cb31ebdf763845f8555ce28eef14e0b6015abbdf28771a9d173761ff2"
+      }
+    },
+    {
+      "id": "form-validation",
+      "prompt": "Signup fields: email required valid format, password minimum 12 characters. Input email=bad password=short. Return invalid fields in alphabetical order.",
+      "category": "ui_contract",
+      "output": {
+        "invalid": []
+      },
+      "assertions": [
+        {
+          "name": "JSON schema",
+          "passed": true,
+          "expected": {
+            "type": "object",
+            "properties": {
+              "invalid": {
+                "type": "array"
+              }
+            },
+            "required": [
+              "invalid"
+            ],
+            "additionalProperties": false
+          },
+          "actual": "valid",
+          "weight": 1
+        },
+        {
+          "name": "ui_contract: invalid",
+          "passed": false,
+          "expected": [
+            "email",
+            "password"
+          ],
+          "actual": [],
+          "weight": 1
+        }
+      ],
+      "passed": false,
+      "latency_ms": 0.017,
+      "attempts": 1,
+      "error": null,
+      "usage": null,
+      "provider_metadata": {},
+      "tool_trace": [],
+      "artifact": {
+        "type": "json",
+        "mime": "application/json",
+        "hash": "848be127672ccd6e585b13f149b410af9e9b8c0f690a2ec7ef0b565fcfa22703"
+      }
+    },
+    {
+      "id": "cart-calculation",
+      "prompt": "Cart: 2 books at 12 each, 1 pen at 3. Shipping free if subtotal>=25 otherwise 5. Return subtotal,shipping,total.",
+      "category": "ui_contract",
+      "output": {
+        "subtotal": -999,
+        "shipping": -999,
+        "total": -999
+      },
+      "assertions": [
+        {
+          "name": "JSON schema",
+          "passed": true,
+          "expected": {
+            "type": "object",
+            "properties": {
+              "subtotal": {
+                "type": "integer"
+              },
+              "shipping": {
+                "type": "integer"
+              },
+              "total": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "subtotal",
+              "shipping",
+              "total"
+            ],
+            "additionalProperties": false
+          },
+          "actual": "valid",
+          "weight": 1
+        },
+        {
+          "name": "ui_contract: subtotal",
+          "passed": false,
+          "expected": 27,
+          "actual": -999,
+          "weight": 1
+        },
+        {
+          "name": "ui_contract: shipping",
+          "passed": false,
+          "expected": 0,
+          "actual": -999,
+          "weight": 1
+        },
+        {
+          "name": "ui_contract: total",
+          "passed": false,
+          "expected": 27,
+          "actual": -999,
+          "weight": 1
+        }
+      ],
+      "passed": false,
+      "latency_ms": 0.024,
+      "attempts": 1,
+      "error": null,
+      "usage": null,
+      "provider_metadata": {},
+      "tool_trace": [],
+      "artifact": {
+        "type": "json",
+        "mime": "application/json",
+        "hash": "790494ab2f5e649d24b59d9add524e333345fa24fa089c8a6a1c52a380abb73b"
+      }
+    },
+    {
+      "id": "responsive-contract",
+      "prompt": "Layout rule: viewport below 640 uses 1 column; 640 to 1023 uses 2; 1024+ uses 3. Return columns for widths 390,768,1280.",
+      "category": "ui_contract",
+      "output": {
+        "columns": []
+      },
+      "assertions": [
+        {
+          "name": "JSON schema",
+          "passed": true,
+          "expected": {
+            "type": "object",
+            "properties": {
+              "columns": {
+                "type": "array"
+              }
+            },
+            "required": [
+              "columns"
+            ],
+            "additionalProperties": false
+          },
+          "actual": "valid",
+          "weight": 1
+        },
+        {
+          "name": "ui_contract: columns",
+          "passed": false,
+          "expected": [
+            1,
+            2,
+            3
+          ],
+          "actual": [],
+          "weight": 1
+        }
+      ],
+      "passed": false,
+      "latency_ms": 0.016,
+      "attempts": 1,
+      "error": null,
+      "usage": null,
+      "provider_metadata": {},
+      "tool_trace": [],
+      "artifact": {
+        "type": "json",
+        "mime": "application/json",
+        "hash": "90aad265a2cf5903fc8931f3c4b1ea8564891d628745a5dbac8cbc5baf6cb65e"
+      }
+    },
+    {
+      "id": "accessibility-contract",
+      "prompt": "Form has inputs id=email and id=phone. Visible labels only reference email. Return unlabeled input IDs.",
+      "category": "accessibility",
+      "output": {
+        "unlabeled": []
+      },
+      "assertions": [
+        {
+          "name": "JSON schema",
+          "passed": true,
+          "expected": {
+            "type": "object",
+            "properties": {
+              "unlabeled": {
+                "type": "array"
+              }
+            },
+            "required": [
+              "unlabeled"
+            ],
+            "additionalProperties": false
+          },
+          "actual": "valid",
+          "weight": 1
+        },
+        {
+          "name": "accessibility: unlabeled",
+          "passed": false,
+          "expected": [
+            "phone"
+          ],
+          "actual": [],
+          "weight": 1
+        }
+      ],
+      "passed": false,
+      "latency_ms": 0.015,
+      "attempts": 1,
+      "error": null,
+      "usage": null,
+      "provider_metadata": {},
+      "tool_trace": [],
+      "artifact": {
+        "type": "json",
+        "mime": "application/json",
+        "hash": "de9afcc24fff806267ec139853596fc9fcb6c26717296ee5394589f7e0bec6f3"
+      }
+    },
+    {
+      "id": "search-state",
+      "prompt": "Items: Red book, Blue pen, Red pen. Filter query red, case insensitive. Return matching names in original order.",
+      "category": "ui_contract",
+      "output": {
+        "matches": []
+      },
+      "assertions": [
+        {
+          "name": "JSON schema",
+          "passed": true,
+          "expected": {
+            "type": "object",
+            "properties": {
+              "matches": {
+                "type": "array"
+              }
+            },
+            "required": [
+              "matches"
+            ],
+            "additionalProperties": false
+          },
+          "actual": "valid",
+          "weight": 1
+        },
+        {
+          "name": "ui_contract: matches",
+          "passed": false,
+          "expected": [
+            "Red book",
+            "Red pen"
+          ],
+          "actual": [],
+          "weight": 1
+        }
+      ],
+      "passed": false,
+      "latency_ms": 0.015,
+      "attempts": 1,
+      "error": null,
+      "usage": null,
+      "provider_metadata": {},
+      "tool_trace": [],
+      "artifact": {
+        "type": "json",
+        "mime": "application/json",
+        "hash": "1329bed5a664bbf035723754d90023adf1034d44b942c070a37741a1b762d35c"
+      }
+    }
+  ],
+  "events": [
+    {
+      "sequence": 0,
+      "type": "run_started",
+      "elapsed_ms": 0.089,
+      "suite": "developer-contracts",
+      "seed": 73
+    },
+    {
+      "sequence": 1,
+      "type": "task_started",
+      "elapsed_ms": 0.094,
+      "task_id": "repair-boundary"
+    },
+    {
+      "sequence": 2,
+      "type": "task_completed",
+      "elapsed_ms": 0.16,
+      "task_id": "repair-boundary",
+      "passed": false,
+      "latency_ms": 0.058
+    },
+    {
+      "sequence": 3,
+      "type": "task_started",
+      "elapsed_ms": 0.161,
+      "task_id": "api-validation"
+    },
+    {
+      "sequence": 4,
+      "type": "task_completed",
+      "elapsed_ms": 0.193,
+      "task_id": "api-validation",
+      "passed": false,
+      "latency_ms": 0.026
+    },
+    {
+      "sequence": 5,
+      "type": "task_started",
+      "elapsed_ms": 0.194,
+      "task_id": "api-idempotency"
+    },
+    {
+      "sequence": 6,
+      "type": "task_completed",
+      "elapsed_ms": 0.222,
+      "task_id": "api-idempotency",
+      "passed": false,
+      "latency_ms": 0.023
+    },
+    {
+      "sequence": 7,
+      "type": "task_started",
+      "elapsed_ms": 0.223,
+      "task_id": "form-validation"
+    },
+    {
+      "sequence": 8,
+      "type": "task_completed",
+      "elapsed_ms": 0.243,
+      "task_id": "form-validation",
+      "passed": false,
+      "latency_ms": 0.017
+    },
+    {
+      "sequence": 9,
+      "type": "task_started",
+      "elapsed_ms": 0.244,
+      "task_id": "cart-calculation"
+    },
+    {
+      "sequence": 10,
+      "type": "task_completed",
+      "elapsed_ms": 0.272,
+      "task_id": "cart-calculation",
+      "passed": false,
+      "latency_ms": 0.024
+    },
+    {
+      "sequence": 11,
+      "type": "task_started",
+      "elapsed_ms": 0.273,
+      "task_id": "responsive-contract"
+    },
+    {
+      "sequence": 12,
+      "type": "task_completed",
+      "elapsed_ms": 0.292,
+      "task_id": "responsive-contract",
+      "passed": false,
+      "latency_ms": 0.016
+    },
+    {
+      "sequence": 13,
+      "type": "task_started",
+      "elapsed_ms": 0.293,
+      "task_id": "accessibility-contract"
+    },
+    {
+      "sequence": 14,
+      "type": "task_completed",
+      "elapsed_ms": 0.311,
+      "task_id": "accessibility-contract",
+      "passed": false,
+      "latency_ms": 0.015
+    },
+    {
+      "sequence": 15,
+      "type": "task_started",
+      "elapsed_ms": 0.312,
+      "task_id": "search-state"
+    },
+    {
+      "sequence": 16,
+      "type": "task_completed",
+      "elapsed_ms": 0.33,
+      "task_id": "search-state",
+      "passed": false,
+      "latency_ms": 0.015
+    },
+    {
+      "sequence": 17,
+      "type": "run_completed",
+      "elapsed_ms": 0.353,
+      "status": "completed",
+      "passed": 0,
+      "total": 8
+    }
+  ],
+  "cost": {
+    "status": "unknown",
+    "estimated_usd": null
+  },
+  "usage": {},
+  "status": "completed",
+  "configuration": {
+    "target": {
+      "kind": "model",
+      "provider": "demo-failing",
+      "name": "Explicit deterministic regression fixture",
+      "endpoint": "[invalid or absent endpoint]"
+    },
+    "execution": {
+      "max_scenario_count": 64,
+      "max_wall_seconds": 120,
+      "max_output_tokens": 1024,
+      "max_retries": 1
+    }
+  },
+  "not_run_tasks": [],
+  "summary": {
+    "passed": 0,
+    "total": 8,
+    "executed": 8,
+    "not_run": 0,
+    "failed": 8,
+    "pass_rate": 0.0,
+    "assertions_passed": 8,
+    "assertions_total": 21,
+    "weighted_assertion_rate": 0.38095238095238093,
+    "confidence_interval": [
+      0,
+      0.3244
+    ],
+    "latency_p50_ms": 0.023,
+    "latency_p95_ms": 0.058,
+    "dimensions": {
+      "accessibility": {
+        "passed": 0,
+        "total": 1,
+        "executed": 1,
+        "not_run": 0
+      },
+      "api_contract": {
+        "passed": 0,
+        "total": 2,
+        "executed": 2,
+        "not_run": 0
+      },
+      "code_reasoning": {
+        "passed": 0,
+        "total": 1,
+        "executed": 1,
+        "not_run": 0
+      },
+      "ui_contract": {
+        "passed": 0,
+        "total": 4,
+        "executed": 4,
+        "not_run": 0
+      }
+    }
+  },
+  "duration_ms": 0.352,
+  "evidence_hash": "0782fe93b83b6149c7c7cbd78dfcd6dcada2f2429eb23173f44d7b4924e2d410"
+}

@@ -1,0 +1,51 @@
+{
+  "base": "914d2267acdd541348fa247ad773b333504ce311",
+  "scope": "runner Python statements/branches; changed TypeScript executable lines and security-sensitive branches; controlled UI/Worker tests separate from real browser acceptance",
+  "python": {
+    "statements": 97.18969555035129,
+    "branches": 91.43356643356644
+  },
+  "typescript": {
+    "missing_source_files": [],
+    "files": [
+      {
+        "path": "apps/api/src/index.ts",
+        "changed_executable_lines": 106,
+        "covered_lines": 106,
+        "security_branch_outcomes": 97,
+        "covered_security_outcomes": 97
+      },
+      {
+        "path": "apps/web/src/api.ts",
+        "changed_executable_lines": 10,
+        "covered_lines": 10,
+        "security_branch_outcomes": 15,
+        "covered_security_outcomes": 15
+      },
+      {
+        "path": "apps/web/src/main.tsx",
+        "changed_executable_lines": 168,
+        "covered_lines": 165,
+        "security_branch_outcomes": 324,
+        "covered_security_outcomes": 278
+      },
+      {
+        "path": "apps/website/src/main.tsx",
+        "changed_executable_lines": 12,
+        "covered_lines": 12,
+        "security_branch_outcomes": 0,
+        "covered_security_outcomes": 0
+      },
+      {
+        "path": "packages/contracts/src/index.ts",
+        "changed_executable_lines": 10,
+        "covered_lines": 10,
+        "security_branch_outcomes": 5,
+        "covered_security_outcomes": 5
+      }
+    ],
+    "changed_line_pct": 99.01960784313725,
+    "security_branch_pct": 89.56916099773242
+  },
+  "status": "PASS"
+}

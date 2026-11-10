@@ -1,3 +1,73 @@
+# Current post-publication engineering handoff — 2026-11-10
+
+## A. Implementation summary
+
+Independent review of all original six commits reproduced and repaired P1 mutation replay and false-positive agent step exhaustion, plus material P2 redaction, internal lookup, stale-session, object durability, malformed input and mobile report defects. Passwords now use versioned 600,000-round PBKDF2 with compatible on-login upgrades. Backup/new-directory restore, future-schema refusal, private permissions, elapsed inbound body limits and finite/nesting-bounded JSON are tested. Original commits and historical failures/evidence are preserved.
+
+Review findings with commit/line/severity/reproduction and resolution: `INDEPENDENT_PR_REVIEW.md`. Component release/rollback contracts: `PRODUCTION_READINESS_REVIEW.md`. No new application architecture or hosted feature parity is invented.
+
+## B. Architecture
+
+Local React/Vite UI → session-aware transport → loopback Python control plane → SQLite WAL/hash-addressed objects/two-worker runner → model, permissioned simulated agent or authorized HTTP adapter. Separate deterministic reference worlds remain fixtures. The independent static website retains source-derived suite counts. The optional Worker remains metadata-only with user JWT forwarded to PostgREST/RLS; it never executes workloads or proxies user endpoints.
+
+## C. Verification matrix
+
+| Area | Result | Evidence |
+|---|---|---|
+| Python suite | PASS | 276 tests + 44 subtests, no skips; `evidence/review/python.log/xml` |
+| Python coverage | PASS | 97.19% statements / 91.43% branches, runner-wide, no exclusions |
+| TypeScript tests | PASS | 39 controlled DOM/transport tests, original 14 Worker tests retained separately |
+| Changed TypeScript coverage | PASS | 99.02% executable lines / 89.57% security-sensitive branch outcomes, actual git/V8 maps |
+| Compiler lint / types / builds / wheel | PASS | All workspaces, production static bundles, Worker dry-run, runner package |
+| Installation | PASS | Documented setup plus fresh locked virtualenv smoke and installed wheel |
+| HTTP / local web security | PASS | Real owned mutation-disconnect test and 12 actual Handler/SQLite ownership/origin/host/trust/revocation checks |
+| PostgreSQL / RLS | PASS | Actual disposable PG17: schema, selected policies, 28 enabled tables, concurrent idempotency, rollback, cross-owner denial, restart |
+| Hosted Supabase Auth | NOT VERIFIED | Synthetic local claims/controlled Worker transport do not certify hosted identity |
+| Production-built browser | PASS | Actual model/HTTP/SQLite journey, report layouts at 390/768/1280, artifact/comparison/vote/replay flows |
+| Model task quality | FAIL | Both actual SmolLM2 CPU ONNX models: 0/8 structured-agent tasks; invocation/persistence/grading completed |
+| Website build/responsiveness | PASS | Fresh built-site Chromium evidence at three widths; not actual-host/WCAG certification |
+| Backup/recovery | PASS | Real SQLite snapshot, object hash verification and new-directory restore, session/owner recovery and corrupt/future-schema denial |
+| Secret/dependency scans | PASS | Gitleaks, npm/pip scans; no known findings |
+| SAST | PARTIAL | Unsuppressed Bandit output and contextual triage retained; no HIGH finding, no external certification |
+| Deployment / operational hosting | NOT VERIFIED | No public app/site/Worker deployment, dedicated hosted identity or live operational acceptance |
+
+Exact executable source: `375688f0c872d7636a33b750441033b3aef4031e`. Full local feature gate: **PASS, 329 scored checks, internal 100/100**, with measured coverage rather than an unknown-coverage cap. This is internal check accounting, not production certification. See `evidence/review/gate-receipt.json`, `coverage-targets.json`, TypeScript/Python reports and source-bound `acceptance/` receipts. The normal pre-push gate also verifies final branch HEAD; CI results must be assessed at that exact SHA.
+
+Earlier failing regression/mobile checks remain retained. Actual 390px overflow was repaired, not hidden. Full commands, environment and limits are in root VERIFICATION.md. All engineering and artifacts remain in the original Codex Cloud workspace; nothing was downloaded/copied to the user's Mac.
+
+## D. Actual models
+
+| Model | Suite | Tasks | Passed | Pass rate |
+|---|---|---:|---:|---:|
+| SmolLM2-135M-Instruct-ONNX, CPU q4 | structured-agent v1.0.0 | 8 | 0 | 0% |
+| SmolLM2-360M-Instruct-ONNX, CPU q4 | structured-agent v1.0.0 | 8 | 0 | 0% |
+
+Current raw outputs, assertions, usage, timings and model revisions: `evidence/review/acceptance/browser/run-{1,2}.json`. These are real local HTTP inference, not fixtures. All-six-suite positive/negative matrix uses explicit model/tool fixtures plus an actual owned HTTP fixture; it is not 80 neural-model tasks. Hashes are integrity checks, not independent attestations.
+
+## E. Remaining blockers / scope exclusions
+
+No identified P0/P1 finding remains open in the supported local/static contract. Hosted identity/dispatch/feature parity, approved deployment resources/domain/HTTPS/headers, actual-URL acceptance, edge rate/abuse controls, hosted account lifecycle/retention, monitoring and hosted recovery remain unverified prerequisites. SAST findings are contextually triaged rather than suppressed; comprehensive external penetration and accessibility audits remain unverified.
+
+The local service is private, single-process and loopback-only. Arbitrary untrusted code/HTML lacks an external hardened executor and remains unsupported. Per-agent-step durable streaming, individual-task resume, cloud orgs/R2/queues, official trusted rankings, held-out suites, learned judges, multimodal quality inference, automatic pricing and model-driven adaptive worlds remain outside scope. A privileged local OS process can access the owner's data; local accounts are not OS isolation. Host support beyond tested Linux/Python/Node combinations is not certified.
+
+## F. Deployment and recovery
+
+**Application, website and Worker: not publicly deployed.** No production secrets, paid infrastructure, remote migrations, main writes or deployment were performed. Follow `PRODUCTION_READINESS_REVIEW.md` for explicit approval dependencies and the deployment/recovery checklist. Backup/restore publishes a new verified directory only. Keep a pre-upgrade snapshot and matching runner; old code does not understand strengthened password hashes or newer schemas. Retain the previous static artifact for eventual website rollback.
+
+## G. Git and publication
+
+Original PR #2 was already MERGED before review; main baseline is `914d226`. All original six commits through `8a2fe33` are retained. New commits remain on `codex/praxis-final-release`; user explicitly requests **push branch only, no new PR and no merge**. The historical GitHub credential blocker below has been resolved using private cloud CLI configuration outside the repository; never print or commit tokens. Final branch/remote SHA and CI URLs are reported after push.
+
+New code/review commits: `871785e` review baseline; `1409dbd` evaluation/recovery fixes; `44edde2` TypeScript/session/security coverage; `a4be4cc` source-bound coverage/DB acceptance; `d4008c4` password compatibility/mobile reports; `375688f` finite/bounded JSON. Documentation/evidence commits follow. No rewrite, squash or force push.
+
+## H. Verdict
+
+**READY FOR REVIEW.** Evidence supports reviewing the remediated local workspace and static website. It does not justify production-hosting acceptance for any component with unmet identity, operational or deployment prerequisites.
+
+---
+
+## Historical pre-publication handoff (preserved)
+
 # Praxis engineering handoff — 2026-11-10
 
 ## A. Implementation summary

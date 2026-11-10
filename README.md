@@ -104,7 +104,7 @@ The website checker runs a source-controlled owned fixture with outbound network
 
 ## Start locally
 
-Requirements: **Python 3.12+**, **Node.js 22+**, npm, and a POSIX-compatible shell for the setup script. The [manifest](pyproject.toml) requires Python 3.12; [setup](scripts/setup.sh) expects the `python3.12` executable. No cloud account or model download is required for demo fixtures.
+Requirements: **Python 3.12+**, **Node.js 22.12+**, npm, and a POSIX-compatible shell for the setup script. The [manifest](pyproject.toml) requires Python 3.12; [setup](scripts/setup.sh) expects the `python3.12` executable. No cloud account or model download is required for demo fixtures.
 
 From the repository root:
 
@@ -168,8 +168,13 @@ The real-model receipt files link run IDs and evidence hashes to the [raw 135M r
 
 ### Run checks
 
+The complete Python suite includes real owned-browser acceptance. Install Chromium before running it; use the cloud workspace's browser path and inherited proxy/CA configuration.
+
 ```sh
-npm test
+PLAYWRIGHT_BROWSERS_PATH=./work/browsers .venv/bin/python -m playwright install chromium
+PLAYWRIGHT_BROWSERS_PATH=./work/browsers npm test
+npm run test:typescript
+npm run lint
 npm run typecheck --workspace packages/contracts
 npm run typecheck --workspace apps/api
 npm run build
@@ -213,3 +218,9 @@ npm run website:build  # apps/website/dist
 ```
 
 The root build includes the website. See [website instructions](apps/website/README.md) and [current acceptance](VERIFICATION.md) for cloud browser screenshots and results. The setup script installs the Python lock and uses `ONNXRUNTIME_NODE_INSTALL=skip` for npm: CPU runtime binaries ship with ONNX Runtime, so no optional CUDA download is needed.
+
+## Independent review and release contracts
+
+[Independent six-commit review](docs/qa/INDEPENDENT_PR_REVIEW.md) records reproduced defects, remediations and evidence limits. [Production readiness/recovery](docs/qa/PRODUCTION_READINESS_REVIEW.md) defines separate contracts for the private local app, static website and experimental metadata Worker. Measured coverage and passing local gates do not establish hosted identity or deployment acceptance. See [current verification](VERIFICATION.md).
+
+Use `scripts/backup_workspace.py` for verified private SQLite/object snapshots and restore only to a new directory. Password format upgrades require the matching runner or a verified pre-upgrade backup for rollback. Keep the loopback service private. Full test tooling requires Node 22.12+ and Chromium; ordinary demo evaluation requires no model weights or cloud account.

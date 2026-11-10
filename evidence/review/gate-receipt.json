@@ -1,0 +1,3662 @@
+{
+  "commit": "375688f0c872d7636a33b750441033b3aef4031e",
+  "branch": "codex/praxis-final-release",
+  "seed": 73,
+  "scope": "local code acceptance; no claim of hosted Auth or production deployment",
+  "tests": [
+    {
+      "id": "S01.1",
+      "name": "All component production build",
+      "family": "S01",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "S01.2",
+      "name": "Frontend compiler unused-code lint",
+      "family": "S01",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "S01.3",
+      "name": "Isolated runner wheel installation and bundled execution",
+      "family": "S01",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "B01.4",
+      "name": "All public scenarios positive and negative execution",
+      "family": "B01",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "B01.5",
+      "name": "tests.test_acceptance_receipts.test_missing_stale_or_failed_receipt_cannot_count_as_acceptance[None]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 3.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.6",
+      "name": "tests.test_acceptance_receipts.test_missing_stale_or_failed_receipt_cannot_count_as_acceptance[value1]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.7",
+      "name": "tests.test_acceptance_receipts.test_missing_stale_or_failed_receipt_cannot_count_as_acceptance[value2]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.8",
+      "name": "tests.test_acceptance_receipts.test_missing_stale_or_failed_receipt_cannot_count_as_acceptance[value3]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.9",
+      "name": "tests.test_acceptance_receipts.test_missing_stale_or_failed_receipt_cannot_count_as_acceptance[value4]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.10",
+      "name": "tests.test_acceptance_receipts.test_missing_stale_or_failed_receipt_cannot_count_as_acceptance[value5]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.11",
+      "name": "tests.test_acceptance_receipts.test_missing_stale_or_failed_receipt_cannot_count_as_acceptance[value6]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.12",
+      "name": "tests.test_acceptance_receipts.test_current_checks_required_and_validated",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.13",
+      "name": "tests.test_api.LocalAPITests.test_application_cannot_be_model_and_invalid_seed",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 328.0,
+      "retries": 0
+    },
+    {
+      "id": "Z06.14",
+      "name": "tests.test_api.LocalAPITests.test_auth_and_revocation",
+      "family": "Z06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 454.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.15",
+      "name": "tests.test_api.LocalAPITests.test_blinding_duplicate_vote_and_ratings",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 334.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.16",
+      "name": "tests.test_api.LocalAPITests.test_noncomparable_and_private_excluded",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 323.0,
+      "retries": 0
+    },
+    {
+      "id": "Z06.17",
+      "name": "tests.test_api.LocalAPITests.test_owner_isolation_and_secret_policy",
+      "family": "Z06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 322.0,
+      "retries": 0
+    },
+    {
+      "id": "Y01.18",
+      "name": "tests.test_api.LocalAPITests.test_persisted_run_and_evidence",
+      "family": "Y01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 374.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.19",
+      "name": "tests.test_api.LocalAPITests.test_world_replay",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 335.0,
+      "retries": 0
+    },
+    {
+      "id": "C01.20",
+      "name": "tests.test_api.ConcurrencyTests.test_concurrent_match_assignment_reuses_one_pair",
+      "family": "C01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 329.0,
+      "retries": 0
+    },
+    {
+      "id": "C01.21",
+      "name": "tests.test_api.ConcurrencyTests.test_idempotent_run_request",
+      "family": "C01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 355.0,
+      "retries": 0
+    },
+    {
+      "id": "C01.22",
+      "name": "tests.test_api.ConcurrencyTests.test_invalid_suite_rejected",
+      "family": "C01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 341.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.23",
+      "name": "tests.test_application.ApplicationTests.test_actual_response_is_graded_not_a_model_answer",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 12.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.24",
+      "name": "tests.test_application.ApplicationTests.test_mutation_requires_opt_in",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "Z06.25",
+      "name": "tests.test_application.ApplicationTests.test_untrusted_paths_and_credentials_rejected",
+      "family": "Z06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.26",
+      "name": "tests.test_application.ApplicationDiagnosticsTests.test_application_connection_uses_get_health_not_model_inference",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "Z06.27",
+      "name": "tests.test_backup_recovery.test_sqlite_and_objects_restore_with_owner_session_and_hashes",
+      "family": "Z06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 175.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.28",
+      "name": "tests.test_backup_recovery.test_future_schema_refused_without_modifying_existing_database",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 2.0,
+      "retries": 0
+    },
+    {
+      "id": "Z06.29",
+      "name": "tests.test_backup_recovery.test_private_database_and_uploaded_object_permissions",
+      "family": "Z06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 165.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.30",
+      "name": "tests.test_cli_release.test_cli_lists_real_versioned_suites",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 7.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.31",
+      "name": "tests.test_cli_release.test_cli_validation_reports_unsafe_dsl_without_execution",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 23.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.32",
+      "name": "tests.test_cli_release.test_cli_validate_valid_versioned_suite",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 23.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.33",
+      "name": "tests.test_cli_release.test_cli_run_writes_real_fixture_assertions[demo-0-8]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 36.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.34",
+      "name": "tests.test_cli_release.test_cli_run_writes_real_fixture_assertions[demo-failing-1-0]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 35.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.35",
+      "name": "tests.test_cli_release.test_cli_unknown_suite_is_useful_failure",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 4.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.36",
+      "name": "tests.test_cli_release.test_cli_missing_input_file_fails_closed",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 3.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.37",
+      "name": "tests.test_cli_release.test_cli_world_exact_seed_replays",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 78.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.38",
+      "name": "tests.test_cli_release.test_cli_diagnose_labels_fixture",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 3.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.39",
+      "name": "tests.test_cli_release.test_cli_diagnose_invalid_endpoint_cannot_call_provider",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 4.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.40",
+      "name": "tests.test_connector_protocol.ConnectorProtocolTests.test_custom_protocol",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 7.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.41",
+      "name": "tests.test_connector_protocol.ConnectorProtocolTests.test_http_failure_does_not_leak_response_body",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.42",
+      "name": "tests.test_connector_protocol.ConnectorProtocolTests.test_malformed_response_classified",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.43",
+      "name": "tests.test_connector_protocol.ConnectorProtocolTests.test_ollama_protocol_and_usage",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 8.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.44",
+      "name": "tests.test_connector_protocol.ConnectorProtocolTests.test_openai_request_and_usage",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.45",
+      "name": "tests.test_connector_protocol.ConnectorProtocolTests.test_redirect_handler_rejects",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.46",
+      "name": "tests.test_connector_protocol.ConnectorProtocolTests.test_supported_seed_is_explicit",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.47",
+      "name": "tests.test_coverage_targets.test_actual_changed_line_mapping_passes_and_missing_or_uncovered_fails",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 28.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.48",
+      "name": "tests.test_diff_coverage.test_changed_executable_lines_and_missing_evidence",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 43.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.49",
+      "name": "tests.test_diff_coverage.test_unknown_diff_keeps_existing_protected_branch_cap",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 14.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.50",
+      "name": "tests.test_diff_coverage.test_typescript_and_website_executable_lines_are_measured",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 29.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.51",
+      "name": "tests.test_engine.EngineTests.test_application_not_treated_as_model",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 19.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.52",
+      "name": "tests.test_engine.EngineTests.test_artifact_hash_and_wav",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.53",
+      "name": "tests.test_engine.EngineTests.test_at_least_30_distinct_valid_scenarios",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 78.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.54",
+      "name": "tests.test_engine.EngineTests.test_bad_json_fails",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "R03.55",
+      "name": "tests.test_engine.EngineTests.test_cancel_denominator_includes_not_run",
+      "family": "R03",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 19.0,
+      "retries": 0
+    },
+    {
+      "id": "R03.56",
+      "name": "tests.test_engine.EngineTests.test_cancel_during_run",
+      "family": "R03",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 18.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.57",
+      "name": "tests.test_engine.EngineTests.test_demo_end_to_end",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 87.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.58",
+      "name": "tests.test_engine.EngineTests.test_every_passing_and_failing_regression_fixture",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 15.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.59",
+      "name": "tests.test_engine.EngineTests.test_failing_demo_never_passes",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 19.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.60",
+      "name": "tests.test_engine.EngineTests.test_invalid_and_unsafe_dsl_rejected",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 36.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.61",
+      "name": "tests.test_engine.EngineTests.test_numeric_schema_boolean_separation",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "Z06.62",
+      "name": "tests.test_engine.EngineTests.test_report_escapes_html",
+      "family": "Z06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 20.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.63",
+      "name": "tests.test_engine.EngineTests.test_schema_ref_rejected",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 18.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.64",
+      "name": "tests.test_engine.EngineTests.test_unknown_provider_fails_with_evidence",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 19.0,
+      "retries": 0
+    },
+    {
+      "id": "Z06.65",
+      "name": "tests.test_engine.EngineTests.test_untrusted_code_and_html_denied",
+      "family": "Z06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.66",
+      "name": "tests.test_engine.AgentTests.test_actual_tool_state_mutation",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 10.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.67",
+      "name": "tests.test_engine.AgentTests.test_plain_model_cannot_pass_executable_agent_suite",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 8.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.68",
+      "name": "tests.test_engine.AgentTests.test_task_without_environment_fails_as_agent",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 19.0,
+      "retries": 0
+    },
+    {
+      "id": "Z06.69",
+      "name": "tests.test_engine.AgentTests.test_unauthorized_action_and_no_evidence_refund_fail",
+      "family": "Z06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 9.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.70",
+      "name": "tests.test_engine.WorldTests.test_all_domain_growth_and_replay",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 37.0,
+      "retries": 0
+    },
+    {
+      "id": "Z06.71",
+      "name": "tests.test_engine.WorldTests.test_permission_denial_prevents_growth",
+      "family": "Z06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.72",
+      "name": "tests.test_engine.WorldTests.test_policy_conflict_refused",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.73",
+      "name": "tests.test_engine.WorldTests.test_seed_changes_world",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 9.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.74",
+      "name": "tests.test_engine.WorldTests.test_static_comparison_mode",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.75",
+      "name": "tests.test_engine.WorldTests.test_world_budget",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.76",
+      "name": "tests.test_engine.AdapterContractTests.test_agent_real_http_decision_loop",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 35.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.77",
+      "name": "tests.test_engine.AdapterContractTests.test_custom_adapter_protocol_real_http",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 7.0,
+      "retries": 0
+    },
+    {
+      "id": "R03.78",
+      "name": "tests.test_engine.AdapterContractTests.test_deadline_enforced",
+      "family": "R03",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 107.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.79",
+      "name": "tests.test_engine.AdapterContractTests.test_ollama_adapter_protocol_real_http",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 100.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.80",
+      "name": "tests.test_engine.AdapterContractTests.test_openai_adapter_protocol_real_http",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 7.0,
+      "retries": 0
+    },
+    {
+      "id": "Z06.81",
+      "name": "tests.test_engine.AdapterContractTests.test_secrets_excluded_from_evidence",
+      "family": "Z06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 27.0,
+      "retries": 0
+    },
+    {
+      "id": "Z06.82",
+      "name": "tests.test_engine.AdapterContractTests.test_url_credentials_rejected",
+      "family": "Z06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 472.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.83",
+      "name": "tests.test_final_release.test_provider_nonobject_and_invalid_usage_classified[None]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 7.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.84",
+      "name": "tests.test_final_release.test_provider_nonobject_and_invalid_usage_classified[value1]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.85",
+      "name": "tests.test_final_release.test_provider_nonobject_and_invalid_usage_classified[1]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.86",
+      "name": "tests.test_final_release.test_provider_nonobject_and_invalid_usage_classified[True]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 8.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.87",
+      "name": "tests.test_final_release.test_provider_nonobject_and_invalid_usage_classified[text]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.88",
+      "name": "tests.test_final_release.test_provider_nonobject_and_invalid_usage_classified[value5]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.89",
+      "name": "tests.test_final_release.test_provider_nonobject_and_invalid_usage_classified[value6]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 8.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.90",
+      "name": "tests.test_final_release.test_protocol_content_requires_text[openai-response0]",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.91",
+      "name": "tests.test_final_release.test_protocol_content_requires_text[ollama-response1]",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.92",
+      "name": "tests.test_final_release.test_reflected_credential_redacted_and_evidence_integrity",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 7.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.93",
+      "name": "tests.test_final_release.test_bounded_partial_run_preserves_named_unexecuted_tasks",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 20.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.94",
+      "name": "tests.test_final_release.test_execution_integer_bounds[max_retries-1.5]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 9.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.95",
+      "name": "tests.test_final_release.test_execution_integer_bounds[max_scenario_count-1.5]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 9.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.96",
+      "name": "tests.test_final_release.test_execution_integer_bounds[max_output_tokens-True]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 9.0,
+      "retries": 0
+    },
+    {
+      "id": "C01.97",
+      "name": "tests.test_final_release.test_suite_revision_explicit_and_concurrent_duplicate_rejected",
+      "family": "C01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 208.0,
+      "retries": 0
+    },
+    {
+      "id": "Z06.98",
+      "name": "tests.test_final_release.test_application_real_http_pass_fail_and_authorization",
+      "family": "Z06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 524.0,
+      "retries": 0
+    },
+    {
+      "id": "R03.99",
+      "name": "tests.test_final_release.test_restart_recovers_active_runs_beyond_list_cap",
+      "family": "R03",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 469.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.100",
+      "name": "tests.test_final_release.test_suite_token_limit_reaches_adapter",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "R03.101",
+      "name": "tests.test_final_release.test_trickled_response_respects_total_deadline",
+      "family": "R03",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 91.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.102",
+      "name": "tests.test_final_release.test_agent_provider_failure_retains_executed_state_trace",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.103",
+      "name": "tests.test_final_release.test_run_artifacts_rollback_together_on_storage_failure",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 196.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.104",
+      "name": "tests.test_http_boundary.HTTPBoundaryTests.test_ambiguous_http_framing_rejected",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.105",
+      "name": "tests.test_http_boundary.HTTPBoundaryTests.test_dns_rebinding_host_rejected",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 4.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.106",
+      "name": "tests.test_http_boundary.HTTPBoundaryTests.test_health_security_headers",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 4.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.107",
+      "name": "tests.test_http_boundary.HTTPBoundaryTests.test_invalid_json_and_content_type",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.108",
+      "name": "tests.test_http_boundary.HTTPBoundaryTests.test_origin_rejected",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.109",
+      "name": "tests.test_http_boundary.HTTPBoundaryTests.test_oversize_rejected_before_read",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "R03.110",
+      "name": "tests.test_http_boundary.HTTPBoundaryTests.test_truncated_body_and_total_read_deadline",
+      "family": "R03",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "R03.111",
+      "name": "tests.test_independent_review.test_mutating_http_timeout_never_retried",
+      "family": "R03",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.112",
+      "name": "tests.test_independent_review.test_agent_without_final_action_cannot_pass",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 3.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.113",
+      "name": "tests.test_independent_review.test_adapter_requires_literal_mutation_consent[false]",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.114",
+      "name": "tests.test_independent_review.test_adapter_requires_literal_mutation_consent[1]",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.115",
+      "name": "tests.test_independent_review.test_adapter_requires_literal_mutation_consent[value2]",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.116",
+      "name": "tests.test_independent_review.test_adapter_requires_literal_mutation_consent[value3]",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.117",
+      "name": "tests.test_independent_review.test_adapter_requires_literal_mutation_consent[None]",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.118",
+      "name": "tests.test_independent_review.test_adapter_requires_literal_mutation_consent[False]",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.119",
+      "name": "tests.test_independent_review.test_redaction_preserves_envelope_and_hash[tasks]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.120",
+      "name": "tests.test_independent_review.test_redaction_preserves_envelope_and_hash[passed]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.121",
+      "name": "tests.test_independent_review.test_redaction_preserves_envelope_and_hash[status]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.122",
+      "name": "tests.test_independent_review.test_redaction_preserves_envelope_and_hash[completed]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.123",
+      "name": "tests.test_independent_review.test_redaction_preserves_envelope_and_hash[demo]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.124",
+      "name": "tests.test_independent_review.test_redaction_preserves_envelope_and_hash[a]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.125",
+      "name": "tests.test_independent_review.test_redaction_does_not_collapse_payload_keys_or_grade_hidden_original",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 3.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.126",
+      "name": "tests.test_independent_review.test_malformed_suite_rejected_before_execution[category-value0]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 20.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.127",
+      "name": "tests.test_independent_review.test_malformed_suite_rejected_before_execution[assertions-value1]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 19.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.128",
+      "name": "tests.test_independent_review.test_malformed_suite_rejected_before_execution[assertions-value2]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 19.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.129",
+      "name": "tests.test_independent_review.test_duplicate_old_suite_cannot_bypass_list_cap",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 626.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.130",
+      "name": "tests.test_independent_review.test_corrupt_existing_upload_repaired_atomically",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 167.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.131",
+      "name": "tests.test_independent_review.test_malformed_application_request_rejected_before_retry_dispatch[None]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.132",
+      "name": "tests.test_independent_review.test_malformed_application_request_rejected_before_retry_dispatch[value1]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 4.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.133",
+      "name": "tests.test_independent_review.test_malformed_application_request_rejected_before_retry_dispatch[value2]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 4.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.134",
+      "name": "tests.test_independent_review.test_malformed_application_request_rejected_before_retry_dispatch[value3]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 4.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.135",
+      "name": "tests.test_media.MediaTests.test_binary_rejected_and_boundaries",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 9.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.136",
+      "name": "tests.test_media.MediaTests.test_hash_dedup_storage",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 7.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.137",
+      "name": "tests.test_media.MediaTests.test_html_inert_and_public_consent_not_inferred",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.138",
+      "name": "tests.test_media.MediaTests.test_wav_real_duration",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 7.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.139",
+      "name": "tests.test_password_upgrade.test_new_hashes_and_legacy_login_upgrade_without_reset",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 427.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.140",
+      "name": "tests.test_password_upgrade.test_username_requires_string[None]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.141",
+      "name": "tests.test_password_upgrade.test_username_requires_string[username1]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.142",
+      "name": "tests.test_password_upgrade.test_username_requires_string[True]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 7.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.143",
+      "name": "tests.test_password_upgrade.test_username_requires_string[123]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.144",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[name-None]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 166.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.145",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[name-{}]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 167.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.146",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[name-[]]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 171.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.147",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[name-]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 166.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.148",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[name-    ]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 167.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.149",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[name-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 165.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.150",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[endpoint-[]]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 168.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.151",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[endpoint-True]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 168.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.152",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[endpoint-http://host:badport]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 168.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.153",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[model-{}]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 168.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.154",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[model-12]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 172.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.155",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[capabilities-text]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 164.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.156",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[capabilities-['unknown']]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 165.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.157",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[max_tokens-0]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 166.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.158",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[max_tokens-8193]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 170.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.159",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[max_tokens-True]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 165.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.160",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[max_tokens-1.5]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 169.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.161",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[temperature--0.1]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 164.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.162",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[temperature-2.1]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 170.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.163",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[temperature-nan]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 166.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.164",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[temperature-zero]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 169.0,
+      "retries": 0
+    },
+    {
+      "id": "R03.165",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[timeout-0]",
+      "family": "R03",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 165.0,
+      "retries": 0
+    },
+    {
+      "id": "R03.166",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[timeout-121]",
+      "family": "R03",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 173.0,
+      "retries": 0
+    },
+    {
+      "id": "R03.167",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[timeout-inf]",
+      "family": "R03",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 166.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.168",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[allow_mutation-true]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 166.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.169",
+      "name": "tests.test_release_validation.test_world_contract_rejects_unreplayable_inputs[body0]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 165.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.170",
+      "name": "tests.test_release_validation.test_world_contract_rejects_unreplayable_inputs[body1]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 170.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.171",
+      "name": "tests.test_release_validation.test_world_contract_rejects_unreplayable_inputs[body2]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 165.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.172",
+      "name": "tests.test_release_validation.test_world_contract_rejects_unreplayable_inputs[body3]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 173.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.173",
+      "name": "tests.test_release_validation.test_world_contract_rejects_unreplayable_inputs[body4]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 169.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.174",
+      "name": "tests.test_release_validation.test_world_contract_rejects_unreplayable_inputs[body5]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 170.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.175",
+      "name": "tests.test_release_validation.test_world_contract_rejects_unreplayable_inputs[body6]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 166.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.176",
+      "name": "tests.test_release_validation.test_world_contract_rejects_unreplayable_inputs[body7]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 169.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.177",
+      "name": "tests.test_release_validation.test_world_contract_rejects_unreplayable_inputs[body8]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 167.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.178",
+      "name": "tests.test_release_validation.test_world_contract_rejects_unreplayable_inputs[body9]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 175.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.179",
+      "name": "tests.test_release_validation.test_world_contract_rejects_unreplayable_inputs[body10]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 166.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.180",
+      "name": "tests.test_release_validation.test_world_contract_rejects_unreplayable_inputs[body11]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 170.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.181",
+      "name": "tests.test_release_validation.test_suite_clone_cannot_reuse_persisted_record_id",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 210.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.182",
+      "name": "tests.test_release_validation.test_idempotency_key_cannot_change_request",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 201.0,
+      "retries": 0
+    },
+    {
+      "id": "Z06.183",
+      "name": "tests.test_release_validation.test_auth_requires_bearer_scheme",
+      "family": "Z06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 322.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.184",
+      "name": "tests.test_release_validation.test_suite_slug_safe_for_ui_routes[with/slash]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 179.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.185",
+      "name": "tests.test_release_validation.test_suite_slug_safe_for_ui_routes[../traversal]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 176.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.186",
+      "name": "tests.test_release_validation.test_suite_slug_safe_for_ui_routes[with space]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 173.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.187",
+      "name": "tests.test_release_validation.test_suite_slug_safe_for_ui_routes[UPPERCASE]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 173.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.188",
+      "name": "tests.test_security_decisions.test_assertion_operator_decisions[equals-1-1-True]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.189",
+      "name": "tests.test_security_decisions.test_assertion_operator_decisions[equals-True-1-False]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.190",
+      "name": "tests.test_security_decisions.test_assertion_operator_decisions[contains-actual2-1-True]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.191",
+      "name": "tests.test_security_decisions.test_assertion_operator_decisions[contains-abc-z-False]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.192",
+      "name": "tests.test_security_decisions.test_assertion_operator_decisions[not_contains-abc-z-True]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.193",
+      "name": "tests.test_security_decisions.test_assertion_operator_decisions[not_contains-actual5-1-False]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.194",
+      "name": "tests.test_security_decisions.test_assertion_operator_decisions[subset-actual6-expected6-True]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.195",
+      "name": "tests.test_security_decisions.test_assertion_operator_decisions[subset-actual7-expected7-False]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.196",
+      "name": "tests.test_security_decisions.test_assertion_operator_decisions[gte-3-2-True]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.197",
+      "name": "tests.test_security_decisions.test_assertion_operator_decisions[gte-True-1-False]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.198",
+      "name": "tests.test_security_decisions.test_assertion_operator_decisions[lte-2-3-True]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.199",
+      "name": "tests.test_security_decisions.test_assertion_operator_decisions[lte-4-3-False]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.200",
+      "name": "tests.test_security_decisions.test_assertion_operator_decisions[contains-None-a-False]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.201",
+      "name": "tests.test_security_decisions.test_invalid_suite_decisions[<lambda>0]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 21.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.202",
+      "name": "tests.test_security_decisions.test_invalid_suite_decisions[<lambda>1]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 19.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.203",
+      "name": "tests.test_security_decisions.test_invalid_suite_decisions[<lambda>2]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 19.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.204",
+      "name": "tests.test_security_decisions.test_invalid_suite_decisions[<lambda>3]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 2.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.205",
+      "name": "tests.test_security_decisions.test_invalid_suite_decisions[<lambda>4]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 2.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.206",
+      "name": "tests.test_security_decisions.test_invalid_suite_decisions[<lambda>5]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 19.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.207",
+      "name": "tests.test_security_decisions.test_invalid_suite_decisions[<lambda>6]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 21.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.208",
+      "name": "tests.test_security_decisions.test_invalid_suite_decisions[<lambda>7]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 19.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.209",
+      "name": "tests.test_security_decisions.test_invalid_suite_decisions[<lambda>8]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 19.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.210",
+      "name": "tests.test_security_decisions.test_invalid_suite_decisions[<lambda>9]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 21.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.211",
+      "name": "tests.test_security_decisions.test_invalid_suite_decisions[<lambda>10]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 18.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.212",
+      "name": "tests.test_security_decisions.test_invalid_suite_decisions[<lambda>11]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 20.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.213",
+      "name": "tests.test_security_decisions.test_invalid_suite_decisions[<lambda>12]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 19.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.214",
+      "name": "tests.test_security_decisions.test_invalid_suite_decisions[<lambda>13]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 2.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.215",
+      "name": "tests.test_security_decisions.test_invalid_suite_decisions[<lambda>14]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 19.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.216",
+      "name": "tests.test_security_decisions.test_invalid_suite_decisions[<lambda>15]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 19.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.217",
+      "name": "tests.test_security_decisions.test_custom_invalid_wire_output[\\xff-invalid_response]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 7.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.218",
+      "name": "tests.test_security_decisions.test_custom_invalid_wire_output[NaN-invalid_response]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.219",
+      "name": "tests.test_security_decisions.test_custom_invalid_wire_output[{}-invalid_response]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.220",
+      "name": "tests.test_security_decisions.test_provider_missing_or_invalid_usage[openai-response0]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 8.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.221",
+      "name": "tests.test_security_decisions.test_provider_missing_or_invalid_usage[ollama-response1]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.222",
+      "name": "tests.test_security_decisions.test_provider_missing_or_invalid_usage[ollama-response2]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.223",
+      "name": "tests.test_security_decisions.test_provider_missing_or_invalid_usage[ollama-response3]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 8.0,
+      "retries": 0
+    },
+    {
+      "id": "R03.224",
+      "name": "tests.test_security_decisions.test_provider_transport_errors_are_safe[error0-timeout]",
+      "family": "R03",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.225",
+      "name": "tests.test_security_decisions.test_provider_transport_errors_are_safe[error1-connection_error]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.226",
+      "name": "tests.test_security_decisions.test_provider_transport_errors_are_safe[error2-connection_error]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 8.0,
+      "retries": 0
+    },
+    {
+      "id": "R03.227",
+      "name": "tests.test_security_decisions.test_response_byte_limit_and_expired_deadline",
+      "family": "R03",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.228",
+      "name": "tests.test_security_decisions.test_retry_failure_and_numeric_configuration_recorded",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 8.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.229",
+      "name": "tests.test_security_decisions.test_wall_budget_before_first_task_and_between_attempts",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 20.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.230",
+      "name": "tests.test_security_decisions.test_agent_tool_observations_and_policy_decisions[actions0]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 2.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.231",
+      "name": "tests.test_security_decisions.test_agent_tool_observations_and_policy_decisions[actions1]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 2.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.232",
+      "name": "tests.test_security_decisions.test_agent_tool_observations_and_policy_decisions[actions2]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 2.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.233",
+      "name": "tests.test_security_decisions.test_agent_tool_observations_and_policy_decisions[actions3]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 2.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.234",
+      "name": "tests.test_security_decisions.test_agent_invalid_model_actions_fail_with_prior_trace[not JSON]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 2.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.235",
+      "name": "tests.test_security_decisions.test_agent_invalid_model_actions_fail_with_prior_trace[output1]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 2.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.236",
+      "name": "tests.test_security_decisions.test_agent_invalid_model_actions_fail_with_prior_trace[output2]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 2.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.237",
+      "name": "tests.test_security_decisions.test_agent_invalid_model_actions_fail_with_prior_trace[output3]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 2.0,
+      "retries": 0
+    },
+    {
+      "id": "R03.238",
+      "name": "tests.test_security_decisions.test_agent_timeout_preserves_trace",
+      "family": "R03",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 2.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.239",
+      "name": "tests.test_security_decisions.test_session_expiry_revocation_and_quota",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 167.0,
+      "retries": 0
+    },
+    {
+      "id": "R03.240",
+      "name": "tests.test_security_decisions.test_cancel_decisions_and_invalid_run_configuration",
+      "family": "R03",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 174.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.241",
+      "name": "tests.test_security_decisions.test_active_run_limit_independent_of_presentation_cap",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 171.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.242",
+      "name": "tests.test_security_decisions.test_upload_failed_replace_leaves_no_record_or_temporary",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 168.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.243",
+      "name": "tests.test_security_decisions.test_invalid_media_metadata_rejected[\\x89PNG\\r\\n\\x1a\\n\\x00\\x00\\x00\\x00IHDR\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 163.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.244",
+      "name": "tests.test_security_decisions.test_invalid_media_metadata_rejected[RIFF\\x00\\x00\\x00\\x00WAVEinvalid]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 164.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.245",
+      "name": "tests.test_security_decisions.test_supported_signature_and_metadata_inspection[\\xff\\xd8\\xffDATA\\xff\\xd9-image/jpeg]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 165.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.246",
+      "name": "tests.test_security_decisions.test_supported_signature_and_metadata_inspection[GIF89a\\x01\\x00\\x01\\x00\\x00\\x00\\x00-image/gif]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 176.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.247",
+      "name": "tests.test_security_decisions.test_supported_signature_and_metadata_inspection[\\x00\\x00\\x00\\x10ftypisom-video/mp4]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 170.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.248",
+      "name": "tests.test_security_decisions.test_supported_signature_and_metadata_inspection[\\x1aE\\xdf\\xa3fixture-video/webm]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 166.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.249",
+      "name": "tests.test_security_decisions.test_supported_signature_and_metadata_inspection[{\"ok\":true}-application/json]",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 169.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.250",
+      "name": "tests.test_security_decisions.test_artifact_size_png_and_world_invalid_domain",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.251",
+      "name": "tests.test_security_decisions.test_actual_owned_browser_fixture_contract",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 934.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.252",
+      "name": "tests.test_security_decisions.test_installed_module_entrypoint",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 90.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.253",
+      "name": "tests.test_security_decisions.test_module_entrypoint_in_process",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "R03.254",
+      "name": "tests.test_security_decisions.test_nonfinite_or_wrong_type_adapter_budget[timeout-nan]",
+      "family": "R03",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.255",
+      "name": "tests.test_security_decisions.test_nonfinite_or_wrong_type_adapter_budget[temperature-True]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.256",
+      "name": "tests.test_security_decisions.test_nonfinite_or_wrong_type_adapter_budget[max_tokens-1.5]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.257",
+      "name": "tests.test_security_decisions.test_missing_provider_config_and_query_rejected",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 0.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.258",
+      "name": "tests.test_security_decisions.test_agent_external_json_actions_and_usage",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 2.0,
+      "retries": 0
+    },
+    {
+      "id": "R03.259",
+      "name": "tests.test_security_decisions.test_application_network_errors[error0-timeout]",
+      "family": "R03",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 7.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.260",
+      "name": "tests.test_security_decisions.test_application_network_errors[error1-connection_error]",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.261",
+      "name": "tests.test_security_decisions.test_application_non_json_response_and_invalid_method",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.262",
+      "name": "tests.test_security_decisions.test_http_negative_wire_decisions[Content-Length: bad\\r\\n--400]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 172.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.263",
+      "name": "tests.test_security_decisions.test_http_negative_wire_decisions[Content-Length: -1\\r\\n--413]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 162.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.264",
+      "name": "tests.test_security_decisions.test_http_negative_wire_decisions[Origin: https://evil.example\\r\\nOrigin: http://localhost:5173\\r\\n--400]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 163.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.265",
+      "name": "tests.test_security_decisions.test_http_negative_wire_decisions[Content-Type: application/json-evil\\r\\nContent-Length: 2\\r\\n-{}-415]",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 164.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.266",
+      "name": "tests.test_security_decisions.test_http_negative_wire_decisions[Content-Type: application/json\\r\\nContent-Length: 2\\r\\n-[]-400]",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 165.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.267",
+      "name": "tests.test_security_decisions.test_http_negative_wire_decisions[Content-Type: application/json\\r\\nContent-Length: 3\\r\\n-NaN-400]",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 165.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.268",
+      "name": "tests.test_security_decisions.test_http_static_security_errors_and_options",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 170.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.269",
+      "name": "tests.test_security_decisions.test_server_loopback_configuration_and_cleanup",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.270",
+      "name": "tests.test_security_decisions.test_real_http_mutation_disconnect_is_not_replayed",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 512.0,
+      "retries": 0
+    },
+    {
+      "id": "R03.271",
+      "name": "tests.test_security_decisions.test_cancellation_stops_pending_retry",
+      "family": "R03",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.272",
+      "name": "tests.test_security_decisions.test_application_declared_json_cannot_be_nonfinite_or_malformed[NaN]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 7.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.273",
+      "name": "tests.test_security_decisions.test_application_declared_json_cannot_be_nonfinite_or_malformed[not json]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.274",
+      "name": "tests.test_security_decisions.test_application_declared_json_cannot_be_nonfinite_or_malformed[\\xff]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 8.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.275",
+      "name": "tests.test_security_decisions.test_malformed_chunked_http_classified_for_both_adapters",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 11.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.276",
+      "name": "tests.test_security_decisions.test_provider_json_cannot_overflow_or_corrupt_persisted_json[{\"score\":1e309}]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 8.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.277",
+      "name": "tests.test_security_decisions.test_provider_json_cannot_overflow_or_corrupt_persisted_json[{\"value\":\"\\ud800\"}]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 7.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.278",
+      "name": "tests.test_security_decisions.test_provider_json_cannot_overflow_or_corrupt_persisted_json[{\"score\":NaN}]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.279",
+      "name": "tests.test_security_decisions.test_overflowing_model_content_and_suite_cannot_pass_numeric_contract",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.280",
+      "name": "tests.test_security_decisions.test_deep_provider_output_fails_closed_before_grading",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "F02.281",
+      "name": "Controlled frontend and Worker TypeScript coverage tests",
+      "family": "F02",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "S02.282",
+      "name": "Python and changed TypeScript coverage targets",
+      "family": "S02",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "Z07.283",
+      "name": "health accurately states metadata-only mode",
+      "family": "Z07",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "A07.284",
+      "name": "unauthenticated request is denied before network access",
+      "family": "A07",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "Z07.285",
+      "name": "invalid authenticated identity denied",
+      "family": "Z07",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "A07.286",
+      "name": "expired token denied",
+      "family": "A07",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "Z07.287",
+      "name": "malicious origin denied",
+      "family": "Z07",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "Z07.288",
+      "name": "secret target fields rejected",
+      "family": "Z07",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "Z07.289",
+      "name": "arbitrary endpoints stored but never fetched",
+      "family": "Z07",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "Z07.290",
+      "name": "client cannot promote evidence to verified",
+      "family": "Z07",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "Z07.291",
+      "name": "foreign target cannot create a run",
+      "family": "Z07",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "Z07.292",
+      "name": "oversize payload rejected",
+      "family": "Z07",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "Z07.293",
+      "name": "duplicate evidence returns conflict",
+      "family": "Z07",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "Z07.294",
+      "name": "security headers accompany failures",
+      "family": "Z07",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "Z07.295",
+      "name": "malformed endpoint returns validation error",
+      "family": "Z07",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "Z07.296",
+      "name": "credential-bearing endpoints rejected",
+      "family": "Z07",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "S05.297",
+      "name": "Tracked history secret scan",
+      "family": "S05",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "S06.298",
+      "name": "Node dependency advisory audit",
+      "family": "S06",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "S06.299",
+      "name": "Python dependency advisory audit",
+      "family": "S06",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "D01.300",
+      "name": "tracked migration matches schema and applies to empty database",
+      "family": "D01",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "D01.301",
+      "name": "ownership.sql",
+      "family": "D01",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "D01.302",
+      "name": "persistence.sql",
+      "family": "D01",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "D01.303",
+      "name": "RLS enabled on all 28 tables",
+      "family": "D01",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "D01.304",
+      "name": "concurrent request idempotency enforced by PostgreSQL uniqueness",
+      "family": "D01",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "D01.305",
+      "name": "failed transaction rolls back all partial writes",
+      "family": "D01",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "D01.306",
+      "name": "foreign role cannot read persisted run",
+      "family": "D01",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "D01.307",
+      "name": "committed data and owner policy survive database restart",
+      "family": "D01",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "E04.308",
+      "name": "Register in Chromium and retrieve authenticated account through real HTTP",
+      "family": "E04",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "E04.309",
+      "name": "Connect, diagnose, execute, persist and inspect SmolLM2 135M CPU q4",
+      "family": "E04",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "E04.310",
+      "name": "Connect, diagnose, execute, persist and inspect SmolLM2 360M CPU q4",
+      "family": "E04",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "E04.311",
+      "name": "Compare two matched targets with identical suite, seed and budgets",
+      "family": "E04",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "E04.312",
+      "name": "Owner cannot vote on own published outputs",
+      "family": "E04",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "E04.313",
+      "name": "Bounded adaptive reference world persists state and replays identically",
+      "family": "E04",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "E04.314",
+      "name": "Browser file upload is private and HTML renders inertly",
+      "family": "E04",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "E04.315",
+      "name": "Real WAV ingestion measures duration and provides an audio preview",
+      "family": "E04",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "E04.316",
+      "name": "Anonymous other-owned vote reveals identities once and rejects replay",
+      "family": "E04",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "E04.317",
+      "name": "Preference updates persist independently of empty official objective rankings",
+      "family": "E04",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "F04.318",
+      "name": "Visible navigation and branded missing-page route render without runtime errors",
+      "family": "F04",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "F04.319",
+      "name": "390/768/1280 viewport checks, report layouts and zero browser errors",
+      "family": "F04",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "F06.320",
+      "name": "cart interaction",
+      "family": "F06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "F06.321",
+      "name": "search filters items",
+      "family": "F06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "F06.322",
+      "name": "invalid email rejected",
+      "family": "F06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "F06.323",
+      "name": "inputs have labels",
+      "family": "F06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "F06.324",
+      "name": "viewport 390 no overflow",
+      "family": "F06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "F06.325",
+      "name": "viewport 1280 no overflow",
+      "family": "F06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "F06.326",
+      "name": "no runtime errors",
+      "family": "F06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "F06.327",
+      "name": "Project website production browser acceptance",
+      "family": "F06",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "P01.328",
+      "name": "Bounded health request latency p95 < 300 ms",
+      "family": "P01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "O01.329",
+      "name": "Fresh local API reports its real mode",
+      "family": "O01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    }
+  ],
+  "stages": [
+    {
+      "name": "build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "exit_code": 0,
+      "duration_ms": 11356.754578000618
+    },
+    {
+      "name": "frontend-lint",
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "exit_code": 0,
+      "duration_ms": 2997.846040000695
+    },
+    {
+      "name": "wheel",
+      "command": [
+        "/workspace/praxis/.venv/bin/python",
+        "scripts/verify_wheel.py"
+      ],
+      "exit_code": 0,
+      "duration_ms": 514.4700139999259
+    },
+    {
+      "name": "suite-matrix",
+      "command": [
+        "/workspace/praxis/.venv/bin/python",
+        "scripts/suite_acceptance.py"
+      ],
+      "exit_code": 0,
+      "duration_ms": 695.6681869996828
+    },
+    {
+      "name": "python",
+      "command": [
+        "/workspace/praxis/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests",
+        "-q",
+        "--cov=praxis",
+        "--cov-branch",
+        "--cov-report=json:/workspace/praxis/.pushgate/reports/coverage.json",
+        "--junitxml=/workspace/praxis/.pushgate/reports/python.xml"
+      ],
+      "exit_code": 0,
+      "duration_ms": 22226.543619999575
+    },
+    {
+      "name": "typescript",
+      "command": [
+        "npm",
+        "run",
+        "test:typescript"
+      ],
+      "exit_code": 0,
+      "duration_ms": 4426.653951999469
+    },
+    {
+      "name": "coverage-targets",
+      "command": [
+        "/workspace/praxis/.venv/bin/python",
+        "scripts/coverage_acceptance.py",
+        "--python",
+        "/workspace/praxis/.pushgate/reports/coverage.json",
+        "--typescript",
+        "/workspace/praxis/.pushgate/reports/typescript/coverage-final.json",
+        "--base",
+        "914d2267acdd541348fa247ad773b333504ce311",
+        "--output",
+        "/workspace/praxis/.pushgate/reports/coverage-targets.json"
+      ],
+      "exit_code": 0,
+      "duration_ms": 42.90855300041585
+    },
+    {
+      "name": "worker",
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "--test",
+        "--test-reporter=tap",
+        "apps/api/test/security.test.ts"
+      ],
+      "exit_code": 0,
+      "duration_ms": 380.0497020001785
+    },
+    {
+      "name": "secrets",
+      "command": [
+        "/workspace/praxis/work/gitleaks/gitleaks",
+        "git",
+        "--log-opts=--all",
+        "--redact",
+        "--no-banner",
+        "--report-format",
+        "json",
+        "--report-path",
+        "/workspace/praxis/.pushgate/reports/gitleaks.json"
+      ],
+      "exit_code": 0,
+      "duration_ms": 532.0904700001847
+    },
+    {
+      "name": "npm-audit",
+      "command": [
+        "npm",
+        "audit",
+        "--json",
+        "--cache",
+        "./work/npm-cache"
+      ],
+      "exit_code": 0,
+      "duration_ms": 613.5283430003255
+    },
+    {
+      "name": "python-audit",
+      "command": [
+        "/workspace/praxis/.venv/bin/python",
+        "-m",
+        "pip_audit",
+        "--skip-editable",
+        "--cache-dir",
+        "work/pip-audit-cache",
+        "--format",
+        "json",
+        "--output",
+        "/workspace/praxis/.pushgate/reports/python-audit.json"
+      ],
+      "exit_code": 0,
+      "duration_ms": 484.71972700008337
+    },
+    {
+      "name": "postgres",
+      "command": [
+        "/workspace/praxis/.venv/bin/python",
+        "scripts/postgres_container_check.py"
+      ],
+      "exit_code": 0,
+      "duration_ms": 3081.866468000044
+    },
+    {
+      "name": "browser",
+      "command": [
+        "/workspace/praxis/.venv/bin/python",
+        "scripts/browser_check.py"
+      ],
+      "exit_code": 0,
+      "duration_ms": 111020.09581400035
+    },
+    {
+      "name": "website",
+      "command": [
+        "/workspace/praxis/.venv/bin/python",
+        "-m",
+        "praxis",
+        "check-website",
+        "--output-dir",
+        "/workspace/praxis/.pushgate/reports/website"
+      ],
+      "exit_code": 0,
+      "duration_ms": 868.1655059999684
+    },
+    {
+      "name": "project-website",
+      "command": [
+        "/workspace/praxis/.venv/bin/python",
+        "scripts/website_check.py"
+      ],
+      "exit_code": 0,
+      "duration_ms": 4661.409799000467
+    }
+  ],
+  "environment_started": true,
+  "security_clear": true,
+  "coverage": {
+    "line": 97.18969555035129,
+    "branch": 91.43356643356644,
+    "diff": 98.96694214876032,
+    "diff_status": "479/484 changed executable runtime lines"
+  },
+  "source_commit": "375688f0c872d7636a33b750441033b3aef4031e",
+  "source_dirty": false,
+  "source_tree_sha256": "6dd75d9374debff30694471e53063a16fda6e8b2dcc0b217ea72733c42ddb831",
+  "source_files": [
+  {
+    "path": ".github/workflows/ci.yml",
+    "sha256": "095d168de1dd8d19a154e81dac48bb4a8e517d5a6cb1f40c49feb417e41cfc30"
+  },
+  {
+    "path": ".github/workflows/pushgate.yml",
+    "sha256": "8f25aa2b6bc908c39d50f940fa685e8160e7b7fa2e399fcaa64ba92bc61744bd"
+  },
+  {
+    "path": ".pushgate/baseline.json",
+    "sha256": "0a765cc675aded91260a209ea6ab8ffcaebd2da9e2fb0dd7038ade4b5ccbbac8"
+  },
+  {
+    "path": ".pushgate/bypass.log",
+    "sha256": "c561e46bcd62b12acf3a53ba04802a31911c9da30d4a4ad5df87edd5aa9fe46d"
+  },
+  {
+    "path": ".pushgate/config.yml",
+    "sha256": "d28f1ca971d47af24e184e1e7f6c28c30f2045e954d5f832ad362011eaba9e97"
+  },
+  {
+    "path": ".pushgate/run.sh",
+    "sha256": "1bd01db2fcebcdfce4198f35d677478964f2d6f34d2c129284575e5ee7a50de7"
+  },
+  {
+    "path": ".pushgate/score.py",
+    "sha256": "ff9625fd4f9e367ad74800bf0ef32d38028071a000063834b5491b6b79510c6c"
+  },
+  {
+    "path": "apps/api/package.json",
+    "sha256": "6c646a32256a8324043b6a41814b94b384275f380d03cf05c659d201146484be"
+  },
+  {
+    "path": "apps/api/src/index.ts",
+    "sha256": "f5028e5aec0a28a58d93f32911bc08409a78ddb65ab56137dfd76719d671298d"
+  },
+  {
+    "path": "apps/api/test/review.test.ts",
+    "sha256": "078dc798557ab70db320c2f8505ac3401ca727f3bbd1197fa2a407e0afc5e69e"
+  },
+  {
+    "path": "apps/api/test/security.test.ts",
+    "sha256": "b392c4e005fe8690b5d5f8b75ad75fdaeaedbe433cf4c857e0f8fceab312f251"
+  },
+  {
+    "path": "apps/api/tsconfig.json",
+    "sha256": "1e657c78809efa7fa14d4cf48ae58dfa88cb4774e56195ca0e36424cf631fe8c"
+  },
+  {
+    "path": "apps/api/wrangler.toml",
+    "sha256": "97cc244c74154598a1e7d9d5948efced8438e30379ee97ae4b7c226773be5e18"
+  },
+  {
+    "path": "apps/web/index.html",
+    "sha256": "ec77ed3c0778cbfa5fd2a00a3bf25b1b40da347737433549bd8c0bf39b389007"
+  },
+  {
+    "path": "apps/web/package.json",
+    "sha256": "51c8c3b6e553e5f61cdd05c7cd5b13e1cde73517684d3e380c2d162c5f5d685c"
+  },
+  {
+    "path": "apps/web/src/api.ts",
+    "sha256": "0a01a09d3c9fbb28c5a432ca5a2b15f628ff3c475e539bbdc610ccf60c0f0abb"
+  },
+  {
+    "path": "apps/web/src/main.tsx",
+    "sha256": "9af197b21fecfe5fee12a84781dc5e48ff3d3e3d04d8cb712e9ac10f86f823bf"
+  },
+  {
+    "path": "apps/web/src/style.css",
+    "sha256": "39330fe37fec310287f19327665385785aeb59663bee096df1b2aaddfbf3d6a4"
+  },
+  {
+    "path": "apps/web/test/api.test.ts",
+    "sha256": "0c2d5a7a2ea5759eed26f64fac9a0fe130f990b1b32107b61daa612e2ce54427"
+  },
+  {
+    "path": "apps/web/test/app.test.tsx",
+    "sha256": "7efa9aaf291b76c8c99da665ff964b9c4ed2e7015994b54c982749e54635ba13"
+  },
+  {
+    "path": "apps/web/tsconfig.json",
+    "sha256": "22a3dfaaf370a54d0ffdffb659f5ca687f47517e70fee1bd101d4d97cca41e7d"
+  },
+  {
+    "path": "apps/web/vite.config.ts",
+    "sha256": "fe732f9d00cbc8415b6ba7c9c05590076bbeb11863c377b96aec24408cc9b484"
+  },
+  {
+    "path": "apps/website/README.md",
+    "sha256": "548e5f9fd8409b908ab3606a6b18207c7361233b95c6d16aacc9ba7c9cc60e52"
+  },
+  {
+    "path": "apps/website/index.html",
+    "sha256": "42e24e9d0a0d71006cb185e5fe6b9eb5d3445c3d00f5dfad69d641878502feb9"
+  },
+  {
+    "path": "apps/website/package.json",
+    "sha256": "be2d64590c9fb18a1da2c2c451cc6e22cefc53c34f6c2cda836c8de244ddb352"
+  },
+  {
+    "path": "apps/website/public/favicon.svg",
+    "sha256": "3ca2345ae3b4ae384e9e4bf023e13f5932c2c4493bb1d0485fbb5e880389228a"
+  },
+  {
+    "path": "apps/website/src/main.tsx",
+    "sha256": "9b8f13b0e14f1fefed225dc8c0aa3b5207eda6eb26959ade55f51a638aa8bae8"
+  },
+  {
+    "path": "apps/website/src/style.css",
+    "sha256": "7f4a2f2a1b65935582327e7bf55611e4f2aec8945150efeb5514d13485637ef3"
+  },
+  {
+    "path": "apps/website/test/website.test.tsx",
+    "sha256": "b9426f822cae715bf405cac4eea6861a877c059783595d51d89cb931ec8ac902"
+  },
+  {
+    "path": "apps/website/tsconfig.json",
+    "sha256": "fd6e15cbceef82559d7c7defce5285c12731f50d9fc135a2cfc6495956bf1230"
+  },
+  {
+    "path": "package-lock.json",
+    "sha256": "3eeadd5a4273e0b135f91dc7251ffe9f753b4a7f253686b7c9a15c0ea144ae43"
+  },
+  {
+    "path": "package.json",
+    "sha256": "49ac16a3f4607efd9e2d1069d3cc6fe70a5e6dbd02bc37ce048f12a034972b13"
+  },
+  {
+    "path": "packages/contracts/openapi.json",
+    "sha256": "9155161a34465440e5985fec5fdd005f6d6a84904c166577d35150e77f8474f9"
+  },
+  {
+    "path": "packages/contracts/package.json",
+    "sha256": "dba5e356a20c220f1bc1c3bc9bab698ff133d2c0551e26b8ebaaaa7f7a98de0a"
+  },
+  {
+    "path": "packages/contracts/src/index.ts",
+    "sha256": "7d47809d38fac2b13eab21588fe657136ca0950b548803ddfcd3c6897948bfc1"
+  },
+  {
+    "path": "packages/scenarios/agent-workflows-v1.json",
+    "sha256": "24e5d9a902dd849b652d4565833be4c122045eb4797876e61f8d39715e21fff5"
+  },
+  {
+    "path": "packages/scenarios/developer-contracts-v1.json",
+    "sha256": "53aa74f3859b23b2c3f9acb39ca445f0c3501986583ba1385e7923e098acd137"
+  },
+  {
+    "path": "packages/scenarios/grounded-research-v1.json",
+    "sha256": "e86f357379c417f4280dcafedb77e0003c57702a3cd1818b5b76eb9ef227d174"
+  },
+  {
+    "path": "packages/scenarios/http-application-v1.json",
+    "sha256": "f70c6186cf1d252f21b2c31bab43314a224cae877a9c12546f37c6a7d22b7668"
+  },
+  {
+    "path": "packages/scenarios/security-resilience-v1.json",
+    "sha256": "f4c6c9913b12b0fc48e09f6825d3418d49e4c15d7da85cbe01f891fe7ef578de"
+  },
+  {
+    "path": "packages/scenarios/structured-agent-v1.json",
+    "sha256": "5c112c0d44a33ec03cf8b0e86e5df1c7f219e62eeb4abf6ddf0e4b36d9a30c7b"
+  },
+  {
+    "path": "pyproject.toml",
+    "sha256": "03e2eb4b58ba2e23b3413190f0e34ae09288fcf4f142ab918884969b7349041a"
+  },
+  {
+    "path": "requirements-lock.txt",
+    "sha256": "3d8e777ad9411c8738c4d7f12bfb7ad639beec549572831b9500d940244cc5d0"
+  },
+  {
+    "path": "runner/README.md",
+    "sha256": "2ef86a4b083d6112ded195b98de97961471087c26e6b63110289ad2afa952fdf"
+  },
+  {
+    "path": "runner/praxis/__init__.py",
+    "sha256": "32a7d79926302fe248fb26901955460b9553de02797b57270b56210f8c01df69"
+  },
+  {
+    "path": "runner/praxis/__main__.py",
+    "sha256": "79ee6f134c5c5193377cf9b189cbdcc3e2095e49ba9cec310114441c15a917c4"
+  },
+  {
+    "path": "runner/praxis/adapters.py",
+    "sha256": "b2465b159d7b65b82e2677d2cf23f0d8f9c999db39d4f1a4b4e23f19eb30085c"
+  },
+  {
+    "path": "runner/praxis/agent.py",
+    "sha256": "ea5d9db33ed18ce3b8267357e3a696560a7b10806d13c3a6aa00cfcf0cc897ea"
+  },
+  {
+    "path": "runner/praxis/application.py",
+    "sha256": "1a1e7c9158ec0f0eabbb1a5856ab09c805e7d02ccf6c6b2ac07942baf4cc0ded"
+  },
+  {
+    "path": "runner/praxis/artifact_checks.py",
+    "sha256": "c35e76487565861f3c304b4d9127e055d69b1d7f669928b93376230dc95b15eb"
+  },
+  {
+    "path": "runner/praxis/cli.py",
+    "sha256": "bea94e2ba3bf27d67391164df75b8449886a1f045ffdbb9d216471bd9b05749d"
+  },
+  {
+    "path": "runner/praxis/engine.py",
+    "sha256": "187e4be757652c8f3e3247ee4c5a2acb3ccb21cf94ad482efd2f1d27256d8572"
+  },
+  {
+    "path": "runner/praxis/media.py",
+    "sha256": "712afe6fa51033d8b9667b960ef13571f1a77d81761d98fa5a4dec9a6f0c7a6b"
+  },
+  {
+    "path": "runner/praxis/server.py",
+    "sha256": "42e41d330d505be23561d76417b9f613b80ec43c91ef669e71eda6c1e026631b"
+  },
+  {
+    "path": "runner/praxis/worlds.py",
+    "sha256": "7d7f9a2a937fad35e4757a06c7efe257bf01001792132bfbde43cd2ce5b490a2"
+  },
+  {
+    "path": "scripts/acceptance_receipts.py",
+    "sha256": "6f0439146d6360d21d1c9da7e6aef353584d7f4da1c324fe631d77380ad8d3f4"
+  },
+  {
+    "path": "scripts/backup_workspace.py",
+    "sha256": "65b9912f6047fad595911a4e6f2401120bedeb9e50ab902ccb507b1436658fea"
+  },
+  {
+    "path": "scripts/browser_check.py",
+    "sha256": "a423d99a785c28eb3738855b679fb861249ba0399b596b5ea3653e3676dbaf23"
+  },
+  {
+    "path": "scripts/build.py",
+    "sha256": "b215899582f326a9c2662563da7ab737449d3d6dd72c58b51ee2a19abd64fcce"
+  },
+  {
+    "path": "scripts/coverage_acceptance.py",
+    "sha256": "f928109821e45fcd20d5a8da1fade440627aa59e87f8a56465533ca81c63ef1c"
+  },
+  {
+    "path": "scripts/db_reliability.py",
+    "sha256": "11b55e209759c293b0add4d900f56a54cb9f856d564a78983eca5b8c7dfaed31"
+  },
+  {
+    "path": "scripts/dev.py",
+    "sha256": "ec656ffdfebb27eed9d232d199935ccd755c80a7c6b9890eba3ad562be83ba61"
+  },
+  {
+    "path": "scripts/diff_coverage.py",
+    "sha256": "820b86c9d7edf3b73209b3be154785fc2e859bbef45bc0f9139d857fca49da11"
+  },
+  {
+    "path": "scripts/evidence_identity.py",
+    "sha256": "21b43e43e01971f460bd9da1cc79be74686c0fca14e94093e0a79a518046aa0c"
+  },
+  {
+    "path": "scripts/integration_proof.py",
+    "sha256": "0d1f7f148e68353160f82035a358e1c4d9fb9a89596fc93f1f18a2ccfd2d181f"
+  },
+  {
+    "path": "scripts/local_model_server.mjs",
+    "sha256": "1c018393090cdce7c15a8e2212cfb7a0b28f3b353860ccc9ba795f9889f9b07f"
+  },
+  {
+    "path": "scripts/postgres_acceptance.py",
+    "sha256": "328d4cd62a9f57055e06466565a0d6eab0257bf6709e7612b9fdb38c30f14c07"
+  },
+  {
+    "path": "scripts/postgres_container_check.py",
+    "sha256": "e718587ad460596f53028d37410d5ab8eb24fd067d63cff500c7083061486600"
+  },
+  {
+    "path": "scripts/real_inference_acceptance.py",
+    "sha256": "f34202d3b5f21e32dbc67587f487882f254c8a971a487e0c357b67c952b34870"
+  },
+  {
+    "path": "scripts/release_gate.py",
+    "sha256": "a92dfc07c0b05eb28236b93766dcda2417b1fa5955ba1b84564fa2f151b39450"
+  },
+  {
+    "path": "scripts/setup.sh",
+    "sha256": "ccf51166c53213ee19f240e0cef477078999e23a05281c402cf5a9c2dd64172c"
+  },
+  {
+    "path": "scripts/start_host_browser.py",
+    "sha256": "d266cd58e33978a74f915133d8ac4a6ccf9d27dd427e4c4ae2b2803646e85e49"
+  },
+  {
+    "path": "scripts/suite_acceptance.py",
+    "sha256": "f2b7b5104c4ee516a96b789afe7773362aaf70502d1b07d7e79b0b571cb1907f"
+  },
+  {
+    "path": "scripts/verify_review_evidence.py",
+    "sha256": "bdfbdeb5878d30a51153dfedb48a964414ffe3c773fd8116b9b6c2af1a2c693a"
+  },
+  {
+    "path": "scripts/verify_wheel.py",
+    "sha256": "2a1ef850b8a2704dd142ec8e65e3a5bd5b99ea872bf6217ec2128815b8f38c31"
+  },
+  {
+    "path": "scripts/website_check.py",
+    "sha256": "5ccc5da9031ed39905c132d2ddaf5b67e0b78d03eb56c12bcfa95030de00b233"
+  },
+  {
+    "path": "supabase/.gitignore",
+    "sha256": "507699eb91144818edf61d3a079212cacf31d8db520eae428e3b48fcf0d6919c"
+  },
+  {
+    "path": "supabase/config.toml",
+    "sha256": "268a02bdea18e69840672b078637fe3387847bcddf9aeedf7df9e2fa95aef953"
+  },
+  {
+    "path": "supabase/migrations/20261103162347_praxis_schema.sql",
+    "sha256": "a021db3b65ccfdd8455c09db6f4220e41dac194b664eedcb42387a4d5813a6f8"
+  },
+  {
+    "path": "supabase/schema.sql",
+    "sha256": "a021db3b65ccfdd8455c09db6f4220e41dac194b664eedcb42387a4d5813a6f8"
+  },
+  {
+    "path": "supabase/tests/ownership.sql",
+    "sha256": "1dea929fc14d476ead02df52c4e99bb221ddcfdc01b09664cb5c7bb4f67ea7e9"
+  },
+  {
+    "path": "supabase/tests/persistence.sql",
+    "sha256": "16f92d981575ede97b4dca83cf4c15ca70ebd85ab37d34083b723e6fc15151d7"
+  },
+  {
+    "path": "tests/test_acceptance_receipts.py",
+    "sha256": "0cf93b1594b0c3d43b7aee3802a1d7fa2b4ba20869536c654080ffe6edb1ee5d"
+  },
+  {
+    "path": "tests/test_api.py",
+    "sha256": "218e3074d4446247914b26d5cc807c85a8c402a368a578e693521cd2bec9c798"
+  },
+  {
+    "path": "tests/test_application.py",
+    "sha256": "903ea931a05db9bb83a85ba1ea0a620064c49427c3eced5ed380e0e2cdc5698f"
+  },
+  {
+    "path": "tests/test_backup_recovery.py",
+    "sha256": "97a1693b3ea3642eb6f8bde36f3c646b2e283034e5f168ab8c0db4192bea20c1"
+  },
+  {
+    "path": "tests/test_cli_release.py",
+    "sha256": "0b71781c2c92bad17501b1757ef191fb3c6d356a67031b76fee2cc4921772322"
+  },
+  {
+    "path": "tests/test_connector_protocol.py",
+    "sha256": "2ccf1fabb1a7fed1a92ab532128f33fb8d0f3c3a7c38e74fe61ee05d868ecfcb"
+  },
+  {
+    "path": "tests/test_coverage_targets.py",
+    "sha256": "ffb05bb72fb2b833c413bf189a637f3083fdf8992f69ebfef3b4b3ada2bc2a99"
+  },
+  {
+    "path": "tests/test_diff_coverage.py",
+    "sha256": "85869b452d49e3d1c621871fbdf98b82ed89684ddeeb43808561589d306300f9"
+  },
+  {
+    "path": "tests/test_engine.py",
+    "sha256": "c14b2cb4d0d437d6cc92951730734d6157cb1bcddfdeb7974e871023926375e2"
+  },
+  {
+    "path": "tests/test_final_release.py",
+    "sha256": "8bcc746a296cf3cf7929e94f0c9c4ffaa511c144a110c512bfea55c9bb747039"
+  },
+  {
+    "path": "tests/test_http_boundary.py",
+    "sha256": "4734f9c25516bc985fbeb9382504ddfa4ff99366718a805cf9546c05d3089de5"
+  },
+  {
+    "path": "tests/test_independent_review.py",
+    "sha256": "ef4758c5ca1eff0f4686de2537d46d8b5a03f34ae0d18a0391ed32962ad890d2"
+  },
+  {
+    "path": "tests/test_media.py",
+    "sha256": "2d24f5a84022d7a922495ab6b981ae8fe4e6cad8b1f5fb827e941e8d1799f980"
+  },
+  {
+    "path": "tests/test_password_upgrade.py",
+    "sha256": "4382a40887c18b8fd1d3f06aa55e73c834903de04ed97fdab788b33fd6f53336"
+  },
+  {
+    "path": "tests/test_release_validation.py",
+    "sha256": "957993eeb6d4efcdc828a32920347fb33fee29aee43e97e4487c8662c90cb026"
+  },
+  {
+    "path": "tests/test_security_decisions.py",
+    "sha256": "c25270ebf9b47ebdfb0edf7ea866f57dd4842a304908388c97bfa5d8c161f489"
+  },
+  {
+    "path": "vitest.config.ts",
+    "sha256": "47b991de3bc81c93510343673c5b878a4e37bc41a1523130543bef5949e7bdea"
+  }
+],
+  "performance": {
+    "requests": 30,
+    "p95_ms": 0.6375880002451595,
+    "scope": "loopback health requests, not capacity certification"
+  },
+  "baseline_score": 67.3,
+  "duration_seconds": 171.03670570400027,
+  "result": {
+    "score": 100.0,
+    "raw_score": 100.0,
+    "grade": "A",
+    "decision": "PASS",
+    "groups": {
+      "S": {
+        "weight": 5,
+        "tests": 7,
+        "passed": 7,
+        "rate": 1.0
+      },
+      "B": {
+        "weight": 14,
+        "tests": 106,
+        "passed": 106,
+        "rate": 1.0
+      },
+      "A": {
+        "weight": 12,
+        "tests": 29,
+        "passed": 29,
+        "rate": 1.0
+      },
+      "D": {
+        "weight": 6,
+        "tests": 8,
+        "passed": 8,
+        "rate": 1.0
+      },
+      "F": {
+        "weight": 8,
+        "tests": 11,
+        "passed": 11,
+        "rate": 1.0
+      },
+      "E": {
+        "weight": 10,
+        "tests": 10,
+        "passed": 10,
+        "rate": 1.0
+      },
+      "X": {
+        "weight": 8,
+        "tests": 60,
+        "passed": 60,
+        "rate": 1.0
+      },
+      "V": {
+        "weight": 7,
+        "tests": 49,
+        "passed": 49,
+        "rate": 1.0
+      },
+      "Z": {
+        "weight": 12,
+        "tests": 25,
+        "passed": 25,
+        "rate": 1.0
+      },
+      "P": {
+        "weight": 5,
+        "tests": 1,
+        "passed": 1,
+        "rate": 1.0
+      },
+      "R": {
+        "weight": 5,
+        "tests": 17,
+        "passed": 17,
+        "rate": 1.0
+      },
+      "C": {
+        "weight": 3,
+        "tests": 4,
+        "passed": 4,
+        "rate": 1.0
+      },
+      "Y": {
+        "weight": 3,
+        "tests": 1,
+        "passed": 1,
+        "rate": 1.0
+      },
+      "O": {
+        "weight": 2,
+        "tests": 1,
+        "passed": 1,
+        "rate": 1.0
+      }
+    },
+    "executed": 329,
+    "threshold": 80,
+    "ratchet_ok": true,
+    "scope": "Local feature-branch code acceptance. Hosted deployment/Auth certification is separate and remains blocked without an approved cloud project."
+  }
+}

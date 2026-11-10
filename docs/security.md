@@ -17,3 +17,13 @@ HTTP applications require `authorized:true` acknowledgement before any network r
 Final result and generated artifact metadata commit atomically. Active-run recovery and request-key lookup inspect the database independently of list pagination. HTTP Transfer-Encoding and duplicate Content-Length are rejected. Agent error records preserve already-executed tool traces. HTML reports escape observations, expectations and configuration. The separate static project website has no login, runtime secrets, tracking or evaluation endpoint calls.
 
 Custom suite schemas remain operator-supplied evaluation logic inside the local process; no hostile-schema resource-isolation guarantee is made. Cancellation remains cooperative and task resume is unsupported. No production authentication, public abuse-control or hardened arbitrary-code executor claim is made.
+
+## Independent post-publication review
+
+See [independent findings](qa/INDEPENDENT_PR_REVIEW.md) and [release contracts](qa/PRODUCTION_READINESS_REVIEW.md). New account hashes use an explicit `pbkdf2_sha256$600000$` format. Existing 240,000-round hashes are verified with their original parameters and upgraded with a new salt only after successful login; failed login does not rewrite them. Unsupported hash formats fail closed. Rollback requires the matching runner or pre-upgrade snapshot, not an assumption that old code understands new hashes.
+
+POST evaluations are never automatically retried after unknown outcomes. `allow_mutation` must literally be true at execution. Step exhaustion without a final agent action is a classified failure with retained trace. Redaction preserves protocol keys/enums/digests, sanitizes reflected untrusted payloads before grading and explicitly rejects key collisions. Finite UTF-8 JSON with bounded nesting is required at network/evidence boundaries; malformed content is not fixture-repaired.
+
+Local HTTP rejects duplicate security headers, ambiguous media types and truncated bodies and applies a total body-read deadline plus idle timeout. This does not turn the private loopback service into a hardened public web server. Session-aware frontend requests cannot revoke or populate a replacement session from an old response. Final run/objects retain transactional/atomic boundaries; new DB/object/backup files use private permissions.
+
+Actual loopback HTTP ownership/origin/host/revocation tests, source-bound browser/DB receipts, secret/dependency scans and unsuppressed Bandit findings are in `evidence/review`. Bandit triage is PARTIAL and contextual; no ASVS certification or external penetration audit is claimed. Hosted Supabase identity, edge quotas, retention and production secret operations remain outside acceptance.

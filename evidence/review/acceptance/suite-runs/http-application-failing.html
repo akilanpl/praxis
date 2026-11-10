@@ -1,0 +1,41 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'"><title>Praxis run report</title><style>body{font:16px system-ui;margin:32px;max-width:960px;color:#18221e}article{border:1px solid #ccc;padding:16px;margin:16px 0;break-inside:avoid}pre{white-space:pre-wrap;overflow-wrap:anywhere}h1{font-size:36px}@media print{body{margin:0}}</style><h1>Praxis evaluation report</h1><p>Trust: self-reported · suite http-application v1.0.0 · seed 73</p><p>Passed 0 / 4. Cost: unknown. Self-reported and demo results are excluded from official rankings.</p><p>Evidence hash: 2e9224e8330a2efc69baf6f5f8ab88fdd92b64dd0fa1919a8c1446a202a5bb2d</p><article><h2>health-contract — FAIL</h2><p>5.911 ms</p><ul><li><strong>PASS JSON schema</strong><p>Expected: <code>{&quot;type&quot;: &quot;object&quot;, &quot;required&quot;: [&quot;status&quot;, &quot;content_type&quot;, &quot;body&quot;, &quot;latency_ms&quot;]}</code></p><p>Observed: <code>&quot;valid&quot;</code></p></li><li><strong>FAIL status</strong><p>Expected: <code>200</code></p><p>Observed: <code>500</code></p></li><li><strong>FAIL body.status</strong><p>Expected: <code>&quot;ok&quot;</code></p><p>Observed: <code>&quot;wrong&quot;</code></p></li></ul><pre>{
+  &quot;status&quot;: 500,
+  &quot;content_type&quot;: &quot;text/plain&quot;,
+  &quot;body&quot;: {
+    &quot;status&quot;: &quot;wrong&quot;
+  },
+  &quot;latency_ms&quot;: 5.856
+}</pre></article><article><h2>missing-route — FAIL</h2><p>6.138 ms</p><ul><li><strong>PASS JSON schema</strong><p>Expected: <code>{&quot;type&quot;: &quot;object&quot;, &quot;required&quot;: [&quot;status&quot;, &quot;content_type&quot;, &quot;body&quot;, &quot;latency_ms&quot;]}</code></p><p>Observed: <code>&quot;valid&quot;</code></p></li><li><strong>FAIL status</strong><p>Expected: <code>404</code></p><p>Observed: <code>500</code></p></li></ul><pre>{
+  &quot;status&quot;: 500,
+  &quot;content_type&quot;: &quot;text/plain&quot;,
+  &quot;body&quot;: {
+    &quot;status&quot;: &quot;wrong&quot;
+  },
+  &quot;latency_ms&quot;: 6.077
+}</pre></article><article><h2>json-content-type — FAIL</h2><p>9.286 ms</p><ul><li><strong>PASS JSON schema</strong><p>Expected: <code>{&quot;type&quot;: &quot;object&quot;, &quot;required&quot;: [&quot;status&quot;, &quot;content_type&quot;, &quot;body&quot;, &quot;latency_ms&quot;]}</code></p><p>Observed: <code>&quot;valid&quot;</code></p></li><li><strong>FAIL content_type</strong><p>Expected: <code>&quot;application/json&quot;</code></p><p>Observed: <code>&quot;text/plain&quot;</code></p></li></ul><pre>{
+  &quot;status&quot;: 500,
+  &quot;content_type&quot;: &quot;text/plain&quot;,
+  &quot;body&quot;: {
+    &quot;status&quot;: &quot;wrong&quot;
+  },
+  &quot;latency_ms&quot;: 9.226
+}</pre></article><article><h2>invalid-order — FAIL</h2><p>5.588 ms</p><ul><li><strong>PASS JSON schema</strong><p>Expected: <code>{&quot;type&quot;: &quot;object&quot;, &quot;required&quot;: [&quot;status&quot;, &quot;content_type&quot;, &quot;body&quot;, &quot;latency_ms&quot;]}</code></p><p>Observed: <code>&quot;valid&quot;</code></p></li><li><strong>FAIL status</strong><p>Expected: <code>422</code></p><p>Observed: <code>500</code></p></li><li><strong>FAIL body.field</strong><p>Expected: <code>&quot;quantity&quot;</code></p><p>Observed: <code>null</code></p></li></ul><pre>{
+  &quot;status&quot;: 500,
+  &quot;content_type&quot;: &quot;text/plain&quot;,
+  &quot;body&quot;: {},
+  &quot;latency_ms&quot;: 5.519
+}</pre></article><article><h2>Unexecuted scenarios</h2><pre>[]</pre><h2>Reproducible configuration</h2><pre>{
+  &quot;target&quot;: {
+    &quot;kind&quot;: &quot;application&quot;,
+    &quot;provider&quot;: &quot;custom&quot;,
+    &quot;name&quot;: &quot;Owned HTTP regression fixture&quot;,
+    &quot;authorized&quot;: true,
+    &quot;allow_mutation&quot;: true,
+    &quot;endpoint&quot;: &quot;http://127.0.0.1:36299&quot;
+  },
+  &quot;execution&quot;: {
+    &quot;max_scenario_count&quot;: 4,
+    &quot;max_wall_seconds&quot;: 120,
+    &quot;max_retries&quot;: 0
+  }
+}</pre></article></html>

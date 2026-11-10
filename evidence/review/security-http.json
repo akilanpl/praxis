@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "scope": "Actual HTTP -> Handler -> SQLite on disposable loopback service; no public deployment or paid calls",
+  "checks": [
+    {
+      "name": "actual loopback health and CSP",
+      "passed": true
+    },
+    {
+      "name": "untrusted browser origin rejected",
+      "passed": true
+    },
+    {
+      "name": "rebinding Host rejected",
+      "passed": true
+    },
+    {
+      "name": "unauthenticated records rejected",
+      "passed": true
+    },
+    {
+      "name": "client trust metadata cannot escalate target",
+      "passed": true
+    },
+    {
+      "name": "foreign diagnostics denied",
+      "passed": true
+    },
+    {
+      "name": "fixture provenance remains demo",
+      "passed": true
+    },
+    {
+      "name": "foreign run denied",
+      "passed": true
+    },
+    {
+      "name": "HTML upload is inert and private",
+      "passed": true
+    },
+    {
+      "name": "other owner cannot list private artifacts",
+      "passed": true
+    },
+    {
+      "name": "revocation succeeds",
+      "passed": true
+    },
+    {
+      "name": "other account session unaffected",
+      "passed": true
+    }
+  ]
+}

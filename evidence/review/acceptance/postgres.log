@@ -1,0 +1,110 @@
+$ docker --host=unix:///var/run/docker.sock run --rm -d --name praxis-rls-3d7f82b345 --network none -e POSTGRES_HOST_AUTH_METHOD=trust postgres:17-alpine
+4bc7cb82b134509682dce4d512e9b22f80f86ae2103456330e0a2af05c9e8ab2
+
+$ docker --host=unix:///var/run/docker.sock exec -i praxis-rls-3d7f82b345 psql -X -v ON_ERROR_STOP=1 -U postgres -At
+PostgreSQL 17.11 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+
+$ docker --host=unix:///var/run/docker.sock image inspect postgres:17-alpine --format {{index .RepoDigests 0}}
+postgres@sha256:3540c0362c809df084ffac0ae69fe794515f9de92692f02178bcdce0ef0302ac
+
+$ docker --host=unix:///var/run/docker.sock exec -i praxis-rls-3d7f82b345 psql -X -v ON_ERROR_STOP=1 -U postgres -At
+CREATE ROLE
+CREATE ROLE
+CREATE SCHEMA
+CREATE TABLE
+CREATE FUNCTION
+GRANT
+
+$ docker --host=unix:///var/run/docker.sock exec -i praxis-rls-3d7f82b345 psql -X -v ON_ERROR_STOP=1 -U postgres -At
+BEGIN
+CREATE EXTENSION
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+DO
+GRANT
+CREATE POLICY
+CREATE POLICY
+COMMIT
+
+$ docker --host=unix:///var/run/docker.sock exec -i praxis-rls-3d7f82b345 psql -X -v ON_ERROR_STOP=1 -U postgres -At
+BEGIN
+INSERT 0 2
+INSERT 0 1
+SET
+00000000-0000-4000-8000-000000000002
+DO
+00000000-0000-4000-8000-000000000001
+DO
+ROLLBACK
+
+$ docker --host=unix:///var/run/docker.sock exec -i praxis-rls-3d7f82b345 psql -X -v ON_ERROR_STOP=1 -U postgres -At
+BEGIN
+INSERT 0 2
+SET
+10000000-0000-4000-8000-000000000001
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+DO
+10000000-0000-4000-8000-000000000002
+DO
+RESET
+INSERT 0 2
+INSERT 0 1
+INSERT 0 1
+DO
+ROLLBACK
+
+$ docker --host=unix:///var/run/docker.sock exec -i praxis-rls-3d7f82b345 psql -X -v ON_ERROR_STOP=1 -U postgres -At
+28
+
+$ docker --host=unix:///var/run/docker.sock exec -i praxis-rls-3d7f82b345 psql -X -v ON_ERROR_STOP=1 -U postgres -At
+INSERT 0 2
+INSERT 0 1
+
+$ docker --host=unix:///var/run/docker.sock exec -i praxis-rls-3d7f82b345 psql -X -v ON_ERROR_STOP=1 -U postgres -At
+0
+
+$ docker --host=unix:///var/run/docker.sock exec -i praxis-rls-3d7f82b345 psql -X -v ON_ERROR_STOP=1 -U postgres -At
+SET
+30000000-0000-4000-8000-000000000002
+0
+
+$ docker --host=unix:///var/run/docker.sock restart --time 10 praxis-rls-3d7f82b345
+Flag --time has been deprecated, use --timeout instead
+praxis-rls-3d7f82b345
+
+$ docker --host=unix:///var/run/docker.sock exec -i praxis-rls-3d7f82b345 psql -X -v ON_ERROR_STOP=1 -U postgres -At
+SET
+30000000-0000-4000-8000-000000000001
+1
+
+$ docker --host=unix:///var/run/docker.sock stop --time 10 praxis-rls-3d7f82b345
+Flag --time has been deprecated, use --timeout instead
+praxis-rls-3d7f82b345

@@ -1,0 +1,54 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'"><title>Praxis run report</title><style>body{font:16px system-ui;margin:32px;max-width:960px;color:#18221e}article{border:1px solid #ccc;padding:16px;margin:16px 0;break-inside:avoid}pre{white-space:pre-wrap;overflow-wrap:anywhere}h1{font-size:36px}@media print{body{margin:0}}</style><h1>Praxis evaluation report</h1><p>Trust: demo · suite developer-contracts v1.0.0 · seed 73</p><p>Passed 8 / 8. Cost: unknown. Self-reported and demo results are excluded from official rankings.</p><p>Evidence hash: 2a2481a961e23761830b80ecd4b9e9a227cc7b53c96747dae6827db019fddb0d</p><article><h2>repair-boundary — PASS</h2><p>0.037 ms</p><ul><li><strong>PASS JSON schema</strong><p>Expected: <code>{&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;condition&quot;: {&quot;type&quot;: &quot;string&quot;}, &quot;result&quot;: {&quot;type&quot;: &quot;array&quot;}}, &quot;required&quot;: [&quot;condition&quot;, &quot;result&quot;], &quot;additionalProperties&quot;: false}</code></p><p>Observed: <code>&quot;valid&quot;</code></p></li><li><strong>PASS code_reasoning: condition</strong><p>Expected: <code>&quot;n % 2 == 0&quot;</code></p><p>Observed: <code>&quot;n % 2 == 0&quot;</code></p></li><li><strong>PASS code_reasoning: result</strong><p>Expected: <code>[-2, 0, 2]</code></p><p>Observed: <code>[-2, 0, 2]</code></p></li></ul><pre>{
+  &quot;condition&quot;: &quot;n % 2 == 0&quot;,
+  &quot;result&quot;: [
+    -2,
+    0,
+    2
+  ]
+}</pre></article><article><h2>api-validation — PASS</h2><p>0.027 ms</p><ul><li><strong>PASS JSON schema</strong><p>Expected: <code>{&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;status&quot;: {&quot;type&quot;: &quot;integer&quot;}, &quot;field&quot;: {&quot;type&quot;: &quot;string&quot;}}, &quot;required&quot;: [&quot;status&quot;, &quot;field&quot;], &quot;additionalProperties&quot;: false}</code></p><p>Observed: <code>&quot;valid&quot;</code></p></li><li><strong>PASS api_contract: status</strong><p>Expected: <code>422</code></p><p>Observed: <code>422</code></p></li><li><strong>PASS api_contract: field</strong><p>Expected: <code>&quot;quantity&quot;</code></p><p>Observed: <code>&quot;quantity&quot;</code></p></li></ul><pre>{
+  &quot;status&quot;: 422,
+  &quot;field&quot;: &quot;quantity&quot;
+}</pre></article><article><h2>api-idempotency — PASS</h2><p>0.023 ms</p><ul><li><strong>PASS JSON schema</strong><p>Expected: <code>{&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;created_count&quot;: {&quot;type&quot;: &quot;integer&quot;}, &quot;orders&quot;: {&quot;type&quot;: &quot;array&quot;}}, &quot;required&quot;: [&quot;created_count&quot;, &quot;orders&quot;], &quot;additionalProperties&quot;: false}</code></p><p>Observed: <code>&quot;valid&quot;</code></p></li><li><strong>PASS api_contract: created_count</strong><p>Expected: <code>1</code></p><p>Observed: <code>1</code></p></li><li><strong>PASS api_contract: orders</strong><p>Expected: <code>[&quot;O1&quot;, &quot;O1&quot;]</code></p><p>Observed: <code>[&quot;O1&quot;, &quot;O1&quot;]</code></p></li></ul><pre>{
+  &quot;created_count&quot;: 1,
+  &quot;orders&quot;: [
+    &quot;O1&quot;,
+    &quot;O1&quot;
+  ]
+}</pre></article><article><h2>form-validation — PASS</h2><p>0.017 ms</p><ul><li><strong>PASS JSON schema</strong><p>Expected: <code>{&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;invalid&quot;: {&quot;type&quot;: &quot;array&quot;}}, &quot;required&quot;: [&quot;invalid&quot;], &quot;additionalProperties&quot;: false}</code></p><p>Observed: <code>&quot;valid&quot;</code></p></li><li><strong>PASS ui_contract: invalid</strong><p>Expected: <code>[&quot;email&quot;, &quot;password&quot;]</code></p><p>Observed: <code>[&quot;email&quot;, &quot;password&quot;]</code></p></li></ul><pre>{
+  &quot;invalid&quot;: [
+    &quot;email&quot;,
+    &quot;password&quot;
+  ]
+}</pre></article><article><h2>cart-calculation — PASS</h2><p>0.024 ms</p><ul><li><strong>PASS JSON schema</strong><p>Expected: <code>{&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;subtotal&quot;: {&quot;type&quot;: &quot;integer&quot;}, &quot;shipping&quot;: {&quot;type&quot;: &quot;integer&quot;}, &quot;total&quot;: {&quot;type&quot;: &quot;integer&quot;}}, &quot;required&quot;: [&quot;subtotal&quot;, &quot;shipping&quot;, &quot;total&quot;], &quot;additionalProperties&quot;: false}</code></p><p>Observed: <code>&quot;valid&quot;</code></p></li><li><strong>PASS ui_contract: subtotal</strong><p>Expected: <code>27</code></p><p>Observed: <code>27</code></p></li><li><strong>PASS ui_contract: shipping</strong><p>Expected: <code>0</code></p><p>Observed: <code>0</code></p></li><li><strong>PASS ui_contract: total</strong><p>Expected: <code>27</code></p><p>Observed: <code>27</code></p></li></ul><pre>{
+  &quot;subtotal&quot;: 27,
+  &quot;shipping&quot;: 0,
+  &quot;total&quot;: 27
+}</pre></article><article><h2>responsive-contract — PASS</h2><p>0.015 ms</p><ul><li><strong>PASS JSON schema</strong><p>Expected: <code>{&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;columns&quot;: {&quot;type&quot;: &quot;array&quot;}}, &quot;required&quot;: [&quot;columns&quot;], &quot;additionalProperties&quot;: false}</code></p><p>Observed: <code>&quot;valid&quot;</code></p></li><li><strong>PASS ui_contract: columns</strong><p>Expected: <code>[1, 2, 3]</code></p><p>Observed: <code>[1, 2, 3]</code></p></li></ul><pre>{
+  &quot;columns&quot;: [
+    1,
+    2,
+    3
+  ]
+}</pre></article><article><h2>accessibility-contract — PASS</h2><p>0.014 ms</p><ul><li><strong>PASS JSON schema</strong><p>Expected: <code>{&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;unlabeled&quot;: {&quot;type&quot;: &quot;array&quot;}}, &quot;required&quot;: [&quot;unlabeled&quot;], &quot;additionalProperties&quot;: false}</code></p><p>Observed: <code>&quot;valid&quot;</code></p></li><li><strong>PASS accessibility: unlabeled</strong><p>Expected: <code>[&quot;phone&quot;]</code></p><p>Observed: <code>[&quot;phone&quot;]</code></p></li></ul><pre>{
+  &quot;unlabeled&quot;: [
+    &quot;phone&quot;
+  ]
+}</pre></article><article><h2>search-state — PASS</h2><p>0.014 ms</p><ul><li><strong>PASS JSON schema</strong><p>Expected: <code>{&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;matches&quot;: {&quot;type&quot;: &quot;array&quot;}}, &quot;required&quot;: [&quot;matches&quot;], &quot;additionalProperties&quot;: false}</code></p><p>Observed: <code>&quot;valid&quot;</code></p></li><li><strong>PASS ui_contract: matches</strong><p>Expected: <code>[&quot;Red book&quot;, &quot;Red pen&quot;]</code></p><p>Observed: <code>[&quot;Red book&quot;, &quot;Red pen&quot;]</code></p></li></ul><pre>{
+  &quot;matches&quot;: [
+    &quot;Red book&quot;,
+    &quot;Red pen&quot;
+  ]
+}</pre></article><article><h2>Unexecuted scenarios</h2><pre>[]</pre><h2>Reproducible configuration</h2><pre>{
+  &quot;target&quot;: {
+    &quot;kind&quot;: &quot;model&quot;,
+    &quot;provider&quot;: &quot;demo&quot;,
+    &quot;name&quot;: &quot;Explicit deterministic regression fixture&quot;,
+    &quot;endpoint&quot;: &quot;[invalid or absent endpoint]&quot;
+  },
+  &quot;execution&quot;: {
+    &quot;max_scenario_count&quot;: 64,
+    &quot;max_wall_seconds&quot;: 120,
+    &quot;max_output_tokens&quot;: 1024,
+    &quot;max_retries&quot;: 1
+  }
+}</pre></article></html>

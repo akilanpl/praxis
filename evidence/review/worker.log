@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: health accurately states metadata-only mode
+ok 1 - health accurately states metadata-only mode
+  ---
+  duration_ms: 4.700035
+  type: 'test'
+  ...
+# Subtest: unauthenticated request is denied before network access
+ok 2 - unauthenticated request is denied before network access
+  ---
+  duration_ms: 0.643111
+  type: 'test'
+  ...
+# Subtest: invalid authenticated identity denied
+ok 3 - invalid authenticated identity denied
+  ---
+  duration_ms: 1.087887
+  type: 'test'
+  ...
+# Subtest: expired token denied
+ok 4 - expired token denied
+  ---
+  duration_ms: 1.160615
+  type: 'test'
+  ...
+# Subtest: malicious origin denied
+ok 5 - malicious origin denied
+  ---
+  duration_ms: 0.534289
+  type: 'test'
+  ...
+# Subtest: secret target fields rejected
+ok 6 - secret target fields rejected
+  ---
+  duration_ms: 9.584793
+  type: 'test'
+  ...
+# Subtest: arbitrary endpoints stored but never fetched
+ok 7 - arbitrary endpoints stored but never fetched
+  ---
+  duration_ms: 1.320081
+  type: 'test'
+  ...
+# Subtest: client cannot promote evidence to verified
+ok 8 - client cannot promote evidence to verified
+  ---
+  duration_ms: 1.405337
+  type: 'test'
+  ...
+# Subtest: foreign target cannot create a run
+ok 9 - foreign target cannot create a run
+  ---
+  duration_ms: 1.372749
+  type: 'test'
+  ...
+# Subtest: oversize payload rejected
+ok 10 - oversize payload rejected
+  ---
+  duration_ms: 3.823169
+  type: 'test'
+  ...
+# Subtest: duplicate evidence returns conflict
+ok 11 - duplicate evidence returns conflict
+  ---
+  duration_ms: 0.770779
+  type: 'test'
+  ...
+# Subtest: security headers accompany failures
+ok 12 - security headers accompany failures
+  ---
+  duration_ms: 0.764169
+  type: 'test'
+  ...
+# Subtest: malformed endpoint returns validation error
+ok 13 - malformed endpoint returns validation error
+  ---
+  duration_ms: 0.688767
+  type: 'test'
+  ...
+# Subtest: credential-bearing endpoints rejected
+ok 14 - credential-bearing endpoints rejected
+  ---
+  duration_ms: 1.304167
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 323.64796

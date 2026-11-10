@@ -1,0 +1,76 @@
+{
+  "findings_reviewed": 45,
+  "disposition": "All 45 candidates are public source-file SHA256 digests verified against branch history, not credentials. Published source_files maps are losslessly serialized as arrays of explicit path and sha256 fields, preserving every value and aggregate digest. Raw receipts remain in ignored cloud work directories. No scanner exclusions or rule changes.",
+  "exports": [
+    {
+      "file": "evidence/review/acceptance/browser/result.json",
+      "scanner_findings_verified_as_source_digests": 5,
+      "source_file_digests_preserved": 99,
+      "raw_export_sha256": "fd86fa92b742b3b2796f3448ba30495de649785414d13330bd67ccb800593dd4",
+      "published_export_sha256": "a37a5ce5731b528917b4e790a83073c6d1b1b63df69d20a8c547f18364148fcc"
+    },
+    {
+      "file": "evidence/review/acceptance/postgres.json",
+      "scanner_findings_verified_as_source_digests": 5,
+      "source_file_digests_preserved": 99,
+      "raw_export_sha256": "a8833f70fe8bf4f432dd463e3c908ab089cd5c1404fa15a071cfd1c8befc0f96",
+      "published_export_sha256": "88f8cd630943e25c4dac84329528ad22a6f9c8c87432ba2186294021ba6ec167"
+    },
+    {
+      "file": "evidence/review/acceptance/suite-matrix.json",
+      "scanner_findings_verified_as_source_digests": 5,
+      "source_file_digests_preserved": 99,
+      "raw_export_sha256": "d9799f891424fbc1bd07e35eec1d89bcd86f7adbbdf9c43daf1da233c03e3bf4",
+      "published_export_sha256": "d7db2d9f90f5700840fa82f4b0a20af69d06f4deec8698c7e3230ef028134df2"
+    },
+    {
+      "file": "evidence/review/acceptance/website/result.json",
+      "scanner_findings_verified_as_source_digests": 5,
+      "source_file_digests_preserved": 99,
+      "raw_export_sha256": "4449df52cf53fdb8e894973d4f2648718072eacb3b342ecb093749671fadf8d4",
+      "published_export_sha256": "7bf199feecf7f714bf9fb8f89888d8cd478b81562c32551d6be23f59746d378f"
+    },
+    {
+      "file": "evidence/review/acceptance/wheel.json",
+      "scanner_findings_verified_as_source_digests": 5,
+      "source_file_digests_preserved": 99,
+      "raw_export_sha256": "9c6509a1410e6642da3a9316abf9c5da2e02b49b24a56c316adb6ae402a66dfa",
+      "published_export_sha256": "f378c8f67a7f7a8510f8d1e0992fb705e394302d15dc94be42d45fca300b91fd"
+    },
+    {
+      "file": "evidence/review/database/postgres.json",
+      "scanner_findings_verified_as_source_digests": 2,
+      "source_file_digests_preserved": 80,
+      "raw_export_sha256": "9422c863112dbeca67b957ec1b156200a32770989cbb1540c2942a8f9251c029",
+      "published_export_sha256": "93ddfe1c26ae94ca16bb47698ded3581f22193100ce1a06f21a82d1f2d74bf41"
+    },
+    {
+      "file": "evidence/review/fresh-install-smoke.json",
+      "scanner_findings_verified_as_source_digests": 5,
+      "source_file_digests_preserved": 99,
+      "raw_export_sha256": "be4a5d75e1b3b08f820b9faf5cab0f45fe276c8af8972f666fa943f88187fca3",
+      "published_export_sha256": "dc4fb5b0d46e2fc3e1fab7e06a8a75035076044bacf77fde9fa3ea44531fb6ba"
+    },
+    {
+      "file": "evidence/review/gate-receipt.json",
+      "scanner_findings_verified_as_source_digests": 5,
+      "source_file_digests_preserved": 99,
+      "raw_export_sha256": "4779f298b22c2494d1d8946dc617f259afc96efed6dd84ef0a68903f9a5ac5d0",
+      "published_export_sha256": "661843849da5c9cf55a34a1dd61270a656d3c8e058e6e64cc7b69fb00d16fee4"
+    },
+    {
+      "file": "evidence/review/mobile-failed-browser.log",
+      "scanner_findings_verified_as_source_digests": 4,
+      "source_file_digests_preserved": 98,
+      "raw_export_sha256": "c0a4d1cf0b6fc42cec85db476ed782b32540ed9278ebb34ca3f3d9c657f4db8e",
+      "published_export_sha256": "4297da4a837ee28d220afe0bfcf1fb729a904ef174fbbf11e0a0f2dc298d52e2"
+    },
+    {
+      "file": "evidence/review/mobile-failed-gate.json",
+      "scanner_findings_verified_as_source_digests": 4,
+      "source_file_digests_preserved": 98,
+      "raw_export_sha256": "2c4ef2fdd7775c9ad72e07fe6d79fbb8ebfcc278abf3e156af430cadfe1e55a4",
+      "published_export_sha256": "59b85c447bed99612ca1587fcc88b02828059045c46dcd97a0b772982bfbea9d"
+    }
+  ]
+}

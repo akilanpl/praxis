@@ -1,5 +1,16 @@
 # Changelog
 
+## Post-publication review — 2026-11-10
+
+- Preserve the original six commits and merged PR #2; publish remediation only on the existing branch, with no new PR or merge.
+- Prevent POST mutation replay and passing agent step exhaustion; enforce literal mutation consent.
+- Repair redaction protocol/key-collision handling and reject unsafe/non-finite/deep JSON, malformed HTTP and usage/action shapes.
+- Remove presentation caps from internal integrity/history/active-run decisions; atomically persist private uploaded objects and verify backup/new-directory restore.
+- Version PBKDF2 hashing at 600,000 rounds with successful-login legacy upgrades; reject unsupported future SQLite schemas.
+- Bind frontend requests to sessions; repair actual 390px report overflow with wrapped event evidence and keyboard-accessible assertion-table scrolling.
+- Add measured TypeScript coverage and expanded Python regressions, source-bound/fail-closed receipts, actual PostgreSQL concurrency/rollback/restart tests and explicit component release contracts.
+- Retain failed regression/mobile acceptance evidence and unsuppressed security scanner output. No hosted identity, production deployment or broad model capability claim.
+
 ## Unreleased — 2026-11-10
 
 - Add a separate responsive React/Vite engineering website with source-derived suite counts, honest model evidence and explicit local/cloud trust boundaries.

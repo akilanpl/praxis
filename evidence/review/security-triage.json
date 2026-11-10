@@ -1,0 +1,953 @@
+{
+  "status": "PARTIAL",
+  "scope": "Unsuppressed Bandit runner/scripts scan with contextual manual triage; no external penetration-test or ASVS certification",
+  "high_findings": 0,
+  "raw_scanner_exit": "nonzero because findings are retained",
+  "findings": [
+    {
+      "file": "runner/praxis/server.py",
+      "line": 23,
+      "scanner_id": "B105",
+      "severity": "LOW",
+      "assessment": "Literal fixture/protocol labels, not deployed credentials. No real secret is accepted into source.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "runner/praxis/worlds.py",
+      "line": 18,
+      "scanner_id": "B311",
+      "severity": "LOW",
+      "assessment": "Deterministic reference-world PRNG is for reproducible simulation, not authentication or security tokens.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 10,
+      "scanner_id": "B404",
+      "severity": "LOW",
+      "assessment": "Subprocess import flags are context-reviewed with actual call sites; import alone is not arbitrary code execution.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 26,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "assessment": "Subprocess argument arrays are constructed from reviewed source and fixed local tooling; no shell and no request-controlled command string.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 29,
+      "scanner_id": "B105",
+      "severity": "LOW",
+      "assessment": "Literal fixture/protocol labels, not deployed credentials. No real secret is accepted into source.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 32,
+      "scanner_id": "B310",
+      "severity": "MEDIUM",
+      "assessment": "Owned loopback acceptance endpoints and pinned health routes. This is not a hosted arbitrary-URL proxy. Legacy host-browser helper is not executed or certified for this Linux release.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 41,
+      "scanner_id": "B310",
+      "severity": "MEDIUM",
+      "assessment": "Owned loopback acceptance endpoints and pinned health routes. This is not a hosted arbitrary-URL proxy. Legacy host-browser helper is not executed or certified for this Linux release.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 61,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 80,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 81,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 92,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 93,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 94,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 100,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 103,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 121,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 122,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 131,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 134,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 143,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 153,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 154,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 155,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 161,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 162,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 164,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 166,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 170,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 171,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 180,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 182,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/browser_check.py",
+      "line": 183,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/build.py",
+      "line": 6,
+      "scanner_id": "B404",
+      "severity": "LOW",
+      "assessment": "Subprocess import flags are context-reviewed with actual call sites; import alone is not arbitrary code execution.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/build.py",
+      "line": 32,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "assessment": "Subprocess argument arrays are constructed from reviewed source and fixed local tooling; no shell and no request-controlled command string.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/coverage_acceptance.py",
+      "line": 5,
+      "scanner_id": "B404",
+      "severity": "LOW",
+      "assessment": "Subprocess import flags are context-reviewed with actual call sites; import alone is not arbitrary code execution.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/coverage_acceptance.py",
+      "line": 19,
+      "scanner_id": "B607",
+      "severity": "LOW",
+      "assessment": "PATH resolves local development tools in a trusted operator environment. Supply-chain/PATH integrity remains an operator prerequisite.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/coverage_acceptance.py",
+      "line": 19,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "assessment": "Subprocess argument arrays are constructed from reviewed source and fixed local tooling; no shell and no request-controlled command string.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/db_reliability.py",
+      "line": 2,
+      "scanner_id": "B404",
+      "severity": "LOW",
+      "assessment": "Subprocess import flags are context-reviewed with actual call sites; import alone is not arbitrary code execution.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/db_reliability.py",
+      "line": 8,
+      "scanner_id": "B608",
+      "severity": "MEDIUM",
+      "assessment": "SQL strings contain source-controlled synthetic UUIDs/fixtures in a disposable PostgreSQL harness, no request or user-controlled identifiers. Runtime SQLite uses bound parameters.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/db_reliability.py",
+      "line": 10,
+      "scanner_id": "B608",
+      "severity": "MEDIUM",
+      "assessment": "SQL strings contain source-controlled synthetic UUIDs/fixtures in a disposable PostgreSQL harness, no request or user-controlled identifiers. Runtime SQLite uses bound parameters.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/db_reliability.py",
+      "line": 11,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "assessment": "Subprocess argument arrays are constructed from reviewed source and fixed local tooling; no shell and no request-controlled command string.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/db_reliability.py",
+      "line": 16,
+      "scanner_id": "B608",
+      "severity": "MEDIUM",
+      "assessment": "SQL strings contain source-controlled synthetic UUIDs/fixtures in a disposable PostgreSQL harness, no request or user-controlled identifiers. Runtime SQLite uses bound parameters.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/db_reliability.py",
+      "line": 16,
+      "scanner_id": "B608",
+      "severity": "MEDIUM",
+      "assessment": "SQL strings contain source-controlled synthetic UUIDs/fixtures in a disposable PostgreSQL harness, no request or user-controlled identifiers. Runtime SQLite uses bound parameters.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/db_reliability.py",
+      "line": 17,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "assessment": "Subprocess argument arrays are constructed from reviewed source and fixed local tooling; no shell and no request-controlled command string.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/db_reliability.py",
+      "line": 21,
+      "scanner_id": "B608",
+      "severity": "MEDIUM",
+      "assessment": "SQL strings contain source-controlled synthetic UUIDs/fixtures in a disposable PostgreSQL harness, no request or user-controlled identifiers. Runtime SQLite uses bound parameters.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/db_reliability.py",
+      "line": 24,
+      "scanner_id": "B608",
+      "severity": "MEDIUM",
+      "assessment": "SQL strings contain source-controlled synthetic UUIDs/fixtures in a disposable PostgreSQL harness, no request or user-controlled identifiers. Runtime SQLite uses bound parameters.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/dev.py",
+      "line": 3,
+      "scanner_id": "B404",
+      "severity": "LOW",
+      "assessment": "Subprocess import flags are context-reviewed with actual call sites; import alone is not arbitrary code execution.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/dev.py",
+      "line": 9,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "assessment": "Subprocess argument arrays are constructed from reviewed source and fixed local tooling; no shell and no request-controlled command string.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/dev.py",
+      "line": 10,
+      "scanner_id": "B607",
+      "severity": "LOW",
+      "assessment": "PATH resolves local development tools in a trusted operator environment. Supply-chain/PATH integrity remains an operator prerequisite.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/dev.py",
+      "line": 10,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "assessment": "Subprocess argument arrays are constructed from reviewed source and fixed local tooling; no shell and no request-controlled command string.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/diff_coverage.py",
+      "line": 4,
+      "scanner_id": "B404",
+      "severity": "LOW",
+      "assessment": "Subprocess import flags are context-reviewed with actual call sites; import alone is not arbitrary code execution.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/diff_coverage.py",
+      "line": 19,
+      "scanner_id": "B607",
+      "severity": "LOW",
+      "assessment": "PATH resolves local development tools in a trusted operator environment. Supply-chain/PATH integrity remains an operator prerequisite.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/diff_coverage.py",
+      "line": 19,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "assessment": "Subprocess argument arrays are constructed from reviewed source and fixed local tooling; no shell and no request-controlled command string.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/evidence_identity.py",
+      "line": 5,
+      "scanner_id": "B404",
+      "severity": "LOW",
+      "assessment": "Subprocess import flags are context-reviewed with actual call sites; import alone is not arbitrary code execution.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/evidence_identity.py",
+      "line": 10,
+      "scanner_id": "B607",
+      "severity": "LOW",
+      "assessment": "PATH resolves local development tools in a trusted operator environment. Supply-chain/PATH integrity remains an operator prerequisite.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/evidence_identity.py",
+      "line": 10,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "assessment": "Subprocess argument arrays are constructed from reviewed source and fixed local tooling; no shell and no request-controlled command string.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/evidence_identity.py",
+      "line": 12,
+      "scanner_id": "B607",
+      "severity": "LOW",
+      "assessment": "PATH resolves local development tools in a trusted operator environment. Supply-chain/PATH integrity remains an operator prerequisite.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/evidence_identity.py",
+      "line": 12,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "assessment": "Subprocess argument arrays are constructed from reviewed source and fixed local tooling; no shell and no request-controlled command string.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/evidence_identity.py",
+      "line": 13,
+      "scanner_id": "B607",
+      "severity": "LOW",
+      "assessment": "PATH resolves local development tools in a trusted operator environment. Supply-chain/PATH integrity remains an operator prerequisite.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/evidence_identity.py",
+      "line": 13,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "assessment": "Subprocess argument arrays are constructed from reviewed source and fixed local tooling; no shell and no request-controlled command string.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/integration_proof.py",
+      "line": 27,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/integration_proof.py",
+      "line": 29,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/integration_proof.py",
+      "line": 36,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/integration_proof.py",
+      "line": 36,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/integration_proof.py",
+      "line": 39,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/integration_proof.py",
+      "line": 40,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/integration_proof.py",
+      "line": 43,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/integration_proof.py",
+      "line": 44,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/integration_proof.py",
+      "line": 44,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/integration_proof.py",
+      "line": 49,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/postgres_acceptance.py",
+      "line": 8,
+      "scanner_id": "B404",
+      "severity": "LOW",
+      "assessment": "Subprocess import flags are context-reviewed with actual call sites; import alone is not arbitrary code execution.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/postgres_acceptance.py",
+      "line": 27,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "assessment": "Subprocess argument arrays are constructed from reviewed source and fixed local tooling; no shell and no request-controlled command string.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/postgres_acceptance.py",
+      "line": 36,
+      "scanner_id": "B607",
+      "severity": "LOW",
+      "assessment": "PATH resolves local development tools in a trusted operator environment. Supply-chain/PATH integrity remains an operator prerequisite.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/postgres_acceptance.py",
+      "line": 36,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "assessment": "Subprocess argument arrays are constructed from reviewed source and fixed local tooling; no shell and no request-controlled command string.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/postgres_acceptance.py",
+      "line": 59,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/postgres_container_check.py",
+      "line": 7,
+      "scanner_id": "B404",
+      "severity": "LOW",
+      "assessment": "Subprocess import flags are context-reviewed with actual call sites; import alone is not arbitrary code execution.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/postgres_container_check.py",
+      "line": 21,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "assessment": "Subprocess argument arrays are constructed from reviewed source and fixed local tooling; no shell and no request-controlled command string.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/postgres_container_check.py",
+      "line": 29,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "assessment": "Subprocess argument arrays are constructed from reviewed source and fixed local tooling; no shell and no request-controlled command string.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/postgres_container_check.py",
+      "line": 30,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "assessment": "Subprocess argument arrays are constructed from reviewed source and fixed local tooling; no shell and no request-controlled command string.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/postgres_container_check.py",
+      "line": 41,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/postgres_container_check.py",
+      "line": 46,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/postgres_container_check.py",
+      "line": 51,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "assessment": "Subprocess argument arrays are constructed from reviewed source and fixed local tooling; no shell and no request-controlled command string.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/real_inference_acceptance.py",
+      "line": 18,
+      "scanner_id": "B105",
+      "severity": "LOW",
+      "assessment": "Literal fixture/protocol labels, not deployed credentials. No real secret is accepted into source.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/real_inference_acceptance.py",
+      "line": 21,
+      "scanner_id": "B310",
+      "severity": "MEDIUM",
+      "assessment": "Owned loopback acceptance endpoints and pinned health routes. This is not a hosted arbitrary-URL proxy. Legacy host-browser helper is not executed or certified for this Linux release.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/real_inference_acceptance.py",
+      "line": 26,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/real_inference_acceptance.py",
+      "line": 33,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/real_inference_acceptance.py",
+      "line": 34,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/real_inference_acceptance.py",
+      "line": 36,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/real_inference_acceptance.py",
+      "line": 37,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/real_inference_acceptance.py",
+      "line": 38,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/real_inference_acceptance.py",
+      "line": 39,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/release_gate.py",
+      "line": 8,
+      "scanner_id": "B404",
+      "severity": "LOW",
+      "assessment": "Subprocess import flags are context-reviewed with actual call sites; import alone is not arbitrary code execution.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/release_gate.py",
+      "line": 19,
+      "scanner_id": "B607",
+      "severity": "LOW",
+      "assessment": "PATH resolves local development tools in a trusted operator environment. Supply-chain/PATH integrity remains an operator prerequisite.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/release_gate.py",
+      "line": 19,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "assessment": "Subprocess argument arrays are constructed from reviewed source and fixed local tooling; no shell and no request-controlled command string.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/release_gate.py",
+      "line": 20,
+      "scanner_id": "B607",
+      "severity": "LOW",
+      "assessment": "PATH resolves local development tools in a trusted operator environment. Supply-chain/PATH integrity remains an operator prerequisite.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/release_gate.py",
+      "line": 20,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "assessment": "Subprocess argument arrays are constructed from reviewed source and fixed local tooling; no shell and no request-controlled command string.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/release_gate.py",
+      "line": 34,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "assessment": "Subprocess argument arrays are constructed from reviewed source and fixed local tooling; no shell and no request-controlled command string.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/release_gate.py",
+      "line": 67,
+      "scanner_id": "B310",
+      "severity": "MEDIUM",
+      "assessment": "Owned loopback acceptance endpoints and pinned health routes. This is not a hosted arbitrary-URL proxy. Legacy host-browser helper is not executed or certified for this Linux release.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/release_gate.py",
+      "line": 118,
+      "scanner_id": "B607",
+      "severity": "LOW",
+      "assessment": "PATH resolves local development tools in a trusted operator environment. Supply-chain/PATH integrity remains an operator prerequisite.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/release_gate.py",
+      "line": 118,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "assessment": "Subprocess argument arrays are constructed from reviewed source and fixed local tooling; no shell and no request-controlled command string.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/release_gate.py",
+      "line": 142,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "assessment": "Subprocess argument arrays are constructed from reviewed source and fixed local tooling; no shell and no request-controlled command string.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/release_gate.py",
+      "line": 146,
+      "scanner_id": "B310",
+      "severity": "MEDIUM",
+      "assessment": "Owned loopback acceptance endpoints and pinned health routes. This is not a hosted arbitrary-URL proxy. Legacy host-browser helper is not executed or certified for this Linux release.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/release_gate.py",
+      "line": 146,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/release_gate.py",
+      "line": 151,
+      "scanner_id": "B310",
+      "severity": "MEDIUM",
+      "assessment": "Owned loopback acceptance endpoints and pinned health routes. This is not a hosted arbitrary-URL proxy. Legacy host-browser helper is not executed or certified for this Linux release.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/release_gate.py",
+      "line": 151,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/start_host_browser.py",
+      "line": 3,
+      "scanner_id": "B404",
+      "severity": "LOW",
+      "assessment": "Subprocess import flags are context-reviewed with actual call sites; import alone is not arbitrary code execution.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/start_host_browser.py",
+      "line": 11,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "assessment": "Subprocess argument arrays are constructed from reviewed source and fixed local tooling; no shell and no request-controlled command string.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/start_host_browser.py",
+      "line": 14,
+      "scanner_id": "B310",
+      "severity": "MEDIUM",
+      "assessment": "Owned loopback acceptance endpoints and pinned health routes. This is not a hosted arbitrary-URL proxy. Legacy host-browser helper is not executed or certified for this Linux release.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/suite_acceptance.py",
+      "line": 19,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/suite_acceptance.py",
+      "line": 29,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/suite_acceptance.py",
+      "line": 30,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/suite_acceptance.py",
+      "line": 31,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/suite_acceptance.py",
+      "line": 37,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/verify_wheel.py",
+      "line": 6,
+      "scanner_id": "B404",
+      "severity": "LOW",
+      "assessment": "Subprocess import flags are context-reviewed with actual call sites; import alone is not arbitrary code execution.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/verify_wheel.py",
+      "line": 11,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "assessment": "Subprocess argument arrays are constructed from reviewed source and fixed local tooling; no shell and no request-controlled command string.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/verify_wheel.py",
+      "line": 14,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "assessment": "Subprocess argument arrays are constructed from reviewed source and fixed local tooling; no shell and no request-controlled command string.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/verify_wheel.py",
+      "line": 28,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "assessment": "Subprocess argument arrays are constructed from reviewed source and fixed local tooling; no shell and no request-controlled command string.",
+      "verified_vulnerability": false
+    },
+    {
+      "file": "scripts/website_check.py",
+      "line": 21,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "assessment": "Assertions are in owned verification harnesses. Gate/source provenance explicitly refuses Python optimization; these are not production authorization guards.",
+      "verified_vulnerability": false
+    }
+  ],
+  "source_commit": "375688f0c872d7636a33b750441033b3aef4031e"
+}

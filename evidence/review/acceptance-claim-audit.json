@@ -1,0 +1,55 @@
+{
+  "status": "PARTIAL",
+  "environment": "original managed Linux cloud receipts, inspected and independently rerun during this review",
+  "claims": [
+    {
+      "claim": "140 Python + 44 subtests",
+      "source": "378d5d38782ee13921989bc71feef25f996f568d",
+      "command": "pytest tests -q --cov=praxis --cov-branch",
+      "scope": "actual local runner + controlled/real loopback tests",
+      "assessment": "PASS"
+    },
+    {
+      "claim": "14 Worker tests",
+      "source": "378d5d38782ee13921989bc71feef25f996f568d",
+      "command": "node --import tsx --test apps/api/test/security.test.ts",
+      "scope": "controlled Supabase transport, NOT hosted identity",
+      "assessment": "PASS"
+    },
+    {
+      "claim": "PostgreSQL17 / 28 RLS tables",
+      "source": "378d5d38782ee13921989bc71feef25f996f568d",
+      "command": "scripts/postgres_container_check.py",
+      "scope": "real PostgreSQL, synthetic auth.uid claims, selected policy tests",
+      "assessment": "PARTIAL"
+    },
+    {
+      "claim": "186 checks / 89 internal score",
+      "source": "378d5d38782ee13921989bc71feef25f996f568d",
+      "command": ".pushgate/run.sh",
+      "scope": "managed cloud, weighted local feature accounting, not production certification",
+      "assessment": "PASS"
+    },
+    {
+      "claim": "real ONNX 0/8 each",
+      "source": "exact source not recorded in individual historical model receipts",
+      "command": "scripts/real_inference_acceptance.py / scripts/browser_check.py",
+      "scope": "raw self-reported model output + digests; not fixture inference or signed attestation",
+      "assessment": "PARTIAL"
+    },
+    {
+      "claim": "website desktop/mobile screenshot",
+      "source": "378d5d38782ee13921989bc71feef25f996f568d",
+      "command": "scripts/website_check.py",
+      "scope": "real Chromium production build; checked layout/anchors/errors, not hosted TLS or exhaustive WCAG",
+      "assessment": "PASS"
+    },
+    {
+      "claim": "application browser acceptance",
+      "source": "378d5d38782ee13921989bc71feef25f996f568d",
+      "command": "scripts/browser_check.py",
+      "scope": "actual HTTP/SQLite and real models; old viewport test covered dashboard, not mobile reports (new stricter test exposed R13)",
+      "assessment": "PARTIAL"
+    }
+  ]
+}

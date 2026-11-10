@@ -15,3 +15,11 @@ Arena pairs only different targets with exact conditions (suite digest, seed, ta
 `apps/website` is an independent static React/Vite entry point. It reads public suite definitions at build time and links to repository evidence; it has no dependency on local authentication or the metadata Worker. Root build emits both frontends. Website hosting can be static, but no deployment is performed.
 
 Suite inspection is version-qualified (`slug@version`), and ambiguous unqualified revisions are rejected. Execution records include safe configuration, aggregate usage, named unexecuted tasks and full category denominators. Task output hashes are recalculated after known-credential redaction; the final digest covers the redacted evidence. The run result and its generated artifact rows share one SQLite transaction. Restart/idempotency queries operate beyond the UI list cap. Agent adapter errors retain prior tool/state traces; traces are still persisted at task completion rather than durably streamed per step.
+
+## Reviewed reliability boundaries
+
+The frontend now has a small session-aware API transport; the React/Vite architecture and independent website are preserved. Internal suite/history/rating and active-run queries are independent of capped list presentation. Model/application parsing rejects malformed HTTP and unsafe/non-finite JSON. Mutation retries are disabled for POST; step-exhausted agents cannot pass. Known-secret redaction happens before grading and does not corrupt protocol metadata.
+
+New private object writes use fsynced temporary files, atomic replacement and directory sync. SQLite/object snapshot and new-directory restore tooling verifies manifests/hashes/schema; newer schema versions are refused. Account password format is versioned with legacy on-login upgrade. These are local reliability boundaries, not distributed service or arbitrary-code isolation.
+
+Acceptance scripts bind receipts to the source commit, clean runtime source and file hashes. Stale/missing receipts fail acceptance. Separate V8 TypeScript reports and Python/greenlet coverage feed changed-line/security-branch checks, including the website. Actual PostgreSQL tests now cover concurrent request uniqueness, rollback and restart persistence with synthetic auth claims. See the independent review for limits and exact evidence.

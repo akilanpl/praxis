@@ -1,0 +1,898 @@
+{
+  "conditions_hash": "65a796a48e0099893b6091a8b35f36b126307dc8a42aa086bcfa676b4c887c98",
+  "config_hash": "f100df77449ba6a80c99ccafefba71a04d21660364c3474423008bf873d6c58c",
+  "created_at": 1794283786.2760956,
+  "events": [
+    {
+      "elapsed_ms": 0.175,
+      "seed": 73,
+      "sequence": 0,
+      "suite": "structured-agent",
+      "type": "run_started"
+    },
+    {
+      "elapsed_ms": 1.465,
+      "sequence": 1,
+      "task_id": "route-outage",
+      "type": "task_started"
+    },
+    {
+      "elapsed_ms": 2252.677,
+      "latency_ms": 2251.189,
+      "passed": false,
+      "sequence": 2,
+      "task_id": "route-outage",
+      "type": "task_completed"
+    },
+    {
+      "elapsed_ms": 2256.502,
+      "sequence": 3,
+      "task_id": "select-tool",
+      "type": "task_started"
+    },
+    {
+      "elapsed_ms": 7795.561,
+      "latency_ms": 5539.035,
+      "passed": false,
+      "sequence": 4,
+      "task_id": "select-tool",
+      "type": "task_completed"
+    },
+    {
+      "elapsed_ms": 7801.022,
+      "sequence": 5,
+      "task_id": "refund-workflow",
+      "type": "task_started"
+    },
+    {
+      "elapsed_ms": 18860.663,
+      "latency_ms": 11059.619,
+      "passed": false,
+      "sequence": 6,
+      "task_id": "refund-workflow",
+      "type": "task_completed"
+    },
+    {
+      "elapsed_ms": 18861.591,
+      "sequence": 7,
+      "task_id": "json-boundary",
+      "type": "task_started"
+    },
+    {
+      "elapsed_ms": 31556.653,
+      "latency_ms": 12695.037,
+      "passed": false,
+      "sequence": 8,
+      "task_id": "json-boundary",
+      "type": "task_completed"
+    },
+    {
+      "elapsed_ms": 31560.446,
+      "sequence": 9,
+      "task_id": "deduplicate-events",
+      "type": "task_started"
+    },
+    {
+      "elapsed_ms": 42268.487,
+      "latency_ms": 10708.019,
+      "passed": false,
+      "sequence": 10,
+      "task_id": "deduplicate-events",
+      "type": "task_completed"
+    },
+    {
+      "elapsed_ms": 42276.247,
+      "sequence": 11,
+      "task_id": "schedule-dependency",
+      "type": "task_started"
+    },
+    {
+      "elapsed_ms": 43686.266,
+      "latency_ms": 1409.999,
+      "passed": false,
+      "sequence": 12,
+      "task_id": "schedule-dependency",
+      "type": "task_completed"
+    },
+    {
+      "elapsed_ms": 43696.484,
+      "sequence": 13,
+      "task_id": "inventory-reservation",
+      "type": "task_started"
+    },
+    {
+      "elapsed_ms": 53957.985,
+      "latency_ms": 10261.481,
+      "passed": false,
+      "sequence": 14,
+      "task_id": "inventory-reservation",
+      "type": "task_completed"
+    },
+    {
+      "elapsed_ms": 53972.128,
+      "sequence": 15,
+      "task_id": "pagination",
+      "type": "task_started"
+    },
+    {
+      "elapsed_ms": 64370.172,
+      "latency_ms": 10398.024,
+      "passed": false,
+      "sequence": 16,
+      "task_id": "pagination",
+      "type": "task_completed"
+    },
+    {
+      "elapsed_ms": 64372.708,
+      "passed": 0,
+      "sequence": 17,
+      "status": "completed",
+      "total": 8,
+      "type": "run_completed"
+    }
+  ],
+  "finished_at": 1794283850.659466,
+  "id": "39adaff8-1d45-4e1e-847a-771d3a905c0d",
+  "public": true,
+  "request_fingerprint": "f9e138f6e39c3a76076da0689d581dcd1f2b1db19fd63938da2bd7403c98e1f0",
+  "result": {
+    "adapter_version": "1",
+    "configuration": {
+      "execution": {
+        "max_output_tokens": 1024,
+        "max_retries": 1,
+        "max_scenario_count": 64,
+        "max_wall_seconds": 120
+      },
+      "target": {
+        "allow_mutation": false,
+        "authorized": false,
+        "capabilities": [
+          "text",
+          "json"
+        ],
+        "endpoint": "http://127.0.0.1:8788/v1",
+        "id": "f5199b23-ada6-4015-98f9-7bcd086b344f",
+        "kind": "model",
+        "model": "onnx-community/SmolLM2-135M-Instruct-ONNX",
+        "name": "SmolLM2 135M CPU q4",
+        "provider": "openai"
+      }
+    },
+    "cost": {
+      "estimated_usd": null,
+      "status": "unknown"
+    },
+    "duration_ms": 64372.706,
+    "events": [
+      {
+        "elapsed_ms": 0.175,
+        "seed": 73,
+        "sequence": 0,
+        "suite": "structured-agent",
+        "type": "run_started"
+      },
+      {
+        "elapsed_ms": 1.465,
+        "sequence": 1,
+        "task_id": "route-outage",
+        "type": "task_started"
+      },
+      {
+        "elapsed_ms": 2252.677,
+        "latency_ms": 2251.189,
+        "passed": false,
+        "sequence": 2,
+        "task_id": "route-outage",
+        "type": "task_completed"
+      },
+      {
+        "elapsed_ms": 2256.502,
+        "sequence": 3,
+        "task_id": "select-tool",
+        "type": "task_started"
+      },
+      {
+        "elapsed_ms": 7795.561,
+        "latency_ms": 5539.035,
+        "passed": false,
+        "sequence": 4,
+        "task_id": "select-tool",
+        "type": "task_completed"
+      },
+      {
+        "elapsed_ms": 7801.022,
+        "sequence": 5,
+        "task_id": "refund-workflow",
+        "type": "task_started"
+      },
+      {
+        "elapsed_ms": 18860.663,
+        "latency_ms": 11059.619,
+        "passed": false,
+        "sequence": 6,
+        "task_id": "refund-workflow",
+        "type": "task_completed"
+      },
+      {
+        "elapsed_ms": 18861.591,
+        "sequence": 7,
+        "task_id": "json-boundary",
+        "type": "task_started"
+      },
+      {
+        "elapsed_ms": 31556.653,
+        "latency_ms": 12695.037,
+        "passed": false,
+        "sequence": 8,
+        "task_id": "json-boundary",
+        "type": "task_completed"
+      },
+      {
+        "elapsed_ms": 31560.446,
+        "sequence": 9,
+        "task_id": "deduplicate-events",
+        "type": "task_started"
+      },
+      {
+        "elapsed_ms": 42268.487,
+        "latency_ms": 10708.019,
+        "passed": false,
+        "sequence": 10,
+        "task_id": "deduplicate-events",
+        "type": "task_completed"
+      },
+      {
+        "elapsed_ms": 42276.247,
+        "sequence": 11,
+        "task_id": "schedule-dependency",
+        "type": "task_started"
+      },
+      {
+        "elapsed_ms": 43686.266,
+        "latency_ms": 1409.999,
+        "passed": false,
+        "sequence": 12,
+        "task_id": "schedule-dependency",
+        "type": "task_completed"
+      },
+      {
+        "elapsed_ms": 43696.484,
+        "sequence": 13,
+        "task_id": "inventory-reservation",
+        "type": "task_started"
+      },
+      {
+        "elapsed_ms": 53957.985,
+        "latency_ms": 10261.481,
+        "passed": false,
+        "sequence": 14,
+        "task_id": "inventory-reservation",
+        "type": "task_completed"
+      },
+      {
+        "elapsed_ms": 53972.128,
+        "sequence": 15,
+        "task_id": "pagination",
+        "type": "task_started"
+      },
+      {
+        "elapsed_ms": 64370.172,
+        "latency_ms": 10398.024,
+        "passed": false,
+        "sequence": 16,
+        "task_id": "pagination",
+        "type": "task_completed"
+      },
+      {
+        "elapsed_ms": 64372.708,
+        "passed": 0,
+        "sequence": 17,
+        "status": "completed",
+        "total": 8,
+        "type": "run_completed"
+      }
+    ],
+    "evidence_hash": "8447e063617debb9ad85a18a103f1170bc614e5f67e956bba0a460101eb33c39",
+    "id": "3b935702-f213-4dca-9405-3a8c625e4ec7",
+    "model_config_hash": "dac31b644a79ddf347c4bb386351ee998d27ff48aba7b22991d19025d02fac7a",
+    "not_run_tasks": [],
+    "runner_version": "0.1.0",
+    "seed": 73,
+    "status": "completed",
+    "suite_hash": "2f1b713a2732b49eb39518b31dca6c68871e13b98955369ee830f53b5ebe3b3c",
+    "suite_slug": "structured-agent",
+    "suite_version": "1.0.0",
+    "summary": {
+      "assertions_passed": 0,
+      "assertions_total": 24,
+      "confidence_interval": [
+        0,
+        0.3244
+      ],
+      "dimensions": {
+        "correctness": {
+          "executed": 1,
+          "not_run": 0,
+          "passed": 0,
+          "total": 1
+        },
+        "schema": {
+          "executed": 1,
+          "not_run": 0,
+          "passed": 0,
+          "total": 1
+        },
+        "state": {
+          "executed": 4,
+          "not_run": 0,
+          "passed": 0,
+          "total": 4
+        },
+        "tool_selection": {
+          "executed": 2,
+          "not_run": 0,
+          "passed": 0,
+          "total": 2
+        }
+      },
+      "executed": 8,
+      "failed": 8,
+      "latency_p50_ms": 10398.024,
+      "latency_p95_ms": 12695.037,
+      "not_run": 0,
+      "pass_rate": 0.0,
+      "passed": 0,
+      "total": 8,
+      "weighted_assertion_rate": 0.0
+    },
+    "target_id": "f5199b23-ada6-4015-98f9-7bcd086b344f",
+    "target_kind": "model",
+    "target_name": "SmolLM2 135M CPU q4",
+    "tasks": [
+      {
+        "artifact": {
+          "hash": "f9e1d8e8c7d32923fdafb2a1dcd1f6be0e0c86a9aab32e62815a02f5d99c1808",
+          "mime": "text/plain",
+          "type": "text"
+        },
+        "assertions": [
+          {
+            "actual": "I'm sorry for the misunderstanding, but as a chatbot, I don't have the capability to access the chat server. I'm sorry for any confusion. I'm here to help you with your issue. Please provide the details of the production issues you're facing, and I'll do my best to assist you.",
+            "expected": {
+              "additionalProperties": false,
+              "properties": {
+                "priority": {
+                  "type": "string"
+                },
+                "team": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "priority",
+                "team"
+              ],
+              "type": "object"
+            },
+            "name": "JSON schema",
+            "passed": false,
+            "weight": 1
+          },
+          {
+            "actual": null,
+            "expected": "urgent",
+            "name": "correctness: priority",
+            "passed": false,
+            "weight": 1
+          },
+          {
+            "actual": null,
+            "expected": "technical",
+            "name": "correctness: team",
+            "passed": false,
+            "weight": 1
+          }
+        ],
+        "attempts": 1,
+        "category": "correctness",
+        "error": null,
+        "id": "route-outage",
+        "latency_ms": 2251.189,
+        "output": "I'm sorry for the misunderstanding, but as a chatbot, I don't have the capability to access the chat server. I'm sorry for any confusion. I'm here to help you with your issue. Please provide the details of the production issues you're facing, and I'll do my best to assist you.",
+        "passed": false,
+        "prompt": "Policy: production outages are urgent technical tickets. A customer says all production requests return 503. Return priority and team.",
+        "provider_metadata": {
+          "model": "onnx-community/SmolLM2-135M-Instruct-ONNX",
+          "model_revision": "b8a5c0f183b78c55955a5364f610c36668b5e681",
+          "runtime": "transformers.js CPU q4"
+        },
+        "tool_trace": [],
+        "usage": {
+          "completion_tokens": 64,
+          "prompt_tokens": 107,
+          "total_tokens": 171
+        }
+      },
+      {
+        "artifact": {
+          "hash": "9896f1ffe93bb99210c7a62b5328c009834a7ac80a4e97233749212f3f2db6c4",
+          "mime": "text/plain",
+          "type": "text"
+        },
+        "assertions": [
+          {
+            "actual": "I'm ready to help you with your query. Here's a simple example of a query:\n\n```\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"tool\": {\n      \"type\": \"string\", \"arguments\": \"id\"\n    },\n    \"additionalProperties\": false\n  }\n}\n```\n\nThis query looks for the \"tool\" property in the \"id\" object. It then checks if the \"additionalProperties\" property is present in the \"additionalProperties\" object. If it is, it returns the \"tool\" object. If not, it returns an error message.\n\nI'm ready to help you with your query.",
+            "expected": {
+              "additionalProperties": false,
+              "properties": {
+                "arguments": {
+                  "type": "object"
+                },
+                "tool": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "tool",
+                "arguments"
+              ],
+              "type": "object"
+            },
+            "name": "JSON schema",
+            "passed": false,
+            "weight": 1
+          },
+          {
+            "actual": null,
+            "expected": "lookup_customer",
+            "name": "tool_selection: tool",
+            "passed": false,
+            "weight": 1
+          },
+          {
+            "actual": null,
+            "expected": {
+              "id": "C42"
+            },
+            "name": "tool_selection: arguments",
+            "passed": false,
+            "weight": 1
+          }
+        ],
+        "attempts": 1,
+        "category": "tool_selection",
+        "error": null,
+        "id": "select-tool",
+        "latency_ms": 5539.035,
+        "output": "I'm ready to help you with your query. Here's a simple example of a query:\n\n```\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"tool\": {\n      \"type\": \"string\", \"arguments\": \"id\"\n    },\n    \"additionalProperties\": false\n  }\n}\n```\n\nThis query looks for the \"tool\" property in the \"id\" object. It then checks if the \"additionalProperties\" property is present in the \"additionalProperties\" object. If it is, it returns the \"tool\" object. If not, it returns an error message.\n\nI'm ready to help you with your query.",
+        "passed": false,
+        "prompt": "Available tools: calculator(expression), lookup_customer(id), send_email(to,body). Request: find customer C42. Return tool and arguments.",
+        "provider_metadata": {
+          "model": "onnx-community/SmolLM2-135M-Instruct-ONNX",
+          "model_revision": "b8a5c0f183b78c55955a5364f610c36668b5e681",
+          "runtime": "transformers.js CPU q4"
+        },
+        "tool_trace": [],
+        "usage": {
+          "completion_tokens": 139,
+          "prompt_tokens": 115,
+          "total_tokens": 254
+        }
+      },
+      {
+        "artifact": {
+          "hash": "88c2fb75bb6f1f278e854d1a90711eb0f1849a6aa5b35b621c01b2e80f24f4e2",
+          "mime": "text/plain",
+          "type": "text"
+        },
+        "assertions": [
+          {
+            "actual": "The policy states that a $12 purchase is within 30 days. A $12 order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is",
+            "expected": {
+              "additionalProperties": false,
+              "properties": {
+                "amount": {
+                  "type": "integer"
+                },
+                "tools": {
+                  "type": "array"
+                }
+              },
+              "required": [
+                "tools",
+                "amount"
+              ],
+              "type": "object"
+            },
+            "name": "JSON schema",
+            "passed": false,
+            "weight": 1
+          },
+          {
+            "actual": null,
+            "expected": [
+              "lookup_purchase",
+              "issue_refund"
+            ],
+            "name": "tool_selection: tools",
+            "passed": false,
+            "weight": 1
+          },
+          {
+            "actual": null,
+            "expected": 12,
+            "name": "tool_selection: amount",
+            "passed": false,
+            "weight": 1
+          }
+        ],
+        "attempts": 1,
+        "category": "tool_selection",
+        "error": null,
+        "id": "refund-workflow",
+        "latency_ms": 11059.619,
+        "output": "The policy states that a $12 purchase is within 30 days. A $12 order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is within 30 days. A $12 return order is",
+        "passed": false,
+        "prompt": "Policy: refunds require purchase lookup before refund. A $12 purchase P7 is within 30 days. Return ordered tools and final amount.",
+        "provider_metadata": {
+          "model": "onnx-community/SmolLM2-135M-Instruct-ONNX",
+          "model_revision": "b8a5c0f183b78c55955a5364f610c36668b5e681",
+          "runtime": "transformers.js CPU q4"
+        },
+        "tool_trace": [],
+        "usage": {
+          "completion_tokens": 256,
+          "prompt_tokens": 112,
+          "total_tokens": 368
+        }
+      },
+      {
+        "artifact": {
+          "hash": "d1c3182c182f707e752720ce4334e7b0153a8a08ece8798e8fa0e8732efcef64",
+          "mime": "text/plain",
+          "type": "text"
+        },
+        "assertions": [
+          {
+            "actual": "The fields are:\n\n```json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"order\": {\n            \"type\": \"string\", \"quantity\": \"integer\", \"paid\": \"boolean\"\n        },\n        \"quantity\": \"integer\"\n    },\n    \"required\": [\"order\", \"quantity\", \"paid\"]\n}\n```\n\nThe fields are:\n\n```json\n{\n    \"type\": \"string\", \"quantity\": \"integer\"\n}\n```\n\nThe fields are:\n\n```json\n{\n    \"type\": \"string\", \"quantity\": \"integer\"\n}\n```\n\nThe fields are:\n\n```json\n{\n    \"type\": \"string\", \"quantity\": \"integer\"\n}\n```\n\nThe fields are:\n\n```json\n{\n    \"type\": \"string\", \"quantity\": \"integer\"\n}\n```\n\nThe fields are:\n\n```json\n{\n    \"type\": \"string\", \"quantity\": \"integer\"\n}\n```\n\nThe fields are:\n\n```json\n{\n    \"type\": \"string\", \"quantity\": \"integer\"\n}\n```\n\nThe fields are:\n\n",
+            "expected": {
+              "additionalProperties": false,
+              "properties": {
+                "order": {
+                  "type": "string"
+                },
+                "paid": {
+                  "type": "boolean"
+                },
+                "quantity": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "order",
+                "quantity",
+                "paid"
+              ],
+              "type": "object"
+            },
+            "name": "JSON schema",
+            "passed": false,
+            "weight": 1
+          },
+          {
+            "actual": null,
+            "expected": "ORD-8",
+            "name": "schema: order",
+            "passed": false,
+            "weight": 1
+          },
+          {
+            "actual": null,
+            "expected": 3,
+            "name": "schema: quantity",
+            "passed": false,
+            "weight": 1
+          },
+          {
+            "actual": null,
+            "expected": true,
+            "name": "schema: paid",
+            "passed": false,
+            "weight": 1
+          }
+        ],
+        "attempts": 1,
+        "category": "schema",
+        "error": null,
+        "id": "json-boundary",
+        "latency_ms": 12695.037,
+        "output": "The fields are:\n\n```json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"order\": {\n            \"type\": \"string\", \"quantity\": \"integer\", \"paid\": \"boolean\"\n        },\n        \"quantity\": \"integer\"\n    },\n    \"required\": [\"order\", \"quantity\", \"paid\"]\n}\n```\n\nThe fields are:\n\n```json\n{\n    \"type\": \"string\", \"quantity\": \"integer\"\n}\n```\n\nThe fields are:\n\n```json\n{\n    \"type\": \"string\", \"quantity\": \"integer\"\n}\n```\n\nThe fields are:\n\n```json\n{\n    \"type\": \"string\", \"quantity\": \"integer\"\n}\n```\n\nThe fields are:\n\n```json\n{\n    \"type\": \"string\", \"quantity\": \"integer\"\n}\n```\n\nThe fields are:\n\n```json\n{\n    \"type\": \"string\", \"quantity\": \"integer\"\n}\n```\n\nThe fields are:\n\n```json\n{\n    \"type\": \"string\", \"quantity\": \"integer\"\n}\n```\n\nThe fields are:\n\n",
+        "passed": false,
+        "prompt": "Extract exactly these fields: order ORD-8, quantity three, paid yes. Output order, quantity integer, paid boolean.",
+        "provider_metadata": {
+          "model": "onnx-community/SmolLM2-135M-Instruct-ONNX",
+          "model_revision": "b8a5c0f183b78c55955a5364f610c36668b5e681",
+          "runtime": "transformers.js CPU q4"
+        },
+        "tool_trace": [],
+        "usage": {
+          "completion_tokens": 255,
+          "prompt_tokens": 119,
+          "total_tokens": 374
+        }
+      },
+      {
+        "artifact": {
+          "hash": "9bccd91d59a5b4d2c1e9cbb818d177a414402f019f4ece054e2626f5c3aeb512",
+          "mime": "text/plain",
+          "type": "text"
+        },
+        "assertions": [
+          {
+            "actual": "I'm sorry for the misunderstanding, but as a human, I don't have the ability to process events. I'm here to help you with your problem. I'm sorry for the misunderstanding.\n\nI'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the",
+            "expected": {
+              "additionalProperties": false,
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "processed": {
+                  "type": "array"
+                }
+              },
+              "required": [
+                "processed",
+                "count"
+              ],
+              "type": "object"
+            },
+            "name": "JSON schema",
+            "passed": false,
+            "weight": 1
+          },
+          {
+            "actual": null,
+            "expected": [
+              "a",
+              "b",
+              "c"
+            ],
+            "name": "state: processed",
+            "passed": false,
+            "weight": 1
+          },
+          {
+            "actual": null,
+            "expected": 3,
+            "name": "state: count",
+            "passed": false,
+            "weight": 1
+          }
+        ],
+        "attempts": 1,
+        "category": "state",
+        "error": null,
+        "id": "deduplicate-events",
+        "latency_ms": 10708.019,
+        "output": "I'm sorry for the misunderstanding, but as a human, I don't have the ability to process events. I'm here to help you with your problem. I'm sorry for the misunderstanding.\n\nI'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the misunderstanding. I'm sorry for the",
+        "passed": false,
+        "prompt": "Process event IDs [a,b,a,c,b] exactly once in arrival order. Return processed list and count.",
+        "provider_metadata": {
+          "model": "onnx-community/SmolLM2-135M-Instruct-ONNX",
+          "model_revision": "b8a5c0f183b78c55955a5364f610c36668b5e681",
+          "runtime": "transformers.js CPU q4"
+        },
+        "tool_trace": [],
+        "usage": {
+          "completion_tokens": 256,
+          "prompt_tokens": 107,
+          "total_tokens": 363
+        }
+      },
+      {
+        "artifact": {
+          "hash": "c9a36a3423738c067d7fed7efe08b54485063b368abf8a02ef61f8e85d0585fd",
+          "mime": "text/plain",
+          "type": "text"
+        },
+        "assertions": [
+          {
+            "actual": "I'm ready to help you with your requests. Please provide the task and the schema you need. I'll do my best to answer your questions and provide the answers in a structured and easy-to-understand manner.",
+            "expected": {
+              "additionalProperties": false,
+              "properties": {
+                "order": {
+                  "type": "array"
+                }
+              },
+              "required": [
+                "order"
+              ],
+              "type": "object"
+            },
+            "name": "JSON schema",
+            "passed": false,
+            "weight": 1
+          },
+          {
+            "actual": null,
+            "expected": [
+              "fetch",
+              "validate",
+              "publish"
+            ],
+            "name": "state: order",
+            "passed": false,
+            "weight": 1
+          }
+        ],
+        "attempts": 1,
+        "category": "state",
+        "error": null,
+        "id": "schedule-dependency",
+        "latency_ms": 1409.999,
+        "output": "I'm ready to help you with your requests. Please provide the task and the schema you need. I'll do my best to answer your questions and provide the answers in a structured and easy-to-understand manner.",
+        "passed": false,
+        "prompt": "Tasks: fetch has no dependency; validate depends on fetch; publish depends on validate. Return execution order.",
+        "provider_metadata": {
+          "model": "onnx-community/SmolLM2-135M-Instruct-ONNX",
+          "model_revision": "b8a5c0f183b78c55955a5364f610c36668b5e681",
+          "runtime": "transformers.js CPU q4"
+        },
+        "tool_trace": [],
+        "usage": {
+          "completion_tokens": 44,
+          "prompt_tokens": 91,
+          "total_tokens": 135
+        }
+      },
+      {
+        "artifact": {
+          "hash": "30301bf5034400da6e66a8c460cd6c1fdce5ca39146f13c8c5e9ac302db5027f",
+          "mime": "text/plain",
+          "type": "text"
+        },
+        "assertions": [
+          {
+            "actual": "The stock starts at 5, and the available is 3. The reserved is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned",
+            "expected": {
+              "additionalProperties": false,
+              "properties": {
+                "available": {
+                  "type": "integer"
+                },
+                "reserved": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "available",
+                "reserved"
+              ],
+              "type": "object"
+            },
+            "name": "JSON schema",
+            "passed": false,
+            "weight": 1
+          },
+          {
+            "actual": null,
+            "expected": 3,
+            "name": "state: available",
+            "passed": false,
+            "weight": 1
+          },
+          {
+            "actual": null,
+            "expected": 2,
+            "name": "state: reserved",
+            "passed": false,
+            "weight": 1
+          }
+        ],
+        "attempts": 1,
+        "category": "state",
+        "error": null,
+        "id": "inventory-reservation",
+        "latency_ms": 10261.481,
+        "output": "The stock starts at 5, and the available is 3. The reserved is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned is 1. The returned",
+        "passed": false,
+        "prompt": "Stock starts 5. Reserve 3, then release 1. Return available and reserved. Release restores stock.",
+        "provider_metadata": {
+          "model": "onnx-community/SmolLM2-135M-Instruct-ONNX",
+          "model_revision": "b8a5c0f183b78c55955a5364f610c36668b5e681",
+          "runtime": "transformers.js CPU q4"
+        },
+        "tool_trace": [],
+        "usage": {
+          "completion_tokens": 256,
+          "prompt_tokens": 107,
+          "total_tokens": 363
+        }
+      },
+      {
+        "artifact": {
+          "hash": "10de81a582fe63daebde2a77b8258014047a4c51d3f7c8032ad416aac8f51938",
+          "mime": "text/plain",
+          "type": "text"
+        },
+        "assertions": [
+          {
+            "actual": "I am a helpful AI named SmolLM, trained by Hugging Face. I am ready to help you. I will present the JSON schema and the corresponding calls.\n\n```json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"items\": {\n            \"type\": \"array\",\n            \"items.count\": \"integer\"\n        },\n        \"calls\": {\n            \"type\": \"integer\",\n            \"items.count\": \"integer\"\n        }\n    }\n}\n```\n\nI will present the JSON schema and the corresponding calls.\n\n```json\n{\n    \"type\": \"object\",\n    \"items\": {\n        \"type\": \"array\",\n        \"items.count\": \"integer\"\n    },\n    \"calls\": {\n        \"type\": \"integer\",\n        \"items.count\": \"integer\"\n    }\n}\n```\n\nI will present the JSON schema and the corresponding calls.\n\n```json\n{\n    \"type\": \"object\",\n    \"items\": {\n        \"type\": \"array\",\n        \"items.count\": \"integer\"\n    },\n    \"calls\": {\n        \"type\": \"integer\",\n        \"items.count\": \"integer\"\n    }\n}\n```",
+            "expected": {
+              "additionalProperties": false,
+              "properties": {
+                "calls": {
+                  "type": "integer"
+                },
+                "items": {
+                  "type": "array"
+                }
+              },
+              "required": [
+                "items",
+                "calls"
+              ],
+              "type": "object"
+            },
+            "name": "JSON schema",
+            "passed": false,
+            "weight": 1
+          },
+          {
+            "actual": null,
+            "expected": [
+              1,
+              2,
+              3
+            ],
+            "name": "state: items",
+            "passed": false,
+            "weight": 1
+          },
+          {
+            "actual": null,
+            "expected": 2,
+            "name": "state: calls",
+            "passed": false,
+            "weight": 1
+          }
+        ],
+        "attempts": 1,
+        "category": "state",
+        "error": null,
+        "id": "pagination",
+        "latency_ms": 10398.024,
+        "output": "I am a helpful AI named SmolLM, trained by Hugging Face. I am ready to help you. I will present the JSON schema and the corresponding calls.\n\n```json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"items\": {\n            \"type\": \"array\",\n            \"items.count\": \"integer\"\n        },\n        \"calls\": {\n            \"type\": \"integer\",\n            \"items.count\": \"integer\"\n        }\n    }\n}\n```\n\nI will present the JSON schema and the corresponding calls.\n\n```json\n{\n    \"type\": \"object\",\n    \"items\": {\n        \"type\": \"array\",\n        \"items.count\": \"integer\"\n    },\n    \"calls\": {\n        \"type\": \"integer\",\n        \"items.count\": \"integer\"\n    }\n}\n```\n\nI will present the JSON schema and the corresponding calls.\n\n```json\n{\n    \"type\": \"object\",\n    \"items\": {\n        \"type\": \"array\",\n        \"items.count\": \"integer\"\n    },\n    \"calls\": {\n        \"type\": \"integer\",\n        \"items.count\": \"integer\"\n    }\n}\n```",
+        "passed": false,
+        "prompt": "Pages are {items:[1,2],next:B}, B:{items:[3],next:null}. Return all items and calls.",
+        "provider_metadata": {
+          "model": "onnx-community/SmolLM2-135M-Instruct-ONNX",
+          "model_revision": "b8a5c0f183b78c55955a5364f610c36668b5e681",
+          "runtime": "transformers.js CPU q4"
+        },
+        "tool_trace": [],
+        "usage": {
+          "completion_tokens": 256,
+          "prompt_tokens": 112,
+          "total_tokens": 368
+        }
+      }
+    ],
+    "trust": "self-reported",
+    "usage": {
+      "completion_tokens": 1526,
+      "prompt_tokens": 870,
+      "total_tokens": 2396
+    }
+  },
+  "seed": 73,
+  "status": "completed",
+  "suite_hash": "2f1b713a2732b49eb39518b31dca6c68871e13b98955369ee830f53b5ebe3b3c",
+  "suite_slug": "structured-agent",
+  "suite_version": "1.0.0",
+  "target_id": "f5199b23-ada6-4015-98f9-7bcd086b344f",
+  "target_name": "SmolLM2 135M CPU q4",
+  "trust": "self-reported"
+}

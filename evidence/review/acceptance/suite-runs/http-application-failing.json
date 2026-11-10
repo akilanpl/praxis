@@ -1,0 +1,374 @@
+{
+  "id": "fc3f1ed6-0951-4e65-bd31-246c18d7a074",
+  "runner_version": "0.1.0",
+  "adapter_version": "1",
+  "target_id": null,
+  "target_name": "Owned HTTP regression fixture",
+  "target_kind": "application",
+  "model_config_hash": "376b7b3b0d1f420f5e73f3bf863357f664f9dbf9b56b37495c5304f20d2c893e",
+  "suite_slug": "http-application",
+  "suite_version": "1.0.0",
+  "suite_hash": "628e711a8b188b3a48a1d255cbc6f95b8d216363546ed32b98a5e2a3f4ddb453",
+  "seed": 73,
+  "trust": "self-reported",
+  "tasks": [
+    {
+      "id": "health-contract",
+      "prompt": "Execute the HTTP contract check against the explicitly connected application. Never use model inference.",
+      "category": "application_http",
+      "output": {
+        "status": 500,
+        "content_type": "text/plain",
+        "body": {
+          "status": "wrong"
+        },
+        "latency_ms": 5.856
+      },
+      "assertions": [
+        {
+          "name": "JSON schema",
+          "passed": true,
+          "expected": {
+            "type": "object",
+            "required": [
+              "status",
+              "content_type",
+              "body",
+              "latency_ms"
+            ]
+          },
+          "actual": "valid",
+          "weight": 1
+        },
+        {
+          "name": "status",
+          "passed": false,
+          "expected": 200,
+          "actual": 500,
+          "weight": 1
+        },
+        {
+          "name": "body.status",
+          "passed": false,
+          "expected": "ok",
+          "actual": "wrong",
+          "weight": 1
+        }
+      ],
+      "passed": false,
+      "latency_ms": 5.911,
+      "attempts": 1,
+      "error": null,
+      "usage": null,
+      "provider_metadata": {},
+      "tool_trace": [
+        {
+          "type": "http_request",
+          "method": "GET",
+          "path": "/health",
+          "status": 500
+        }
+      ],
+      "artifact": {
+        "type": "json",
+        "mime": "application/json",
+        "hash": "1d9a08cb353362de98d3b730939bbe9260721d0cbbc910afe9bf0f7f6c071596"
+      }
+    },
+    {
+      "id": "missing-route",
+      "prompt": "Execute the HTTP contract check against the explicitly connected application. Never use model inference.",
+      "category": "application_http",
+      "output": {
+        "status": 500,
+        "content_type": "text/plain",
+        "body": {
+          "status": "wrong"
+        },
+        "latency_ms": 6.077
+      },
+      "assertions": [
+        {
+          "name": "JSON schema",
+          "passed": true,
+          "expected": {
+            "type": "object",
+            "required": [
+              "status",
+              "content_type",
+              "body",
+              "latency_ms"
+            ]
+          },
+          "actual": "valid",
+          "weight": 1
+        },
+        {
+          "name": "status",
+          "passed": false,
+          "expected": 404,
+          "actual": 500,
+          "weight": 1
+        }
+      ],
+      "passed": false,
+      "latency_ms": 6.138,
+      "attempts": 1,
+      "error": null,
+      "usage": null,
+      "provider_metadata": {},
+      "tool_trace": [
+        {
+          "type": "http_request",
+          "method": "GET",
+          "path": "/praxis-nonexistent-path",
+          "status": 500
+        }
+      ],
+      "artifact": {
+        "type": "json",
+        "mime": "application/json",
+        "hash": "0759b70009594bbbe502a4dc0a91b122b8c8e73d0e66fadcd8b3b9500a6a827e"
+      }
+    },
+    {
+      "id": "json-content-type",
+      "prompt": "Execute the HTTP contract check against the explicitly connected application. Never use model inference.",
+      "category": "application_http",
+      "output": {
+        "status": 500,
+        "content_type": "text/plain",
+        "body": {
+          "status": "wrong"
+        },
+        "latency_ms": 9.226
+      },
+      "assertions": [
+        {
+          "name": "JSON schema",
+          "passed": true,
+          "expected": {
+            "type": "object",
+            "required": [
+              "status",
+              "content_type",
+              "body",
+              "latency_ms"
+            ]
+          },
+          "actual": "valid",
+          "weight": 1
+        },
+        {
+          "name": "content_type",
+          "passed": false,
+          "expected": "application/json",
+          "actual": "text/plain",
+          "weight": 1
+        }
+      ],
+      "passed": false,
+      "latency_ms": 9.286,
+      "attempts": 1,
+      "error": null,
+      "usage": null,
+      "provider_metadata": {},
+      "tool_trace": [
+        {
+          "type": "http_request",
+          "method": "GET",
+          "path": "/health",
+          "status": 500
+        }
+      ],
+      "artifact": {
+        "type": "json",
+        "mime": "application/json",
+        "hash": "5b2cc1ec9b762b18bcc422f2a602dc66abf90f380fdd6ff2317185e127d92a91"
+      }
+    },
+    {
+      "id": "invalid-order",
+      "prompt": "Execute the HTTP contract check against the explicitly connected application. Never use model inference.",
+      "category": "application_http",
+      "output": {
+        "status": 500,
+        "content_type": "text/plain",
+        "body": {},
+        "latency_ms": 5.519
+      },
+      "assertions": [
+        {
+          "name": "JSON schema",
+          "passed": true,
+          "expected": {
+            "type": "object",
+            "required": [
+              "status",
+              "content_type",
+              "body",
+              "latency_ms"
+            ]
+          },
+          "actual": "valid",
+          "weight": 1
+        },
+        {
+          "name": "status",
+          "passed": false,
+          "expected": 422,
+          "actual": 500,
+          "weight": 1
+        },
+        {
+          "name": "body.field",
+          "passed": false,
+          "expected": "quantity",
+          "actual": null,
+          "weight": 1
+        }
+      ],
+      "passed": false,
+      "latency_ms": 5.588,
+      "attempts": 1,
+      "error": null,
+      "usage": null,
+      "provider_metadata": {},
+      "tool_trace": [
+        {
+          "type": "http_request",
+          "method": "POST",
+          "path": "/orders",
+          "status": 500
+        }
+      ],
+      "artifact": {
+        "type": "json",
+        "mime": "application/json",
+        "hash": "bb634c1ab079d0ef4c60eeb9f14476a7b37e3729ea031d33ef7f26618ad17510"
+      }
+    }
+  ],
+  "events": [
+    {
+      "sequence": 0,
+      "type": "run_started",
+      "elapsed_ms": 0.072,
+      "suite": "http-application",
+      "seed": 73
+    },
+    {
+      "sequence": 1,
+      "type": "task_started",
+      "elapsed_ms": 0.078,
+      "task_id": "health-contract"
+    },
+    {
+      "sequence": 2,
+      "type": "task_completed",
+      "elapsed_ms": 6.002,
+      "task_id": "health-contract",
+      "passed": false,
+      "latency_ms": 5.911
+    },
+    {
+      "sequence": 3,
+      "type": "task_started",
+      "elapsed_ms": 6.004,
+      "task_id": "missing-route"
+    },
+    {
+      "sequence": 4,
+      "type": "task_completed",
+      "elapsed_ms": 12.157,
+      "task_id": "missing-route",
+      "passed": false,
+      "latency_ms": 6.138
+    },
+    {
+      "sequence": 5,
+      "type": "task_started",
+      "elapsed_ms": 12.159,
+      "task_id": "json-content-type"
+    },
+    {
+      "sequence": 6,
+      "type": "task_completed",
+      "elapsed_ms": 21.458,
+      "task_id": "json-content-type",
+      "passed": false,
+      "latency_ms": 9.286
+    },
+    {
+      "sequence": 7,
+      "type": "task_started",
+      "elapsed_ms": 21.46,
+      "task_id": "invalid-order"
+    },
+    {
+      "sequence": 8,
+      "type": "task_completed",
+      "elapsed_ms": 27.062,
+      "task_id": "invalid-order",
+      "passed": false,
+      "latency_ms": 5.588
+    },
+    {
+      "sequence": 9,
+      "type": "run_completed",
+      "elapsed_ms": 27.082,
+      "status": "completed",
+      "passed": 0,
+      "total": 4
+    }
+  ],
+  "cost": {
+    "status": "unknown",
+    "estimated_usd": null
+  },
+  "usage": {},
+  "status": "completed",
+  "configuration": {
+    "target": {
+      "kind": "application",
+      "provider": "custom",
+      "name": "Owned HTTP regression fixture",
+      "authorized": true,
+      "allow_mutation": true,
+      "endpoint": "http://127.0.0.1:36299"
+    },
+    "execution": {
+      "max_scenario_count": 4,
+      "max_wall_seconds": 120,
+      "max_retries": 0
+    }
+  },
+  "not_run_tasks": [],
+  "summary": {
+    "passed": 0,
+    "total": 4,
+    "executed": 4,
+    "not_run": 0,
+    "failed": 4,
+    "pass_rate": 0.0,
+    "assertions_passed": 4,
+    "assertions_total": 10,
+    "weighted_assertion_rate": 0.4,
+    "confidence_interval": [
+      0,
+      0.4899
+    ],
+    "latency_p50_ms": 6.138,
+    "latency_p95_ms": 9.286,
+    "dimensions": {
+      "application_http": {
+        "passed": 0,
+        "total": 4,
+        "executed": 4,
+        "not_run": 0
+      }
+    }
+  },
+  "duration_ms": 27.081,
+  "evidence_hash": "2e9224e8330a2efc69baf6f5f8ab88fdd92b64dd0fa1919a8c1446a202a5bb2d"
+}

@@ -1,0 +1,2775 @@
+{
+  "errors": [],
+  "generated_at": "2026-11-10T04:10:07Z",
+  "metrics": {
+    "_totals": {
+      "CONFIDENCE.HIGH": 109,
+      "CONFIDENCE.LOW": 6,
+      "CONFIDENCE.MEDIUM": 3,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 105,
+      "SEVERITY.MEDIUM": 13,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 2396,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "runner/praxis/__init__.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 2,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "runner/praxis/__main__.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 2,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "runner/praxis/adapters.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 154,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "runner/praxis/agent.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 99,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "runner/praxis/application.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 58,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "runner/praxis/artifact_checks.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "runner/praxis/cli.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 95,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "runner/praxis/engine.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 272,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "runner/praxis/media.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 62,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "runner/praxis/server.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 1,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 1,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 415,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "runner/praxis/worlds.py": {
+      "CONFIDENCE.HIGH": 1,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 1,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 104,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "scripts/acceptance_receipts.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 10,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "scripts/backup_workspace.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 62,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "scripts/browser_check.py": {
+      "CONFIDENCE.HIGH": 29,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 1,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 28,
+      "SEVERITY.MEDIUM": 2,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 195,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "scripts/build.py": {
+      "CONFIDENCE.HIGH": 2,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 2,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 59,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "scripts/coverage_acceptance.py": {
+      "CONFIDENCE.HIGH": 3,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 3,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 40,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "scripts/db_reliability.py": {
+      "CONFIDENCE.HIGH": 3,
+      "CONFIDENCE.LOW": 6,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 3,
+      "SEVERITY.MEDIUM": 6,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 24,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "scripts/dev.py": {
+      "CONFIDENCE.HIGH": 4,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 4,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 15,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "scripts/diff_coverage.py": {
+      "CONFIDENCE.HIGH": 3,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 3,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 66,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "scripts/evidence_identity.py": {
+      "CONFIDENCE.HIGH": 7,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 7,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 13,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "scripts/integration_proof.py": {
+      "CONFIDENCE.HIGH": 10,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 10,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 54,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "scripts/postgres_acceptance.py": {
+      "CONFIDENCE.HIGH": 5,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 5,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 76,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "scripts/postgres_container_check.py": {
+      "CONFIDENCE.HIGH": 7,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 7,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 63,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "scripts/real_inference_acceptance.py": {
+      "CONFIDENCE.HIGH": 8,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 1,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 8,
+      "SEVERITY.MEDIUM": 1,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 46,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "scripts/release_gate.py": {
+      "CONFIDENCE.HIGH": 14,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 11,
+      "SEVERITY.MEDIUM": 3,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 169,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "scripts/start_host_browser.py": {
+      "CONFIDENCE.HIGH": 3,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 2,
+      "SEVERITY.MEDIUM": 1,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 19,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "scripts/suite_acceptance.py": {
+      "CONFIDENCE.HIGH": 5,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 5,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 41,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "scripts/verify_review_evidence.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 21,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "scripts/verify_wheel.py": {
+      "CONFIDENCE.HIGH": 4,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 4,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 32,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "scripts/website_check.py": {
+      "CONFIDENCE.HIGH": 1,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 1,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 61,
+      "nosec": 0,
+      "skipped_tests": 0
+    }
+  },
+  "results": [
+    {
+      "code": "22 PASSWORD_ITERATIONS = 600000\n23 PASSWORD_PREFIX = 'pbkdf2_sha256$600000$'\n24 \n",
+      "col_offset": 18,
+      "end_col_offset": 41,
+      "filename": "runner/praxis/server.py",
+      "issue_confidence": "MEDIUM",
+      "issue_cwe": {
+        "id": 259,
+        "link": "https://cwe.mitre.org/data/definitions/259.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Possible hardcoded password: 'pbkdf2_sha256$600000$'",
+      "line_number": 23,
+      "line_range": [
+        23
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b105_hardcoded_password_string.html",
+      "test_id": "B105",
+      "test_name": "hardcoded_password_string"
+    },
+    {
+      "code": "17         raise ValueError(\"Growth threshold must be between 0 and 1\")\n18     rng=random.Random(seed)\n19     snapshots=[]\n",
+      "col_offset": 8,
+      "end_col_offset": 27,
+      "filename": "runner/praxis/worlds.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 18,
+      "line_range": [
+        18
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "9 import secrets\n10 import subprocess\n11 import time\n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 10,
+      "line_range": [
+        10
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "25 log=open(ROOT/'work'/('browser-api-'+name+'.log'),'w')\n26 process=subprocess.Popen([str(ROOT/'.venv/bin/python'),'-m','praxis.server'],cwd=ROOT,env=env,stdout=log,stderr=log)\n27 result={'status':'running','mode':'explicit fixture automation; no real inference' if args.fixture_only else 'two real local CPU models; no mocked backend','checks':[],'screenshots':[]}\n",
+      "col_offset": 8,
+      "end_col_offset": 116,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 26,
+      "line_range": [
+        26
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "28 result.update(source_identity())\n29 token=''\n30 def http(method,path,body=None):\n",
+      "col_offset": 6,
+      "end_col_offset": 8,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "MEDIUM",
+      "issue_cwe": {
+        "id": 259,
+        "link": "https://cwe.mitre.org/data/definitions/259.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Possible hardcoded password: ''",
+      "line_number": 29,
+      "line_range": [
+        29
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b105_hardcoded_password_string.html",
+      "test_id": "B105",
+      "test_name": "hardcoded_password_string"
+    },
+    {
+      "code": "31     req=urllib.request.Request(base+path,method=method,data=json.dumps(body).encode() if body is not None else None,headers={'Content-Type':'application/json','Authorization':'Bearer '+token})\n32     with urllib.request.urlopen(req,timeout=120) as response:return json.load(response)\n33 def record(name,**evidence):result['checks'].append({'name':name,'passed':True,**evidence})\n",
+      "col_offset": 9,
+      "end_col_offset": 48,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 22,
+        "link": "https://cwe.mitre.org/data/definitions/22.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+      "line_number": 32,
+      "line_range": [
+        32
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b310-urllib-urlopen",
+      "test_id": "B310",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "40         try:\n41             with urllib.request.urlopen(base+'/api/health',timeout=.5) as response:\n42                 if response.status==200:break\n",
+      "col_offset": 17,
+      "end_col_offset": 70,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 22,
+        "link": "https://cwe.mitre.org/data/definitions/22.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+      "line_number": 41,
+      "line_range": [
+        41
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b310-urllib-urlopen",
+      "test_id": "B310",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "60             token=page.evaluate('localStorage.token')\n61             assert http('GET','/api/me')['username']==prefix+'-'+name\n62         register('browser-owner')\n",
+      "col_offset": 12,
+      "end_col_offset": 69,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 61,
+      "line_range": [
+        61
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "79                 card.get_by_role('button',name='Test connection').click()\n80             data=diagnostic.value.json();assert data['ok'],data\n81             if not args.fixture_only:assert not data['demo']\n",
+      "col_offset": 41,
+      "end_col_offset": 63,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 80,
+      "line_range": [
+        80
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "80             data=diagnostic.value.json();assert data['ok'],data\n81             if not args.fixture_only:assert not data['demo']\n82             page.goto(base+'/runs/new')\n",
+      "col_offset": 37,
+      "end_col_offset": 60,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 81,
+      "line_range": [
+        81
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "91             run=http('GET','/api/runs/'+run_id)\n92             assert run['status']=='completed' and len(run['result']['tasks'])==8\n93             assert all(t['output'] is not None and not t['error'] for t in run['result']['tasks'])\n",
+      "col_offset": 12,
+      "end_col_offset": 80,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 92,
+      "line_range": [
+        92
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "92             assert run['status']=='completed' and len(run['result']['tasks'])==8\n93             assert all(t['output'] is not None and not t['error'] for t in run['result']['tasks'])\n94             assert page.get_by_role('columnheader',name='Assertion',exact=True).count()==8\n",
+      "col_offset": 12,
+      "end_col_offset": 98,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 93,
+      "line_range": [
+        93
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "93             assert all(t['output'] is not None and not t['error'] for t in run['result']['tasks'])\n94             assert page.get_by_role('columnheader',name='Assertion',exact=True).count()==8\n95             page.get_by_role('button',name='Export evidence').click()\n",
+      "col_offset": 12,
+      "end_col_offset": 90,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 94,
+      "line_range": [
+        94
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "99                 page.set_viewport_size({'width':width,'height':900})\n100                 assert not page.evaluate('document.documentElement.scrollWidth > innerWidth'),width\n101                 screenshot(page,'report-'+str(len(runs))+'-'+str(width))\n",
+      "col_offset": 16,
+      "end_col_offset": 99,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 100,
+      "line_range": [
+        100
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "102             record('Connect, diagnose, execute, persist and inspect '+target_name,run_id=run_id,benchmark_passed=run['result']['summary']['passed'],benchmark_total=8,trust=run['trust'])\n103         assert runs[0]['conditions_hash']==runs[1]['conditions_hash']\n104         page.goto(base+'/compare')\n",
+      "col_offset": 8,
+      "end_col_offset": 69,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 103,
+      "line_range": [
+        103
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "120         data=replay.value.json()\n121         assert [l['entities'] for l in data['levels']]==[1,5,12]\n122         assert http('POST','/api/worlds/'+world['id']+'/replay',{})==data\n",
+      "col_offset": 8,
+      "end_col_offset": 64,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 121,
+      "line_range": [
+        121
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "121         assert [l['entities'] for l in data['levels']]==[1,5,12]\n122         assert http('POST','/api/worlds/'+world['id']+'/replay',{})==data\n123         expect(page.get_by_role('heading',name='Level 3',exact=True)).to_be_visible()\n",
+      "col_offset": 8,
+      "end_col_offset": 73,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 122,
+      "line_range": [
+        122
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "130         artifact=upload.value.json()\n131         assert artifact['mime']=='text/plain' and artifact['public'] is False\n132         page.get_by_label('Search records').fill(artifact['id'])\n",
+      "col_offset": 8,
+      "end_col_offset": 77,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 131,
+      "line_range": [
+        131
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "133         expect(page.get_by_text('<script>alert(\"never execute\")</script>',exact=True)).to_be_visible()\n134         assert not dialogs\n135         screenshot(page,'artifact-inert')\n",
+      "col_offset": 8,
+      "end_col_offset": 26,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 134,
+      "line_range": [
+        134
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "142             page.get_by_label('Choose a file').set_input_files(str(source_wav))\n143         artifact=upload.value.json();assert artifact['mime']=='audio/wav' and artifact['duration_seconds']==1\n144         page.get_by_label('Search records').fill(artifact['id'])\n",
+      "col_offset": 37,
+      "end_col_offset": 109,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 143,
+      "line_range": [
+        143
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "152         expect(page.get_by_role('heading',name='Output A',exact=True)).to_be_visible()\n153         match=http('GET','/api/arena');assert match.get('id')\n154         assert 'target_id' not in json.dumps(match)\n",
+      "col_offset": 39,
+      "end_col_offset": 61,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 153,
+      "line_range": [
+        153
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "153         match=http('GET','/api/arena');assert match.get('id')\n154         assert 'target_id' not in json.dumps(match)\n155         if not args.fixture_only:assert not match['demo']\n",
+      "col_offset": 8,
+      "end_col_offset": 51,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 154,
+      "line_range": [
+        154
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "154         assert 'target_id' not in json.dumps(match)\n155         if not args.fixture_only:assert not match['demo']\n156         screenshot(page,'arena-blind')\n",
+      "col_offset": 33,
+      "end_col_offset": 57,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 155,
+      "line_range": [
+        155
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "160         expect(page.get_by_role('heading',name='Vote recorded',exact=True)).to_be_visible()\n161         assert not page.get_by_role('button',name='A wins',exact=True).is_enabled()\n162         assert {revealed['a'],revealed['b']}=={c[0] for c in configs}\n",
+      "col_offset": 8,
+      "end_col_offset": 83,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 161,
+      "line_range": [
+        161
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "161         assert not page.get_by_role('button',name='A wins',exact=True).is_enabled()\n162         assert {revealed['a'],revealed['b']}=={c[0] for c in configs}\n163         try:http('POST','/api/arena/'+match['id']+'/vote',{'choice':'b'});raise AssertionError('Duplicate vote accepted')\n",
+      "col_offset": 8,
+      "end_col_offset": 69,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 162,
+      "line_range": [
+        162
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "163         try:http('POST','/api/arena/'+match['id']+'/vote',{'choice':'b'});raise AssertionError('Duplicate vote accepted')\n164         except urllib.error.HTTPError as error:assert error.code==409\n165         try:http('GET','/api/runs/'+runs[0]['id']);raise AssertionError('Foreign report exposed')\n",
+      "col_offset": 47,
+      "end_col_offset": 69,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 164,
+      "line_range": [
+        164
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "165         try:http('GET','/api/runs/'+runs[0]['id']);raise AssertionError('Foreign report exposed')\n166         except urllib.error.HTTPError as error:assert error.code==404\n167         screenshot(page,'arena-revealed')\n",
+      "col_offset": 47,
+      "end_col_offset": 69,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 166,
+      "line_range": [
+        166
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "169         board=http('GET','/api/leaderboards')\n170         assert not board['objective'] and len(board['preference'])==2\n171         assert all(r['votes']==1 and r['status']=='insufficient evidence' for r in board['preference'])\n",
+      "col_offset": 8,
+      "end_col_offset": 69,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 170,
+      "line_range": [
+        170
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "170         assert not board['objective'] and len(board['preference'])==2\n171         assert all(r['votes']==1 and r['status']=='insufficient evidence' for r in board['preference'])\n172         record('Preference updates persist independently of empty official objective rankings')\n",
+      "col_offset": 8,
+      "end_col_offset": 103,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 171,
+      "line_range": [
+        171
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "179             page.set_viewport_size({'width':width,'height':900})\n180             assert not page.evaluate('document.documentElement.scrollWidth > innerWidth'),width\n181             screenshot(page,'dashboard-'+str(width))\n",
+      "col_offset": 12,
+      "end_col_offset": 95,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 180,
+      "line_range": [
+        180
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "181             screenshot(page,'dashboard-'+str(width))\n182         assert not errors,errors\n183         assert not dialogs,dialogs\n",
+      "col_offset": 8,
+      "end_col_offset": 32,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 182,
+      "line_range": [
+        182
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "182         assert not errors,errors\n183         assert not dialogs,dialogs\n184         record('390/768/1280 viewport checks, report layouts and zero browser errors')\n",
+      "col_offset": 8,
+      "end_col_offset": 34,
+      "filename": "scripts/browser_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 183,
+      "line_range": [
+        183
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "5 from pathlib import Path\n6 import subprocess\n7 import sys\n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "scripts/build.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 6,
+      "line_range": [
+        6
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "31         print('\\nBuilding: ' + ' '.join(command), flush=True)\n32         result = subprocess.run(command, cwd=ROOT, env=env)\n33         manifest['steps'].append({'command': command, 'exit_code': result.returncode})\n",
+      "col_offset": 17,
+      "end_col_offset": 59,
+      "filename": "scripts/build.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 32,
+      "line_range": [
+        32
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "4 from pathlib import Path\n5 import subprocess\n6 from diff_coverage import HUNK\n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "scripts/coverage_acceptance.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 5,
+      "line_range": [
+        5
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "18         path=Path(name).resolve().relative_to(ROOT).as_posix()\n19         patch=subprocess.check_output(['git','diff','--unified=0',base,'HEAD','--',path],cwd=ROOT,text=True)\n20         changed={n for start,count in HUNK.findall(patch) for n in range(int(start),int(start)+int(count or '1'))}\n",
+      "col_offset": 14,
+      "end_col_offset": 108,
+      "filename": "scripts/coverage_acceptance.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 19,
+      "line_range": [
+        19
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "18         path=Path(name).resolve().relative_to(ROOT).as_posix()\n19         patch=subprocess.check_output(['git','diff','--unified=0',base,'HEAD','--',path],cwd=ROOT,text=True)\n20         changed={n for start,count in HUNK.findall(patch) for n in range(int(start),int(start)+int(count or '1'))}\n",
+      "col_offset": 14,
+      "end_col_offset": 108,
+      "filename": "scripts/coverage_acceptance.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 19,
+      "line_range": [
+        19
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "1 \"\"\"Actual PostgreSQL transaction/concurrency/restart checks on owned disposable DBs.\"\"\"\n2 import subprocess\n3 \n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "scripts/db_reliability.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 2,
+      "line_range": [
+        2
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "7     target='30000000-0000-4000-8000-000000000003'\n8     run(command,input=f\"insert into auth.users(id,email) values ('{owner}','owner@fixture.invalid'),('{other}','other@fixture.invalid'); insert into model_revisions(id,user_id,name,kind,provider) values ('{target}','{owner}','owned reliability fixture','model','demo');\")\n9     auth=f\"set role authenticated;select set_config('request.jwt.claim.sub','{owner}',false);\"\n",
+      "col_offset": 24,
+      "end_col_offset": 66,
+      "filename": "scripts/db_reliability.py",
+      "issue_confidence": "LOW",
+      "issue_cwe": {
+        "id": 89,
+        "link": "https://cwe.mitre.org/data/definitions/89.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Possible SQL injection vector through string-based query construction.",
+      "line_number": 8,
+      "line_range": [
+        8
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b608_hardcoded_sql_expressions.html",
+      "test_id": "B608",
+      "test_name": "hardcoded_sql_expressions"
+    },
+    {
+      "code": "9     auth=f\"set role authenticated;select set_config('request.jwt.claim.sub','{owner}',false);\"\n10     insert=auth+f\"insert into run_requests(user_id,target_id,suite_slug,suite_version,idempotency_key) values ('{owner}','{target}','structured-agent','1','30000000-0000-4000-8000-000000000004');\"\n11     processes=[subprocess.Popen(command,stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,env=env) for _ in range(2)]\n",
+      "col_offset": 18,
+      "end_col_offset": 112,
+      "filename": "scripts/db_reliability.py",
+      "issue_confidence": "LOW",
+      "issue_cwe": {
+        "id": 89,
+        "link": "https://cwe.mitre.org/data/definitions/89.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Possible SQL injection vector through string-based query construction.",
+      "line_number": 10,
+      "line_range": [
+        10
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b608_hardcoded_sql_expressions.html",
+      "test_id": "B608",
+      "test_name": "hardcoded_sql_expressions"
+    },
+    {
+      "code": "10     insert=auth+f\"insert into run_requests(user_id,target_id,suite_slug,suite_version,idempotency_key) values ('{owner}','{target}','structured-agent','1','30000000-0000-4000-8000-000000000004');\"\n11     processes=[subprocess.Popen(command,stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,env=env) for _ in range(2)]\n12     # Send both requests before collecting either result: database uniqueness must arbitrate.\n",
+      "col_offset": 15,
+      "end_col_offset": 126,
+      "filename": "scripts/db_reliability.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 11,
+      "line_range": [
+        11
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "15     if sorted(p.returncode for p in processes)!=[0,3] or not any('duplicate key' in err for _,err in outcomes):raise RuntimeError('Concurrent idempotency uniqueness failed')\n16     rollback=\"begin;insert into model_revisions(id,user_id,name,kind,provider) values ('30000000-0000-4000-8000-000000000005','\"+owner+\"','rollback fixture','model','demo');insert into model_revisions(id,user_id,name,kind,provider) values ('\"+target+\"','\"+owner+\"','duplicate','model','demo');commit;\"\n17     failed=subprocess.run(command,input=rollback,text=True,capture_output=True,env=env,timeout=30)\n",
+      "col_offset": 13,
+      "end_col_offset": 128,
+      "filename": "scripts/db_reliability.py",
+      "issue_confidence": "LOW",
+      "issue_cwe": {
+        "id": 89,
+        "link": "https://cwe.mitre.org/data/definitions/89.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Possible SQL injection vector through string-based query construction.",
+      "line_number": 16,
+      "line_range": [
+        16
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b608_hardcoded_sql_expressions.html",
+      "test_id": "B608",
+      "test_name": "hardcoded_sql_expressions"
+    },
+    {
+      "code": "15     if sorted(p.returncode for p in processes)!=[0,3] or not any('duplicate key' in err for _,err in outcomes):raise RuntimeError('Concurrent idempotency uniqueness failed')\n16     rollback=\"begin;insert into model_revisions(id,user_id,name,kind,provider) values ('30000000-0000-4000-8000-000000000005','\"+owner+\"','rollback fixture','model','demo');insert into model_revisions(id,user_id,name,kind,provider) values ('\"+target+\"','\"+owner+\"','duplicate','model','demo');commit;\"\n17     failed=subprocess.run(command,input=rollback,text=True,capture_output=True,env=env,timeout=30)\n",
+      "col_offset": 135,
+      "end_col_offset": 242,
+      "filename": "scripts/db_reliability.py",
+      "issue_confidence": "LOW",
+      "issue_cwe": {
+        "id": 89,
+        "link": "https://cwe.mitre.org/data/definitions/89.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Possible SQL injection vector through string-based query construction.",
+      "line_number": 16,
+      "line_range": [
+        16
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b608_hardcoded_sql_expressions.html",
+      "test_id": "B608",
+      "test_name": "hardcoded_sql_expressions"
+    },
+    {
+      "code": "16     rollback=\"begin;insert into model_revisions(id,user_id,name,kind,provider) values ('30000000-0000-4000-8000-000000000005','\"+owner+\"','rollback fixture','model','demo');insert into model_revisions(id,user_id,name,kind,provider) values ('\"+target+\"','\"+owner+\"','duplicate','model','demo');commit;\"\n17     failed=subprocess.run(command,input=rollback,text=True,capture_output=True,env=env,timeout=30)\n18     if failed.returncode==0:raise RuntimeError('Rollback failure was not rejected')\n",
+      "col_offset": 11,
+      "end_col_offset": 98,
+      "filename": "scripts/db_reliability.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 17,
+      "line_range": [
+        17
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "20     if count!='0':raise RuntimeError('Partial transaction persisted')\n21     foreign=run(command,input=f\"set role authenticated;select set_config('request.jwt.claim.sub','{other}',false);select count(*) from run_requests;\").strip().splitlines()[-1]\n22     if foreign!='0':raise RuntimeError('RLS leaked persisted run')\n",
+      "col_offset": 32,
+      "end_col_offset": 98,
+      "filename": "scripts/db_reliability.py",
+      "issue_confidence": "LOW",
+      "issue_cwe": {
+        "id": 89,
+        "link": "https://cwe.mitre.org/data/definitions/89.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Possible SQL injection vector through string-based query construction.",
+      "line_number": 21,
+      "line_range": [
+        21
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b608_hardcoded_sql_expressions.html",
+      "test_id": "B608",
+      "test_name": "hardcoded_sql_expressions"
+    },
+    {
+      "code": "23     restart()\n24     persisted=run(command,input=auth+\"select count(*) from run_requests;\").strip().splitlines()[-1]\n25     if persisted!='1':raise RuntimeError('Committed run lost across PostgreSQL restart')\n",
+      "col_offset": 37,
+      "end_col_offset": 73,
+      "filename": "scripts/db_reliability.py",
+      "issue_confidence": "LOW",
+      "issue_cwe": {
+        "id": 89,
+        "link": "https://cwe.mitre.org/data/definitions/89.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Possible SQL injection vector through string-based query construction.",
+      "line_number": 24,
+      "line_range": [
+        24
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b608_hardcoded_sql_expressions.html",
+      "test_id": "B608",
+      "test_name": "hardcoded_sql_expressions"
+    },
+    {
+      "code": "2 from pathlib import Path\n3 import subprocess\n4 import sys\n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "scripts/dev.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 3,
+      "line_range": [
+        3
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "8 python=str(root/'.venv/bin/python') if (root/'.venv/bin/python').exists() else sys.executable\n9 api=subprocess.Popen([python,'-m','praxis.server'],env=env)\n10 web=subprocess.Popen(['npm','run','dev','--workspace','apps/web'])\n",
+      "col_offset": 4,
+      "end_col_offset": 59,
+      "filename": "scripts/dev.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 9,
+      "line_range": [
+        9
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "9 api=subprocess.Popen([python,'-m','praxis.server'],env=env)\n10 web=subprocess.Popen(['npm','run','dev','--workspace','apps/web'])\n11 try:\n",
+      "col_offset": 4,
+      "end_col_offset": 66,
+      "filename": "scripts/dev.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 10,
+      "line_range": [
+        10
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "9 api=subprocess.Popen([python,'-m','praxis.server'],env=env)\n10 web=subprocess.Popen(['npm','run','dev','--workspace','apps/web'])\n11 try:\n",
+      "col_offset": 4,
+      "end_col_offset": 66,
+      "filename": "scripts/dev.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 10,
+      "line_range": [
+        10
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "3 import re\n4 import subprocess\n5 from pathlib import Path\n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "scripts/diff_coverage.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 4,
+      "line_range": [
+        4
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "18     def git(*args):\n19         return subprocess.check_output(\n20             [\"git\", *args], cwd=root, text=True, stderr=subprocess.DEVNULL\n21         )\n22 \n",
+      "col_offset": 15,
+      "end_col_offset": 9,
+      "filename": "scripts/diff_coverage.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 19,
+      "line_range": [
+        19,
+        20,
+        21
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "18     def git(*args):\n19         return subprocess.check_output(\n20             [\"git\", *args], cwd=root, text=True, stderr=subprocess.DEVNULL\n21         )\n22 \n",
+      "col_offset": 15,
+      "end_col_offset": 9,
+      "filename": "scripts/diff_coverage.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 19,
+      "line_range": [
+        19,
+        20,
+        21
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "4 from pathlib import Path\n5 import subprocess\n6 ROOT=Path(__file__).resolve().parents[1]\n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "scripts/evidence_identity.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 5,
+      "line_range": [
+        5
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "9     if not __debug__:raise RuntimeError(\"Acceptance requires Python assertions enabled\")\n10     names=subprocess.check_output(['git','ls-files','-z','--',*PATHS],cwd=ROOT).decode().split('\\0')\n11     hashes={name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in sorted(names) if name and (ROOT/name).is_file()}\n",
+      "col_offset": 10,
+      "end_col_offset": 79,
+      "filename": "scripts/evidence_identity.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 10,
+      "line_range": [
+        10
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "9     if not __debug__:raise RuntimeError(\"Acceptance requires Python assertions enabled\")\n10     names=subprocess.check_output(['git','ls-files','-z','--',*PATHS],cwd=ROOT).decode().split('\\0')\n11     hashes={name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in sorted(names) if name and (ROOT/name).is_file()}\n",
+      "col_offset": 10,
+      "end_col_offset": 79,
+      "filename": "scripts/evidence_identity.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 10,
+      "line_range": [
+        10
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "11     hashes={name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in sorted(names) if name and (ROOT/name).is_file()}\n12     dirty=subprocess.run(['git','diff','--quiet','HEAD','--',*PATHS],cwd=ROOT).returncode!=0\n13     return {'source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'source_dirty':dirty,'source_tree_sha256':hashlib.sha256(json.dumps(hashes,sort_keys=True).encode()).hexdigest(),'source_files':hashes}\n",
+      "col_offset": 10,
+      "end_col_offset": 78,
+      "filename": "scripts/evidence_identity.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 12,
+      "line_range": [
+        12
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "11     hashes={name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in sorted(names) if name and (ROOT/name).is_file()}\n12     dirty=subprocess.run(['git','diff','--quiet','HEAD','--',*PATHS],cwd=ROOT).returncode!=0\n13     return {'source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'source_dirty':dirty,'source_tree_sha256':hashlib.sha256(json.dumps(hashes,sort_keys=True).encode()).hexdigest(),'source_files':hashes}\n",
+      "col_offset": 10,
+      "end_col_offset": 78,
+      "filename": "scripts/evidence_identity.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 12,
+      "line_range": [
+        12
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "12     dirty=subprocess.run(['git','diff','--quiet','HEAD','--',*PATHS],cwd=ROOT).returncode!=0\n13     return {'source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'source_dirty':dirty,'source_tree_sha256':hashlib.sha256(json.dumps(hashes,sort_keys=True).encode()).hexdigest(),'source_files':hashes}\n",
+      "col_offset": 28,
+      "end_col_offset": 98,
+      "filename": "scripts/evidence_identity.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 13,
+      "line_range": [
+        13
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "12     dirty=subprocess.run(['git','diff','--quiet','HEAD','--',*PATHS],cwd=ROOT).returncode!=0\n13     return {'source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'source_dirty':dirty,'source_tree_sha256':hashlib.sha256(json.dumps(hashes,sort_keys=True).encode()).hexdigest(),'source_files':hashes}\n",
+      "col_offset": 28,
+      "end_col_offset": 98,
+      "filename": "scripts/evidence_identity.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 13,
+      "line_range": [
+        13
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "26    time.sleep(.01)\n27   assert run['status']=='completed',run\n28   expected=0 if provider=='demo-failing' else run['result']['summary']['total']\n",
+      "col_offset": 2,
+      "end_col_offset": 39,
+      "filename": "scripts/integration_proof.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 27,
+      "line_range": [
+        27
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "28   expected=0 if provider=='demo-failing' else run['result']['summary']['total']\n29   assert run['result']['summary']['passed']==expected\n30   proof['runs'].append({'id':run['id'],'provider':provider,'kind':kind,'suite':suite,'summary':run['result']['summary'],'evidence_hash':run['result']['evidence_hash']})\n",
+      "col_offset": 2,
+      "end_col_offset": 53,
+      "filename": "scripts/integration_proof.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 29,
+      "line_range": [
+        29
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "35  a=call('POST','/api/worlds/'+world['id']+'/replay');b=call('POST','/api/worlds/'+world['id']+'/replay')\n36  assert a==b;assert [x['entities'] for x in a['levels']]==[1,5,12]\n37  proof['world']={'replay_hash':a['replay_hash'],'entities':[x['entities'] for x in a['levels']],'identical_replay':True}\n",
+      "col_offset": 1,
+      "end_col_offset": 12,
+      "filename": "scripts/integration_proof.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 36,
+      "line_range": [
+        36
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "35  a=call('POST','/api/worlds/'+world['id']+'/replay');b=call('POST','/api/worlds/'+world['id']+'/replay')\n36  assert a==b;assert [x['entities'] for x in a['levels']]==[1,5,12]\n37  proof['world']={'replay_hash':a['replay_hash'],'entities':[x['entities'] for x in a['levels']],'identical_replay':True}\n",
+      "col_offset": 13,
+      "end_col_offset": 66,
+      "filename": "scripts/integration_proof.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 36,
+      "line_range": [
+        36
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "38  (folder/'world-replay.json').write_text(json.dumps(a,indent=2))\n39  match=call('GET','/api/arena',who=voter);assert match.get('id')\n40  assert 'target_id' not in json.dumps(match)\n",
+      "col_offset": 42,
+      "end_col_offset": 64,
+      "filename": "scripts/integration_proof.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 39,
+      "line_range": [
+        39
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "39  match=call('GET','/api/arena',who=voter);assert match.get('id')\n40  assert 'target_id' not in json.dumps(match)\n41  vote=call('POST','/api/arena/'+match['id']+'/vote',{'choice':'a'},voter)\n",
+      "col_offset": 1,
+      "end_col_offset": 44,
+      "filename": "scripts/integration_proof.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 40,
+      "line_range": [
+        40
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "42  try:call('POST','/api/arena/'+match['id']+'/vote',{'choice':'a'},voter);raise AssertionError('duplicate accepted')\n43  except APIError as e:assert e.status==409\n44  board=call('GET','/api/leaderboards');assert not board['objective'];assert len(board['preference'])==2\n",
+      "col_offset": 22,
+      "end_col_offset": 42,
+      "filename": "scripts/integration_proof.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 43,
+      "line_range": [
+        43
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "43  except APIError as e:assert e.status==409\n44  board=call('GET','/api/leaderboards');assert not board['objective'];assert len(board['preference'])==2\n45  proof['arena']={'match':match,'vote':vote,'duplicate_vote_status':409,'official_objective_entries':0}\n",
+      "col_offset": 39,
+      "end_col_offset": 68,
+      "filename": "scripts/integration_proof.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 44,
+      "line_range": [
+        44
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "43  except APIError as e:assert e.status==409\n44  board=call('GET','/api/leaderboards');assert not board['objective'];assert len(board['preference'])==2\n45  proof['arena']={'match':match,'vote':vote,'duplicate_vote_status':409,'official_objective_entries':0}\n",
+      "col_offset": 69,
+      "end_col_offset": 103,
+      "filename": "scripts/integration_proof.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 44,
+      "line_range": [
+        44
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "48  clip=call('POST','/api/artifacts',{'filename':'one-second-silence.wav','content_base64':base64.b64encode(wav.getvalue()).decode()})\n49  assert clip['duration_seconds']==1\n50  proof['media']={k:clip[k] for k in ('mime','duration_seconds','size','sha256')}\n",
+      "col_offset": 1,
+      "end_col_offset": 35,
+      "filename": "scripts/integration_proof.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 49,
+      "line_range": [
+        49
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "7 import shutil\n8 import subprocess\n9 import tempfile\n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "scripts/postgres_acceptance.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 8,
+      "line_range": [
+        8
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "26 def run(args, **kwargs):\n27     p = subprocess.run(args,cwd=ROOT,capture_output=True,text=True,**kwargs)\n28     log.append('$ '+' '.join(str(a) for a in args)+'\\n'+p.stdout+p.stderr)\n",
+      "col_offset": 8,
+      "end_col_offset": 76,
+      "filename": "scripts/postgres_acceptance.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 27,
+      "line_range": [
+        27
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "35     if not path and shutil.which('pg_config'):\n36         candidate=Path(subprocess.check_output(['pg_config','--bindir'],text=True).strip())/name\n37         if candidate.is_file():path=str(candidate)\n",
+      "col_offset": 23,
+      "end_col_offset": 82,
+      "filename": "scripts/postgres_acceptance.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 36,
+      "line_range": [
+        36
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "35     if not path and shutil.which('pg_config'):\n36         candidate=Path(subprocess.check_output(['pg_config','--bindir'],text=True).strip())/name\n37         if candidate.is_file():path=str(candidate)\n",
+      "col_offset": 23,
+      "end_col_offset": 82,
+      "filename": "scripts/postgres_acceptance.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 36,
+      "line_range": [
+        36
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "58     tables=int(sql(\"select count(*) from pg_tables where schemaname='public' and rowsecurity\").strip())\n59     assert tables==28,tables\n60     result['checks'].append({'name':'RLS enabled on every application table','passed':True,'tables':tables})\n",
+      "col_offset": 4,
+      "end_col_offset": 28,
+      "filename": "scripts/postgres_acceptance.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 59,
+      "line_range": [
+        59
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "6 from pathlib import Path\n7 import subprocess\n8 import time\n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "scripts/postgres_container_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 7,
+      "line_range": [
+        7
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "20 def run(args,input=None):\n21     p=subprocess.run(args,input=input,text=True,capture_output=True,env=env,timeout=180)\n22     logs.append('$ '+' '.join(args)+'\\n'+p.stdout+p.stderr)\n",
+      "col_offset": 6,
+      "end_col_offset": 88,
+      "filename": "scripts/postgres_container_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 21,
+      "line_range": [
+        21
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "28     for _ in range(100):\n29         p=subprocess.run(DOCKER+['exec',NAME,'pg_isready','-U','postgres'],capture_output=True,env=env)\n30         logs_ready=subprocess.run(DOCKER+['logs',NAME],capture_output=True,text=True,env=env)\n",
+      "col_offset": 10,
+      "end_col_offset": 103,
+      "filename": "scripts/postgres_container_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 29,
+      "line_range": [
+        29
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "29         p=subprocess.run(DOCKER+['exec',NAME,'pg_isready','-U','postgres'],capture_output=True,env=env)\n30         logs_ready=subprocess.run(DOCKER+['logs',NAME],capture_output=True,text=True,env=env)\n31         if p.returncode==0 and 'PostgreSQL init process complete' in logs_ready.stdout:break\n",
+      "col_offset": 19,
+      "end_col_offset": 93,
+      "filename": "scripts/postgres_container_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 30,
+      "line_range": [
+        30
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "40     schema=ROOT/'supabase/schema.sql';migration=ROOT/'supabase/migrations/20261103162347_praxis_schema.sql'\n41     assert schema.read_bytes()==migration.read_bytes(),'Schema and migration differ'\n42     run(sql,input=schema.read_text());result['checks'].append({'name':'tracked migration matches schema and applies to empty database','passed':True})\n",
+      "col_offset": 4,
+      "end_col_offset": 84,
+      "filename": "scripts/postgres_container_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 41,
+      "line_range": [
+        41
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "45     tables=int(run(sql,input=\"select count(*) from pg_tables where schemaname='public' and rowsecurity;\").strip())\n46     assert tables==28,tables\n47     result['checks'].append({'name':'RLS enabled on all 28 tables','passed':True})\n",
+      "col_offset": 4,
+      "end_col_offset": 28,
+      "filename": "scripts/postgres_container_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 46,
+      "line_range": [
+        46
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "50         for _ in range(100):\n51             ready=subprocess.run(DOCKER+['exec',NAME,'pg_isready','-U','postgres'],capture_output=True,env=env)\n52             if ready.returncode==0:return\n",
+      "col_offset": 18,
+      "end_col_offset": 111,
+      "filename": "scripts/postgres_container_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 51,
+      "line_range": [
+        51
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "17  if urlparse(url).hostname not in ('127.0.0.1','localhost') or urlparse(url).scheme!='http':raise SystemExit('Acceptance mutates only explicit loopback test services')\n18 token=''\n19 def call(method,path,body=None):\n",
+      "col_offset": 6,
+      "end_col_offset": 8,
+      "filename": "scripts/real_inference_acceptance.py",
+      "issue_confidence": "MEDIUM",
+      "issue_cwe": {
+        "id": 259,
+        "link": "https://cwe.mitre.org/data/definitions/259.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Possible hardcoded password: ''",
+      "line_number": 18,
+      "line_range": [
+        18
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b105_hardcoded_password_string.html",
+      "test_id": "B105",
+      "test_name": "hardcoded_password_string"
+    },
+    {
+      "code": "20  request=urllib.request.Request(BASE+path,data=json.dumps(body).encode() if body is not None else None,method=method,headers={'Content-Type':'application/json','Authorization':'Bearer '+token})\n21  with urllib.request.urlopen(request,timeout=120) as response:return json.load(response)\n22 account=call('POST','/api/auth/register',{'username':'real-inference-'+secrets.token_hex(4),'password':secrets.token_urlsafe(24)})\n",
+      "col_offset": 6,
+      "end_col_offset": 49,
+      "filename": "scripts/real_inference_acceptance.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 22,
+        "link": "https://cwe.mitre.org/data/definitions/22.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+      "line_number": 21,
+      "line_range": [
+        21
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b310-urllib-urlopen",
+      "test_id": "B310",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "25 diagnostic=call('POST','/api/targets/'+target['id']+'/diagnostics',{})\n26 assert diagnostic['ok'] and not diagnostic['demo'],diagnostic\n27 run=call('POST','/api/runs',{'target_id':target['id'],'suite_slug':'structured-agent','suite_version':'1.0.0','seed':73,'idempotency_key':secrets.token_hex(16)})\n",
+      "col_offset": 0,
+      "end_col_offset": 61,
+      "filename": "scripts/real_inference_acceptance.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 26,
+      "line_range": [
+        26
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "32  time.sleep(.3)\n33 assert run['status']=='completed',run\n34 assert run['trust']=='self-reported' and run['result']['trust']=='self-reported'\n",
+      "col_offset": 0,
+      "end_col_offset": 37,
+      "filename": "scripts/real_inference_acceptance.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 33,
+      "line_range": [
+        33
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "33 assert run['status']=='completed',run\n34 assert run['trust']=='self-reported' and run['result']['trust']=='self-reported'\n35 rows=run['result']['tasks']\n",
+      "col_offset": 0,
+      "end_col_offset": 80,
+      "filename": "scripts/real_inference_acceptance.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 34,
+      "line_range": [
+        34
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "35 rows=run['result']['tasks']\n36 assert len(rows)==8\n37 assert all(row['output'] and row['latency_ms']>0 and not row['error'] for row in rows),rows\n",
+      "col_offset": 0,
+      "end_col_offset": 19,
+      "filename": "scripts/real_inference_acceptance.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 36,
+      "line_range": [
+        36
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "36 assert len(rows)==8\n37 assert all(row['output'] and row['latency_ms']>0 and not row['error'] for row in rows),rows\n38 assert all(row['usage']['completion_tokens']>0 for row in rows)\n",
+      "col_offset": 0,
+      "end_col_offset": 91,
+      "filename": "scripts/real_inference_acceptance.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 37,
+      "line_range": [
+        37
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "37 assert all(row['output'] and row['latency_ms']>0 and not row['error'] for row in rows),rows\n38 assert all(row['usage']['completion_tokens']>0 for row in rows)\n39 assert all(row.get('provider_metadata',{}).get('model')==MODEL for row in rows)\n",
+      "col_offset": 0,
+      "end_col_offset": 63,
+      "filename": "scripts/real_inference_acceptance.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 38,
+      "line_range": [
+        38
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "38 assert all(row['usage']['completion_tokens']>0 for row in rows)\n39 assert all(row.get('provider_metadata',{}).get('model')==MODEL for row in rows)\n40 name='real-'+MODEL.split('/')[-1]\n",
+      "col_offset": 0,
+      "end_col_offset": 79,
+      "filename": "scripts/real_inference_acceptance.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 39,
+      "line_range": [
+        39
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "7 import shutil\n8 import subprocess\n9 import sys\n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "scripts/release_gate.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 8,
+      "line_range": [
+        8
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "18 os.chdir(ROOT)\n19 SHA=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()\n20 BRANCH=subprocess.check_output(['git','branch','--show-current'],text=True).strip()\n",
+      "col_offset": 4,
+      "end_col_offset": 65,
+      "filename": "scripts/release_gate.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 19,
+      "line_range": [
+        19
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "18 os.chdir(ROOT)\n19 SHA=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()\n20 BRANCH=subprocess.check_output(['git','branch','--show-current'],text=True).strip()\n",
+      "col_offset": 4,
+      "end_col_offset": 65,
+      "filename": "scripts/release_gate.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 19,
+      "line_range": [
+        19
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "19 SHA=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()\n20 BRANCH=subprocess.check_output(['git','branch','--show-current'],text=True).strip()\n21 OUT=ROOT/'.pushgate/reports';OUT.mkdir(parents=True,exist_ok=True)\n",
+      "col_offset": 7,
+      "end_col_offset": 75,
+      "filename": "scripts/release_gate.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 20,
+      "line_range": [
+        20
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "19 SHA=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()\n20 BRANCH=subprocess.check_output(['git','branch','--show-current'],text=True).strip()\n21 OUT=ROOT/'.pushgate/reports';OUT.mkdir(parents=True,exist_ok=True)\n",
+      "col_offset": 7,
+      "end_col_offset": 75,
+      "filename": "scripts/release_gate.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 20,
+      "line_range": [
+        20
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "33     try:\n34         result=subprocess.run([str(c) for c in command],cwd=ROOT,env=ENV,capture_output=True,text=True,timeout=600)\n35         output=result.stdout+result.stderr;code=result.returncode\n",
+      "col_offset": 15,
+      "end_col_offset": 115,
+      "filename": "scripts/release_gate.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 34,
+      "line_range": [
+        34
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "66     try:\n67         with urllib.request.urlopen('http://127.0.0.1:'+str(port)+'/health',timeout=2) as r:data=json.load(r)\n68         return data.get('real_inference') is True and data.get('model')==model\n",
+      "col_offset": 13,
+      "end_col_offset": 86,
+      "filename": "scripts/release_gate.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 22,
+        "link": "https://cwe.mitre.org/data/definitions/22.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+      "line_number": 67,
+      "line_range": [
+        67
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b310-urllib-urlopen",
+      "test_id": "B310",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "117             log=open(OUT/('model-'+str(port)+'.log'),'w')\n118             proc=subprocess.Popen(['node','scripts/local_model_server.mjs'],cwd=ROOT,env=e,stdout=log,stderr=log);owned.append((proc,log))\n119             deadline=time.monotonic()+180\n",
+      "col_offset": 17,
+      "end_col_offset": 113,
+      "filename": "scripts/release_gate.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 118,
+      "line_range": [
+        118
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "117             log=open(OUT/('model-'+str(port)+'.log'),'w')\n118             proc=subprocess.Popen(['node','scripts/local_model_server.mjs'],cwd=ROOT,env=e,stdout=log,stderr=log);owned.append((proc,log))\n119             deadline=time.monotonic()+180\n",
+      "col_offset": 17,
+      "end_col_offset": 113,
+      "filename": "scripts/release_gate.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 118,
+      "line_range": [
+        118
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "141     e=dict(ENV,PRAXIS_PORT='8794',PRAXIS_DB=str(ROOT/'work'/('gate-'+SHA+'.sqlite')))\n142     log=open(OUT/'health-api.log','w');proc=subprocess.Popen([str(P),'-m','praxis.server'],env=e,stdout=log,stderr=log);owned.append((proc,log))\n143     samples=[];ready=time.monotonic()+10\n",
+      "col_offset": 44,
+      "end_col_offset": 119,
+      "filename": "scripts/release_gate.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 142,
+      "line_range": [
+        142
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "145         try:\n146             with urllib.request.urlopen('http://127.0.0.1:8794/api/health',timeout=.5) as r:assert json.load(r)['ok']\n147             break\n",
+      "col_offset": 17,
+      "end_col_offset": 86,
+      "filename": "scripts/release_gate.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 22,
+        "link": "https://cwe.mitre.org/data/definitions/22.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+      "line_number": 146,
+      "line_range": [
+        146
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b310-urllib-urlopen",
+      "test_id": "B310",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "145         try:\n146             with urllib.request.urlopen('http://127.0.0.1:8794/api/health',timeout=.5) as r:assert json.load(r)['ok']\n147             break\n",
+      "col_offset": 92,
+      "end_col_offset": 117,
+      "filename": "scripts/release_gate.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 146,
+      "line_range": [
+        146
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "150         begin=time.perf_counter()\n151         with urllib.request.urlopen('http://127.0.0.1:8794/api/health',timeout=2) as r:assert json.load(r)['ok']\n152         samples.append((time.perf_counter()-begin)*1000)\n",
+      "col_offset": 13,
+      "end_col_offset": 81,
+      "filename": "scripts/release_gate.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 22,
+        "link": "https://cwe.mitre.org/data/definitions/22.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+      "line_number": 151,
+      "line_range": [
+        151
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b310-urllib-urlopen",
+      "test_id": "B310",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "150         begin=time.perf_counter()\n151         with urllib.request.urlopen('http://127.0.0.1:8794/api/health',timeout=2) as r:assert json.load(r)['ok']\n152         samples.append((time.perf_counter()-begin)*1000)\n",
+      "col_offset": 87,
+      "end_col_offset": 112,
+      "filename": "scripts/release_gate.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 151,
+      "line_range": [
+        151
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "2 from pathlib import Path\n3 import subprocess\n4 import urllib.request\n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "scripts/start_host_browser.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 3,
+      "line_range": [
+        3
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "10 log=open(ROOT/'work/host-browser.log','a')\n11 process=subprocess.Popen([str(executables[-1]),'--remote-debugging-address=127.0.0.1','--remote-debugging-port=9333','--user-data-dir='+str(profile),'--no-first-run','--no-default-browser-check','about:blank'],stdout=log,stderr=log)\n12 for _ in range(100):\n",
+      "col_offset": 8,
+      "end_col_offset": 232,
+      "filename": "scripts/start_host_browser.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 11,
+      "line_range": [
+        11
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "13  try:\n14   with urllib.request.urlopen('http://127.0.0.1:9333/json/version',timeout=.5) as response:\n15    if response.status==200:print('Isolated host Chromium ready at http://127.0.0.1:9333. Close this test browser when acceptance is finished.');break\n",
+      "col_offset": 7,
+      "end_col_offset": 78,
+      "filename": "scripts/start_host_browser.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 22,
+        "link": "https://cwe.mitre.org/data/definitions/22.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+      "line_number": 14,
+      "line_range": [
+        14
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b310-urllib-urlopen",
+      "test_id": "B310",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "18         body=json.loads(self.rfile.read(int(self.headers['Content-Length'])))\n19         assert self.path=='/orders' and body=={'quantity':0}\n20         self.respond(500 if self.failing else 422,{} if self.failing else {'field':'quantity'})\n",
+      "col_offset": 8,
+      "end_col_offset": 60,
+      "filename": "scripts/suite_acceptance.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 19,
+      "line_range": [
+        19
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "28             run=execute_run(target,suite)\n29             assert run['summary']['passed']==(len(suite['tasks']) if passing else 0)\n30             assert run['summary']['executed']==len(suite['tasks'])\n",
+      "col_offset": 12,
+      "end_col_offset": 84,
+      "filename": "scripts/suite_acceptance.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 29,
+      "line_range": [
+        29
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "29             assert run['summary']['passed']==(len(suite['tasks']) if passing else 0)\n30             assert run['summary']['executed']==len(suite['tasks'])\n31             assert run['evidence_hash']==digest({k:v for k,v in run.items() if k!='evidence_hash'})\n",
+      "col_offset": 12,
+      "end_col_offset": 66,
+      "filename": "scripts/suite_acceptance.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 30,
+      "line_range": [
+        30
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "30             assert run['summary']['executed']==len(suite['tasks'])\n31             assert run['evidence_hash']==digest({k:v for k,v in run.items() if k!='evidence_hash'})\n32             name=suite['slug']+('-passing' if passing else '-failing')\n",
+      "col_offset": 12,
+      "end_col_offset": 99,
+      "filename": "scripts/suite_acceptance.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 31,
+      "line_range": [
+        31
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "36 finally:server.shutdown();server.server_close();thread.join()\n37 assert len(rows)==12 and sum(r['total'] for r in rows)==80\n38 proof={'status':'passed','scope':'all 40 public scenarios in positive and negative executions; deterministic model/tool fixtures, actual HTTP against an explicitly owned regression server; no neural inference in this receipt','runs':rows,'checks':[{'name':'forty positive and forty negative public scenario executions','passed':True}]}\n",
+      "col_offset": 0,
+      "end_col_offset": 58,
+      "filename": "scripts/suite_acceptance.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 37,
+      "line_range": [
+        37
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "5 from pathlib import Path\n6 import subprocess\n7 import sys\n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "scripts/verify_wheel.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 6,
+      "line_range": [
+        6
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "10 folder=Path(tempfile.mkdtemp(prefix='wheel-release-',dir=str(ROOT/'work')))\n11 subprocess.run([sys.executable,'-m','venv','--without-pip',str(folder)],check=True)\n12 python=folder/'bin/python'\n",
+      "col_offset": 0,
+      "end_col_offset": 83,
+      "filename": "scripts/verify_wheel.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 11,
+      "line_range": [
+        11
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "13 wheel=ROOT/'dist/runner/praxis-0.1.0-py3-none-any.whl'\n14 subprocess.run([sys.executable,'-m','pip','--python',str(python),'install','--no-deps','--no-index',str(wheel)],check=True)\n15 env=dict(os.environ,PYTHONPATH=str(ROOT/'.venv/lib'/('python%d.%d'%sys.version_info[:2])/'site-packages'),PYTHONPYCACHEPREFIX=str(ROOT/'work/pycache'))\n",
+      "col_offset": 0,
+      "end_col_offset": 123,
+      "filename": "scripts/verify_wheel.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 14,
+      "line_range": [
+        14
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "27 '''\n28 r=subprocess.run([str(python),'-c',code],cwd=folder,env=env,text=True,capture_output=True,check=True)\n29 proof=json.loads(r.stdout);proof.update(source_identity());r.stdout=json.dumps(proof)+'\\n'\n",
+      "col_offset": 2,
+      "end_col_offset": 101,
+      "filename": "scripts/verify_wheel.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 28,
+      "line_range": [
+        28
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "20     result['checks'].append({'name':name,'passed':bool(passed),**evidence})\n21     assert passed,name\n22 try:\n",
+      "col_offset": 4,
+      "end_col_offset": 22,
+      "filename": "scripts/website_check.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 21,
+      "line_range": [
+        21
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    }
+  ]
+}

@@ -1,3 +1,62 @@
+# Current independent review verification — 2026-11-10
+
+**Verdict: READY FOR REVIEW.** This checkpoint supersedes the historical verification below. No public deployment or hosted identity certification follows from these results.
+
+Review starts from original HEAD `8a2fe33468d14363152d7deca5179c6ab1c91267`; all six original commits are preserved. PR #2 was already merged before review. Fetched main is `914d2267acdd541348fa247ad773b333504ce311`. User requests branch-only publication on `codex/praxis-final-release`, no new PR or merge. Source tested by the full gate: `375688f0c872d7636a33b750441033b3aef4031e`. Following documentation/evidence updates do not change executable source; the normal pre-push gate also runs at the final branch HEAD.
+
+All source, dependencies, private test databases, model weights, browser artifacts and Git operations remain in the original managed Codex Cloud workspace. Runtime: Python 3.12.14, Node 24.22.1, npm 11.9.0, locked Playwright 1.64.1/Chromium 156.0.8078.4. App Vite 6.4.5/React 19.1.0 remain unchanged; patched Vitest/coverage-v8 5.1.0 are separate test tooling. Full test tooling requires Node 22.12+ and Chromium. Optional Bandit is pinned at 1.8.6; locks include all additions.
+
+| Area | Result | Exact command / evidence and scope |
+|---|---|---|
+| Independent baseline audit | PASS | `evidence/review/original-commits.txt`, `original-changed-files.txt`, `current-main-diff.txt`: six original commits, 165 historical changed files, empty content diff against merged main before remediation. Findings and evidence audit in `docs/qa/INDEPENDENT_PR_REVIEW.md`. |
+| Python suite | PASS | `pytest tests -q --cov=praxis --cov-branch ...`: **276 tests + 44 subtests**, no skips. `evidence/review/python.log/xml`. |
+| Python statement / branch coverage | PASS | **97.19% statements / 91.43% branches**, targets 90/85. `python-coverage.json`, no exclusions. Scope is the distributed runner package, including module entrypoint and actual owned-browser code via greenlet/thread tracing. Operational/QA scripts are exercised and SAST-reviewed separately; that percentage is not claimed for every repository Python script. |
+| Controlled TypeScript tests | PASS | `npm run test:typescript`: **39 tests** for frontend transport/session/forms/loading/errors, website, Worker routes/negative boundaries and contracts. DOM and Supabase transport are controlled, not hosted acceptance. `typescript.log`, `typescript/coverage-final.json`, `coverage-summary.json`, HTML report. |
+| Changed TypeScript executable lines | PASS | **99.02%**, target 85; changed security-sensitive TS branch outcomes **89.57%**, target 80. `coverage-targets.json`: actual git hunks against main + Istanbul statement/branch maps; both frontends, Worker, contracts included, missing files fail. Whole TS report is separate from Python. |
+| Original Worker tests | PASS | `node --import tsx --test apps/api/test/security.test.ts`: **14 tests retained**, controlled transport. `worker.log`; this is not hosted Supabase Auth. |
+| Compiler lint / type checks | PASS | `npm run lint`, `npm run typecheck`: all four workspaces; lint is compiler unused-local/parameter checking, not an ESLint/style certification. `lint.log`, `typecheck.log`. |
+| Builds / wheel | PASS | `npm run build`: evaluation UI, separate website, shared contracts, Worker dry-run bundle, Python compilation, wheel. `build.log`, `build-manifest.json`, `acceptance/wheel.json`: installed wheel away from source, six suites/40 definitions and 12 explicit fixture tasks. |
+| Reproducible installation | PASS | Documented `./scripts/setup.sh` completes after lock changes (`setup.log`). A fresh `work/review-fresh-install` virtualenv installs `requirements-lock.txt` and runs six-suite registry/eight-task explicit fixture (`fresh-install.log`, `fresh-install-smoke.json`). No neural inference is claimed for installation smoke. |
+| All public scenarios | PASS | `scripts/suite_acceptance.py`: all six suites, 40 positive + 40 negative task executions; model/tool fixtures explicitly labeled; application checks use an actual owned HTTP server. `acceptance/suite-matrix.json`, `suite-runs/`. |
+| Actual HTTP security / integration | PASS | `security-http.py/json`: 12 live loopback checks through Handler/SQLite for Host/Origin, owner isolation, trust rejection, inert uploads and revocation. Python also uses an actual owned HTTP service that commits then disconnects, proving POST is not replayed. Provider protocol/timeout HTTP tests remain enabled. |
+| Actual PostgreSQL / RLS | PASS | `scripts/postgres_container_check.py`: actual PostgreSQL 17.11 Alpine, network disabled, source-bound receipt/image digest. Schema/migration equality, selected ownership/trust SQL, all 28 RLS-enabled tables, concurrent idempotency, transaction rollback, cross-user read denial and restart persistence. `acceptance/postgres.json/log`. Local auth.uid/JWT-claim fixture; not exhaustive hosted business acceptance. |
+| Hosted Supabase identity | NOT VERIFIED | No approved dedicated hosted environment or identity credentials. Mocked Worker tests and local claims are not substituted for hosted Auth. |
+| Real model task results | FAIL | Source-bound actual CPU ONNX browser runs each scored **0/8 structured-agent v1.0.0 tasks**. Invocation/persistence/grading completed, task assertions failed. `acceptance/browser/run-1.json`, `run-2.json`; self-reported, not fixture inference or official leaderboard certification. |
+| Production-built browser workflows | PASS | `scripts/browser_check.py`: actual browser → HTTP → SQLite, two real models, reports, comparisons, replay, inert uploads/WAV, other-owned voting and duplicate denial, navigation; report/dashboard checks at **390/768/1280** and zero browser errors. `acceptance/browser/result.json` and screenshots. |
+| Website production browser | PASS | `scripts/website_check.py`: actual built static site, three widths, anchors/semantic heading/skip navigation/no local asset or browser errors. `acceptance/website/result.json` and screenshots. Not exhaustive WCAG or actual hosting acceptance. |
+| Backup / recovery | PASS | `tests/test_backup_recovery.py`: actual SQLite backup + referenced object hashes, new-directory restore, owner/session/artifact recovery, corruption and future-schema denial, private file modes. Snapshot tooling never overwrites an active workspace. |
+| Secret/dependency scans | PASS | Gitleaks history/staged changes and complete npm/pip audits report no known findings. `gitleaks.*`, `npm-audit.json`, `python-audit.json`. Initial advised Vitest version was replaced, not suppressed; before-report retained. |
+| SAST | PARTIAL | Unsuppressed Bandit runner/scripts scan has no HIGH finding. Assertion, subprocess, controlled loopback URL and synthetic test SQL flags remain in `bandit.json/log` with per-location contextual `security-triage.json`. No external penetration or ASVS certification. |
+| Deployment/operations | NOT VERIFIED | Application/website/Worker are not deployed. Actual public TLS/domain/headers/monitoring, hosted retention/backup/account lifecycle and edge abuse controls require separate approved resources and acceptance. |
+
+The full local feature gate passes **329 scored checks, internal score 100/100**, at the exact executable source above. `evidence/review/gate-receipt.json` preserves commands, exit codes, durations, code hashes and clean-source identity; `gate-summary.md` records scope. This is internal test accounting, not a production or security certification. Combined changed Python/TS executable-line evidence is measured, not the old unknown coverage cap. Explicit Python/TS threshold checks fail closed.
+
+The earlier stricter browser attempt failed on 390px report overflow and is retained as `mobile-failed-gate.json`, `mobile-failed-browser.log` and `report-layout-red.*`. The repair wraps compact event JSON and provides readable keyboard-focusable table scrolling; it does not hide overflow to pass. Red regression output is retained. Original 186-check/89-score and 0/8 model receipts are preserved under `evidence/final`; audited limitations are recorded in `acceptance-claim-audit.json` and `historical-evidence-audit.json`.
+
+## Exact reproduction in the cloud checkout
+
+```sh
+./scripts/setup.sh
+PLAYWRIGHT_BROWSERS_PATH=./work/browsers .venv/bin/python -m playwright install chromium
+PLAYWRIGHT_BROWSERS_PATH=./work/browsers npm test
+npm run test:typescript
+npm run typecheck
+npm run lint
+npm run build
+PLAYWRIGHT_BROWSERS_PATH=./work/browsers NODE_USE_ENV_PROXY=1 \
+  PRAXIS_COVERAGE_BASE=914d2267acdd541348fa247ad773b333504ce311 \
+  PRAXIS_EVIDENCE_DIR=./work/review-verification .pushgate/run.sh --mode=review
+.venv/bin/python evidence/review/security-http.py
+```
+
+Full gate prerequisites: Chromium, locked browser/test packages, Gitleaks on PATH or `work/gitleaks/gitleaks`, and native PostgreSQL or the managed local Docker daemon. Pinned free CPU ONNX models are cached/downloaded in cloud only. The Docker fallback uses the official PostgreSQL 17 Alpine image and records the actual digest. No paid model API is required. New acceptance output defaults to ignored `work/acceptance/<SHA>`; source-bound receipts fail on stale/missing/dirty-source evidence. CI uploads current evidence; historical receipts are never proof of later code by themselves.
+
+Current deployment/recovery checklist and component contracts: [PRODUCTION_READINESS_REVIEW.md](docs/qa/PRODUCTION_READINESS_REVIEW.md). Findings/status: [INDEPENDENT_PR_REVIEW.md](docs/qa/INDEPENDENT_PR_REVIEW.md). All original commits remain preserved. No new PR, merge, main push, force push, paid provisioning or production deployment is performed.
+
+---
+
+## Historical pre-review verification (preserved)
+
 # Verification — Codex Cloud, 2026-11-10
 
 **Verdict: READY FOR REVIEW. Local feature gate PASS; no production or hosted-product certification.**

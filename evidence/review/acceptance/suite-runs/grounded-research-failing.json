@@ -1,0 +1,719 @@
+{
+  "id": "896897ad-a059-438f-a898-002ef920459f",
+  "runner_version": "0.1.0",
+  "adapter_version": "1",
+  "target_id": null,
+  "target_name": "Explicit deterministic regression fixture",
+  "target_kind": "model",
+  "model_config_hash": "565da5906c4db9e27e7a55251f64637e15ebf526e3521bebdfaf2d701e197dfe",
+  "suite_slug": "grounded-research",
+  "suite_version": "1.0.0",
+  "suite_hash": "e71c6a2f48e443e6c6e5edd64563fcbba11d5ca1d7be88264d855fa5ffebe23f",
+  "seed": 73,
+  "trust": "demo",
+  "tasks": [
+    {
+      "id": "provided-fact",
+      "prompt": "Source S1: The Atlas bridge opened in 1927. Return year and citations.",
+      "category": "groundedness",
+      "output": {
+        "year": -999,
+        "citations": []
+      },
+      "assertions": [
+        {
+          "name": "JSON schema",
+          "passed": true,
+          "expected": {
+            "type": "object",
+            "properties": {
+              "year": {
+                "type": "integer"
+              },
+              "citations": {
+                "type": "array"
+              }
+            },
+            "required": [
+              "year",
+              "citations"
+            ],
+            "additionalProperties": false
+          },
+          "actual": "valid",
+          "weight": 1
+        },
+        {
+          "name": "groundedness: year",
+          "passed": false,
+          "expected": 1927,
+          "actual": -999,
+          "weight": 1
+        },
+        {
+          "name": "groundedness: citations",
+          "passed": false,
+          "expected": [
+            "S1"
+          ],
+          "actual": [],
+          "weight": 1
+        }
+      ],
+      "passed": false,
+      "latency_ms": 0.039,
+      "attempts": 1,
+      "error": null,
+      "usage": null,
+      "provider_metadata": {},
+      "tool_trace": [],
+      "artifact": {
+        "type": "json",
+        "mime": "application/json",
+        "hash": "2fecfdbaf9d5f09dbc0ccdb85b43bd493a142c368cc34524a78ab648a539550b"
+      }
+    },
+    {
+      "id": "unanswerable",
+      "prompt": "Source S1 says only that Atlas is a bridge. No construction cost is given. Return answer and citations; use unknown when absent.",
+      "category": "groundedness",
+      "output": {
+        "answer": "incorrect",
+        "citations": []
+      },
+      "assertions": [
+        {
+          "name": "JSON schema",
+          "passed": true,
+          "expected": {
+            "type": "object",
+            "properties": {
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations"
+            ],
+            "additionalProperties": false
+          },
+          "actual": "valid",
+          "weight": 1
+        },
+        {
+          "name": "groundedness: answer",
+          "passed": false,
+          "expected": "unknown",
+          "actual": "incorrect",
+          "weight": 1
+        },
+        {
+          "name": "groundedness: citations",
+          "passed": true,
+          "expected": [],
+          "actual": [],
+          "weight": 1
+        }
+      ],
+      "passed": false,
+      "latency_ms": 0.026,
+      "attempts": 1,
+      "error": null,
+      "usage": null,
+      "provider_metadata": {},
+      "tool_trace": [],
+      "artifact": {
+        "type": "json",
+        "mime": "application/json",
+        "hash": "9f6105a829faf60d8f4c1a8613678296c45ded21aeb12a1154838f608e3c6a27"
+      }
+    },
+    {
+      "id": "conflicting-sources",
+      "prompt": "S1 dated 2022: limit is 5. S2 dated 2024: limit is 8 and supersedes S1. Return current limit and citations.",
+      "category": "groundedness",
+      "output": {
+        "limit": -999,
+        "citations": []
+      },
+      "assertions": [
+        {
+          "name": "JSON schema",
+          "passed": true,
+          "expected": {
+            "type": "object",
+            "properties": {
+              "limit": {
+                "type": "integer"
+              },
+              "citations": {
+                "type": "array"
+              }
+            },
+            "required": [
+              "limit",
+              "citations"
+            ],
+            "additionalProperties": false
+          },
+          "actual": "valid",
+          "weight": 1
+        },
+        {
+          "name": "groundedness: limit",
+          "passed": false,
+          "expected": 8,
+          "actual": -999,
+          "weight": 1
+        },
+        {
+          "name": "groundedness: citations",
+          "passed": false,
+          "expected": [
+            "S2"
+          ],
+          "actual": [],
+          "weight": 1
+        }
+      ],
+      "passed": false,
+      "latency_ms": 0.023,
+      "attempts": 1,
+      "error": null,
+      "usage": null,
+      "provider_metadata": {},
+      "tool_trace": [],
+      "artifact": {
+        "type": "json",
+        "mime": "application/json",
+        "hash": "2be9cc132372fa03d8836ece841680bfd9345bbfa58ae29d8f4881e618d18ac2"
+      }
+    },
+    {
+      "id": "quote-fidelity",
+      "prompt": "S1 text: Water freezes at 0 degrees Celsius at standard pressure. Return exact quote and citation.",
+      "category": "groundedness",
+      "output": {
+        "quote": "incorrect",
+        "citation": "incorrect"
+      },
+      "assertions": [
+        {
+          "name": "JSON schema",
+          "passed": true,
+          "expected": {
+            "type": "object",
+            "properties": {
+              "quote": {
+                "type": "string"
+              },
+              "citation": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "quote",
+              "citation"
+            ],
+            "additionalProperties": false
+          },
+          "actual": "valid",
+          "weight": 1
+        },
+        {
+          "name": "groundedness: quote",
+          "passed": false,
+          "expected": "Water freezes at 0 degrees Celsius at standard pressure.",
+          "actual": "incorrect",
+          "weight": 1
+        },
+        {
+          "name": "groundedness: citation",
+          "passed": false,
+          "expected": "S1",
+          "actual": "incorrect",
+          "weight": 1
+        }
+      ],
+      "passed": false,
+      "latency_ms": 0.02,
+      "attempts": 1,
+      "error": null,
+      "usage": null,
+      "provider_metadata": {},
+      "tool_trace": [],
+      "artifact": {
+        "type": "json",
+        "mime": "application/json",
+        "hash": "517b0a70929235f854fcd1fa88534dfdf15b250b6beae4319c094d18c63224ed"
+      }
+    },
+    {
+      "id": "aggregate-ground-truth",
+      "prompt": "Sales ledger S1: Mon 12, Tue 8, Wed 15. Return total and maximum day, cite S1.",
+      "category": "correctness",
+      "output": {
+        "total": -999,
+        "maximum_day": "incorrect",
+        "citations": []
+      },
+      "assertions": [
+        {
+          "name": "JSON schema",
+          "passed": true,
+          "expected": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer"
+              },
+              "maximum_day": {
+                "type": "string"
+              },
+              "citations": {
+                "type": "array"
+              }
+            },
+            "required": [
+              "total",
+              "maximum_day",
+              "citations"
+            ],
+            "additionalProperties": false
+          },
+          "actual": "valid",
+          "weight": 1
+        },
+        {
+          "name": "correctness: total",
+          "passed": false,
+          "expected": 35,
+          "actual": -999,
+          "weight": 1
+        },
+        {
+          "name": "correctness: maximum_day",
+          "passed": false,
+          "expected": "Wed",
+          "actual": "incorrect",
+          "weight": 1
+        },
+        {
+          "name": "correctness: citations",
+          "passed": false,
+          "expected": [
+            "S1"
+          ],
+          "actual": [],
+          "weight": 1
+        }
+      ],
+      "passed": false,
+      "latency_ms": 0.024,
+      "attempts": 1,
+      "error": null,
+      "usage": null,
+      "provider_metadata": {},
+      "tool_trace": [],
+      "artifact": {
+        "type": "json",
+        "mime": "application/json",
+        "hash": "37ec4e2a39898522b09057e7d78e3a336b89500bd2358cd40814cbaa15544678"
+      }
+    },
+    {
+      "id": "retrieval-failure",
+      "prompt": "Retrieval tool returned TIMEOUT and no documents. Return answer unknown and status unavailable, with no invented citations.",
+      "category": "recovery",
+      "output": {
+        "answer": "incorrect",
+        "status": "incorrect",
+        "citations": []
+      },
+      "assertions": [
+        {
+          "name": "JSON schema",
+          "passed": true,
+          "expected": {
+            "type": "object",
+            "properties": {
+              "answer": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              },
+              "citations": {
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "status",
+              "citations"
+            ],
+            "additionalProperties": false
+          },
+          "actual": "valid",
+          "weight": 1
+        },
+        {
+          "name": "recovery: answer",
+          "passed": false,
+          "expected": "unknown",
+          "actual": "incorrect",
+          "weight": 1
+        },
+        {
+          "name": "recovery: status",
+          "passed": false,
+          "expected": "unavailable",
+          "actual": "incorrect",
+          "weight": 1
+        },
+        {
+          "name": "recovery: citations",
+          "passed": true,
+          "expected": [],
+          "actual": [],
+          "weight": 1
+        }
+      ],
+      "passed": false,
+      "latency_ms": 0.022,
+      "attempts": 1,
+      "error": null,
+      "usage": null,
+      "provider_metadata": {},
+      "tool_trace": [],
+      "artifact": {
+        "type": "json",
+        "mime": "application/json",
+        "hash": "853eb27ddb56dcb68db7fe3c7928b0aafc3348d74753cad8e7ebf02a1e99977a"
+      }
+    },
+    {
+      "id": "high-context",
+      "prompt": "Records: K0=0; K1=7; K2=14; K3=21; K4=28; K5=35; K6=42; K7=49; K8=56; K9=63; K10=70; K11=77; K12=84; K13=91; K14=98; K15=105; K16=112; K17=119; K18=126; K19=133; K20=140; K21=147; K22=154; K23=161; K24=168; K25=175; K26=182; K27=189; K28=196; K29=203; K30=210; K31=217; K32=224; K33=231; K34=238; K35=245; K36=252; K37=259; K38=266; K39=273; K40=280; K41=287; K42=294; K43=301; K44=308; K45=315; K46=322; K47=329; K48=336; K49=343; K50=350; K51=357; K52=364; K53=371; K54=378; K55=385; K56=392; K57=399; K58=406; K59=413; K60=420; K61=427; K62=434; K63=441; K64=448; K65=455; K66=462; K67=469; K68=476; K69=483; K70=490; K71=497; K72=504; K73=511; K74=518; K75=525; K76=532; K77=539; K78=546; K79=553; K80=560; K81=567; K82=574; K83=581; K84=588; K85=595; K86=602; K87=609; K88=616; K89=623; K90=630; K91=637; K92=644; K93=651; K94=658; K95=665; K96=672; K97=679; K98=686; K99=693; K100=700; K101=707; K102=714; K103=721; K104=728; K105=735; K106=742; K107=749; K108=756; K109=763; K110=770; K111=777; K112=784; K113=791; K114=798; K115=805; K116=812; K117=819; K118=826; K119=833. Return values of K3, K71 and K119.",
+      "category": "correctness",
+      "output": {
+        "K3": -999,
+        "K71": -999,
+        "K119": -999
+      },
+      "assertions": [
+        {
+          "name": "JSON schema",
+          "passed": true,
+          "expected": {
+            "type": "object",
+            "properties": {
+              "K3": {
+                "type": "integer"
+              },
+              "K71": {
+                "type": "integer"
+              },
+              "K119": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "K3",
+              "K71",
+              "K119"
+            ],
+            "additionalProperties": false
+          },
+          "actual": "valid",
+          "weight": 1
+        },
+        {
+          "name": "correctness: K3",
+          "passed": false,
+          "expected": 21,
+          "actual": -999,
+          "weight": 1
+        },
+        {
+          "name": "correctness: K71",
+          "passed": false,
+          "expected": 497,
+          "actual": -999,
+          "weight": 1
+        },
+        {
+          "name": "correctness: K119",
+          "passed": false,
+          "expected": 833,
+          "actual": -999,
+          "weight": 1
+        }
+      ],
+      "passed": false,
+      "latency_ms": 0.022,
+      "attempts": 1,
+      "error": null,
+      "usage": null,
+      "provider_metadata": {},
+      "tool_trace": [],
+      "artifact": {
+        "type": "json",
+        "mime": "application/json",
+        "hash": "67615df52e34dfb81f507d9e14a2003f66b262a0072cbc3a787e8b1d6444db76"
+      }
+    },
+    {
+      "id": "source-update",
+      "prompt": "Evidence v1: shipment X pending. Evidence v2: shipment X delivered, supersedes v1. Return status and evidence version.",
+      "category": "groundedness",
+      "output": {
+        "status": "incorrect",
+        "version": "incorrect"
+      },
+      "assertions": [
+        {
+          "name": "JSON schema",
+          "passed": true,
+          "expected": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "string"
+              },
+              "version": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "status",
+              "version"
+            ],
+            "additionalProperties": false
+          },
+          "actual": "valid",
+          "weight": 1
+        },
+        {
+          "name": "groundedness: status",
+          "passed": false,
+          "expected": "delivered",
+          "actual": "incorrect",
+          "weight": 1
+        },
+        {
+          "name": "groundedness: version",
+          "passed": false,
+          "expected": "v2",
+          "actual": "incorrect",
+          "weight": 1
+        }
+      ],
+      "passed": false,
+      "latency_ms": 0.018,
+      "attempts": 1,
+      "error": null,
+      "usage": null,
+      "provider_metadata": {},
+      "tool_trace": [],
+      "artifact": {
+        "type": "json",
+        "mime": "application/json",
+        "hash": "6dd6ea832b2a47fd2bac103f07612297c7efb0af3b56fbf9ac81a58770da1491"
+      }
+    }
+  ],
+  "events": [
+    {
+      "sequence": 0,
+      "type": "run_started",
+      "elapsed_ms": 0.106,
+      "suite": "grounded-research",
+      "seed": 73
+    },
+    {
+      "sequence": 1,
+      "type": "task_started",
+      "elapsed_ms": 0.112,
+      "task_id": "provided-fact"
+    },
+    {
+      "sequence": 2,
+      "type": "task_completed",
+      "elapsed_ms": 0.157,
+      "task_id": "provided-fact",
+      "passed": false,
+      "latency_ms": 0.039
+    },
+    {
+      "sequence": 3,
+      "type": "task_started",
+      "elapsed_ms": 0.158,
+      "task_id": "unanswerable"
+    },
+    {
+      "sequence": 4,
+      "type": "task_completed",
+      "elapsed_ms": 0.189,
+      "task_id": "unanswerable",
+      "passed": false,
+      "latency_ms": 0.026
+    },
+    {
+      "sequence": 5,
+      "type": "task_started",
+      "elapsed_ms": 0.19,
+      "task_id": "conflicting-sources"
+    },
+    {
+      "sequence": 6,
+      "type": "task_completed",
+      "elapsed_ms": 0.217,
+      "task_id": "conflicting-sources",
+      "passed": false,
+      "latency_ms": 0.023
+    },
+    {
+      "sequence": 7,
+      "type": "task_started",
+      "elapsed_ms": 0.218,
+      "task_id": "quote-fidelity"
+    },
+    {
+      "sequence": 8,
+      "type": "task_completed",
+      "elapsed_ms": 0.242,
+      "task_id": "quote-fidelity",
+      "passed": false,
+      "latency_ms": 0.02
+    },
+    {
+      "sequence": 9,
+      "type": "task_started",
+      "elapsed_ms": 0.243,
+      "task_id": "aggregate-ground-truth"
+    },
+    {
+      "sequence": 10,
+      "type": "task_completed",
+      "elapsed_ms": 0.272,
+      "task_id": "aggregate-ground-truth",
+      "passed": false,
+      "latency_ms": 0.024
+    },
+    {
+      "sequence": 11,
+      "type": "task_started",
+      "elapsed_ms": 0.273,
+      "task_id": "retrieval-failure"
+    },
+    {
+      "sequence": 12,
+      "type": "task_completed",
+      "elapsed_ms": 0.299,
+      "task_id": "retrieval-failure",
+      "passed": false,
+      "latency_ms": 0.022
+    },
+    {
+      "sequence": 13,
+      "type": "task_started",
+      "elapsed_ms": 0.3,
+      "task_id": "high-context"
+    },
+    {
+      "sequence": 14,
+      "type": "task_completed",
+      "elapsed_ms": 0.326,
+      "task_id": "high-context",
+      "passed": false,
+      "latency_ms": 0.022
+    },
+    {
+      "sequence": 15,
+      "type": "task_started",
+      "elapsed_ms": 0.326,
+      "task_id": "source-update"
+    },
+    {
+      "sequence": 16,
+      "type": "task_completed",
+      "elapsed_ms": 0.348,
+      "task_id": "source-update",
+      "passed": false,
+      "latency_ms": 0.018
+    },
+    {
+      "sequence": 17,
+      "type": "run_completed",
+      "elapsed_ms": 0.371,
+      "status": "completed",
+      "passed": 0,
+      "total": 8
+    }
+  ],
+  "cost": {
+    "status": "unknown",
+    "estimated_usd": null
+  },
+  "usage": {},
+  "status": "completed",
+  "configuration": {
+    "target": {
+      "kind": "model",
+      "provider": "demo-failing",
+      "name": "Explicit deterministic regression fixture",
+      "endpoint": "[invalid or absent endpoint]"
+    },
+    "execution": {
+      "max_scenario_count": 64,
+      "max_wall_seconds": 120,
+      "max_output_tokens": 1024,
+      "max_retries": 1
+    }
+  },
+  "not_run_tasks": [],
+  "summary": {
+    "passed": 0,
+    "total": 8,
+    "executed": 8,
+    "not_run": 0,
+    "failed": 8,
+    "pass_rate": 0.0,
+    "assertions_passed": 10,
+    "assertions_total": 27,
+    "weighted_assertion_rate": 0.37037037037037035,
+    "confidence_interval": [
+      0,
+      0.3244
+    ],
+    "latency_p50_ms": 0.023,
+    "latency_p95_ms": 0.039,
+    "dimensions": {
+      "correctness": {
+        "passed": 0,
+        "total": 2,
+        "executed": 2,
+        "not_run": 0
+      },
+      "groundedness": {
+        "passed": 0,
+        "total": 5,
+        "executed": 5,
+        "not_run": 0
+      },
+      "recovery": {
+        "passed": 0,
+        "total": 1,
+        "executed": 1,
+        "not_run": 0
+      }
+    }
+  },
+  "duration_ms": 0.37,
+  "evidence_hash": "9fd64dbaa9a68b92c8c13a49fa5de3f66d55aa1a2d935ad0e29ed1f135f75e15"
+}

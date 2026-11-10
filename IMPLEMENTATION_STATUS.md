@@ -1,3 +1,19 @@
+# Current post-publication status — 2026-11-10
+
+**READY FOR REVIEW**, within documented component contracts. Original PR #2 was already merged before this review. All six original commits remain ancestors; new review/remediation commits stay on `codex/praxis-final-release`. User directs branch-only publication, no new PR or merge.
+
+Independent review reproduced and repaired mutation replay, false-positive exhausted agents, redaction corruption, capped internal integrity lookups, stale-session UI behavior, upload durability, malformed input and mobile report defects. Password hashes now have a versioned 600,000-round format with compatible on-login upgrades. Backup/new-directory restore and future-schema refusal are tested.
+
+Current runner verification: 276 Python tests + 44 subtests; 39 controlled TypeScript tests plus the original 14 Worker tests. Python and changed TypeScript coverage targets are met without exclusions. Production-built browser acceptance, actual PostgreSQL concurrency/rollback/restart, source-bound receipts, package installation and all-six-suite positive/negative executions are documented in VERIFICATION.md. Real ONNX task results remain 0/8 each. SAST findings are retained with contextual PARTIAL triage, not hidden.
+
+No application, website or Worker production deployment has occurred. Hosted Supabase identity, public edge controls, domain/HTTPS/headers, operational monitoring and hosted recovery require dedicated approved environments and acceptance. Arbitrary untrusted code, cloud product parity, official trusted ranking and the other unsupported capabilities below remain outside scope.
+
+See [independent review](docs/qa/INDEPENDENT_PR_REVIEW.md), [production/recovery contracts](docs/qa/PRODUCTION_READINESS_REVIEW.md), and current evidence under `evidence/review`.
+
+---
+
+## Historical implementation checkpoint
+
 # Implementation status — 2026-11-10
 
 **Local release candidate; hosted product acceptance remains partial. No public deployment.**

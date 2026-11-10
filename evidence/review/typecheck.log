@@ -1,0 +1,30 @@
+
+> praxis@0.1.0 typecheck
+> npm run typecheck --workspaces --if-present
+
+
+> @praxis/web@0.1.0 typecheck
+> tsc --noEmit
+
+
+> @praxis/api@0.1.0 typecheck
+> tsc --noEmit
+
+
+> @praxis/contracts@0.1.0 typecheck
+> tsc --noEmit --target ES2022 --module ESNext --moduleResolution bundler src/index.ts
+
+
+> @praxis/website@0.1.0 typecheck
+> tsc --noEmit
+
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

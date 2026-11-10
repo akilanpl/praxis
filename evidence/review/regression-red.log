@@ -1,0 +1,339 @@
+FFFF....FF.FFFFFF                                                        [100%]
+=================================== FAILURES ===================================
+___________________ test_mutating_http_timeout_never_retried ___________________
+
+    def test_mutating_http_timeout_never_retried():
+        s=suite('http-application');s['tasks']=s['tasks'][-1:];s['execution']['max_retries']=2
+        with patch('praxis.engine.invoke_application',side_effect=AdapterError('timeout','test timeout')) as call:
+            result=execute_run({'kind':'application','provider':'custom'},s)
+>       assert call.call_count==1
+E       AssertionError: assert 3 == 1
+E        +  where 3 = <MagicMock name='invoke_application' id='139972562694080'>.call_count
+
+tests/test_independent_review.py:23: AssertionError
+_________________ test_agent_without_final_action_cannot_pass __________________
+
+    def test_agent_without_final_action_cannot_pass():
+        s=suite('agent-workflows');s['tasks']=s['tasks'][:1]
+        s['tasks'][0].update(max_steps=1,assertions=[],output_schema={'type':'object'},state_assertions=[{'path':'auto_refund_limit','op':'equals','expected':50}])
+        result=execute_run({'kind':'agent','provider':'demo'},s)
+>       assert not result['tasks'][0]['passed']
+E       assert not True
+
+tests/test_independent_review.py:30: AssertionError
+____________ test_adapter_requires_literal_mutation_consent[false] _____________
+
+value = 'false'
+
+    @pytest.mark.parametrize('value',['false',1,[],{},None,False])
+    def test_adapter_requires_literal_mutation_consent(value):
+        with patch('praxis.application.urllib.request.OpenerDirector.open') as call:
+            with pytest.raises(AdapterError) as e:invoke_application({'endpoint':'http://localhost','authorized':True,'allow_mutation':value},{'api_request':{'path':'/orders','method':'POST'}})
+>       assert e.value.category=='permission_denied' and not call.called
+E       AssertionError: assert ('timeout' == 'permission_denied'
+E         
+E         - permission_denied
+E         + timeout)
+
+tests/test_independent_review.py:38: AssertionError
+______________ test_adapter_requires_literal_mutation_consent[1] _______________
+
+value = 1
+
+    @pytest.mark.parametrize('value',['false',1,[],{},None,False])
+    def test_adapter_requires_literal_mutation_consent(value):
+        with patch('praxis.application.urllib.request.OpenerDirector.open') as call:
+            with pytest.raises(AdapterError) as e:invoke_application({'endpoint':'http://localhost','authorized':True,'allow_mutation':value},{'api_request':{'path':'/orders','method':'POST'}})
+>       assert e.value.category=='permission_denied' and not call.called
+E       AssertionError: assert ('timeout' == 'permission_denied'
+E         
+E         - permission_denied
+E         + timeout)
+
+tests/test_independent_review.py:38: AssertionError
+______________ test_redaction_preserves_envelope_and_hash[tasks] _______________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4d19c6b500>
+credential = 'tasks'
+
+    @pytest.mark.parametrize('credential',['tasks','passed','status'])
+    def test_redaction_preserves_envelope_and_hash(monkeypatch,credential):
+        monkeypatch.setenv('PRAXIS_MODEL_API_KEY',credential)
+        s=suite('structured-agent');s['tasks']=s['tasks'][:1]
+>       r=execute_run({'provider':'demo'},s)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_independent_review.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+target = {'provider': 'demo'}
+suite = {'schema_version': 'praxis.suite.v1', 'slug': 'structured-agent', 'version': '1.0.0', 'title': 'Structured agent reliability', ...}
+seed = 73, on_event = None, cancelled = None
+
+    def execute_run(target:Dict[str,Any],suite:Dict[str,Any],seed:int=73,on_event=None,cancelled=None):
+        validation = validate_suite(suite)
+        if not validation["valid"]:
+            raise ValueError("Invalid suite: " + "; ".join(validation["errors"]))
+        started=time.monotonic()
+        events=[]
+        def emit(kind, **fields):
+            event={"sequence":len(events),"type":kind,"elapsed_ms":round((time.monotonic()-started)*1000,3),**fields}
+            events.append(event)
+            if on_event:
+                on_event(event)
+        safe_target={k:v for k,v in target.items() if k in ("id","name","kind","provider","model","capabilities","max_tokens","temperature","timeout","allow_mutation","authorized","supports_seed")}
+        endpoint=target.get("endpoint","")
+        try:
+            parsed=urlparse(endpoint)
+            safe_target["endpoint"]=endpoint if parsed.scheme in ("http","https") and parsed.hostname and not (parsed.username or parsed.password or parsed.query or parsed.fragment) else "[invalid or absent endpoint]"
+        except (ValueError,TypeError): safe_target["endpoint"]="[invalid endpoint]"
+        result={"id":str(uuid.uuid4()),"runner_version":__version__,"adapter_version":"1","target_id":target.get("id"),"target_name":target.get("name",target.get("model","Demo fixture")),"target_kind":target.get("kind","model"),"model_config_hash":digest(safe_target),"suite_slug":suite["slug"],"suite_version":suite["version"],"suite_hash":digest(suite),"seed":seed,"trust":"demo" if target.get("provider","demo").startswith("demo") else "self-reported","tasks":[],"events":events,"cost":{"status":"unknown","estimated_usd":None},"usage":{},"status":"running"}
+        result["configuration"]={"target":safe_target,"execution":copy.deepcopy(suite.get("execution",{}))}
+        emit("run_started",suite=suite["slug"],seed=seed)
+        limits=suite.get("execution",{})
+        wall=min(max(float(limits.get("max_wall_seconds",120)),1),600)
+        for task in suite["tasks"][:min(int(limits.get("max_scenario_count",64)),64)]:
+            if cancelled and cancelled():
+                result["status"]="cancelled"
+                emit("run_cancelled")
+                break
+            if time.monotonic()-started > wall:
+                result["status"]="budget_exceeded"
+                emit("budget_exceeded",budget="wall_seconds")
+                break
+            begin=time.monotonic()
+            emit("task_started",task_id=task["id"])
+            error=None
+            response={"output":None,"usage":None,"tool_trace":[]}
+            attempts=0
+            retries=min(max(int(limits.get("max_retries",0)),0),2)
+            for attempt in range(retries+1):
+                if (cancelled and cancelled()) or time.monotonic()-started >= wall:
+                    error={"category":"cancelled" if cancelled and cancelled() else "timeout","message":"Execution stopped before another attempt"}
+                    break
+                attempts=attempt+1
+                try:
+                    bounded_target={**target,"timeout":min(float(target.get("timeout",20)),max(0.1,wall-(time.monotonic()-started)))}
+                    bounded_target["max_tokens"]=min(int(target.get("max_tokens",1024)),int(limits.get("max_output_tokens",8192)))
+                    response=invoke_application(bounded_target,task,seed) if target.get("kind")=="application" else invoke_agent(bounded_target,task,seed) if target.get("kind")=="agent" else invoke(bounded_target,task,seed)
+                    error=None
+                    break
+                except AdapterError as exc:
+                    response.update(getattr(exc,"evidence",{}))
+                    error={"category":exc.category,"message":str(exc)}
+                    emit("attempt_failed",task_id=task["id"],attempt=attempts,category=exc.category)
+                    if exc.category not in ("timeout","connection_error","http_error"):
+                        break
+                except (TypeError,ValueError) as exc:
+                    error={"category":"configuration","message":"Invalid numeric adapter configuration"}
+                    break
+            assertions=grade(task,response["output"]) if error is None else [{"name":"Provider execution","passed":False,"expected":"successful output","actual":error,"weight":1}]
+            if error is None and task.get("api_request") and target.get("kind")!="application":
+                assertions.append({"name":"Executable application required","passed":False,"expected":"application HTTP execution","actual":"model output only","weight":1})
+            if error is None and task.get("environment"):
+                if target.get("kind")!="agent":
+                    assertions.append({"name":"Executable agent required","passed":False,"expected":"agent tool execution","actual":"model output only","weight":1})
+                else:
+                    state_checks=grade({"output_schema":{"type":"object"},"assertions":task.get("state_assertions",[])},response.get("final_state",{}))[1:]
+                    assertions.extend(state_checks)
+                    unauthorized=[t for t in response.get("tool_trace",[]) if t.get("type")=="tool_call" and not t.get("authorized")]
+                    assertions.append({"name":"Allowed tool usage","passed":not unauthorized,"expected":[],"actual":[t.get("tool") for t in unauthorized],"weight":1})
+            row={"id":task["id"],"prompt":task["prompt"],"category":task.get("category","correctness"),"output":response["output"],"assertions":assertions,"passed":all(a["passed"] for a in assertions),"latency_ms":round((time.monotonic()-begin)*1000,3),"attempts":attempts,"error":error,"usage":response.get("usage"),"provider_metadata":response.get("provider_metadata",{}),"tool_trace":response.get("tool_trace",[]),"artifact":{"type":"json" if isinstance(response["output"],(dict,list)) else "text","mime":"application/json" if isinstance(response["output"],(dict,list)) else "text/plain","hash":digest(response["output"])}}
+            result["tasks"].append(row)
+            emit("task_completed",task_id=task["id"],passed=row["passed"],latency_ms=row["latency_ms"])
+        if result["status"]=="running":
+            result["status"]="cancelled" if cancelled and cancelled() else "budget_exceeded" if time.monotonic()-started >= wall else "completed"
+        rows=result["tasks"]
+        for row in rows:
+            for key,value in (row.get("usage") or {}).items() if isinstance(row.get("usage"),dict) else []:
+                if type(value) in (int,float) and math.isfinite(value) and value >= 0:
+                    result["usage"][key]=result["usage"].get(key,0)+value
+        result["not_run_tasks"]=[{"id":t["id"],"category":t.get("category","correctness"),"reason":result["status"] if result["status"]!="completed" else "scenario_limit"} for t in suite["tasks"][len(rows):]]
+        total=len(suite["tasks"])
+        passed=sum(t["passed"] for t in rows)
+        latencies=sorted(t["latency_ms"] for t in rows)
+        assertions=[a for t in rows for a in t["assertions"]]
+        weight=sum(a["weight"] for a in assertions)
+        dimensions={}
+        for category in sorted(set(t.get("category","correctness") for t in suite["tasks"])):
+            group=[t for t in rows if t["category"]==category]
+            dimension_total=sum(t.get("category","correctness")==category for t in suite["tasks"])
+            dimensions[category]={"passed":sum(t["passed"] for t in group),"total":dimension_total,"executed":len(group),"not_run":dimension_total-len(group)}
+        result["summary"]={"passed":passed,"total":total,"executed":len(rows),"not_run":total-len(rows),"failed":len(rows)-passed,"pass_rate":passed/total,"assertions_passed":sum(a["passed"] for a in assertions),"assertions_total":len(assertions),"weighted_assertion_rate":sum(a["weight"] for a in assertions if a["passed"])/weight if weight else 0,"confidence_interval":_wilson(passed,total),"latency_p50_ms":latencies[len(latencies)//2] if latencies else None,"latency_p95_ms":latencies[min(len(latencies)-1,math.ceil(len(latencies)*.95)-1)] if latencies else None,"dimensions":dimensions}
+        result["duration_ms"]=round((time.monotonic()-started)*1000,3)
+        emit("run_completed",status=result["status"],passed=passed,total=total)
+        # Providers may reflect the authorization credential in output/usage/metadata.
+        # Preserve the redaction in the hashed record, never persist the credential.
+        credential=os.environ.get(target.get("key_env","PRAXIS_MODEL_API_KEY"))
+        if credential:
+            def redact(value):
+                if isinstance(value,str): return value.replace(credential,"[REDACTED]")
+                if isinstance(value,list): return [redact(v) for v in value]
+                if isinstance(value,dict): return {redact(k):redact(v) for k,v in value.items()}
+                return value
+            result=redact(result)
+>           for row in result["tasks"]:
+                       ^^^^^^^^^^^^^^^
+E           KeyError: 'tasks'
+
+runner/praxis/engine.py:245: KeyError
+______________ test_redaction_preserves_envelope_and_hash[passed] ______________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4d19f07b30>
+credential = 'passed'
+
+    @pytest.mark.parametrize('credential',['tasks','passed','status'])
+    def test_redaction_preserves_envelope_and_hash(monkeypatch,credential):
+        monkeypatch.setenv('PRAXIS_MODEL_API_KEY',credential)
+        s=suite('structured-agent');s['tasks']=s['tasks'][:1]
+        r=execute_run({'provider':'demo'},s)
+>       assert isinstance(r['tasks'],list) and isinstance(r['summary']['passed'],int)
+                                                          ^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'passed'
+
+tests/test_independent_review.py:45: KeyError
+____ test_redaction_does_not_collapse_payload_keys_or_grade_hidden_original ____
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4d19c68bc0>
+
+    def test_redaction_does_not_collapse_payload_keys_or_grade_hidden_original(monkeypatch):
+        monkeypatch.setenv('PRAXIS_MODEL_API_KEY','synthetic-credential')
+        s=suite('structured-agent');s['tasks']=s['tasks'][:1]
+        s['tasks'][0].update(output_schema={'type':'object'},assertions=[{'path':'synthetic-credential','op':'equals','expected':1}])
+        with patch('praxis.engine.invoke',return_value={'output':{'synthetic-credential':1,'[REDACTED]':2}}):r=execute_run({'provider':'custom'},s)
+>       assert r['summary']['passed']==0
+E       assert 1 == 0
+
+tests/test_independent_review.py:54: AssertionError
+_______ test_malformed_suite_rejected_before_execution[category-value0] ________
+
+field = 'category', value = []
+
+    @pytest.mark.parametrize('field,value',[('category',[]),('assertions',[{'path':'','op':[]}]),('assertions',[{'path':'x','op':'gte','expected':{}}])])
+    def test_malformed_suite_rejected_before_execution(field,value):
+        s=suite('structured-agent');s['tasks'][0][field]=value
+>       assert not validate_suite(s)['valid']
+E       assert not True
+
+tests/test_independent_review.py:60: AssertionError
+______ test_malformed_suite_rejected_before_execution[assertions-value1] _______
+
+field = 'assertions', value = [{'path': '', 'op': []}]
+
+    @pytest.mark.parametrize('field,value',[('category',[]),('assertions',[{'path':'','op':[]}]),('assertions',[{'path':'x','op':'gte','expected':{}}])])
+    def test_malformed_suite_rejected_before_execution(field,value):
+        s=suite('structured-agent');s['tasks'][0][field]=value
+>       assert not validate_suite(s)['valid']
+                   ^^^^^^^^^^^^^^^^^
+
+tests/test_independent_review.py:60: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+suite = {'schema_version': 'praxis.suite.v1', 'slug': 'structured-agent', 'version': '1.0.0', 'title': 'Structured agent reliability', ...}
+
+    def validate_suite(suite):
+        errors = []
+        if not isinstance(suite,dict):
+            return {"valid":False,"errors":["suite must be an object"]}
+        for key in ("slug", "version", "title"):
+            if not isinstance(suite.get(key), str) or not suite[key] or len(suite[key]) > 120:
+                errors.append("%s must be a nonempty string <=120 characters" % key)
+        if isinstance(suite.get("slug"),str) and not re.fullmatch(r"[a-z0-9][a-z0-9-]{0,99}",suite["slug"]): errors.append("slug must use lowercase letters, digits and hyphens, at most 100 characters")
+        if isinstance(suite.get("version"),str) and not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9.+_-]{0,39}",suite["version"]): errors.append("version must be a route-safe identifier of at most 40 characters")
+        tasks = suite.get("tasks", [])
+        if not isinstance(tasks, list) or not 1 <= len(tasks) <= 64:
+            errors.append("tasks must contain 1..64 scenarios")
+            return {"valid": False, "errors": errors}
+        ids = set()
+        for i, task in enumerate(tasks):
+            if not isinstance(task, dict):
+                errors.append("task %d must be an object" % i)
+                continue
+            tid = task.get("id")
+            if not isinstance(tid,str) or not tid or tid in ids:
+                errors.append("task IDs must be nonempty unique strings")
+            ids.add(str(tid))
+            if not isinstance(task.get("prompt"),str) or not task["prompt"] or len(task["prompt"]) > 100000:
+                errors.append("task %s prompt invalid" % tid)
+            if "max_steps" in task and (type(task["max_steps"]) is not int or not 1 <= task["max_steps"] <= 16):
+                errors.append("agent max_steps must be an integer in 1..16")
+            if "allowed_tools" in task and (not isinstance(task["allowed_tools"],list) or any(not isinstance(t,str) for t in task["allowed_tools"])):
+                errors.append("allowed_tools must be an array of names")
+            if "environment" in task and not isinstance(task["environment"],dict):
+                errors.append("environment must be an object")
+            schema = task.get("output_schema", {})
+            try:
+                Draft202012Validator.check_schema(schema)
+            except Exception:
+                errors.append("task %s invalid JSON schema" % tid)
+            if "$ref" in json.dumps(schema):
+                errors.append("external/schema references are not accepted")
+            checks = task.get("assertions", [])
+            state_checks=task.get("state_assertions", [])
+            if not isinstance(checks,list) or not isinstance(state_checks,list):
+                errors.append("task %s assertions must be arrays" % tid)
+                continue
+            checks=checks+state_checks
+            if not isinstance(checks, list) or not 1 <= len(checks) <= 32:
+                errors.append("task %s requires 1..32 assertions" % tid)
+            else:
+                for check in checks:
+>                   if not isinstance(check,dict) or check.get("op") not in OPERATORS or not isinstance(check.get("path", ""),str) or len(check.get("path", "")) > 256:
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E                   TypeError: unhashable type: 'list'
+
+runner/praxis/engine.py:79: TypeError
+______ test_malformed_suite_rejected_before_execution[assertions-value2] _______
+
+field = 'assertions', value = [{'path': 'x', 'op': 'gte', 'expected': {}}]
+
+    @pytest.mark.parametrize('field,value',[('category',[]),('assertions',[{'path':'','op':[]}]),('assertions',[{'path':'x','op':'gte','expected':{}}])])
+    def test_malformed_suite_rejected_before_execution(field,value):
+        s=suite('structured-agent');s['tasks'][0][field]=value
+>       assert not validate_suite(s)['valid']
+E       assert not True
+
+tests/test_independent_review.py:60: AssertionError
+_______________ test_duplicate_old_suite_cannot_bypass_list_cap ________________
+
+local = (<praxis.server.ControlPlane object at 0x7f4d19cf2150>, <function local.<locals>.call at 0x7f4de6ce1300>, '4380e333-5e62-4046-9385-c71f8cb9530e')
+
+    def test_duplicate_old_suite_cannot_bypass_list_cap(local):
+        api,call,owner=local
+        s=suite('structured-agent');s['slug']='old-custom';call('POST','/api/suites',s)
+        for i in range(501):api.store.create('suite',owner,dict(s,slug=f'filler-{i}'))
+>       with pytest.raises(APIError) as e:call('POST','/api/suites',s)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE APIError
+
+tests/test_independent_review.py:73: Failed
+_______________ test_corrupt_existing_upload_repaired_atomically _______________
+
+local = (<praxis.server.ControlPlane object at 0x7f4d19cb51c0>, <function local.<locals>.call at 0x7f4de6ce3ba0>, '1b62d003-fcac-4073-9deb-83fe42fc4d3b')
+
+    def test_corrupt_existing_upload_repaired_atomically(local):
+        api,call,owner=local
+        raw=b'owned upload';body={'filename':'test.txt','content_base64':base64.b64encode(raw).decode()}
+        first=ingest(api.store,owner,body);obj=Path(api.store.path).parent/'objects'/first['sha256'];obj.write_bytes(b'truncated')
+        ingest(api.store,owner,body)
+>       assert obj.read_bytes()==raw
+E       AssertionError: assert b'truncated' == b'owned upload'
+E         
+E         At index 0 diff: b't' != b'o'
+E         Use -v to get more diff
+
+tests/test_independent_review.py:83: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_independent_review.py::test_mutating_http_timeout_never_retried
+FAILED tests/test_independent_review.py::test_agent_without_final_action_cannot_pass
+FAILED tests/test_independent_review.py::test_adapter_requires_literal_mutation_consent[false]
+FAILED tests/test_independent_review.py::test_adapter_requires_literal_mutation_consent[1]
+FAILED tests/test_independent_review.py::test_redaction_preserves_envelope_and_hash[tasks]
+FAILED tests/test_independent_review.py::test_redaction_preserves_envelope_and_hash[passed]
+FAILED tests/test_independent_review.py::test_redaction_does_not_collapse_payload_keys_or_grade_hidden_original
+FAILED tests/test_independent_review.py::test_malformed_suite_rejected_before_execution[category-value0]
+FAILED tests/test_independent_review.py::test_malformed_suite_rejected_before_execution[assertions-value1]
+FAILED tests/test_independent_review.py::test_malformed_suite_rejected_before_execution[assertions-value2]
+FAILED tests/test_independent_review.py::test_duplicate_old_suite_cannot_bypass_list_cap
+FAILED tests/test_independent_review.py::test_corrupt_existing_upload_repaired_atomically
+12 failed, 5 passed in 40.67s

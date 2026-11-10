@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "scope": "historical record consistency only; NOT independent model authenticity or hosted identity attestation",
+  "checks": [
+    {
+      "artifact": "real-SmolLM2-135M-Instruct-ONNX.json",
+      "status": "PASS",
+      "task_result": "FAIL",
+      "passed": 0,
+      "total": 8,
+      "trust": "self-reported"
+    },
+    {
+      "artifact": "real-SmolLM2-360M-Instruct-ONNX.json",
+      "status": "PASS",
+      "task_result": "FAIL",
+      "passed": 0,
+      "total": 8,
+      "trust": "self-reported"
+    },
+    {
+      "artifact": "historical Python JUnit",
+      "status": "PASS",
+      "tests": 184,
+      "scope": "44 nested subtests separately counted by pytest output"
+    }
+  ]
+}
