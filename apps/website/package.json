@@ -1,1 +1,22 @@
-{"name":"@praxis/website","version":"0.1.0","private":true,"type":"module","scripts":{"dev":"vite --host 127.0.0.1 --port 5174","typecheck":"tsc --noEmit","build":"tsc && vite build"},"dependencies":{"react":"19.1.0","react-dom":"19.1.0"},"devDependencies":{"@types/react":"19.1.6","@types/react-dom":"19.1.6","typescript":"5.8.3","vite":"6.4.5"}}
+{
+  "name": "@praxis/website",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5174",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc && vite build",
+    "lint": "tsc --noEmit --noUnusedLocals --noUnusedParameters"
+  },
+  "dependencies": {
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.6",
+    "@types/react-dom": "19.1.6",
+    "typescript": "5.8.3",
+    "vite": "6.4.5"
+  }
+}

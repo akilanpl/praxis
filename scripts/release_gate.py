@@ -60,6 +60,7 @@ def healthy(port,model):
 
 try:
     ok,_=stage('build',['npm','run','build']);add('All component production build','S01','pass' if ok else 'fail','P0')
+    ok,_=stage('frontend-lint',['npm','run','lint']);add('Frontend compiler unused-code lint','S01','pass' if ok else 'fail','P0')
     ok,_=stage('wheel',[P,'scripts/verify_wheel.py']);add('Isolated runner wheel installation and bundled execution','S01','pass' if ok else 'fail','P0')
     coverage_path = OUT / 'coverage.json'
     coverage_path.unlink(missing_ok=True)
