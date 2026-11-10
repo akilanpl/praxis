@@ -16,8 +16,13 @@ jobs:
       - run: python -m venv .venv && .venv/bin/python -m pip install --upgrade pip "setuptools>=84.1,<85" wheel && .venv/bin/python -m pip install -r requirements-lock.txt
       - run: .venv/bin/python -m playwright install --with-deps chromium
       - run: npm test
+        env:
+          PYTEST_ADDOPTS: --junitxml=work/ci-python.xml
       - run: npm run test:typescript
       - run: npm run lint
       - run: npm run build
       - run: npm run test --workspace apps/api
       - run: npm run typecheck --workspace packages/contracts
+      - name: Publish bounded failure identifiers
+        if: failure()
+        run: .venv/bin/python scripts/ci_failure_annotations.py
