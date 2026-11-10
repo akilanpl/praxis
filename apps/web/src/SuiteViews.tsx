@@ -6,7 +6,7 @@ export function suiteIssues(value: any): string[] {
   if (!value || typeof value !== "object" || Array.isArray(value))
     return ["Definition must be a JSON object."];
   const issues: string[] = [];
-  if (!/^[a-z0-9-]{1,100}$/.test(value.slug || ""))
+  if (typeof value.slug !== "string" || !/^[a-z0-9-]{1,100}$/.test(value.slug))
     issues.push("Use a lowercase suite slug with letters, digits and hyphens.");
   if (!value.title || typeof value.title !== "string")
     issues.push("Give this suite a title.");
@@ -16,7 +16,28 @@ export function suiteIssues(value: any): string[] {
     issues.push("Add at least one scenario.");
   if (
     Array.isArray(value.tasks) &&
-    new Set(value.tasks.map((t: any) => t.id)).size !== value.tasks.length
+    value.tasks.some(
+      (task: any) =>
+        !task ||
+        typeof task !== "object" ||
+        Array.isArray(task) ||
+        typeof task.id !== "string",
+    )
+  )
+    issues.push(
+      "Every scenario must be a JSON object with a string identifier.",
+    );
+  if (
+    Array.isArray(value.tasks) &&
+    value.tasks.some(
+      (task: any) =>
+        task?.prompt !== undefined && typeof task.prompt !== "string",
+    )
+  )
+    issues.push("All scenario prompts must be text.");
+  if (
+    Array.isArray(value.tasks) &&
+    new Set(value.tasks.map((t: any) => t?.id)).size !== value.tasks.length
   )
     issues.push("Scenario identifiers must be unique.");
   return issues;
@@ -119,11 +140,24 @@ export default function SuiteEditor({
   } catch {
     syntax = "Enter valid JSON";
   }
+  const structurable =
+    typeof definition?.slug === "string" &&
+    typeof definition?.title === "string" &&
+    typeof definition?.version === "string" &&
+    Array.isArray(definition?.tasks) &&
+    definition.tasks.every(
+      (task: any) =>
+        task &&
+        typeof task === "object" &&
+        !Array.isArray(task) &&
+        typeof task.id === "string" &&
+        (task.prompt === undefined || typeof task.prompt === "string"),
+    );
   const issues = syntax
       ? ["Definition is incomplete or malformed JSON."]
       : suiteIssues(definition),
     tasks = Array.isArray(definition?.tasks) ? definition.tasks : [],
-    task = tasks[selected];
+    task = structurable ? tasks[selected] : undefined;
   function edit(key: string, value: any) {
     T(JSON.stringify({ ...definition, [key]: value }, null, 2));
   }
@@ -179,135 +213,135 @@ export default function SuiteEditor({
           Full JSON
         </button>
       </div>
-      {mode === "structured" &&
-        definition &&
-        typeof definition === "object" &&
-        !Array.isArray(definition) && (
-          <>
-            <div className="form-grid">
-              <label>
-                Suite title
-                <input
-                  value={definition.title || ""}
-                  onChange={(e) => edit("title", e.target.value)}
-                  maxLength={200}
-                />
-              </label>
-              <label>
-                Suite slug
-                <input
-                  value={definition.slug || ""}
-                  onChange={(e) => edit("slug", e.target.value)}
-                  maxLength={100}
-                />
-              </label>
-              <label>
-                Version
-                <input
-                  value={definition.version || ""}
-                  onChange={(e) => edit("version", e.target.value)}
-                  maxLength={40}
-                />
-              </label>
-            </div>
-            <div className="editor-workspace">
-              <div className="scenario-list">
-                <div className="section-label">
-                  SCENARIOS <span>{tasks.length}</span>
-                </div>
-                {tasks.map((t: any, i: number) => (
-                  <button
-                    type="button"
-                    className={i === selected ? "selected" : ""}
-                    key={i}
-                    onClick={() => S(i)}
-                  >
-                    <span>{String(i + 1).padStart(2, "0")}</span>
-                    {t.id || "Untitled scenario"}
-                  </button>
-                ))}
+      {mode === "structured" && structurable && (
+        <>
+          <div className="form-grid">
+            <label>
+              Suite title
+              <input
+                value={definition.title || ""}
+                onChange={(e) => edit("title", e.target.value)}
+                maxLength={200}
+              />
+            </label>
+            <label>
+              Suite slug
+              <input
+                value={definition.slug || ""}
+                onChange={(e) => edit("slug", e.target.value)}
+                maxLength={100}
+              />
+            </label>
+            <label>
+              Version
+              <input
+                value={definition.version || ""}
+                onChange={(e) => edit("version", e.target.value)}
+                maxLength={40}
+              />
+            </label>
+          </div>
+          <div className="editor-workspace">
+            <div className="scenario-list">
+              <div className="section-label">
+                SCENARIOS <span>{tasks.length}</span>
+              </div>
+              {tasks.map((t: any, i: number) => (
                 <button
                   type="button"
-                  className="secondary"
-                  onClick={() => {
-                    edit("tasks", [
-                      ...tasks,
-                      {
-                        id: "scenario-" + (tasks.length + 1),
-                        prompt: "",
-                        category: "correctness",
-                        output_schema: { type: "object" },
-                        assertions: [],
-                        passing_fixture: {},
-                        failing_fixture: {},
-                      },
-                    ]);
-                    S(tasks.length);
-                  }}
+                  className={i === selected ? "selected" : ""}
+                  key={i}
+                  onClick={() => S(i)}
                 >
-                  + Add scenario
+                  <span>{String(i + 1).padStart(2, "0")}</span>
+                  {t.id || "Untitled scenario"}
                 </button>
-              </div>
-              <div className="scenario-editor">
-                {task ? (
-                  <>
-                    <label>
-                      Scenario identifier
-                      <input
-                        value={task.id || ""}
-                        onChange={(e) => editTask("id", e.target.value)}
-                      />
-                    </label>
-                    <label>
-                      Scenario prompt
-                      <textarea
-                        rows={4}
-                        value={task.prompt || ""}
-                        onChange={(e) => editTask("prompt", e.target.value)}
-                      />
-                    </label>
-                    <JsonField
-                      label="Output schema"
-                      value={task.output_schema}
-                      onApply={(value) => editTask("output_schema", value)}
-                    />
-                    <JsonField
-                      label="Assertions JSON"
-                      value={task.assertions}
-                      array
-                      onApply={(value) => editTask("assertions", value)}
-                    />
-                    <details>
-                      <summary>Fixture inspection</summary>
-                      <CodeBlock
-                        label="Passing fixture · deterministic reference"
-                        value={task.passing_fixture}
-                      />
-                      <CodeBlock
-                        label="Failing fixture · negative reference"
-                        value={task.failing_fixture}
-                      />
-                      <p>
-                        Edit fixture values in the complete definition below.
-                        Fixtures are not hidden benchmarks or model inference.
-                      </p>
-                    </details>
-                  </>
-                ) : (
-                  <div className="empty-state compact">
-                    <Icon name="suite" size={28} />
-                    <h3>Start with one explicit task</h3>
-                    <p>
-                      Add a scenario, define its output schema, and write
-                      assertions that can fail.
-                    </p>
-                  </div>
-                )}
-              </div>
+              ))}
+              <button
+                type="button"
+                className="secondary"
+                onClick={() => {
+                  edit("tasks", [
+                    ...tasks,
+                    {
+                      id: "scenario-" + (tasks.length + 1),
+                      prompt: "",
+                      category: "correctness",
+                      output_schema: { type: "object" },
+                      assertions: [],
+                      passing_fixture: {},
+                      failing_fixture: {},
+                    },
+                  ]);
+                  S(tasks.length);
+                }}
+              >
+                + Add scenario
+              </button>
             </div>
-          </>
-        )}
-      <details className="definition-editor" open={mode === "json" || !!syntax}>
+            <div className="scenario-editor">
+              {task ? (
+                <>
+                  <label>
+                    Scenario identifier
+                    <input
+                      value={task.id || ""}
+                      onChange={(e) => editTask("id", e.target.value)}
+                    />
+                  </label>
+                  <label>
+                    Scenario prompt
+                    <textarea
+                      rows={4}
+                      value={task.prompt || ""}
+                      onChange={(e) => editTask("prompt", e.target.value)}
+                    />
+                  </label>
+                  <JsonField
+                    label="Output schema"
+                    value={task.output_schema}
+                    onApply={(value) => editTask("output_schema", value)}
+                  />
+                  <JsonField
+                    label="Assertions JSON"
+                    value={task.assertions}
+                    array
+                    onApply={(value) => editTask("assertions", value)}
+                  />
+                  <details>
+                    <summary>Fixture inspection</summary>
+                    <CodeBlock
+                      label="Passing fixture · deterministic reference"
+                      value={task.passing_fixture}
+                    />
+                    <CodeBlock
+                      label="Failing fixture · negative reference"
+                      value={task.failing_fixture}
+                    />
+                    <p>
+                      Edit fixture values in the complete definition below.
+                      Fixtures are not hidden benchmarks or model inference.
+                    </p>
+                  </details>
+                </>
+              ) : (
+                <div className="empty-state compact">
+                  <Icon name="suite" size={28} />
+                  <h3>Start with one explicit task</h3>
+                  <p>
+                    Add a scenario, define its output schema, and write
+                    assertions that can fail.
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        </>
+      )}
+      <details
+        className="definition-editor"
+        open={mode === "json" || !!syntax || !structurable}
+      >
         <summary>Complete versioned definition</summary>
         <label>
           Versioned suite JSON

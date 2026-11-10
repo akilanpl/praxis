@@ -21,6 +21,7 @@ jobs:
       - run: python -m venv .venv
       - run: .venv/bin/python -m pip install -r requirements-lock.txt
       - run: .venv/bin/python -m playwright install --with-deps chromium
+      - run: sudo apt-get update && sudo apt-get install -y poppler-utils
       - run: npm run build --workspace apps/web
       - run: npm run build --workspace apps/website
       - run: .venv/bin/python scripts/frontend_bundle.py --output work/frontend-browser/bundle.json
@@ -34,3 +35,4 @@ jobs:
             work/frontend-browser/acceptance/result.json
             work/frontend-browser/acceptance/*.png
             work/frontend-browser/acceptance/report.html
+            work/frontend-browser/acceptance/printed-report.pdf

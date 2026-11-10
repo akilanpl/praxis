@@ -6,6 +6,8 @@ import json
 import os
 from pathlib import Path
 import secrets
+import shutil
+import subprocess
 import threading
 import time
 import urllib.request
@@ -87,6 +89,15 @@ def main():
                 with page.expect_download() as download:page.get_by_role('button',name=button,exact=True).click()
                 download.value.save_as(str(out/filename))
             check('JSON export matches persisted result',json.loads((out/'evidence.json').read_text())['id']==failed['id']);check('Standalone HTML export is script-free', '<script' not in (out/'report.html').read_text().lower())
+            page.emulate_media(media='print')
+            print_color=page.get_by_role('cell',name='Fail',exact=True).first.locator('.badge').evaluate('(e)=>getComputedStyle(e).color')
+            check('Print failure badges use a readable dark foreground',print_color=='rgb(160, 55, 49)')
+            page.pdf(path=str(out/'printed-report.pdf'),format='A4',print_background=True)
+            tool=shutil.which('pdftotext')
+            if not tool:raise RuntimeError('pdftotext is required for actual print acceptance')
+            text=subprocess.run([tool,str(out/'printed-report.pdf'),'-'],capture_output=True,text=True,check=True,timeout=30).stdout
+            check('Actual PDF preserves all task tables and full reproducibility data',all(task['id'] in text for task in failed['result']['tasks']) and text.count('Assertion')>=8 and 'conditions_hash' in text)
+            page.emulate_media(media='screen')
             Owned.slow=True
             slow_target=request('POST','/api/targets',{'name':'Owned cancellation contract','kind':'application','provider':'custom','endpoint':f'http://127.0.0.1:{owned.server_port}','authorized':True,'allow_mutation':False})
             cancelled=request('POST','/api/runs',{'target_id':slow_target['id'],'suite_slug':'http-application','seed':73})

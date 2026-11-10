@@ -2511,3 +2511,23 @@ dialog > .actions {
 .legend-dot.cancelled {
   background: #a99772;
 }
+
+/* A paper report uses a light semantic palette even when the workspace is dark. */
+@media print {
+  :root,
+  :root.light {
+    --page: #fff;
+    --panel: #fff;
+    --raised: #f0f3ed;
+    --text: #142017;
+    --muted: #455448;
+    --quiet: #455448;
+    --border: #cbd4cb;
+    --success: #285f30;
+    --success-bg: #e9f4e6;
+    --danger: #a03731;
+    --danger-bg: #fbece9;
+    --warning: #795614;
+    --warning-bg: #faf0d7;
+  }
+}

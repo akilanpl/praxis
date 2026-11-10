@@ -689,3 +689,52 @@ it("failed server logout is reported honestly and authentication payloads stay o
     screen.queryByRole("heading", { name: "Operation result" }),
   ).toBeNull();
 });
+
+it("malformed scenario JSON remains editable and never crashes or silently drops invalid entries", async () => {
+  for (const tasks of [[null], ["invalid"], [{ id: { invalid: true } }]]) {
+    wrap(
+      <SuiteEditor
+        initial={{ ...suite, tasks }}
+        onSave={vi.fn()}
+        busy={false}
+        onError={vi.fn()}
+      />,
+    );
+    expect(screen.getByRole("status").textContent).toContain("scenario");
+    expect(
+      JSON.parse(
+        (screen.getByLabelText("Versioned suite JSON") as HTMLTextAreaElement)
+          .value,
+      ).tasks,
+    ).toEqual(tasks);
+    cleanup();
+  }
+});
+
+it("invalid metadata and non-text prompts retain safe raw editing without coercion crashes", () => {
+  for (const invalid of [
+    { ...suite, slug: { toString: null } },
+    { ...suite, title: { toString: null } },
+    { ...suite, version: [] },
+    { ...suite, tasks: [{ id: "bad-prompt", prompt: { toString: null } }] },
+  ]) {
+    wrap(
+      <SuiteEditor
+        initial={invalid}
+        onSave={vi.fn()}
+        busy={false}
+        onError={vi.fn()}
+      />,
+    );
+    expect(screen.getByRole("status").textContent).toContain(
+      "Definition needs attention",
+    );
+    expect(
+      JSON.parse(
+        (screen.getByLabelText("Versioned suite JSON") as HTMLTextAreaElement)
+          .value,
+      ),
+    ).toEqual(invalid);
+    cleanup();
+  }
+});
