@@ -1,0 +1,13 @@
+# Praxis workspace design system
+
+Praxis uses a quiet technical aesthetic: charcoal/forest surfaces, warm neutral text, restrained pale-green actions and monospace evidence. The independent website shares this identity; its layout remains separate. Product information wins over decoration; no invented metrics or simulated live status.
+
+Tokens in `apps/web/src/style.css` define page/panel/raised surfaces, subtle/strong borders, primary/muted text, accent, success/warning/danger, focus ring, spacing (4/8/12/16/24/32/48), radii (6/10/14), shell widths, and typography. System sans avoids font downloads; system monospace identifies IDs/code. Dark/light palettes retain contrast. Theme preference persists locally without storing credentials or exporting session data. Reduced motion disables transitions; print removes navigation and includes evidence.
+
+Use one compact page title, optional contextual subtitle, consistent action row, dense labeled data rows, and generous section rhythm. Buttons have primary/secondary/ghost/danger states with focus, busy and disabled semantics. Labels stay attached to fields. Code uses bounded previews with an explicit expand action, never silently omitted assertions. Tables use headers, horizontal scrolling in named keyboard-focusable regions when necessary, and stacked registry rows on mobile. Loaded-record filtering, sorting and pagination do not imply server-side completeness.
+
+The sidebar has primary evaluation navigation and secondary reference/settings links, collapses on desktop, and becomes a closable mobile drawer. Breadcrumbs retain location and context. A native modal command palette supports Ctrl/Cmd-K, arrow navigation, Enter and Escape with focus restoration. Session menu and preference controls use native accessible interactions. Confirmation dialogs are reserved for cancellation and sharing-sensitive actions; no inert destructive controls are invented.
+
+Empty screens explain the next action; loading skeletons have a live status label; errors expose retry without discarding persisted evidence. Operation results announce success/failure. Provider health is only shown after explicit diagnostics. Execution completion and assertion success remain separate. Fixture/demo, self-reported and unavailable operator verification labels retain their meaning. Blind identities remain hidden until the backend vote response reveals them.
+
+Target desktop widths: 1024/1280/1440/1920; tablet 768; mobile 390. Six-width visual acceptance, actual API/browser workflows, keyboard/dialog checks and automated axe sampling are required. This system is not an accessibility certification.

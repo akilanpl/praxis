@@ -1,0 +1,36 @@
+name: Frontend redesign acceptance
+on:
+  push:
+    branches: [codex/praxis-frontend-revamp]
+  pull_request:
+    paths: ['apps/web/**', 'scripts/frontend_acceptance.py', 'scripts/frontend_bundle.py', '.github/workflows/frontend-review.yml']
+jobs:
+  browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      PYTHONPATH: runner
+      ONNXRUNTIME_NODE_INSTALL: skip
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22', cache: npm}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: npm ci
+      - run: python -m venv .venv
+      - run: .venv/bin/python -m pip install -r requirements-lock.txt
+      - run: .venv/bin/python -m playwright install --with-deps chromium
+      - run: npm run build --workspace apps/web
+      - run: npm run build --workspace apps/website
+      - run: .venv/bin/python scripts/frontend_bundle.py --output work/frontend-browser/bundle.json
+      - run: .venv/bin/python scripts/frontend_acceptance.py --output work/frontend-browser/acceptance
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: frontend-review-evidence
+          path: |
+            work/frontend-browser/bundle.json
+            work/frontend-browser/acceptance/result.json
+            work/frontend-browser/acceptance/*.png
+            work/frontend-browser/acceptance/report.html
