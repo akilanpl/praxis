@@ -1,5 +1,14 @@
 # Changelog
 
+## Frontend review — 2026-11-10
+
+- Introduce a reusable dark/light design system, responsive workspace navigation and keyboard command palette without new runtime dependencies.
+- Redesign data-derived overview, targets, immutable suites, run/assertion/trace inspection, inert artifacts, comparisons, reports and honest CLI-oriented settings.
+- Preserve API/SQLite/evidence semantics and separate website; strengthen frontend session masking, stale-export guards and malformed suite editing.
+- Add real local API/browser acceptance at six widths, eleven axe samples, complete PDF verification and measured route-split bundle budgets. Retain earlier failures and unsupported Windows qualification.
+- Publish on the dedicated frontend branch for review; no deployment, merge or new PR.
+
+
 ## Post-publication review — 2026-11-10
 
 - Preserve the original six commits and merged PR #2; publish remediation only on the existing branch, with no new PR or merge.

@@ -1,3 +1,7 @@
+# Frontend review checkpoint — 2026-11-10
+
+**READY FOR FRONTEND REVIEW.** Dedicated branch `codex/praxis-frontend-revamp` preserves the local-first backend and independent website. The redesigned shell, registries, immutable suite editor, evidence inspectors, reports and local settings are documented in [frontend handoff](docs/frontend/FINAL_HANDOFF.md), with source-bound [evidence](evidence/frontend/). Current gate: 339 checks; 286 Python tests + 44 subtests, 57 Vitest tests and 14 Worker tests. Latest remote standard/full-gate/frontend-browser checks passed at `daa8bd8`; native Linux/macOS passed and Windows remains unsupported with a visible failure. This frontend verdict does not upgrade the existing controlled POSIX beta to production. No deployment, PR or merge occurred. Earlier checkpoints below remain historical.
+
 # Current post-publication status — 2026-11-10
 
 **READY FOR REVIEW**, within documented component contracts. Original PR #2 was already merged before this review. All six original commits remain ancestors; new review/remediation commits stay on `codex/praxis-final-release`. User directs branch-only publication, no new PR or merge.

@@ -1,0 +1,19 @@
+# Screen-by-screen frontend changes
+
+| Experience | Design and behavior |
+|---|---|
+| Shell | Collapsible branded sidebar, grouped primary/reference navigation, responsive drawer with focus handling, breadcrumbs, persisted dark/light theme, session menu, explicit refresh, Ctrl/Cmd-K commands and loaded-record navigation. Native dialogs restore focus; no hidden cloud actions. |
+| Overview | Four persisted-data metrics, recent execution rows with actual task pass counts, loaded-history status distribution, target-kind summary, suite activity, recent task/execution failures and actionable empty-state onboarding. No sample metrics or model-success assumptions. |
+| Targets | Unified registry plus model/agent/HTTP tabs; actual provider/configuration data, declared capabilities, explicit connection diagnostics, last loaded activity, evaluation links, sorting, filtering and 12-row pagination. HTTP registration retains authorization/mutation consent and avoids irrelevant model controls. |
+| Suites | Immutable explorer with scenario navigation, schema/assertion/fixture inspection, clone/JSON export and create-revision flow. Structured metadata and scenario editors share the full JSON definition; schema/assertion edits require an explicit apply action. API validation remains authoritative. |
+| Launch | Compatible target/suite selection, deterministic seed, fixture versus provider/HTTP execution labels, complete denominator and executable cap, token/time/retry bounds, explicit public-sharing consent. No active launch without a real target and compatible suite. |
+| Run details | Execution and grading separated; task pass numerator/denominator, latency/usage/evidence metadata, task anchors, explicit failure-only filter, expected/observed assertion tables, prompt/output, executed tool/HTTP traces, errors, timeline and reproducibility manifest. Cancellation confirms retained evidence and irreversible mutation boundaries. |
+| Artifacts | File list and selected-only media inspector, signature-derived MIME and hashes, bounded inert text/source previews, native image/audio/video controls, existing owned website checker, upload size/error feedback. HTML is never embedded/executed. |
+| Comparisons | Condition-matched matrix links back to each run, with direct access to backend-assigned blind review. Voting/reveal remains backend-owned; no identities are inferred before voting. |
+| Reports | A read-only projection of persisted graded run records, with run inspection, complete JSON, escaped standalone HTML and browser print. Completion is never substituted for a task pass. |
+| Settings | Real local account and health response, provider environment instructions, honest default storage paths/override limits, exact existing CLI backup/restore commands, recovery checklist and theme preference. No fake backup/download/key-management controls. |
+| Reference/utility routes | Existing world creation/replay/state evidence, objective/preference separation, trust controls, methodology/privacy/terms/docs and branded unknown-route recovery remain reachable in the new shell. |
+
+Search traverses loaded nested JSON fields without constructing a second serialized full payload. Current API response caps and raw data transfer limitations remain explicit. Privileged local OS control is still outside logical account isolation; preferences never contain provider credentials. No backend schema, runtime engine, adapter or object-store rewrite was introduced.
+
+The browser acceptance captures empty/populated overview, target registration, suite editor/explorer, run launch/failure, cancellation confirmation, artifact inspector, comparisons, settings, command palette, collapsed/light navigation and blind vote/reveal. Six widths (390/768/1024/1280/1440/1920) test document overflow and intentionally scrollable evidence tables. Test fixtures are clearly labeled and actually executed/persisted, not fabricated screenshot data.

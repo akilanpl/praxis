@@ -1,0 +1,36 @@
+{
+  "commit": "daa8bd8d8675d27f061c697c10ddffeffca61263",
+  "checks": [
+    {
+      "name": "Praxis verification",
+      "url": "https://github.com/akilanpl/praxis/actions/runs/42830952219",
+      "result": "PASS"
+    },
+    {
+      "name": "pushgate",
+      "url": "https://github.com/akilanpl/praxis/actions/runs/42830952256",
+      "result": "PASS"
+    },
+    {
+      "name": "Frontend redesign acceptance",
+      "url": "https://github.com/akilanpl/praxis/actions/runs/42830952231",
+      "result": "PASS"
+    },
+    {
+      "name": "Local platform qualification",
+      "url": "https://github.com/akilanpl/praxis/actions/runs/42830952649",
+      "result": "PARTIAL"
+    }
+  ],
+  "frontend_browser": {
+    "result": "PASS",
+    "checks": 80,
+    "axe_samples": 11
+  },
+  "native": {
+    "ubuntu-24.04": "PASS",
+    "macos-15": "PASS",
+    "windows-2022": "FAIL"
+  },
+  "note": "Actual Windows failure remains visible; unsupported. Earlier expanded accessibility failures remain in Actions, not relabeled."
+}

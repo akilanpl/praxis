@@ -10,6 +10,8 @@ Praxis is a local evaluation workspace and Python runner for inspecting what mod
 
 [Project website](#project-website) · [Start locally](#start-locally) · [Evaluation lifecycle](#evaluation-lifecycle) · [Suites](#suites-and-assertions) · [Comparison](#comparison-and-blind-voting) · [Recorded evidence](#recorded-validation)
 
+Frontend redesign: [review handoff, screenshots and acceptance evidence](docs/frontend/FINAL_HANDOFF.md). The local-first runtime and separate public website retain their architecture.
+
 ## Evaluation lifecycle
 
 ```mermaid

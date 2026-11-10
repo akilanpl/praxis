@@ -1,0 +1,43 @@
+
+> praxis@0.1.0 test:typescript
+> vitest run --coverage
+
+
+ RUN  v5.1.0 /workspace/praxis
+      Coverage enabled with v8
+
+
+ Test Files  6 passed (6)
+      Tests  57 passed (57)
+   Start at  13:55:30
+   Duration  10.19s (tests 77%, environment 14%, import 4%, transform 2%, worker 2%)
+
+    Isolate  6 workers spawned · ~309ms startup each (spawn + environment, per file)
+             at least ~1.54s faster with isolate: false — reuses workers across files instead of one per file
+
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   96.21 |    90.15 |   95.65 |   96.47 |                   
+ apps/web/src      |   95.33 |    89.19 |   95.26 |   95.63 |                   
+  ...Inspector.tsx |     100 |    97.56 |     100 |     100 | 22                
+  Overview.tsx     |     100 |    82.22 |     100 |     100 | ...17-119,276-279 
+  RunInspector.tsx |   97.36 |    97.24 |   95.45 |   97.14 | 356               
+  Settings.tsx     |     100 |    85.71 |     100 |     100 | 15-21             
+  SuiteViews.tsx   |     100 |    96.96 |     100 |     100 | 56,257,288,405    
+  main.tsx         |   92.93 |       84 |   89.88 |    93.6 | ...1302,1347,1557 
+  ui.tsx           |   94.53 |    90.75 |     100 |   94.06 | ...64-265,267-268 
+-------------------|---------|----------|---------|---------|-------------------
+
+=============================== Coverage summary ===============================
+Statements   : 96.21% ( 712/740 )
+Branches     : 90.15% ( 1035/1148 )
+Functions    : 95.65% ( 220/230 )
+Lines        : 96.47% ( 657/681 )
+================================================================================
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
