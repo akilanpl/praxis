@@ -447,7 +447,7 @@ function App() {
             title="Run the workspace. Inspect the evidence."
           >
             <p>
-              Python 3.12+, Node.js 22+, npm and a POSIX shell. Demo fixtures
+              Python 3.12+, Node.js 22.12+, npm and a POSIX shell. Demo fixtures
               need no cloud account or model download. Keep the local control
               plane private.
             </p>

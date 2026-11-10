@@ -5,7 +5,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-24.04, macos-14, windows-2022]
+        os: [ubuntu-24.04, macos-15, windows-2022]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 20
     env:
@@ -25,6 +25,9 @@ jobs:
       - run: npm run build --workspace apps/website
       - name: Disposable lifecycle with explicitly labeled fixtures
         run: python scripts/qualify_local.py --fixture-only --output work/platform-acceptance
+      - name: Publish platform failure identifiers
+        if: failure()
+        run: python -c "import json; from pathlib import Path; p=Path('work/platform-acceptance/result.json'); d=json.loads(p.read_text()) if p.exists() else {}; print('::error title=Native platform qualification::'+d.get('error_type','Installation or build failure')+' after '+str(len(d.get('checks',[])))+' lifecycle checks')"
       - uses: actions/upload-artifact@v4
         if: always()
         with:

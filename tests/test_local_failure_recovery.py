@@ -100,3 +100,57 @@ def test_optimized_infrastructure_proof_refuses_before_workspace_access(tmp_path
     result=subprocess.run([sys.executable,'-O',str(script)],cwd=tmp_path,capture_output=True,text=True,timeout=10)
     assert result.returncode!=0 and 'Verification requires Python assertions enabled' in result.stderr
     assert not list(tmp_path.iterdir())
+
+def test_real_process_kill_marks_active_run_interrupted_and_can_run_again(tmp_path):
+    import http.server
+    import secrets
+    import socket
+    import subprocess
+    import threading
+    import time
+    import urllib.request
+    accepted=threading.Event();release=threading.Event()
+    class Provider(http.server.BaseHTTPRequestHandler):
+        def log_message(self,*args):pass
+        def do_POST(self):
+            self.rfile.read(int(self.headers['Content-Length']));accepted.set();release.wait(15)
+            try:
+                self.send_response(200);self.end_headers();self.wfile.write(b'{"output":"late"}')
+            except (BrokenPipeError,ConnectionResetError):pass
+    provider=http.server.ThreadingHTTPServer(('127.0.0.1',0),Provider)
+    thread=threading.Thread(target=provider.serve_forever);thread.start()
+    with socket.socket() as sock:sock.bind(('127.0.0.1',0));port=sock.getsockname()[1]
+    root=Path(__file__).resolve().parents[1];base='http://127.0.0.1:'+str(port);token='';process=None
+    def call(method,path,body=None):
+        req=urllib.request.Request(base+path,method=method,data=json.dumps(body).encode() if body is not None else None,headers={'Content-Type':'application/json','Authorization':'Bearer '+token})
+        with urllib.request.urlopen(req,timeout=3) as response:return json.load(response)
+    def start():
+        proc=subprocess.Popen([sys.executable,'-m','praxis.server'],cwd=root,env=dict(os.environ,PYTHONPATH=str(root/'runner'),PRAXIS_PORT=str(port),PRAXIS_DB=str(tmp_path/'private'/'praxis.sqlite')),stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+        for _ in range(100):
+            assert proc.poll() is None
+            try:
+                if call('GET','/api/health')['ok']:return proc
+            except OSError:time.sleep(.05)
+        proc.kill();proc.wait();pytest.fail('Disposable API startup failed')
+    try:
+        process=start()
+        account=call('POST','/api/auth/register',{'username':'interruption-owner','password':secrets.token_urlsafe(24)});token=account['token']
+        target=call('POST','/api/targets',{'name':'Owned stalled model','kind':'model','model':'explicit-stall-fixture','provider':'custom','endpoint':'http://127.0.0.1:'+str(provider.server_port),'timeout':10})
+        run=call('POST','/api/runs',{'target_id':target['id'],'suite_slug':'structured-agent'})
+        assert accepted.wait(5),'Real provider HTTP request never executed'
+        active=call('GET','/api/runs/'+run['id']);assert active['status']=='running'
+        process.kill();process.wait(timeout=5);process=start()
+        interrupted=call('GET','/api/runs/'+run['id'])
+        assert interrupted['status']=='interrupted' and 'restarted' in interrupted['error']
+        assert interrupted['events']==active['events'] and not interrupted.get('result')
+        fixture=call('POST','/api/targets',{'name':'Explicit recovery fixture','kind':'model','provider':'demo'})
+        retry=call('POST','/api/runs',{'target_id':fixture['id'],'suite_slug':'structured-agent'})
+        for _ in range(100):
+            retry=call('GET','/api/runs/'+retry['id'])
+            if retry['status']=='completed':break
+            time.sleep(.05)
+        assert retry['result']['summary']['passed']==8 and retry['trust']=='demo'
+    finally:
+        release.set()
+        if process is not None and process.poll() is None:process.kill();process.wait(timeout=5)
+        provider.shutdown();provider.server_close();thread.join()
