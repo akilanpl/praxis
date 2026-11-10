@@ -1,5 +1,6 @@
 """User-controlled model connections. Credentials never enter results or configuration."""
 import json
+import math
 import os
 import socket
 import time
@@ -19,6 +20,25 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
     def redirect_request(self, req, fp, code, msg, headers, newurl):
         raise AdapterError("redirect_denied", "Provider redirects are not accepted")
 
+def read_bounded(response, deadline):
+    """Bound both total bytes and elapsed read time, including trickled responses."""
+    chunks=[]
+    size=0
+    while True:
+        remaining=deadline-time.monotonic()
+        if remaining<=0:
+            raise AdapterError("timeout", "HTTP response exceeded its deadline")
+        sock=getattr(getattr(getattr(response,"fp",None),"raw",None),"_sock",None)
+        if sock is not None:
+            sock.settimeout(remaining)
+        chunk=getattr(response,"read1",response.read)(min(65536,MAX_RESPONSE_BYTES+1-size))
+        if not chunk:
+            return b"".join(chunks)
+        size+=len(chunk)
+        if size>MAX_RESPONSE_BYTES:
+            raise AdapterError("response_limit", "HTTP response exceeds 2 MiB")
+        chunks.append(chunk)
+
 def _post(url, payload, key=None, timeout=20):
     parsed = urllib.parse.urlparse(url)
     if parsed.scheme not in ("http", "https") or not parsed.hostname or parsed.username or parsed.password:
@@ -29,12 +49,19 @@ def _post(url, payload, key=None, timeout=20):
     if key:
         headers["Authorization"] = "Bearer " + key
     req = urllib.request.Request(url, data=json.dumps(payload).encode(), headers=headers, method="POST")
+    deadline=time.monotonic()+timeout
     try:
         with urllib.request.build_opener(NoRedirect).open(req, timeout=timeout) as response:
-            data = response.read(MAX_RESPONSE_BYTES + 1)
-            if len(data) > MAX_RESPONSE_BYTES:
-                raise AdapterError("response_limit", "Provider response exceeds 2 MiB")
-            return json.loads(data)
+            data = read_bounded(response,deadline)
+            value = json.loads(data, parse_constant=lambda _: (_ for _ in ()).throw(ValueError()))
+            if not isinstance(value, dict):
+                raise AdapterError("invalid_response", "Provider response must be a JSON object")
+            usage=value.get("usage")
+            def valid_usage(item):
+                return item is None or (isinstance(item,dict) and all(valid_usage(v) for v in item.values())) or (type(item) in (int,float) and math.isfinite(item) and item>=0)
+            if usage is not None and (not isinstance(usage,dict) or not valid_usage(usage)):
+                raise AdapterError("invalid_response", "Provider usage must contain nonnegative finite numbers")
+            return value
     except urllib.error.HTTPError as exc:
         raise AdapterError("http_error", "Provider returned HTTP %s" % exc.code) from None
     except urllib.error.URLError as exc:
@@ -42,7 +69,7 @@ def _post(url, payload, key=None, timeout=20):
         raise AdapterError("timeout" if timeout_error else "connection_error", "Provider connection failed or timed out") from None
     except (TimeoutError, OSError) as exc:
         raise AdapterError("timeout" if isinstance(exc, (TimeoutError, socket.timeout)) else "connection_error", "Provider connection failed or timed out") from None
-    except (ValueError, KeyError):
+    except (ValueError, KeyError, UnicodeError, RecursionError):
         raise AdapterError("invalid_response", "Provider returned invalid JSON") from None
 
 def invoke(target: Dict[str, Any], task: Dict[str, Any], seed=73):
@@ -71,6 +98,8 @@ def invoke(target: Dict[str, Any], task: Dict[str, Any], seed=73):
             output = data["choices"][0]["message"]["content"]
         except (KeyError, IndexError, TypeError):
             raise AdapterError("invalid_response", "OpenAI-compatible response lacks choices.message.content")
+        if not isinstance(output, str):
+            raise AdapterError("invalid_response", "OpenAI-compatible content must be text")
         return {"output": output, "usage": data.get("usage"), "adapter": "openai-compatible-v1", "tool_trace": [], "provider_metadata": {k:data[k] for k in ("model","model_revision","runtime") if k in data}}
     if provider == "ollama":
         data = _post(endpoint + "/api/chat", {"model": model, "messages": [{"role": "user", "content": prompt}], "stream": False, "format": "json", "options": {"temperature": float(target.get("temperature", 0)), "seed": seed, "num_predict": max_tokens}}, key, timeout)
@@ -78,6 +107,8 @@ def invoke(target: Dict[str, Any], task: Dict[str, Any], seed=73):
             output = data["message"]["content"]
         except (KeyError, TypeError):
             raise AdapterError("invalid_response", "Ollama response lacks message.content")
+        if not isinstance(output, str):
+            raise AdapterError("invalid_response", "Ollama content must be text")
         return {"output": output, "usage": {"prompt_tokens": data.get("prompt_eval_count"), "completion_tokens": data.get("eval_count")}, "adapter": "ollama-chat-v1", "tool_trace": []}
     if provider == "custom":
         data = _post(endpoint, {"protocol": "praxis.model.v1", "model": model, "input": prompt, "seed": seed, "max_tokens": max_tokens}, key, timeout)

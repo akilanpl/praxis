@@ -1,3 +1,13 @@
+# Current cloud handoff — 2026-11-10
+
+The historical handoff below is retained for provenance. Current work uses managed Codex Cloud `/workspace/praxis`, origin `https://github.com/akilanpl/praxis.git`, branch `codex/praxis-final-release`, based on main `8f1e884`. Do not follow historical Mac/Terminal paths or backup exceptions: all source, dependencies, browser artifacts and Git operations for this mission stay in cloud. No deployment or paid resources are authorized.
+
+Read `docs/qa/FINAL_AUDIT.md`, `VERIFICATION.md` and `evidence/final/` for this release. Four implementation commits harden execution/evidence, add the separate website and adapt acceptance to constrained cloud storage. The full Python suite has 140 tests plus 44 subtests. Real ONNX 135M/360M runs each scored 0/8; fixture results remain separate. Native PostgreSQL is tested through an actual network-isolated disposable container, not mocks. Hosted Supabase Auth and production deployment remain outside acceptance.
+
+GitHub API calls return 401 Bad credentials for the configured GH_TOKEN. Never print tokens or compensate with local downloads. A branch push/PR must use restored authorized GitHub access and the existing gate; no bypass or force push. See final report for the actual publication outcome.
+
+---
+
 # Continue Praxis in Codex Cloud
 
 Existing repository only; preserve the architecture and all evidence. Start on feature/qa-hardening-release.

@@ -23,8 +23,9 @@ def report_html(result):
     esc=lambda v:html.escape(str(v))
     rows=[]
     for task in result.get("tasks",[]):
-        checks="".join('<li>%s %s</li>'%("PASS" if a['passed'] else "FAIL",esc(a['name'])) for a in task['assertions'])
+        checks="".join('<li><strong>%s %s</strong><p>Expected: <code>%s</code></p><p>Observed: <code>%s</code></p></li>'%("PASS" if a['passed'] else "FAIL",esc(a['name']),esc(json.dumps(a.get('expected'),ensure_ascii=False)),esc(json.dumps(a.get('actual'),ensure_ascii=False))) for a in task['assertions'])
         rows.append('<article><h2>%s — %s</h2><p>%s ms</p><ul>%s</ul><pre>%s</pre></article>'%(esc(task['id']),"PASS" if task['passed'] else "FAIL",esc(task['latency_ms']),checks,esc(json.dumps(task['output'],indent=2))))
+    rows.append('<article><h2>Unexecuted scenarios</h2><pre>%s</pre><h2>Reproducible configuration</h2><pre>%s</pre></article>'%(esc(json.dumps(result.get('not_run_tasks',[]),indent=2)),esc(json.dumps(result.get('configuration',{}),indent=2))))
     return '<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><meta http-equiv="Content-Security-Policy" content="default-src \'none\'; style-src \'unsafe-inline\'"><title>Praxis run report</title><style>body{font:16px system-ui;margin:32px;max-width:960px;color:#18221e}article{border:1px solid #ccc;padding:16px;margin:16px 0;break-inside:avoid}pre{white-space:pre-wrap;overflow-wrap:anywhere}h1{font-size:36px}@media print{body{margin:0}}</style><h1>Praxis evaluation report</h1><p>Trust: %s · suite %s v%s · seed %s</p><p>Passed %s / %s. Cost: unknown. Self-reported and demo results are excluded from official rankings.</p><p>Evidence hash: %s</p>%s</html>'%(esc(result.get('trust')),esc(result.get('suite_slug')),esc(result.get('suite_version')),esc(result.get('seed')),esc(result.get('summary',{}).get('passed')),esc(result.get('summary',{}).get('total')),esc(result.get('evidence_hash')),"".join(rows))
 
 def main(argv=None):
@@ -38,6 +39,8 @@ def main(argv=None):
     run.add_argument('--endpoint',default='')
     run.add_argument('--model',default='')
     run.add_argument('--kind',choices=['model','agent','application'],default='model')
+    run.add_argument('--authorized',action='store_true',help='Acknowledge ownership or permission to evaluate the HTTP application')
+    run.add_argument('--allow-mutation',action='store_true',help='Allow explicit POST contracts on the authorized application')
     run.add_argument('--key-env',default='PRAXIS_MODEL_API_KEY')
     run.add_argument('--seed',type=int,default=73)
     run.add_argument('--output',default='')

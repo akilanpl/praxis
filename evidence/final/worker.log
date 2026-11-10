@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: health accurately states metadata-only mode
+ok 1 - health accurately states metadata-only mode
+  ---
+  duration_ms: 5.071842
+  type: 'test'
+  ...
+# Subtest: unauthenticated request is denied before network access
+ok 2 - unauthenticated request is denied before network access
+  ---
+  duration_ms: 0.522241
+  type: 'test'
+  ...
+# Subtest: invalid authenticated identity denied
+ok 3 - invalid authenticated identity denied
+  ---
+  duration_ms: 1.03032
+  type: 'test'
+  ...
+# Subtest: expired token denied
+ok 4 - expired token denied
+  ---
+  duration_ms: 0.715646
+  type: 'test'
+  ...
+# Subtest: malicious origin denied
+ok 5 - malicious origin denied
+  ---
+  duration_ms: 0.392049
+  type: 'test'
+  ...
+# Subtest: secret target fields rejected
+ok 6 - secret target fields rejected
+  ---
+  duration_ms: 4.81194
+  type: 'test'
+  ...
+# Subtest: arbitrary endpoints stored but never fetched
+ok 7 - arbitrary endpoints stored but never fetched
+  ---
+  duration_ms: 1.298215
+  type: 'test'
+  ...
+# Subtest: client cannot promote evidence to verified
+ok 8 - client cannot promote evidence to verified
+  ---
+  duration_ms: 1.527714
+  type: 'test'
+  ...
+# Subtest: foreign target cannot create a run
+ok 9 - foreign target cannot create a run
+  ---
+  duration_ms: 1.245097
+  type: 'test'
+  ...
+# Subtest: oversize payload rejected
+ok 10 - oversize payload rejected
+  ---
+  duration_ms: 3.745486
+  type: 'test'
+  ...
+# Subtest: duplicate evidence returns conflict
+ok 11 - duplicate evidence returns conflict
+  ---
+  duration_ms: 0.768243
+  type: 'test'
+  ...
+# Subtest: security headers accompany failures
+ok 12 - security headers accompany failures
+  ---
+  duration_ms: 0.353161
+  type: 'test'
+  ...
+# Subtest: malformed endpoint returns validation error
+ok 13 - malformed endpoint returns validation error
+  ---
+  duration_ms: 0.54902
+  type: 'test'
+  ...
+# Subtest: credential-bearing endpoints rejected
+ok 14 - credential-bearing endpoints rejected
+  ---
+  duration_ms: 1.106843
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 325.348826

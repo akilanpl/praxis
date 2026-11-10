@@ -1,0 +1,734 @@
+{
+  "id": "9c3e27d3-73f6-4e85-ac00-e5e3749f649a",
+  "runner_version": "0.1.0",
+  "adapter_version": "1",
+  "target_id": null,
+  "target_name": "Explicit deterministic regression fixture",
+  "target_kind": "model",
+  "model_config_hash": "8d0ed26ad0653f5e0e871945e15f13d8ec8eda625773a90c2c881ed2fa7e9242",
+  "suite_slug": "structured-agent",
+  "suite_version": "1.0.0",
+  "suite_hash": "2f1b713a2732b49eb39518b31dca6c68871e13b98955369ee830f53b5ebe3b3c",
+  "seed": 73,
+  "trust": "demo",
+  "tasks": [
+    {
+      "id": "route-outage",
+      "prompt": "Policy: production outages are urgent technical tickets. A customer says all production requests return 503. Return priority and team.",
+      "category": "correctness",
+      "output": {
+        "priority": "urgent",
+        "team": "technical"
+      },
+      "assertions": [
+        {
+          "name": "JSON schema",
+          "passed": true,
+          "expected": {
+            "type": "object",
+            "properties": {
+              "priority": {
+                "type": "string"
+              },
+              "team": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "priority",
+              "team"
+            ],
+            "additionalProperties": false
+          },
+          "actual": "valid",
+          "weight": 1
+        },
+        {
+          "name": "correctness: priority",
+          "passed": true,
+          "expected": "urgent",
+          "actual": "urgent",
+          "weight": 1
+        },
+        {
+          "name": "correctness: team",
+          "passed": true,
+          "expected": "technical",
+          "actual": "technical",
+          "weight": 1
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.034,
+      "attempts": 1,
+      "error": null,
+      "usage": null,
+      "provider_metadata": {},
+      "tool_trace": [],
+      "artifact": {
+        "type": "json",
+        "mime": "application/json",
+        "hash": "f574841e82ba78807dfcaa68cf44123112d5e94d781a0bc34201c356ecba3a35"
+      }
+    },
+    {
+      "id": "select-tool",
+      "prompt": "Available tools: calculator(expression), lookup_customer(id), send_email(to,body). Request: find customer C42. Return tool and arguments.",
+      "category": "tool_selection",
+      "output": {
+        "tool": "lookup_customer",
+        "arguments": {
+          "id": "C42"
+        }
+      },
+      "assertions": [
+        {
+          "name": "JSON schema",
+          "passed": true,
+          "expected": {
+            "type": "object",
+            "properties": {
+              "tool": {
+                "type": "string"
+              },
+              "arguments": {
+                "type": "object"
+              }
+            },
+            "required": [
+              "tool",
+              "arguments"
+            ],
+            "additionalProperties": false
+          },
+          "actual": "valid",
+          "weight": 1
+        },
+        {
+          "name": "tool_selection: tool",
+          "passed": true,
+          "expected": "lookup_customer",
+          "actual": "lookup_customer",
+          "weight": 1
+        },
+        {
+          "name": "tool_selection: arguments",
+          "passed": true,
+          "expected": {
+            "id": "C42"
+          },
+          "actual": {
+            "id": "C42"
+          },
+          "weight": 1
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.025,
+      "attempts": 1,
+      "error": null,
+      "usage": null,
+      "provider_metadata": {},
+      "tool_trace": [],
+      "artifact": {
+        "type": "json",
+        "mime": "application/json",
+        "hash": "08353681f43db972f95c191a8c7e66086f4959b8504339d13de0e8708a4c16c0"
+      }
+    },
+    {
+      "id": "refund-workflow",
+      "prompt": "Policy: refunds require purchase lookup before refund. A $12 purchase P7 is within 30 days. Return ordered tools and final amount.",
+      "category": "tool_selection",
+      "output": {
+        "tools": [
+          "lookup_purchase",
+          "issue_refund"
+        ],
+        "amount": 12
+      },
+      "assertions": [
+        {
+          "name": "JSON schema",
+          "passed": true,
+          "expected": {
+            "type": "object",
+            "properties": {
+              "tools": {
+                "type": "array"
+              },
+              "amount": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "tools",
+              "amount"
+            ],
+            "additionalProperties": false
+          },
+          "actual": "valid",
+          "weight": 1
+        },
+        {
+          "name": "tool_selection: tools",
+          "passed": true,
+          "expected": [
+            "lookup_purchase",
+            "issue_refund"
+          ],
+          "actual": [
+            "lookup_purchase",
+            "issue_refund"
+          ],
+          "weight": 1
+        },
+        {
+          "name": "tool_selection: amount",
+          "passed": true,
+          "expected": 12,
+          "actual": 12,
+          "weight": 1
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.023,
+      "attempts": 1,
+      "error": null,
+      "usage": null,
+      "provider_metadata": {},
+      "tool_trace": [],
+      "artifact": {
+        "type": "json",
+        "mime": "application/json",
+        "hash": "389e63cf162253630c648f20d17b3946031a44cc0c42a582e930687c8ca8d224"
+      }
+    },
+    {
+      "id": "json-boundary",
+      "prompt": "Extract exactly these fields: order ORD-8, quantity three, paid yes. Output order, quantity integer, paid boolean.",
+      "category": "schema",
+      "output": {
+        "order": "ORD-8",
+        "quantity": 3,
+        "paid": true
+      },
+      "assertions": [
+        {
+          "name": "JSON schema",
+          "passed": true,
+          "expected": {
+            "type": "object",
+            "properties": {
+              "order": {
+                "type": "string"
+              },
+              "quantity": {
+                "type": "integer"
+              },
+              "paid": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "order",
+              "quantity",
+              "paid"
+            ],
+            "additionalProperties": false
+          },
+          "actual": "valid",
+          "weight": 1
+        },
+        {
+          "name": "schema: order",
+          "passed": true,
+          "expected": "ORD-8",
+          "actual": "ORD-8",
+          "weight": 1
+        },
+        {
+          "name": "schema: quantity",
+          "passed": true,
+          "expected": 3,
+          "actual": 3,
+          "weight": 1
+        },
+        {
+          "name": "schema: paid",
+          "passed": true,
+          "expected": true,
+          "actual": true,
+          "weight": 1
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.025,
+      "attempts": 1,
+      "error": null,
+      "usage": null,
+      "provider_metadata": {},
+      "tool_trace": [],
+      "artifact": {
+        "type": "json",
+        "mime": "application/json",
+        "hash": "ad8c9e65e179be816df6b46ed084eefc717fa906a2cc2ff72ab5226ca4efc17c"
+      }
+    },
+    {
+      "id": "deduplicate-events",
+      "prompt": "Process event IDs [a,b,a,c,b] exactly once in arrival order. Return processed list and count.",
+      "category": "state",
+      "output": {
+        "processed": [
+          "a",
+          "b",
+          "c"
+        ],
+        "count": 3
+      },
+      "assertions": [
+        {
+          "name": "JSON schema",
+          "passed": true,
+          "expected": {
+            "type": "object",
+            "properties": {
+              "processed": {
+                "type": "array"
+              },
+              "count": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "processed",
+              "count"
+            ],
+            "additionalProperties": false
+          },
+          "actual": "valid",
+          "weight": 1
+        },
+        {
+          "name": "state: processed",
+          "passed": true,
+          "expected": [
+            "a",
+            "b",
+            "c"
+          ],
+          "actual": [
+            "a",
+            "b",
+            "c"
+          ],
+          "weight": 1
+        },
+        {
+          "name": "state: count",
+          "passed": true,
+          "expected": 3,
+          "actual": 3,
+          "weight": 1
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.02,
+      "attempts": 1,
+      "error": null,
+      "usage": null,
+      "provider_metadata": {},
+      "tool_trace": [],
+      "artifact": {
+        "type": "json",
+        "mime": "application/json",
+        "hash": "394a9dee6064cf093a0babcada62902b5f5641a5f89c2ac61fa2e0d405a0e356"
+      }
+    },
+    {
+      "id": "schedule-dependency",
+      "prompt": "Tasks: fetch has no dependency; validate depends on fetch; publish depends on validate. Return execution order.",
+      "category": "state",
+      "output": {
+        "order": [
+          "fetch",
+          "validate",
+          "publish"
+        ]
+      },
+      "assertions": [
+        {
+          "name": "JSON schema",
+          "passed": true,
+          "expected": {
+            "type": "object",
+            "properties": {
+              "order": {
+                "type": "array"
+              }
+            },
+            "required": [
+              "order"
+            ],
+            "additionalProperties": false
+          },
+          "actual": "valid",
+          "weight": 1
+        },
+        {
+          "name": "state: order",
+          "passed": true,
+          "expected": [
+            "fetch",
+            "validate",
+            "publish"
+          ],
+          "actual": [
+            "fetch",
+            "validate",
+            "publish"
+          ],
+          "weight": 1
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.015,
+      "attempts": 1,
+      "error": null,
+      "usage": null,
+      "provider_metadata": {},
+      "tool_trace": [],
+      "artifact": {
+        "type": "json",
+        "mime": "application/json",
+        "hash": "f924630723c3f92dcd9ebccb22b1d1898338335446d2973b7f9d72ab65ec83f6"
+      }
+    },
+    {
+      "id": "inventory-reservation",
+      "prompt": "Stock starts 5. Reserve 3, then release 1. Return available and reserved. Release restores stock.",
+      "category": "state",
+      "output": {
+        "available": 3,
+        "reserved": 2
+      },
+      "assertions": [
+        {
+          "name": "JSON schema",
+          "passed": true,
+          "expected": {
+            "type": "object",
+            "properties": {
+              "available": {
+                "type": "integer"
+              },
+              "reserved": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "available",
+              "reserved"
+            ],
+            "additionalProperties": false
+          },
+          "actual": "valid",
+          "weight": 1
+        },
+        {
+          "name": "state: available",
+          "passed": true,
+          "expected": 3,
+          "actual": 3,
+          "weight": 1
+        },
+        {
+          "name": "state: reserved",
+          "passed": true,
+          "expected": 2,
+          "actual": 2,
+          "weight": 1
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.019,
+      "attempts": 1,
+      "error": null,
+      "usage": null,
+      "provider_metadata": {},
+      "tool_trace": [],
+      "artifact": {
+        "type": "json",
+        "mime": "application/json",
+        "hash": "35c4fa60e627f67d9aabf1c15a896765210988853e7e3a01e86dacb0e8e6428a"
+      }
+    },
+    {
+      "id": "pagination",
+      "prompt": "Pages are {items:[1,2],next:B}, B:{items:[3],next:null}. Return all items and calls.",
+      "category": "state",
+      "output": {
+        "items": [
+          1,
+          2,
+          3
+        ],
+        "calls": 2
+      },
+      "assertions": [
+        {
+          "name": "JSON schema",
+          "passed": true,
+          "expected": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array"
+              },
+              "calls": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "items",
+              "calls"
+            ],
+            "additionalProperties": false
+          },
+          "actual": "valid",
+          "weight": 1
+        },
+        {
+          "name": "state: items",
+          "passed": true,
+          "expected": [
+            1,
+            2,
+            3
+          ],
+          "actual": [
+            1,
+            2,
+            3
+          ],
+          "weight": 1
+        },
+        {
+          "name": "state: calls",
+          "passed": true,
+          "expected": 2,
+          "actual": 2,
+          "weight": 1
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.019,
+      "attempts": 1,
+      "error": null,
+      "usage": null,
+      "provider_metadata": {},
+      "tool_trace": [],
+      "artifact": {
+        "type": "json",
+        "mime": "application/json",
+        "hash": "59a24d8d43223b8af7a98eaba8fe92b25b61531aa55be6928d2c1cf11d659af8"
+      }
+    }
+  ],
+  "events": [
+    {
+      "sequence": 0,
+      "type": "run_started",
+      "elapsed_ms": 0.096,
+      "suite": "structured-agent",
+      "seed": 73
+    },
+    {
+      "sequence": 1,
+      "type": "task_started",
+      "elapsed_ms": 0.101,
+      "task_id": "route-outage"
+    },
+    {
+      "sequence": 2,
+      "type": "task_completed",
+      "elapsed_ms": 0.141,
+      "task_id": "route-outage",
+      "passed": true,
+      "latency_ms": 0.034
+    },
+    {
+      "sequence": 3,
+      "type": "task_started",
+      "elapsed_ms": 0.143,
+      "task_id": "select-tool"
+    },
+    {
+      "sequence": 4,
+      "type": "task_completed",
+      "elapsed_ms": 0.173,
+      "task_id": "select-tool",
+      "passed": true,
+      "latency_ms": 0.025
+    },
+    {
+      "sequence": 5,
+      "type": "task_started",
+      "elapsed_ms": 0.174,
+      "task_id": "refund-workflow"
+    },
+    {
+      "sequence": 6,
+      "type": "task_completed",
+      "elapsed_ms": 0.202,
+      "task_id": "refund-workflow",
+      "passed": true,
+      "latency_ms": 0.023
+    },
+    {
+      "sequence": 7,
+      "type": "task_started",
+      "elapsed_ms": 0.203,
+      "task_id": "json-boundary"
+    },
+    {
+      "sequence": 8,
+      "type": "task_completed",
+      "elapsed_ms": 0.232,
+      "task_id": "json-boundary",
+      "passed": true,
+      "latency_ms": 0.025
+    },
+    {
+      "sequence": 9,
+      "type": "task_started",
+      "elapsed_ms": 0.233,
+      "task_id": "deduplicate-events"
+    },
+    {
+      "sequence": 10,
+      "type": "task_completed",
+      "elapsed_ms": 0.257,
+      "task_id": "deduplicate-events",
+      "passed": true,
+      "latency_ms": 0.02
+    },
+    {
+      "sequence": 11,
+      "type": "task_started",
+      "elapsed_ms": 0.258,
+      "task_id": "schedule-dependency"
+    },
+    {
+      "sequence": 12,
+      "type": "task_completed",
+      "elapsed_ms": 0.277,
+      "task_id": "schedule-dependency",
+      "passed": true,
+      "latency_ms": 0.015
+    },
+    {
+      "sequence": 13,
+      "type": "task_started",
+      "elapsed_ms": 0.278,
+      "task_id": "inventory-reservation"
+    },
+    {
+      "sequence": 14,
+      "type": "task_completed",
+      "elapsed_ms": 0.3,
+      "task_id": "inventory-reservation",
+      "passed": true,
+      "latency_ms": 0.019
+    },
+    {
+      "sequence": 15,
+      "type": "task_started",
+      "elapsed_ms": 0.301,
+      "task_id": "pagination"
+    },
+    {
+      "sequence": 16,
+      "type": "task_completed",
+      "elapsed_ms": 0.324,
+      "task_id": "pagination",
+      "passed": true,
+      "latency_ms": 0.019
+    },
+    {
+      "sequence": 17,
+      "type": "run_completed",
+      "elapsed_ms": 0.347,
+      "status": "completed",
+      "passed": 8,
+      "total": 8
+    }
+  ],
+  "cost": {
+    "status": "unknown",
+    "estimated_usd": null
+  },
+  "usage": {},
+  "status": "completed",
+  "configuration": {
+    "target": {
+      "kind": "model",
+      "provider": "demo",
+      "name": "Explicit deterministic regression fixture",
+      "endpoint": "[invalid or absent endpoint]"
+    },
+    "execution": {
+      "max_scenario_count": 64,
+      "max_wall_seconds": 120,
+      "max_output_tokens": 1024,
+      "max_retries": 1
+    }
+  },
+  "not_run_tasks": [],
+  "summary": {
+    "passed": 8,
+    "total": 8,
+    "executed": 8,
+    "not_run": 0,
+    "failed": 0,
+    "pass_rate": 1.0,
+    "assertions_passed": 24,
+    "assertions_total": 24,
+    "weighted_assertion_rate": 1.0,
+    "confidence_interval": [
+      0.6756,
+      1
+    ],
+    "latency_p50_ms": 0.023,
+    "latency_p95_ms": 0.034,
+    "dimensions": {
+      "correctness": {
+        "passed": 1,
+        "total": 1,
+        "executed": 1,
+        "not_run": 0
+      },
+      "schema": {
+        "passed": 1,
+        "total": 1,
+        "executed": 1,
+        "not_run": 0
+      },
+      "state": {
+        "passed": 4,
+        "total": 4,
+        "executed": 4,
+        "not_run": 0
+      },
+      "tool_selection": {
+        "passed": 2,
+        "total": 2,
+        "executed": 2,
+        "not_run": 0
+      }
+    }
+  },
+  "duration_ms": 0.346,
+  "evidence_hash": "ed9d54f3508f7b6dea47ae05fd9e698cffa60cb6f660c2413b8688678d9efceb"
+}

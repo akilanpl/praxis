@@ -1,0 +1,76 @@
+{
+  "status": "passed",
+  "mode": "two real local CPU models; no mocked backend",
+  "checks": [
+    {
+      "name": "Register in Chromium and retrieve authenticated account through real HTTP",
+      "passed": true
+    },
+    {
+      "name": "Connect, diagnose, execute, persist and inspect SmolLM2 135M CPU q4",
+      "passed": true,
+      "run_id": "5dd1dce4-0a3c-4e50-a5ba-1a18afc4e0c5",
+      "benchmark_passed": 0,
+      "benchmark_total": 8,
+      "trust": "self-reported"
+    },
+    {
+      "name": "Connect, diagnose, execute, persist and inspect SmolLM2 360M CPU q4",
+      "passed": true,
+      "run_id": "7d7d2c14-3e46-4150-a343-e8e4b7aed35b",
+      "benchmark_passed": 0,
+      "benchmark_total": 8,
+      "trust": "self-reported"
+    },
+    {
+      "name": "Compare two matched targets with identical suite, seed and budgets",
+      "passed": true
+    },
+    {
+      "name": "Owner cannot vote on own published outputs",
+      "passed": true
+    },
+    {
+      "name": "Bounded adaptive reference world persists state and replays identically",
+      "passed": true,
+      "trust": "demo",
+      "replay_hash": "d4c244d504f284ed5c6cbeae0408449bf115c505641b22db9e5ecd1343e698cd"
+    },
+    {
+      "name": "Browser file upload is private and HTML renders inertly",
+      "passed": true
+    },
+    {
+      "name": "Real WAV ingestion measures duration and provides an audio preview",
+      "passed": true
+    },
+    {
+      "name": "Anonymous other-owned vote reveals identities once and rejects replay",
+      "passed": true,
+      "demo": false
+    },
+    {
+      "name": "Preference updates persist independently of empty official objective rankings",
+      "passed": true
+    },
+    {
+      "name": "Visible navigation and branded missing-page route render without runtime errors",
+      "passed": true
+    },
+    {
+      "name": "390/1280 viewport checks and zero uncaught page errors",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    "report-1.png",
+    "report-2.png",
+    "compare.png",
+    "world.png",
+    "artifact-inert.png",
+    "arena-blind.png",
+    "arena-revealed.png",
+    "dashboard-390.png",
+    "dashboard-1280.png"
+  ]
+}

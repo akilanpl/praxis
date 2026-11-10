@@ -5,14 +5,18 @@
   "workspaces": [
     "apps/web",
     "apps/api",
-    "packages/contracts"
+    "packages/contracts",
+    "apps/website"
   ],
   "scripts": {
     "dev": "python3 scripts/dev.py",
     "build": ".venv/bin/python scripts/build.py",
     "test": ".venv/bin/python -m pytest tests -q && npm run test --workspace apps/api",
     "typecheck": "npm run typecheck --workspaces --if-present",
-    "verify": "npm test && npm run build"
+    "verify": "npm test && npm run build",
+    "website:dev": "npm run dev --workspace apps/website",
+    "website:build": "npm run build --workspace apps/website",
+    "lint": "npm run lint --workspaces --if-present"
   },
   "devDependencies": {
     "@huggingface/transformers": "4.3.2",

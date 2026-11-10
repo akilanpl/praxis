@@ -17,7 +17,8 @@ os.chdir(ROOT)
 SHA=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
 BRANCH=subprocess.check_output(['git','branch','--show-current'],text=True).strip()
 OUT=ROOT/'.pushgate/reports';OUT.mkdir(parents=True,exist_ok=True)
-ENV=dict(os.environ,PYTHONPYCACHEPREFIX=str(ROOT/'work/pycache'),PIP_CACHE_DIR=str(ROOT/'work/pip-cache'))
+EVIDENCE=Path(os.environ.get('PRAXIS_EVIDENCE_DIR',str(ROOT/'evidence/final/gate'))).resolve();EVIDENCE.mkdir(parents=True,exist_ok=True)
+ENV=dict(os.environ,PRAXIS_EVIDENCE_DIR=str(EVIDENCE),PYTHONPYCACHEPREFIX=str(ROOT/'work/pycache'),PIP_CACHE_DIR=str(ROOT/'work/pip-cache'))
 if sys.platform=='darwin':ENV.setdefault('PRAXIS_BROWSER_CDP','http://127.0.0.1:9333')
 P=ROOT/'.venv/bin/python'
 report={'commit':SHA,'branch':BRANCH,'seed':73,'scope':'local code acceptance; no claim of hosted Auth or production deployment','tests':[],'stages':[],'environment_started':True,'security_clear':True,'coverage':{}}
@@ -32,6 +33,12 @@ def stage(name,command):
     (OUT/(name+'.log')).write_text(output)
     report['stages'].append({'name':name,'command':[str(c) for c in command],'exit_code':code,'duration_ms':(time.monotonic()-begin)*1000})
     return code==0,output
+
+def receipt(path):
+    try:
+        return json.loads(path.read_text())
+    except (OSError,ValueError):
+        return {'status':'failed','checks':[],'error':'Acceptance receipt missing or invalid: '+str(path)}
 
 def family(name):
     n=name.lower()
@@ -59,6 +66,7 @@ def healthy(port,model):
 
 try:
     ok,_=stage('build',['npm','run','build']);add('All component production build','S01','pass' if ok else 'fail','P0')
+    ok,_=stage('frontend-lint',['npm','run','lint']);add('Frontend compiler unused-code lint','S01','pass' if ok else 'fail','P0')
     ok,_=stage('wheel',[P,'scripts/verify_wheel.py']);add('Isolated runner wheel installation and bundled execution','S01','pass' if ok else 'fail','P0')
     coverage_path = OUT / 'coverage.json'
     coverage_path.unlink(missing_ok=True)
@@ -83,8 +91,9 @@ try:
     ok,_=stage('secrets',[leak,'git','--log-opts=--all','--redact','--no-banner','--report-format','json','--report-path',str(OUT/'gitleaks.json')]);add('Tracked history secret scan','S05','pass' if ok else 'fail','P0');report['security_clear']&=ok
     ok,_=stage('npm-audit',['npm','audit','--json','--cache','./work/npm-cache']);add('Node dependency advisory audit','S06','pass' if ok else 'fail','P0');report['security_clear']&=ok
     ok,_=stage('python-audit',[P,'-m','pip_audit','--skip-editable','--cache-dir','work/pip-audit-cache','--format','json','--output',str(OUT/'python-audit.json')]);add('Python dependency advisory audit','S06','pass' if ok else 'fail','P0');report['security_clear']&=ok
-    ok,_=stage('postgres',[P,'scripts/postgres_acceptance.py'])
-    pg=json.loads((ROOT/'evidence/release/postgres.json').read_text())
+    postgres_script='scripts/postgres_acceptance.py' if shutil.which('psql') else 'scripts/postgres_container_check.py'
+    ok,_=stage('postgres',[P,postgres_script])
+    pg=receipt(EVIDENCE/'postgres.json')
     for item in pg.get('checks',[]):add(item['name'],'D01','pass' if item['passed'] else 'fail','P0')
     if not ok:add('Disposable native PostgreSQL environment','D01','notrun' if pg['status']=='blocked' else 'fail','P0');report['environment_started']=False
     for port,model in [(8788,'onnx-community/SmolLM2-135M-Instruct-ONNX'),(8789,'onnx-community/SmolLM2-360M-Instruct-ONNX')]:
@@ -98,7 +107,7 @@ try:
                 time.sleep(.2)
             if not healthy(port,model):report['environment_started']=False
     ok,_=stage('browser',[P,'scripts/browser_check.py'])
-    browser=json.loads((ROOT/'evidence/release/browser/result.json').read_text())
+    browser=receipt(EVIDENCE/'browser/result.json')
     for item in browser.get('checks',[]):
         group='F04' if 'viewport' in item['name'] or 'navigation' in item['name'] else 'E04'
         add(item['name'],group,'pass' if item['passed'] else 'fail','P0')
@@ -107,6 +116,7 @@ try:
     if ok:
         for item in json.loads((OUT/'website/website-checks.json').read_text())['assertions']:add(item['name'],'F06','pass' if item['passed'] else 'fail')
     else:add('Owned website artifact browser checks','F06','notrun','P0')
+    ok,_=stage('project-website',[P,'scripts/website_check.py']);add('Project website production browser acceptance','F06','pass' if ok else 'fail','P0')
     # Performance and operational health on a fresh, bounded local API.
     e=dict(ENV,PRAXIS_PORT='8794',PRAXIS_DB=str(ROOT/'work'/('gate-'+SHA+'.sqlite')))
     log=open(OUT/'health-api.log','w');proc=subprocess.Popen([str(P),'-m','praxis.server'],env=e,stdout=log,stderr=log);owned.append((proc,log))

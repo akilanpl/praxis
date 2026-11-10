@@ -1,0 +1,1938 @@
+{
+  "commit": "378d5d38782ee13921989bc71feef25f996f568d",
+  "branch": "codex/praxis-final-release",
+  "seed": 73,
+  "scope": "local code acceptance; no claim of hosted Auth or production deployment",
+  "tests": [
+    {
+      "id": "S01.1",
+      "name": "All component production build",
+      "family": "S01",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "S01.2",
+      "name": "Frontend compiler unused-code lint",
+      "family": "S01",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "S01.3",
+      "name": "Isolated runner wheel installation and bundled execution",
+      "family": "S01",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "X01.4",
+      "name": "tests.test_api.LocalAPITests.test_application_cannot_be_model_and_invalid_seed",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 141.0,
+      "retries": 0
+    },
+    {
+      "id": "Z06.5",
+      "name": "tests.test_api.LocalAPITests.test_auth_and_revocation",
+      "family": "Z06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 168.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.6",
+      "name": "tests.test_api.LocalAPITests.test_blinding_duplicate_vote_and_ratings",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 152.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.7",
+      "name": "tests.test_api.LocalAPITests.test_noncomparable_and_private_excluded",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 139.0,
+      "retries": 0
+    },
+    {
+      "id": "Z06.8",
+      "name": "tests.test_api.LocalAPITests.test_owner_isolation_and_secret_policy",
+      "family": "Z06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 139.0,
+      "retries": 0
+    },
+    {
+      "id": "Y01.9",
+      "name": "tests.test_api.LocalAPITests.test_persisted_run_and_evidence",
+      "family": "Y01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 184.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.10",
+      "name": "tests.test_api.LocalAPITests.test_world_replay",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 146.0,
+      "retries": 0
+    },
+    {
+      "id": "C01.11",
+      "name": "tests.test_api.ConcurrencyTests.test_concurrent_match_assignment_reuses_one_pair",
+      "family": "C01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 145.0,
+      "retries": 0
+    },
+    {
+      "id": "C01.12",
+      "name": "tests.test_api.ConcurrencyTests.test_idempotent_run_request",
+      "family": "C01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 168.0,
+      "retries": 0
+    },
+    {
+      "id": "C01.13",
+      "name": "tests.test_api.ConcurrencyTests.test_invalid_suite_rejected",
+      "family": "C01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 138.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.14",
+      "name": "tests.test_application.ApplicationTests.test_actual_response_is_graded_not_a_model_answer",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 11.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.15",
+      "name": "tests.test_application.ApplicationTests.test_mutation_requires_opt_in",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "Z06.16",
+      "name": "tests.test_application.ApplicationTests.test_untrusted_paths_and_credentials_rejected",
+      "family": "Z06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 0.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.17",
+      "name": "tests.test_application.ApplicationDiagnosticsTests.test_application_connection_uses_get_health_not_model_inference",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.18",
+      "name": "tests.test_cli_release.test_cli_lists_real_versioned_suites",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 7.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.19",
+      "name": "tests.test_cli_release.test_cli_validation_reports_unsafe_dsl_without_execution",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 17.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.20",
+      "name": "tests.test_cli_release.test_cli_validate_valid_versioned_suite",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 29.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.21",
+      "name": "tests.test_cli_release.test_cli_run_writes_real_fixture_assertions[demo-0-8]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 23.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.22",
+      "name": "tests.test_cli_release.test_cli_run_writes_real_fixture_assertions[demo-failing-1-0]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 22.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.23",
+      "name": "tests.test_cli_release.test_cli_unknown_suite_is_useful_failure",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 3.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.24",
+      "name": "tests.test_cli_release.test_cli_missing_input_file_fails_closed",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 2.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.25",
+      "name": "tests.test_cli_release.test_cli_world_exact_seed_replays",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 50.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.26",
+      "name": "tests.test_cli_release.test_cli_diagnose_labels_fixture",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 2.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.27",
+      "name": "tests.test_cli_release.test_cli_diagnose_invalid_endpoint_cannot_call_provider",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 2.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.28",
+      "name": "tests.test_connector_protocol.ConnectorProtocolTests.test_custom_protocol",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 7.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.29",
+      "name": "tests.test_connector_protocol.ConnectorProtocolTests.test_http_failure_does_not_leak_response_body",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.30",
+      "name": "tests.test_connector_protocol.ConnectorProtocolTests.test_malformed_response_classified",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.31",
+      "name": "tests.test_connector_protocol.ConnectorProtocolTests.test_ollama_protocol_and_usage",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 8.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.32",
+      "name": "tests.test_connector_protocol.ConnectorProtocolTests.test_openai_request_and_usage",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.33",
+      "name": "tests.test_connector_protocol.ConnectorProtocolTests.test_redirect_handler_rejects",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.34",
+      "name": "tests.test_connector_protocol.ConnectorProtocolTests.test_supported_seed_is_explicit",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.35",
+      "name": "tests.test_diff_coverage.test_changed_executable_lines_and_missing_evidence",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 41.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.36",
+      "name": "tests.test_diff_coverage.test_unknown_diff_keeps_existing_protected_branch_cap",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 9.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.37",
+      "name": "tests.test_engine.EngineTests.test_application_not_treated_as_model",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 17.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.38",
+      "name": "tests.test_engine.EngineTests.test_artifact_hash_and_wav",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 3.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.39",
+      "name": "tests.test_engine.EngineTests.test_at_least_30_distinct_valid_scenarios",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 54.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.40",
+      "name": "tests.test_engine.EngineTests.test_bad_json_fails",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 2.0,
+      "retries": 0
+    },
+    {
+      "id": "R03.41",
+      "name": "tests.test_engine.EngineTests.test_cancel_denominator_includes_not_run",
+      "family": "R03",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 23.0,
+      "retries": 0
+    },
+    {
+      "id": "R03.42",
+      "name": "tests.test_engine.EngineTests.test_cancel_during_run",
+      "family": "R03",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 15.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.43",
+      "name": "tests.test_engine.EngineTests.test_demo_end_to_end",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 53.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.44",
+      "name": "tests.test_engine.EngineTests.test_every_passing_and_failing_regression_fixture",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 11.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.45",
+      "name": "tests.test_engine.EngineTests.test_failing_demo_never_passes",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 12.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.46",
+      "name": "tests.test_engine.EngineTests.test_invalid_and_unsafe_dsl_rejected",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 23.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.47",
+      "name": "tests.test_engine.EngineTests.test_numeric_schema_boolean_separation",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 0.0,
+      "retries": 0
+    },
+    {
+      "id": "Z06.48",
+      "name": "tests.test_engine.EngineTests.test_report_escapes_html",
+      "family": "Z06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 13.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.49",
+      "name": "tests.test_engine.EngineTests.test_schema_ref_rejected",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 11.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.50",
+      "name": "tests.test_engine.EngineTests.test_unknown_provider_fails_with_evidence",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 12.0,
+      "retries": 0
+    },
+    {
+      "id": "Z06.51",
+      "name": "tests.test_engine.EngineTests.test_untrusted_code_and_html_denied",
+      "family": "Z06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 0.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.52",
+      "name": "tests.test_engine.AgentTests.test_actual_tool_state_mutation",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.53",
+      "name": "tests.test_engine.AgentTests.test_plain_model_cannot_pass_executable_agent_suite",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.54",
+      "name": "tests.test_engine.AgentTests.test_task_without_environment_fails_as_agent",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 12.0,
+      "retries": 0
+    },
+    {
+      "id": "Z06.55",
+      "name": "tests.test_engine.AgentTests.test_unauthorized_action_and_no_evidence_refund_fail",
+      "family": "Z06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.56",
+      "name": "tests.test_engine.WorldTests.test_all_domain_growth_and_replay",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 23.0,
+      "retries": 0
+    },
+    {
+      "id": "Z06.57",
+      "name": "tests.test_engine.WorldTests.test_permission_denial_prevents_growth",
+      "family": "Z06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.58",
+      "name": "tests.test_engine.WorldTests.test_policy_conflict_refused",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.59",
+      "name": "tests.test_engine.WorldTests.test_seed_changes_world",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 8.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.60",
+      "name": "tests.test_engine.WorldTests.test_static_comparison_mode",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.61",
+      "name": "tests.test_engine.WorldTests.test_world_budget",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 1.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.62",
+      "name": "tests.test_engine.AdapterContractTests.test_agent_real_http_decision_loop",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 34.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.63",
+      "name": "tests.test_engine.AdapterContractTests.test_custom_adapter_protocol_real_http",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "R03.64",
+      "name": "tests.test_engine.AdapterContractTests.test_deadline_enforced",
+      "family": "R03",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 107.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.65",
+      "name": "tests.test_engine.AdapterContractTests.test_ollama_adapter_protocol_real_http",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 100.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.66",
+      "name": "tests.test_engine.AdapterContractTests.test_openai_adapter_protocol_real_http",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 7.0,
+      "retries": 0
+    },
+    {
+      "id": "Z06.67",
+      "name": "tests.test_engine.AdapterContractTests.test_secrets_excluded_from_evidence",
+      "family": "Z06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 21.0,
+      "retries": 0
+    },
+    {
+      "id": "Z06.68",
+      "name": "tests.test_engine.AdapterContractTests.test_url_credentials_rejected",
+      "family": "Z06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 479.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.69",
+      "name": "tests.test_final_release.test_provider_nonobject_and_invalid_usage_classified[None]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 8.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.70",
+      "name": "tests.test_final_release.test_provider_nonobject_and_invalid_usage_classified[value1]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 7.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.71",
+      "name": "tests.test_final_release.test_provider_nonobject_and_invalid_usage_classified[1]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 7.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.72",
+      "name": "tests.test_final_release.test_provider_nonobject_and_invalid_usage_classified[True]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 8.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.73",
+      "name": "tests.test_final_release.test_provider_nonobject_and_invalid_usage_classified[text]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.74",
+      "name": "tests.test_final_release.test_provider_nonobject_and_invalid_usage_classified[value5]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.75",
+      "name": "tests.test_final_release.test_provider_nonobject_and_invalid_usage_classified[value6]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 8.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.76",
+      "name": "tests.test_final_release.test_protocol_content_requires_text[openai-response0]",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "A18.77",
+      "name": "tests.test_final_release.test_protocol_content_requires_text[ollama-response1]",
+      "family": "A18",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.78",
+      "name": "tests.test_final_release.test_reflected_credential_redacted_and_evidence_integrity",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 6.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.79",
+      "name": "tests.test_final_release.test_bounded_partial_run_preserves_named_unexecuted_tasks",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 12.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.80",
+      "name": "tests.test_final_release.test_execution_integer_bounds[max_retries-1.5]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.81",
+      "name": "tests.test_final_release.test_execution_integer_bounds[max_scenario_count-1.5]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.82",
+      "name": "tests.test_final_release.test_execution_integer_bounds[max_output_tokens-True]",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "C01.83",
+      "name": "tests.test_final_release.test_suite_revision_explicit_and_concurrent_duplicate_rejected",
+      "family": "C01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 93.0,
+      "retries": 0
+    },
+    {
+      "id": "Z06.84",
+      "name": "tests.test_final_release.test_application_real_http_pass_fail_and_authorization",
+      "family": "Z06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 523.0,
+      "retries": 0
+    },
+    {
+      "id": "R03.85",
+      "name": "tests.test_final_release.test_restart_recovers_active_runs_beyond_list_cap",
+      "family": "R03",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 337.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.86",
+      "name": "tests.test_final_release.test_suite_token_limit_reaches_adapter",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "R03.87",
+      "name": "tests.test_final_release.test_trickled_response_respects_total_deadline",
+      "family": "R03",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 91.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.88",
+      "name": "tests.test_final_release.test_agent_provider_failure_retains_executed_state_trace",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 4.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.89",
+      "name": "tests.test_final_release.test_run_artifacts_rollback_together_on_storage_failure",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 98.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.90",
+      "name": "tests.test_http_boundary.HTTPBoundaryTests.test_ambiguous_http_framing_rejected",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.91",
+      "name": "tests.test_http_boundary.HTTPBoundaryTests.test_dns_rebinding_host_rejected",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 4.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.92",
+      "name": "tests.test_http_boundary.HTTPBoundaryTests.test_health_security_headers",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 4.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.93",
+      "name": "tests.test_http_boundary.HTTPBoundaryTests.test_invalid_json_and_content_type",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 4.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.94",
+      "name": "tests.test_http_boundary.HTTPBoundaryTests.test_origin_rejected",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 4.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.95",
+      "name": "tests.test_http_boundary.HTTPBoundaryTests.test_oversize_rejected_before_read",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 4.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.96",
+      "name": "tests.test_media.MediaTests.test_binary_rejected_and_boundaries",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 7.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.97",
+      "name": "tests.test_media.MediaTests.test_hash_dedup_storage",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "B01.98",
+      "name": "tests.test_media.MediaTests.test_html_inert_and_public_consent_not_inferred",
+      "family": "B01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 5.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.99",
+      "name": "tests.test_media.MediaTests.test_wav_real_duration",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 10.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.100",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[name-None]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 72.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.101",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[name-{}]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 70.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.102",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[name-[]]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 74.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.103",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[name-]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 77.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.104",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[name-    ]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 74.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.105",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[name-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 70.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.106",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[endpoint-[]]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 71.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.107",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[endpoint-True]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 76.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.108",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[endpoint-http://host:badport]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 72.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.109",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[model-{}]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 73.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.110",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[model-12]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 74.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.111",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[capabilities-text]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 77.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.112",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[capabilities-['unknown']]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 73.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.113",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[max_tokens-0]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 74.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.114",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[max_tokens-8193]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 71.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.115",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[max_tokens-True]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 77.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.116",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[max_tokens-1.5]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 72.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.117",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[temperature--0.1]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 72.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.118",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[temperature-2.1]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 72.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.119",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[temperature-nan]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 78.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.120",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[temperature-zero]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 73.0,
+      "retries": 0
+    },
+    {
+      "id": "R03.121",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[timeout-0]",
+      "family": "R03",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 72.0,
+      "retries": 0
+    },
+    {
+      "id": "R03.122",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[timeout-121]",
+      "family": "R03",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 70.0,
+      "retries": 0
+    },
+    {
+      "id": "R03.123",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[timeout-inf]",
+      "family": "R03",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 79.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.124",
+      "name": "tests.test_release_validation.test_invalid_target_has_no_persisted_side_effect[allow_mutation-true]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 71.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.125",
+      "name": "tests.test_release_validation.test_world_contract_rejects_unreplayable_inputs[body0]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 71.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.126",
+      "name": "tests.test_release_validation.test_world_contract_rejects_unreplayable_inputs[body1]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 70.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.127",
+      "name": "tests.test_release_validation.test_world_contract_rejects_unreplayable_inputs[body2]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 74.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.128",
+      "name": "tests.test_release_validation.test_world_contract_rejects_unreplayable_inputs[body3]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 70.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.129",
+      "name": "tests.test_release_validation.test_world_contract_rejects_unreplayable_inputs[body4]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 75.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.130",
+      "name": "tests.test_release_validation.test_world_contract_rejects_unreplayable_inputs[body5]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 253.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.131",
+      "name": "tests.test_release_validation.test_world_contract_rejects_unreplayable_inputs[body6]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 136.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.132",
+      "name": "tests.test_release_validation.test_world_contract_rejects_unreplayable_inputs[body7]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 73.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.133",
+      "name": "tests.test_release_validation.test_world_contract_rejects_unreplayable_inputs[body8]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 75.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.134",
+      "name": "tests.test_release_validation.test_world_contract_rejects_unreplayable_inputs[body9]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 77.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.135",
+      "name": "tests.test_release_validation.test_world_contract_rejects_unreplayable_inputs[body10]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 73.0,
+      "retries": 0
+    },
+    {
+      "id": "V02.136",
+      "name": "tests.test_release_validation.test_world_contract_rejects_unreplayable_inputs[body11]",
+      "family": "V02",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 70.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.137",
+      "name": "tests.test_release_validation.test_suite_clone_cannot_reuse_persisted_record_id",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 101.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.138",
+      "name": "tests.test_release_validation.test_idempotency_key_cannot_change_request",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 104.0,
+      "retries": 0
+    },
+    {
+      "id": "Z06.139",
+      "name": "tests.test_release_validation.test_auth_requires_bearer_scheme",
+      "family": "Z06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 135.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.140",
+      "name": "tests.test_release_validation.test_suite_slug_safe_for_ui_routes[with/slash]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 87.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.141",
+      "name": "tests.test_release_validation.test_suite_slug_safe_for_ui_routes[../traversal]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 78.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.142",
+      "name": "tests.test_release_validation.test_suite_slug_safe_for_ui_routes[with space]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 76.0,
+      "retries": 0
+    },
+    {
+      "id": "X01.143",
+      "name": "tests.test_release_validation.test_suite_slug_safe_for_ui_routes[UPPERCASE]",
+      "family": "X01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 82.0,
+      "retries": 0
+    },
+    {
+      "id": "Z07.144",
+      "name": "health accurately states metadata-only mode",
+      "family": "Z07",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "A07.145",
+      "name": "unauthenticated request is denied before network access",
+      "family": "A07",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "Z07.146",
+      "name": "invalid authenticated identity denied",
+      "family": "Z07",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "A07.147",
+      "name": "expired token denied",
+      "family": "A07",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "Z07.148",
+      "name": "malicious origin denied",
+      "family": "Z07",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "Z07.149",
+      "name": "secret target fields rejected",
+      "family": "Z07",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "Z07.150",
+      "name": "arbitrary endpoints stored but never fetched",
+      "family": "Z07",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "Z07.151",
+      "name": "client cannot promote evidence to verified",
+      "family": "Z07",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "Z07.152",
+      "name": "foreign target cannot create a run",
+      "family": "Z07",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "Z07.153",
+      "name": "oversize payload rejected",
+      "family": "Z07",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "Z07.154",
+      "name": "duplicate evidence returns conflict",
+      "family": "Z07",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "Z07.155",
+      "name": "security headers accompany failures",
+      "family": "Z07",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "Z07.156",
+      "name": "malformed endpoint returns validation error",
+      "family": "Z07",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "Z07.157",
+      "name": "credential-bearing endpoints rejected",
+      "family": "Z07",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "S05.158",
+      "name": "Tracked history secret scan",
+      "family": "S05",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "S06.159",
+      "name": "Node dependency advisory audit",
+      "family": "S06",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "S06.160",
+      "name": "Python dependency advisory audit",
+      "family": "S06",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "D01.161",
+      "name": "tracked migration matches schema and applies to empty database",
+      "family": "D01",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "D01.162",
+      "name": "ownership.sql",
+      "family": "D01",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "D01.163",
+      "name": "persistence.sql",
+      "family": "D01",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "D01.164",
+      "name": "RLS enabled on all 28 tables",
+      "family": "D01",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "E04.165",
+      "name": "Register in Chromium and retrieve authenticated account through real HTTP",
+      "family": "E04",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "E04.166",
+      "name": "Connect, diagnose, execute, persist and inspect SmolLM2 135M CPU q4",
+      "family": "E04",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "E04.167",
+      "name": "Connect, diagnose, execute, persist and inspect SmolLM2 360M CPU q4",
+      "family": "E04",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "E04.168",
+      "name": "Compare two matched targets with identical suite, seed and budgets",
+      "family": "E04",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "E04.169",
+      "name": "Owner cannot vote on own published outputs",
+      "family": "E04",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "E04.170",
+      "name": "Bounded adaptive reference world persists state and replays identically",
+      "family": "E04",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "E04.171",
+      "name": "Browser file upload is private and HTML renders inertly",
+      "family": "E04",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "E04.172",
+      "name": "Real WAV ingestion measures duration and provides an audio preview",
+      "family": "E04",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "E04.173",
+      "name": "Anonymous other-owned vote reveals identities once and rejects replay",
+      "family": "E04",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "E04.174",
+      "name": "Preference updates persist independently of empty official objective rankings",
+      "family": "E04",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "F04.175",
+      "name": "Visible navigation and branded missing-page route render without runtime errors",
+      "family": "F04",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "F04.176",
+      "name": "390/1280 viewport checks and zero uncaught page errors",
+      "family": "F04",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "F06.177",
+      "name": "cart interaction",
+      "family": "F06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "F06.178",
+      "name": "search filters items",
+      "family": "F06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "F06.179",
+      "name": "invalid email rejected",
+      "family": "F06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "F06.180",
+      "name": "inputs have labels",
+      "family": "F06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "F06.181",
+      "name": "viewport 390 no overflow",
+      "family": "F06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "F06.182",
+      "name": "viewport 1280 no overflow",
+      "family": "F06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "F06.183",
+      "name": "no runtime errors",
+      "family": "F06",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "F06.184",
+      "name": "Project website production browser acceptance",
+      "family": "F06",
+      "sev": "P0",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "P01.185",
+      "name": "Bounded health request latency p95 < 300 ms",
+      "family": "P01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    },
+    {
+      "id": "O01.186",
+      "name": "Fresh local API reports its real mode",
+      "family": "O01",
+      "sev": "P1",
+      "status": "pass",
+      "duration_ms": 0,
+      "retries": 0
+    }
+  ],
+  "stages": [
+    {
+      "name": "build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "exit_code": 0,
+      "duration_ms": 11232.140282000046
+    },
+    {
+      "name": "frontend-lint",
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "exit_code": 0,
+      "duration_ms": 2809.8115160000816
+    },
+    {
+      "name": "wheel",
+      "command": [
+        "/workspace/praxis/.venv/bin/python",
+        "scripts/verify_wheel.py"
+      ],
+      "exit_code": 0,
+      "duration_ms": 535.7960679998541
+    },
+    {
+      "name": "python",
+      "command": [
+        "/workspace/praxis/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests",
+        "-q",
+        "--cov=praxis",
+        "--cov-branch",
+        "--cov-report=json:/workspace/praxis/.pushgate/reports/coverage.json",
+        "--junitxml=/workspace/praxis/.pushgate/reports/python.xml"
+      ],
+      "exit_code": 0,
+      "duration_ms": 8493.535978999944
+    },
+    {
+      "name": "worker",
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "--test",
+        "--test-reporter=tap",
+        "apps/api/test/security.test.ts"
+      ],
+      "exit_code": 0,
+      "duration_ms": 389.6122969999851
+    },
+    {
+      "name": "secrets",
+      "command": [
+        "/workspace/praxis/work/gitleaks/gitleaks",
+        "git",
+        "--log-opts=--all",
+        "--redact",
+        "--no-banner",
+        "--report-format",
+        "json",
+        "--report-path",
+        "/workspace/praxis/.pushgate/reports/gitleaks.json"
+      ],
+      "exit_code": 0,
+      "duration_ms": 488.37728300009076
+    },
+    {
+      "name": "npm-audit",
+      "command": [
+        "npm",
+        "audit",
+        "--json",
+        "--cache",
+        "./work/npm-cache"
+      ],
+      "exit_code": 0,
+      "duration_ms": 596.9104230000539
+    },
+    {
+      "name": "python-audit",
+      "command": [
+        "/workspace/praxis/.venv/bin/python",
+        "-m",
+        "pip_audit",
+        "--skip-editable",
+        "--cache-dir",
+        "work/pip-audit-cache",
+        "--format",
+        "json",
+        "--output",
+        "/workspace/praxis/.pushgate/reports/python-audit.json"
+      ],
+      "exit_code": 0,
+      "duration_ms": 511.6453040000124
+    },
+    {
+      "name": "postgres",
+      "command": [
+        "/workspace/praxis/.venv/bin/python",
+        "scripts/postgres_container_check.py"
+      ],
+      "exit_code": 0,
+      "duration_ms": 74064.73423200009
+    },
+    {
+      "name": "browser",
+      "command": [
+        "/workspace/praxis/.venv/bin/python",
+        "scripts/browser_check.py"
+      ],
+      "exit_code": 0,
+      "duration_ms": 115473.97522799997
+    },
+    {
+      "name": "website",
+      "command": [
+        "/workspace/praxis/.venv/bin/python",
+        "-m",
+        "praxis",
+        "check-website",
+        "--output-dir",
+        "/workspace/praxis/.pushgate/reports/website"
+      ],
+      "exit_code": 0,
+      "duration_ms": 901.5858569998727
+    },
+    {
+      "name": "project-website",
+      "command": [
+        "/workspace/praxis/.venv/bin/python",
+        "scripts/website_check.py"
+      ],
+      "exit_code": 0,
+      "duration_ms": 4671.0297330000685
+    }
+  ],
+  "environment_started": true,
+  "security_clear": true,
+  "coverage": {
+    "line": 85.47826086956522,
+    "branch": 76.09561752988049,
+    "diff": null,
+    "diff_status": "missing baseline or coverage files"
+  },
+  "performance": {
+    "requests": 30,
+    "p95_ms": 0.8706570001777436,
+    "scope": "loopback health requests, not capacity certification"
+  },
+  "baseline_score": 67.3,
+  "duration_seconds": 220.31375081300007,
+  "result": {
+    "score": 89,
+    "raw_score": 100.0,
+    "grade": "C",
+    "decision": "PASS",
+    "groups": {
+      "S": {
+        "weight": 5,
+        "tests": 6,
+        "passed": 6,
+        "rate": 1.0
+      },
+      "B": {
+        "weight": 14,
+        "tests": 37,
+        "passed": 37,
+        "rate": 1.0
+      },
+      "A": {
+        "weight": 12,
+        "tests": 18,
+        "passed": 18,
+        "rate": 1.0
+      },
+      "D": {
+        "weight": 6,
+        "tests": 4,
+        "passed": 4,
+        "rate": 1.0
+      },
+      "F": {
+        "weight": 8,
+        "tests": 10,
+        "passed": 10,
+        "rate": 1.0
+      },
+      "E": {
+        "weight": 10,
+        "tests": 10,
+        "passed": 10,
+        "rate": 1.0
+      },
+      "X": {
+        "weight": 8,
+        "tests": 19,
+        "passed": 19,
+        "rate": 1.0
+      },
+      "V": {
+        "weight": 7,
+        "tests": 44,
+        "passed": 44,
+        "rate": 1.0
+      },
+      "Z": {
+        "weight": 12,
+        "tests": 23,
+        "passed": 23,
+        "rate": 1.0
+      },
+      "P": {
+        "weight": 5,
+        "tests": 1,
+        "passed": 1,
+        "rate": 1.0
+      },
+      "R": {
+        "weight": 5,
+        "tests": 8,
+        "passed": 8,
+        "rate": 1.0
+      },
+      "C": {
+        "weight": 3,
+        "tests": 4,
+        "passed": 4,
+        "rate": 1.0
+      },
+      "Y": {
+        "weight": 3,
+        "tests": 1,
+        "passed": 1,
+        "rate": 1.0
+      },
+      "O": {
+        "weight": 2,
+        "tests": 1,
+        "passed": 1,
+        "rate": 1.0
+      }
+    },
+    "executed": 186,
+    "threshold": 80,
+    "ratchet_ok": true,
+    "scope": "Local feature-branch code acceptance. Hosted deployment/Auth certification is separate and remains blocked without an approved cloud project."
+  }
+}

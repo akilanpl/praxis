@@ -4,9 +4,11 @@
 
 Praxis is a local evaluation workspace and Python runner for inspecting what models, tool agents and HTTP applications actually produce. Versioned scenarios define inputs, output schemas and assertions; the runner records outputs, failures, tool traces, timing and provenance before assembling a report. A React interface supports target registration, suite authoring, run review, artifact inspection and blind preference comparisons, while a separate Cloudflare Worker exposes a limited authenticated metadata API.
 
+**Release checkpoint (2026-11-10):** cloud verification and limitations are in [VERIFICATION.md](VERIFICATION.md), with audit findings in [FINAL_AUDIT.md](docs/qa/FINAL_AUDIT.md). Application and website are not publicly deployed.
+
 **Six public suites · 40 scenarios · Three execution kinds · JSON and printable HTML reports**
 
-[Start locally](#start-locally) · [Evaluation lifecycle](#evaluation-lifecycle) · [Suites](#suites-and-assertions) · [Comparison](#comparison-and-blind-voting) · [Recorded evidence](#recorded-validation)
+[Project website](#project-website) · [Start locally](#start-locally) · [Evaluation lifecycle](#evaluation-lifecycle) · [Suites](#suites-and-assertions) · [Comparison](#comparison-and-blind-voting) · [Recorded evidence](#recorded-validation)
 
 ## Evaluation lifecycle
 
@@ -38,7 +40,7 @@ The local server persists events and final results in SQLite. Reports retain run
 
 The [scenario definitions](packages/scenarios) are public versioned JSON. Each contains passing and failing fixtures for regression testing. The first four suites assess model outputs; describing code or a website in a response is not execution of that code or rendering of that website.
 
-Suite validation accepts 1–64 scenarios and a bounded assertion language: `equals`, `contains`, `not_contains`, `subset`, `gte` and `lte`, with positive finite weights. JSON Schema validates output shape; schema references and arbitrary Python/eval assertions are rejected. Checks address specific output paths and retain evidence for both passes and failures. JSON import, cloning and export support custom suites; public fixtures are not held-out benchmark data.
+Custom suite versions must be route-safe identifiers (40 characters maximum). UI inspection uses `slug@version`; ambiguous API inspection or run requests return 409 rather than selecting an arbitrary revision. Suite validation accepts 1–64 scenarios and a bounded assertion language: `equals`, `contains`, `not_contains`, `subset`, `gte` and `lte`, with positive finite weights. JSON Schema validates output shape; schema references and arbitrary Python/eval assertions are rejected. Checks address specific output paths and retain evidence for both passes and failures. JSON import, cloning and export support custom suites; public fixtures are not held-out benchmark data.
 
 ### Three execution kinds
 
@@ -46,7 +48,7 @@ Suite validation accepts 1–64 scenarios and a bounded assertion language: `equ
 | --- | --- | --- |
 | Model | [Adapters](runner/praxis/adapters.py) implement OpenAI-compatible chat completions, Ollama and a custom HTTP protocol. | Calls originate from the user-controlled local runner; endpoint configuration is not an operator attestation. |
 | Agent | [Agent loop](runner/praxis/agent.py) invokes allowed tools against an in-memory purchase/policy environment and records before/after state. | Tool permissions, bounded steps and state assertions evaluate actual behavior; the environment is a defined simulation. |
-| Application | [HTTP contracts](runner/praxis/application.py) send bounded GET/POST requests and grade status/body/content-type values. | POST requires explicit `allow_mutation:true`; only target owned or authorized applications. |
+| Application | [HTTP contracts](runner/praxis/application.py) send bounded GET/POST requests and grade status/body/content-type values. | Every request requires explicit `authorized:true` ownership/permission acknowledgement; POST additionally requires `allow_mutation:true`. Acknowledgement is not independent ownership attestation. |
 
 Network adapters use deadlines, response-size bounds, endpoint validation, redirect rejection and safe error messages. Credentials are resolved from the runner environment and excluded from target registry metadata. OpenAI-compatible endpoints include `/v1`; Ollama endpoints use the server origin. The custom model protocol sends `praxis.model.v1` with an input, model, seed and token bound, and expects an `output` field.
 
@@ -67,9 +69,9 @@ flowchart TD
     Worker --> RLS[PostgREST with user JWT and RLS]
 ```
 
-The local [server](runner/praxis/server.py) uses salted PBKDF2 password hashes, hashed expiring bearer sessions, record-owner checks, host/origin restrictions and request limits. Private records are accessed through the current owner. A two-worker executor runs evaluations; events and results survive process restarts, while interrupted active runs are marked interrupted. Cancellation is observed between calls and adapter requests have timeouts; individual tasks are not resumable.
+The local [server](runner/praxis/server.py) uses salted PBKDF2 password hashes, hashed expiring bearer sessions, record-owner checks, host/origin restrictions and request limits. Private records are accessed through the current owner. A two-worker executor runs evaluations; events and results survive process restarts, while interrupted active runs are marked interrupted. Cancellation is observed between calls and adapter reads have elapsed deadlines and byte limits; individual tasks are not resumable.
 
-SQLite WAL holds registry and evaluation records. Uploaded objects are SHA-256 deduplicated beside the database under `.praxis/`; back up both metadata and objects. Run-request idempotency and persisted match assignment prevent duplicate local operations within their implemented scope. The workspace is intended for a single computer, with a default 500-record list cap.
+SQLite WAL holds registry and evaluation records. Uploaded objects are SHA-256 deduplicated beside the database under `.praxis/`; back up both metadata and objects. Final run results and generated artifact rows commit together. Restart and idempotency lookup are independent of the list cap. Run-request idempotency and persisted match assignment prevent duplicate local operations within their implemented scope. The workspace is intended for a single computer, with a default 500-record list cap.
 
 The separate [Worker](apps/api/src/index.ts) validates Supabase bearer tokens and forwards user JWTs to PostgREST so database RLS remains authoritative. It stores bounded metadata and self-reported evidence; it does not fetch custom model endpoints or execute user workloads. The local login/Arena runtime is not automatically converted into a hosted product by changing an API URL. See [cloud boundaries](docs/cloud.md), [security](docs/security.md), and the [SQL schema](supabase/schema.sql).
 
@@ -120,7 +122,7 @@ npm run build
 .venv/bin/python -m praxis.server
 ```
 
-Open `http://127.0.0.1:8787`. Build produces the web bundle, shared contracts/Worker checks, Worker bundle and Python runner wheel; its manifest records output hashes and exit codes. The wheel distributes the runner/CLI and bundled scenarios; start the complete local web workspace from the repository.
+Open `http://127.0.0.1:8787`. Build produces both website and evaluation web bundles, shared contracts/Worker checks, Worker bundle and Python runner wheel; its manifest records output hashes and exit codes. The wheel distributes the runner/CLI and bundled scenarios; start the complete local web workspace from the repository.
 
 ### Inspect the evaluation path without inference
 
@@ -199,4 +201,15 @@ These commands require local socket/browser permissions. Browser and integration
 | `supabase/` | SQL schema, migrations and ownership/persistence checks |
 | `tests/`, `evidence/`, `scripts/` | Regressions, recorded receipts, build and acceptance tooling |
 
-Documentation basis: [`3d0beaf71fc0f6f0b87b93370bafcccbba9693d8`](https://github.com/akilanpl/praxis/tree/3d0beaf71fc0f6f0b87b93370bafcccbba9693d8), on the default branch `feature/qa-hardening-release`. Distributed under the [MIT license](LICENSE), copyright Praxis contributors.
+Current release work starts from `main` at `8f1e884`; historical evidence retains its original source identity. Distributed under the [MIT license](LICENSE), copyright Praxis contributors.
+
+## Project website
+
+The separate [Praxis engineering website](apps/website/README.md) lives in `apps/website`; the evaluation application remains in `apps/web`. It presents the execution lifecycle, actual suite counts, architecture/trust boundaries, historical 0/8 ONNX results and release limits. No hosted demo is advertised.
+
+```sh
+npm run website:dev    # loopback port 5174
+npm run website:build  # apps/website/dist
+```
+
+The root build includes the website. See [website instructions](apps/website/README.md) and [current acceptance](VERIFICATION.md) for cloud browser screenshots and results. The setup script installs the Python lock and uses `ONNXRUNTIME_NODE_INSTALL=skip` for npm: CPU runtime binaries ship with ONNX Runtime, so no optional CUDA download is needed.

@@ -1,0 +1,5 @@
+Processing ./dist/runner/praxis-0.1.0-py3-none-any.whl
+Installing collected packages: praxis
+Successfully installed praxis-0.1.0
+{"status": "passed", "suites": 6, "scenarios_loaded": 40, "fixture_tasks_executed": 12, "world_entity_levels": [1, 5, 12], "scope": "isolated installed package; locked dependencies reused locally; no model inference"}
+

@@ -1,0 +1,137 @@
+$ docker --host=unix:///var/run/docker.sock run --rm -d --name praxis-rls-d6fd5f8566 --network none -e POSTGRES_HOST_AUTH_METHOD=trust postgres:17-alpine
+72ed9417596037dfb3b0f0360f156eaa037c833c88e534033ac03d7e309bcfdb
+Unable to find image 'postgres:17-alpine' locally
+17-alpine: Pulling from library/postgres
+881fc932939e: Pulling fs layer
+4af2f594366f: Pulling fs layer
+a6e011ae4b07: Pulling fs layer
+80bf5832b7b5: Pulling fs layer
+06b8a748e903: Pulling fs layer
+5c816eed2102: Pulling fs layer
+0465fcfe7974: Pulling fs layer
+e0de8084b760: Pulling fs layer
+bdfe5a2c0729: Pulling fs layer
+253db6c496ed: Pulling fs layer
+5c816eed2102: Waiting
+0465fcfe7974: Waiting
+e0de8084b760: Waiting
+bdfe5a2c0729: Waiting
+253db6c496ed: Waiting
+80bf5832b7b5: Waiting
+06b8a748e903: Waiting
+4af2f594366f: Download complete
+a6e011ae4b07: Verifying Checksum
+a6e011ae4b07: Download complete
+80bf5832b7b5: Verifying Checksum
+80bf5832b7b5: Download complete
+881fc932939e: Download complete
+881fc932939e: Pull complete
+4af2f594366f: Pull complete
+a6e011ae4b07: Pull complete
+80bf5832b7b5: Pull complete
+5c816eed2102: Verifying Checksum
+5c816eed2102: Download complete
+0465fcfe7974: Verifying Checksum
+0465fcfe7974: Download complete
+e0de8084b760: Verifying Checksum
+e0de8084b760: Download complete
+253db6c496ed: Verifying Checksum
+253db6c496ed: Download complete
+bdfe5a2c0729: Download complete
+06b8a748e903: Verifying Checksum
+06b8a748e903: Download complete
+06b8a748e903: Pull complete
+5c816eed2102: Pull complete
+0465fcfe7974: Pull complete
+e0de8084b760: Pull complete
+bdfe5a2c0729: Pull complete
+253db6c496ed: Pull complete
+Digest: sha256:3540c0362c809df084ffac0ae69fe794515f9de92692f02178bcdce0ef0302ac
+Status: Downloaded newer image for postgres:17-alpine
+
+$ docker --host=unix:///var/run/docker.sock exec -i praxis-rls-d6fd5f8566 psql -X -v ON_ERROR_STOP=1 -U postgres -At
+PostgreSQL 17.11 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+
+$ docker --host=unix:///var/run/docker.sock image inspect postgres:17-alpine --format {{index .RepoDigests 0}}
+postgres@sha256:3540c0362c809df084ffac0ae69fe794515f9de92692f02178bcdce0ef0302ac
+
+$ docker --host=unix:///var/run/docker.sock exec -i praxis-rls-d6fd5f8566 psql -X -v ON_ERROR_STOP=1 -U postgres -At
+CREATE ROLE
+CREATE ROLE
+CREATE SCHEMA
+CREATE TABLE
+CREATE FUNCTION
+GRANT
+
+$ docker --host=unix:///var/run/docker.sock exec -i praxis-rls-d6fd5f8566 psql -X -v ON_ERROR_STOP=1 -U postgres -At
+BEGIN
+CREATE EXTENSION
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+DO
+GRANT
+CREATE POLICY
+CREATE POLICY
+COMMIT
+
+$ docker --host=unix:///var/run/docker.sock exec -i praxis-rls-d6fd5f8566 psql -X -v ON_ERROR_STOP=1 -U postgres -At
+BEGIN
+INSERT 0 2
+INSERT 0 1
+SET
+00000000-0000-4000-8000-000000000002
+DO
+00000000-0000-4000-8000-000000000001
+DO
+ROLLBACK
+
+$ docker --host=unix:///var/run/docker.sock exec -i praxis-rls-d6fd5f8566 psql -X -v ON_ERROR_STOP=1 -U postgres -At
+BEGIN
+INSERT 0 2
+SET
+10000000-0000-4000-8000-000000000001
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+DO
+10000000-0000-4000-8000-000000000002
+DO
+RESET
+INSERT 0 2
+INSERT 0 1
+INSERT 0 1
+DO
+ROLLBACK
+
+$ docker --host=unix:///var/run/docker.sock exec -i praxis-rls-d6fd5f8566 psql -X -v ON_ERROR_STOP=1 -U postgres -At
+28
+
+$ docker --host=unix:///var/run/docker.sock stop --time 10 praxis-rls-d6fd5f8566
+Flag --time has been deprecated, use --timeout instead
+praxis-rls-d6fd5f8566

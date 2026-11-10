@@ -1,0 +1,96 @@
+{
+  "score": 89,
+  "raw_score": 100.0,
+  "grade": "C",
+  "decision": "PASS",
+  "groups": {
+    "S": {
+      "weight": 5,
+      "tests": 6,
+      "passed": 6,
+      "rate": 1.0
+    },
+    "B": {
+      "weight": 14,
+      "tests": 37,
+      "passed": 37,
+      "rate": 1.0
+    },
+    "A": {
+      "weight": 12,
+      "tests": 18,
+      "passed": 18,
+      "rate": 1.0
+    },
+    "D": {
+      "weight": 6,
+      "tests": 4,
+      "passed": 4,
+      "rate": 1.0
+    },
+    "F": {
+      "weight": 8,
+      "tests": 10,
+      "passed": 10,
+      "rate": 1.0
+    },
+    "E": {
+      "weight": 10,
+      "tests": 10,
+      "passed": 10,
+      "rate": 1.0
+    },
+    "X": {
+      "weight": 8,
+      "tests": 19,
+      "passed": 19,
+      "rate": 1.0
+    },
+    "V": {
+      "weight": 7,
+      "tests": 44,
+      "passed": 44,
+      "rate": 1.0
+    },
+    "Z": {
+      "weight": 12,
+      "tests": 23,
+      "passed": 23,
+      "rate": 1.0
+    },
+    "P": {
+      "weight": 5,
+      "tests": 1,
+      "passed": 1,
+      "rate": 1.0
+    },
+    "R": {
+      "weight": 5,
+      "tests": 8,
+      "passed": 8,
+      "rate": 1.0
+    },
+    "C": {
+      "weight": 3,
+      "tests": 4,
+      "passed": 4,
+      "rate": 1.0
+    },
+    "Y": {
+      "weight": 3,
+      "tests": 1,
+      "passed": 1,
+      "rate": 1.0
+    },
+    "O": {
+      "weight": 2,
+      "tests": 1,
+      "passed": 1,
+      "rate": 1.0
+    }
+  },
+  "executed": 186,
+  "threshold": 80,
+  "ratchet_ok": true,
+  "scope": "Local feature-branch code acceptance. Hosted deployment/Auth certification is separate and remains blocked without an approved cloud project."
+}

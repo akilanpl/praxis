@@ -15,6 +15,7 @@ env = dict(os.environ, PYTHONPYCACHEPREFIX=str(ROOT / 'work' / 'pycache'),
            WRANGLER_LOG_PATH=str(ROOT / 'work' / 'wrangler-build.log'),
            WRANGLER_SEND_METRICS='false')
 steps = [
+    ['npm', 'run', 'build', '--workspace', 'apps/website'],
     ['npm', 'run', 'build', '--workspace', 'apps/web'],
     ['npm', 'run', 'typecheck', '--workspace', 'packages/contracts'],
     ['npm', 'run', 'typecheck', '--workspace', 'apps/api'],
@@ -42,7 +43,7 @@ try:
         tasks = sum(len(json.loads(archive.read(name))['tasks']) for name in scenarios)
         if tasks < 30 or 'praxis/cli.py' not in names or 'praxis/server.py' not in names:
             raise RuntimeError('Runner wheel failed package completeness check')
-    artifacts = [ROOT / 'apps/web/dist/index.html', OUT / 'worker/index.js', wheel]
+    artifacts = [ROOT / 'apps/website/dist/index.html', ROOT / 'apps/web/dist/index.html', OUT / 'worker/index.js', wheel]
     for path in artifacts:
         if not path.is_file():
             raise RuntimeError('Expected build artifact missing: ' + str(path))

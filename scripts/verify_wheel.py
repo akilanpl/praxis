@@ -26,4 +26,5 @@ print(json.dumps({"status":"passed","suites":6,"scenarios_loaded":40,"fixture_ta
 '''
 r=subprocess.run([str(python),'-c',code],cwd=folder,env=env,text=True,capture_output=True,check=True)
 print(r.stdout)
-(ROOT/'evidence/release/wheel.json').write_text(r.stdout)
+out=Path(os.environ.get('PRAXIS_EVIDENCE_DIR',str(ROOT/'evidence/release')));out.mkdir(parents=True,exist_ok=True)
+(out/'wheel.json').write_text(r.stdout)

@@ -19,3 +19,5 @@ work/
 .coverage
 .coverage.*
 .pushgate/reports/
+
+apps/website/dist/
