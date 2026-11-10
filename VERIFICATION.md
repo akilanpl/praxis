@@ -26,7 +26,7 @@ Runtime: Python 3.12.14, Node 24.22.1, npm 11.9.0, locked Playwright 1.64.1 / Ch
 | Website production build | PASS | `npm run website:build`, included in root build; semantic React/Vite site without third-party scripts/tracking or fabricated live demo. |
 | Changed executable-line coverage | NOT VERIFIED | Python statements 85.48%, branches 76.10%; TypeScript changed-line coverage is unavailable. `diff-coverage.json` records the full-base measurement. No tests/coverage exclusions were added to inflate this result. |
 | Complete hosted workflow / public deployment | NOT VERIFIED | Not deployed; no production URL, approved project/credentials, hosted auth/dispatch parity or real-URL acceptance. |
-| GitHub publication | BLOCKED | Configured GitHub API identity returns 401 Bad credentials. See final handoff for branch push attempt and exact retry commands. |
+| GitHub publication | BLOCKED | Configured GitHub API identity returns 401 Bad credentials; the actual push failed because Git could not obtain a username/credential with terminal prompts disabled. No PR was created. `evidence/final/git-push.log` and final handoff retain exact retry commands. |
 
 Aggregate feature gate: **PASS, 186 executed checks, score 89/100**, all executed checks passed. The conservative score cap remains because whole-change executable-line coverage is not measured; this is a feature-branch threshold, not protected-main or production acceptance. Raw receipt: `evidence/final/gate-receipt.json`. Its short-form coverage base was rejected as unmeasured; `diff-coverage.json` retries the full SHA and confirms frontend executable-line evidence is absent. Neither result is relabeled as measured coverage.
 

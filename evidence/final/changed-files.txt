@@ -40,6 +40,7 @@ evidence/final/browser/run-2.json
 evidence/final/browser/world.png
 evidence/final/build-manifest.json
 evidence/final/build.log
+evidence/final/changed-files.txt
 evidence/final/coverage.json
 evidence/final/diff-coverage.json
 evidence/final/evidence-integrity.json
@@ -67,6 +68,7 @@ evidence/final/gate/website/website-1280.png
 evidence/final/gate/website/website-390.png
 evidence/final/gate/website/website-768.png
 evidence/final/gate/wheel.json
+evidence/final/git-push.log
 evidence/final/github-access.log
 evidence/final/gitleaks.json
 evidence/final/gitleaks.log
@@ -104,6 +106,7 @@ evidence/final/real-browser/browser/run-1.json
 evidence/final/real-browser/browser/run-2.json
 evidence/final/real-browser/browser/world.png
 evidence/final/setup.log
+evidence/final/staged-secrets.log
 evidence/final/suite-execution.py
 evidence/final/suite-matrix.json
 evidence/final/suite-runs/agent-workflows-failing.html

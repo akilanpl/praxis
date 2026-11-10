@@ -72,9 +72,10 @@ Branch: `codex/praxis-final-release`, based on main `8f1e884`.
 - `b94f9a4` — separate engineering website, root build and browser acceptance.
 - `4587c79` — constrained-cloud PostgreSQL image and frontend compiler lint.
 - `378d5d3` — continue independent checks when an acceptance receipt is unavailable.
-- Following commits synchronize docs and preserve acceptance evidence; see Git log and final chat handoff for their exact IDs/publication outcome.
+- `2a04e2d` — synchronized documentation and preserved cloud acceptance evidence.
+- Final documentation-only commit records the publication blocker; its ID is in the final chat handoff.
 
-No main overwrite, force push, branch deletion or historical evidence deletion. No PR is claimed without successful GitHub creation. Changed-file manifest: `evidence/final/changed-files.txt`.
+No main overwrite, force push, branch deletion or historical evidence deletion. The actual push attempt failed before publication: Git could not read a GitHub username with terminal prompts disabled. The API also returned 401 Bad credentials. No remote branch or PR was created. The full log is `evidence/final/git-push.log`. Changed-file manifest: `evidence/final/changed-files.txt`.
 
 Retry only from this cloud checkout after restoring GitHub access:
 
