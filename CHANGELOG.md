@@ -25,3 +25,5 @@
 ## 0.1.0 — 2026-11-03
 
 Integrated local accounts, model/agent/application registry, versioned suite authoring, bounded execution, assertion reports, adaptive replay, artifact inspection, consented blind voting and scoped descriptive ratings. Added six suites with 40 scenario definitions, safe execution refusals, local SQLite/file storage, typed cloud metadata API and Postgres/RLS schema source. Cloud production operation and browser/inference acceptance remain unverified.
+
+Post-publication CI follow-up: root `npm test` now runs Python, measured TypeScript tests, and the Node Worker tests. The Vitest Worker file uses `.vitest.ts` so Node's `*.test.ts` discovery cannot execute it with the wrong runner. No tests were removed. Bounded failure identifiers are emitted to GitHub checks without raw exception bodies or credentials.

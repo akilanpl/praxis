@@ -18,7 +18,6 @@ jobs:
       - run: npm test
         env:
           PYTEST_ADDOPTS: --junitxml=work/ci-python.xml
-      - run: npm run test:typescript
       - run: npm run lint
       - run: npm run build
       - run: npm run test --workspace apps/api

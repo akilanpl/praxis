@@ -6,7 +6,7 @@ export default defineConfig({
       "apps/web/test/**/*.test.tsx",
       "apps/web/test/**/*.test.ts",
       "apps/website/test/**/*.test.tsx",
-      "apps/api/test/review.test.ts",
+      "apps/api/test/review.vitest.ts",
     ],
     restoreMocks: true,
     coverage: {
