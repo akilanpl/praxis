@@ -134,5 +134,9 @@ def main():
         for t in threads:t.join()
         app.pool.shutdown(wait=True)
         (out/'result.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps({'status':result['status'],'checks':len(result['checks']),'accessibility_pages':len(result['accessibility'])}))
+        if result['status']!='PASS':
+            diagnostic={'type':result.get('error_type'),'last_check':result['checks'][-1]['name'] if result['checks'] else 'startup','audits':[{'page':row['name'],'violations':row['violations']} for row in result['accessibility'] if row['violations']]}
+            message=json.dumps(diagnostic).replace('%','%25').replace('\r','%0D').replace('\n','%0A')
+            print('::error title=Frontend acceptance failure::'+message)
 
 if __name__=='__main__':main()
