@@ -14,7 +14,7 @@ from typing import Any, Dict, List
 
 from jsonschema import Draft202012Validator, ValidationError
 from . import __version__
-from .adapters import AdapterError, invoke
+from .adapters import AdapterError, invoke, strict_json_loads
 from .agent import invoke_agent
 from .application import invoke_application
 
@@ -46,7 +46,7 @@ def redact_values(value, credential):
     return value
 
 def digest(value):
-    return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()).hexdigest()
+    return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False,allow_nan=False).encode()).hexdigest()
 
 def list_suites():
     return [json.loads(p.read_text()) for p in sorted(SCENARIOS.glob("*-v1.json"))]
@@ -55,6 +55,8 @@ def validate_suite(suite):
     errors = []
     if not isinstance(suite,dict):
         return {"valid":False,"errors":["suite must be an object"]}
+    try:json.dumps(suite,allow_nan=False,ensure_ascii=False).encode('utf-8')
+    except (ValueError,TypeError,UnicodeError,RecursionError):return {"valid":False,"errors":["suite must contain finite, valid UTF-8 JSON values"]}
     for key in ("slug", "version", "title"):
         if not isinstance(suite.get(key), str) or not suite[key] or len(suite[key]) > 120:
             errors.append("%s must be a nonempty string <=120 characters" % key)
@@ -131,7 +133,7 @@ def _lookup(output, path):
 def grade(task, output):
     if isinstance(output,str):
         try:
-            parsed = json.loads(output)
+            parsed = strict_json_loads(output)
         except ValueError:
             parsed = output
     else:

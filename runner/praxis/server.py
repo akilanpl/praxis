@@ -15,6 +15,7 @@ import time
 import uuid
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse, parse_qs
+from .adapters import strict_json_loads
 
 ROOT = Path(__file__).resolve().parents[2]
 MAX_BODY = 2 * 1024 * 1024
@@ -36,7 +37,7 @@ class APIError(Exception):
     def __init__(self, status, message): self.status, self.message = status, message
 
 def uid(): return str(uuid.uuid4())
-def encoded(value): return json.dumps(value, sort_keys=True, separators=(',', ':'), ensure_ascii=False)
+def encoded(value): return json.dumps(value, sort_keys=True, separators=(',', ':'), ensure_ascii=False,allow_nan=False)
 def digest(value): return hashlib.sha256(encoded(value).encode()).hexdigest()
 def conditions(suite,target,seed):
     return digest({'suite':suite,'seed':seed,'target_kind':target.get('kind','model'),'max_tokens':target.get('max_tokens',1024),'temperature':target.get('temperature',0),'timeout':target.get('timeout',20)})
@@ -391,7 +392,7 @@ class Handler(BaseHTTPRequestHandler):
                 body={}
                 if length:
                     if self.headers.get('Content-Type','').split(';',1)[0].strip().lower()!='application/json': raise APIError(415,'Expected application/json')
-                    try: body=json.loads(self.read_body(length),parse_constant=lambda value: (_ for _ in ()).throw(ValueError('Non-finite JSON value')))
+                    try: body=strict_json_loads(self.read_body(length))
                     except (ValueError,UnicodeDecodeError,RecursionError): raise APIError(400,'Invalid JSON')
                     except TimeoutError: raise APIError(408,'Request body deadline exceeded')
                     if not isinstance(body,dict): raise APIError(400,'JSON object required')

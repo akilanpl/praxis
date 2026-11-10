@@ -12,6 +12,24 @@ from typing import Any, Dict
 
 MAX_RESPONSE_BYTES = 2 * 1024 * 1024
 
+def strict_json_loads(data):
+    def finite(text):
+        value=float(text)
+        if not math.isfinite(value):raise ValueError('Non-finite JSON number')
+        return value
+    try:
+        value=json.loads(data,parse_float=finite,parse_constant=lambda _: (_ for _ in ()).throw(ValueError('Non-finite JSON')))
+        def bounded(item,depth=0):
+            if depth>64:raise ValueError('JSON nesting exceeds 64 levels')
+            if isinstance(item,dict):
+                for child in item.values():bounded(child,depth+1)
+            elif isinstance(item,list):
+                for child in item:bounded(child,depth+1)
+        bounded(value)
+        json.dumps(value,allow_nan=False,ensure_ascii=False).encode('utf-8')
+    except (RecursionError,UnicodeError):raise ValueError('JSON cannot be represented safely') from None
+    return value
+
 class AdapterError(RuntimeError):
     def __init__(self, category, message):
         super().__init__(message)
@@ -27,7 +45,7 @@ def number(value, lower, upper, integer=False):
     return min(max(value,lower),upper)
 
 def valid_usage(item):
-    return item is None or (isinstance(item,dict) and all(valid_usage(v) for v in item.values())) or (type(item) in (int,float) and math.isfinite(item) and item>=0)
+    return item is None or (isinstance(item,dict) and all(valid_usage(v) for v in item.values())) or (type(item) in (int,float) and math.isfinite(item) and 0<=item<=2**53-1)
 
 def read_bounded(response, deadline):
     """Bound both total bytes and elapsed read time, including trickled responses."""
@@ -62,7 +80,7 @@ def _post(url, payload, key=None, timeout=20):
     try:
         with urllib.request.build_opener(NoRedirect).open(req, timeout=timeout) as response:
             data = read_bounded(response,deadline)
-            value = json.loads(data, parse_constant=lambda _: (_ for _ in ()).throw(ValueError()))
+            value = strict_json_loads(data)
             if not isinstance(value, dict):
                 raise AdapterError("invalid_response", "Provider response must be a JSON object")
             usage=value.get("usage")

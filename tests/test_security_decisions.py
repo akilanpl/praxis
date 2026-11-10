@@ -301,3 +301,23 @@ def test_malformed_chunked_http_classified_for_both_adapters():
   with patch(path,side_effect=IncompleteRead(b'partial')):
    with pytest.raises(AdapterError) as e:invoke_call()
   assert e.value.category=='invalid_response'
+
+@pytest.mark.parametrize('raw',[b'{"score":1e309}',b'{"value":"\\ud800"}',b'{"score":NaN}'])
+def test_provider_json_cannot_overflow_or_corrupt_persisted_json(raw):
+ with patch('praxis.adapters.urllib.request.OpenerDirector.open',return_value=io.BytesIO(raw)):
+  with pytest.raises(AdapterError) as e:invoke({'provider':'custom','endpoint':'http://localhost','model':'owned'},{'prompt':'test'})
+ assert e.value.category=='invalid_response'
+
+
+def test_overflowing_model_content_and_suite_cannot_pass_numeric_contract():
+ task={'output_schema':{'type':'number'},'assertions':[{'path':'','op':'gte','expected':0}]}
+ assert not all(x['passed'] for x in grade(task,'1e309'))
+ s=sample();s['tasks'][0]['passing_fixture']=math.inf
+ assert not validate_suite(s)['valid']
+
+
+def test_deep_provider_output_fails_closed_before_grading():
+ raw=('['*70+'0'+']'*70).encode()
+ with patch('praxis.adapters.urllib.request.OpenerDirector.open',return_value=io.BytesIO(raw)):
+  with pytest.raises(AdapterError) as e:invoke({'provider':'custom','endpoint':'http://localhost','model':'owned'},{'prompt':'test'})
+ assert e.value.category=='invalid_response'

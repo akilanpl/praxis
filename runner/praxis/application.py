@@ -5,7 +5,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
-from .adapters import AdapterError, NoRedirect, read_bounded, number
+from .adapters import AdapterError, NoRedirect, read_bounded, number, strict_json_loads
 
 def invoke_application(target,task,seed=73):
     request=task.get('api_request')
@@ -42,7 +42,7 @@ def invoke_application(target,task,seed=73):
             raw=read_bounded(response,start+timeout)
             content_type=response.headers.get('Content-Type','').split(';')[0].strip().lower()
             try:
-                body=json.loads(raw,parse_constant=lambda _: (_ for _ in ()).throw(ValueError('Non-finite JSON')))
+                body=strict_json_loads(raw)
             except (ValueError,UnicodeError):
                 if content_type=='application/json' or content_type.endswith('+json'):
                     raise AdapterError('invalid_response','Application returned malformed JSON') from None
