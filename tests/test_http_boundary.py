@@ -37,3 +37,7 @@ class HTTPBoundaryTests(unittest.TestCase):
         self.assertIn('400',text.split('\r\n')[0])
         text=self.request('POST','/api/auth/login','Host: localhost\r\nContent-Type: text/plain\r\nContent-Length: 3\r\n',b'bad')
         self.assertIn('415',text.split('\r\n')[0])
+
+    def test_ambiguous_http_framing_rejected(self):
+        for headers in ('Transfer-Encoding: chunked\r\n','Content-Length: 0\r\nContent-Length: 1\r\n'):
+            self.assertIn('400',self.request('POST','/api/auth/login','Host: localhost\r\n'+headers).split('\r\n')[0])

@@ -3,10 +3,12 @@ import copy
 import hashlib
 import json
 import math
+import os
 import re
 import sys
 import time
 import uuid
+from urllib.parse import urlparse
 from pathlib import Path
 from typing import Any, Dict, List
 
@@ -35,6 +37,7 @@ def validate_suite(suite):
         if not isinstance(suite.get(key), str) or not suite[key] or len(suite[key]) > 120:
             errors.append("%s must be a nonempty string <=120 characters" % key)
     if isinstance(suite.get("slug"),str) and not re.fullmatch(r"[a-z0-9][a-z0-9-]{0,99}",suite["slug"]): errors.append("slug must use lowercase letters, digits and hyphens, at most 100 characters")
+    if isinstance(suite.get("version"),str) and not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9.+_-]{0,39}",suite["version"]): errors.append("version must be a route-safe identifier of at most 40 characters")
     tasks = suite.get("tasks", [])
     if not isinstance(tasks, list) or not 1 <= len(tasks) <= 64:
         errors.append("tasks must contain 1..64 scenarios")
@@ -50,6 +53,12 @@ def validate_suite(suite):
         ids.add(str(tid))
         if not isinstance(task.get("prompt"),str) or not task["prompt"] or len(task["prompt"]) > 100000:
             errors.append("task %s prompt invalid" % tid)
+        if "max_steps" in task and (type(task["max_steps"]) is not int or not 1 <= task["max_steps"] <= 16):
+            errors.append("agent max_steps must be an integer in 1..16")
+        if "allowed_tools" in task and (not isinstance(task["allowed_tools"],list) or any(not isinstance(t,str) for t in task["allowed_tools"])):
+            errors.append("allowed_tools must be an array of names")
+        if "environment" in task and not isinstance(task["environment"],dict):
+            errors.append("environment must be an object")
         schema = task.get("output_schema", {})
         try:
             Draft202012Validator.check_schema(schema)
@@ -76,7 +85,7 @@ def validate_suite(suite):
         errors.append("execution must be an object")
     else:
         for key,low,high in (("max_wall_seconds",1,600),("max_scenario_count",1,64),("max_output_tokens",1,8192),("max_retries",0,2)):
-            if key in execution and (isinstance(execution[key],bool) or not isinstance(execution[key],(int,float)) or not math.isfinite(execution[key]) or not low<=execution[key]<=high):
+            if key in execution and (isinstance(execution[key],bool) or not isinstance(execution[key],(int,float)) or not math.isfinite(execution[key]) or not low<=execution[key]<=high or (key != "max_wall_seconds" and type(execution[key]) is not int)):
                 errors.append("execution %s must be in %s..%s"%(key,low,high))
     return {"valid": not errors, "errors": errors}
 
@@ -142,8 +151,14 @@ def execute_run(target:Dict[str,Any],suite:Dict[str,Any],seed:int=73,on_event=No
         events.append(event)
         if on_event:
             on_event(event)
-    safe_target={k:v for k,v in target.items() if k not in ("key","api_key","token","secret","password")}
+    safe_target={k:v for k,v in target.items() if k in ("id","name","kind","provider","model","capabilities","max_tokens","temperature","timeout","allow_mutation","authorized","supports_seed")}
+    endpoint=target.get("endpoint","")
+    try:
+        parsed=urlparse(endpoint)
+        safe_target["endpoint"]=endpoint if parsed.scheme in ("http","https") and parsed.hostname and not (parsed.username or parsed.password or parsed.query or parsed.fragment) else "[invalid or absent endpoint]"
+    except (ValueError,TypeError): safe_target["endpoint"]="[invalid endpoint]"
     result={"id":str(uuid.uuid4()),"runner_version":__version__,"adapter_version":"1","target_id":target.get("id"),"target_name":target.get("name",target.get("model","Demo fixture")),"target_kind":target.get("kind","model"),"model_config_hash":digest(safe_target),"suite_slug":suite["slug"],"suite_version":suite["version"],"suite_hash":digest(suite),"seed":seed,"trust":"demo" if target.get("provider","demo").startswith("demo") else "self-reported","tasks":[],"events":events,"cost":{"status":"unknown","estimated_usd":None},"usage":{},"status":"running"}
+    result["configuration"]={"target":safe_target,"execution":copy.deepcopy(suite.get("execution",{}))}
     emit("run_started",suite=suite["slug"],seed=seed)
     limits=suite.get("execution",{})
     wall=min(max(float(limits.get("max_wall_seconds",120)),1),600)
@@ -163,13 +178,18 @@ def execute_run(target:Dict[str,Any],suite:Dict[str,Any],seed:int=73,on_event=No
         attempts=0
         retries=min(max(int(limits.get("max_retries",0)),0),2)
         for attempt in range(retries+1):
+            if (cancelled and cancelled()) or time.monotonic()-started >= wall:
+                error={"category":"cancelled" if cancelled and cancelled() else "timeout","message":"Execution stopped before another attempt"}
+                break
             attempts=attempt+1
             try:
                 bounded_target={**target,"timeout":min(float(target.get("timeout",20)),max(0.1,wall-(time.monotonic()-started)))}
+                bounded_target["max_tokens"]=min(int(target.get("max_tokens",1024)),int(limits.get("max_output_tokens",8192)))
                 response=invoke_application(bounded_target,task,seed) if target.get("kind")=="application" else invoke_agent(bounded_target,task,seed) if target.get("kind")=="agent" else invoke(bounded_target,task,seed)
                 error=None
                 break
             except AdapterError as exc:
+                response.update(getattr(exc,"evidence",{}))
                 error={"category":exc.category,"message":str(exc)}
                 emit("attempt_failed",task_id=task["id"],attempt=attempts,category=exc.category)
                 if exc.category not in ("timeout","connection_error","http_error"):
@@ -192,19 +212,37 @@ def execute_run(target:Dict[str,Any],suite:Dict[str,Any],seed:int=73,on_event=No
         result["tasks"].append(row)
         emit("task_completed",task_id=task["id"],passed=row["passed"],latency_ms=row["latency_ms"])
     if result["status"]=="running":
-        result["status"]="completed"
+        result["status"]="cancelled" if cancelled and cancelled() else "budget_exceeded" if time.monotonic()-started >= wall else "completed"
     rows=result["tasks"]
+    for row in rows:
+        for key,value in (row.get("usage") or {}).items() if isinstance(row.get("usage"),dict) else []:
+            if type(value) in (int,float) and math.isfinite(value) and value >= 0:
+                result["usage"][key]=result["usage"].get(key,0)+value
+    result["not_run_tasks"]=[{"id":t["id"],"category":t.get("category","correctness"),"reason":result["status"] if result["status"]!="completed" else "scenario_limit"} for t in suite["tasks"][len(rows):]]
     total=len(suite["tasks"])
     passed=sum(t["passed"] for t in rows)
     latencies=sorted(t["latency_ms"] for t in rows)
     assertions=[a for t in rows for a in t["assertions"]]
     weight=sum(a["weight"] for a in assertions)
     dimensions={}
-    for category in sorted(set(t["category"] for t in rows)):
+    for category in sorted(set(t.get("category","correctness") for t in suite["tasks"])):
         group=[t for t in rows if t["category"]==category]
-        dimensions[category]={"passed":sum(t["passed"] for t in group),"total":len(group)}
+        dimension_total=sum(t.get("category","correctness")==category for t in suite["tasks"])
+        dimensions[category]={"passed":sum(t["passed"] for t in group),"total":dimension_total,"executed":len(group),"not_run":dimension_total-len(group)}
     result["summary"]={"passed":passed,"total":total,"executed":len(rows),"not_run":total-len(rows),"failed":len(rows)-passed,"pass_rate":passed/total,"assertions_passed":sum(a["passed"] for a in assertions),"assertions_total":len(assertions),"weighted_assertion_rate":sum(a["weight"] for a in assertions if a["passed"])/weight if weight else 0,"confidence_interval":_wilson(passed,total),"latency_p50_ms":latencies[len(latencies)//2] if latencies else None,"latency_p95_ms":latencies[min(len(latencies)-1,math.ceil(len(latencies)*.95)-1)] if latencies else None,"dimensions":dimensions}
     result["duration_ms"]=round((time.monotonic()-started)*1000,3)
     emit("run_completed",status=result["status"],passed=passed,total=total)
+    # Providers may reflect the authorization credential in output/usage/metadata.
+    # Preserve the redaction in the hashed record, never persist the credential.
+    credential=os.environ.get(target.get("key_env","PRAXIS_MODEL_API_KEY"))
+    if credential:
+        def redact(value):
+            if isinstance(value,str): return value.replace(credential,"[REDACTED]")
+            if isinstance(value,list): return [redact(v) for v in value]
+            if isinstance(value,dict): return {redact(k):redact(v) for k,v in value.items()}
+            return value
+        result=redact(result)
+        for row in result["tasks"]:
+            row["artifact"]["hash"]=digest(row["output"])
     result["evidence_hash"]=digest({k:v for k,v in result.items() if k!="evidence_hash"})
     return result

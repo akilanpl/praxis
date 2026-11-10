@@ -1,6 +1,7 @@
 """Loopback-only local control plane. Inference stays on this user-owned runner."""
 import base64
 import concurrent.futures
+from contextlib import nullcontext
 import hashlib
 import hmac
 import json
@@ -49,12 +50,12 @@ class Store:
         return db
     def audit(self, actor, action, subject):
         with self.connect() as db: db.execute('INSERT INTO audit(actor,action,subject,created) VALUES(?,?,?,?)',(actor,action,subject,time.time()))
-    def create(self, kind, owner, data):
+    def create(self, kind, owner, data, connection=None):
         data = dict(data, id=data.get('id',uid()), created_at=time.time())
-        with self.connect() as db: db.execute('INSERT INTO records VALUES(?,?,?,?,?)',(data['id'],kind,owner,encoded(data),data['created_at']))
+        with (nullcontext(connection) if connection is not None else self.connect()) as db: db.execute('INSERT INTO records VALUES(?,?,?,?,?)',(data['id'],kind,owner,encoded(data),data['created_at']))
         return data
-    def update(self, item_id, data):
-        with self.connect() as db: db.execute('UPDATE records SET data=? WHERE id=?',(encoded(data),item_id))
+    def update(self, item_id, data, connection=None):
+        with (nullcontext(connection) if connection is not None else self.connect()) as db: db.execute('UPDATE records SET data=? WHERE id=?',(encoded(data),item_id))
     def get(self, kind, item_id, owner=None):
         with self.connect() as db: row=db.execute('SELECT * FROM records WHERE id=? AND kind=?',(item_id,kind)).fetchone()
         if not row or (owner is not None and row['owner'] != owner): raise APIError(404,'Record not found')
@@ -75,7 +76,9 @@ class ControlPlane:
         self.auth_attempts=[]
         self.rate={}
         # Interrupted processes never leave a run pretending to be active.
-        for run in self.store.all('run'):
+        with self.store.connect() as db:
+            active=[json.loads(row['data']) for row in db.execute("SELECT data FROM records WHERE kind='run' AND json_extract(data,'$.status') IN ('queued','running')")]
+        for run in active:
             if run['status'] in ('queued','running'):
                 run.update(status='interrupted',error='Runner restarted; launch a new attempt. Evidence already recorded is preserved.')
                 self.store.update(run['id'],run)
@@ -112,13 +115,17 @@ class ControlPlane:
             result=execute_run(target,suite,seed=run['seed'],on_event=event,cancelled=self.cancel[run['id']].is_set)
             result['trust']='demo' if target['provider'].startswith('demo') else 'self-reported'
             run.update(result=result,status='cancelled' if self.cancel[run['id']].is_set() else result.get('status','completed'),finished_at=time.time())
-            for task in result.get('tasks',[]):
-                content=task.get('output','')
-                if not isinstance(content,str): content=encoded(content)
-                self.store.create('artifact',self.store.owner(run['id']),{'run_id':run['id'],'task_id':task.get('id'), 'target_id':target['id'],'suite_slug':suite['slug'],'suite_version':suite['version'],'conditions':conditions(suite,target,run['seed']),'content':content,'mime':'application/json' if content.lstrip().startswith(('{','[')) else 'text/plain','sha256':hashlib.sha256(content.encode()).hexdigest(),'size':len(content.encode()),'trust':result['trust'],'public':run.get('public',False)})
+            owner=self.store.owner(run['id'])
+            with self.store.connect() as db:
+                for task in result.get('tasks',[]):
+                    content=task.get('output','')
+                    if not isinstance(content,str): content=encoded(content)
+                    self.store.create('artifact',owner,{'run_id':run['id'],'task_id':task.get('id'), 'target_id':target['id'],'suite_slug':suite['slug'],'suite_version':suite['version'],'conditions':conditions(suite,target,run['seed']),'content':content,'mime':'application/json' if content.lstrip().startswith(('{','[')) else 'text/plain','sha256':hashlib.sha256(content.encode()).hexdigest(),'size':len(content.encode()),'trust':result['trust'],'public':run.get('public',False)},connection=db)
+                self.store.update(run['id'],run,connection=db)
         except Exception as exc:
-            run.update(status='failed',error=type(exc).__name__+': '+str(exc)[:300],finished_at=time.time())
+            run.update(status='failed',error='Evaluation failed: '+type(exc).__name__,finished_at=time.time())
         self.store.update(run['id'],run)
+        self.cancel.pop(run['id'],None)
     def matchup(self, user):
         # A persisted blind assignment is reused until voted; no self voting.
         for match in self.store.all('match',user):
@@ -158,7 +165,7 @@ class ControlPlane:
             preference.append({'target_id':t['id'],'name':t['name'],'rating':round(rating,2),'votes':n,'sample_size':n,'group':key[0],'trust':key[0].split(':')[-1],'status':'insufficient evidence' if n<20 else 'community preference; non official','uncertainty':'Not a confidence interval; sparse Elo ratings are descriptive only'})
         return {'objective':[],'preference':sorted(preference,key=lambda r:-r['rating']),'note':'No operator-controlled trusted runners are configured. Local and demo runs never enter official objective rankings.'}
     def request(self, method, path, body, authorization):
-        if (method=='POST' and path=='/api/runs') or (method=='GET' and path=='/api/arena'):
+        if (method=='POST' and path in ('/api/runs','/api/suites')) or (method=='GET' and path=='/api/arena'):
             with self.store.lock: return self._request(method,path,body,authorization)
         return self._request(method,path,body,authorization)
     def _request(self, method, path, body, authorization):
@@ -193,6 +200,7 @@ class ControlPlane:
                 capabilities=body.get('capabilities',['text'])
                 if not isinstance(capabilities,list) or len(capabilities)>8 or any(not isinstance(c,str) or c not in ('text','json','tools','code','web','image','video','audio') for c in capabilities): raise APIError(400,'Invalid capability declarations')
                 if 'allow_mutation' in body and type(body['allow_mutation']) is not bool: raise APIError(400,'allow_mutation must be boolean')
+                if 'authorized' in body and type(body['authorized']) is not bool: raise APIError(400,'authorized must be boolean')
                 for field,lower,upper in (('max_tokens',1,8192),('temperature',0,2),('timeout',0.1,120)):
                     value=body.get(field,{'max_tokens':1024,'temperature':0,'timeout':20}[field])
                     if type(value) not in (int,float) or not math.isfinite(value) or not lower<=value<=upper or (field=='max_tokens' and type(value) is not int): raise APIError(400,'Invalid '+field+' budget')
@@ -204,7 +212,7 @@ class ControlPlane:
                         port=p.port
                     except ValueError: raise APIError(400,'Invalid endpoint URL or port')
                     if p.scheme not in ('http','https') or not p.hostname or p.username or p.password or p.query or p.fragment: raise APIError(400,'Endpoint must be HTTP(S) without embedded credentials or query parameters')
-                allowed={k:body[k] for k in ('name','kind','provider','endpoint','model','capabilities','max_tokens','temperature','timeout','allow_mutation') if k in body}
+                allowed={k:body[k] for k in ('name','kind','provider','endpoint','model','capabilities','max_tokens','temperature','timeout','allow_mutation','authorized') if k in body}
                 target=self.store.create('target',user,dict(allowed,revision=1,config_hash=digest(allowed)))
                 self.store.audit(user,'target.create',target['id']); return target
         if len(parts)==4 and parts[1]=='targets' and parts[3]=='diagnostics' and method=='POST':
@@ -222,7 +230,10 @@ class ControlPlane:
                 if any(s['slug']==body['slug'] and s['version']==body['version'] for s in self.suites(user)): raise APIError(409,'Suite slug and version already exist. Create a new version.')
                 return self.store.create('suite',user,{k:v for k,v in body.items() if k not in ('id','created_at')})
         if len(parts)==3 and parts[1]=='suites' and method=='GET':
-            suite=next((s for s in self.suites(user) if s['slug']==parts[2]),None)
+            slug,_,version=parts[2].partition('@')
+            matches=[s for s in self.suites(user) if s['slug']==slug and (not version or s['version']==version)]
+            if len(matches)>1: raise APIError(409,'Select an explicit suite version: slug@version')
+            suite=next(iter(matches),None)
             if not suite: raise APIError(404,'Suite not found')
             return suite
         if path=='/api/runs':
@@ -230,13 +241,18 @@ class ControlPlane:
             if method=='POST':
                 with self.store.lock:
                     if body.get('idempotency_key'):
-                        for existing in self.store.all('run',user):
+                        if not isinstance(body['idempotency_key'],str) or len(body['idempotency_key'])>100: raise APIError(400,'Idempotency key must be a string of at most 100 characters')
+                        with self.store.connect() as db:
+                            previous=db.execute("SELECT data FROM records WHERE kind='run' AND owner=? AND json_extract(data,'$.idempotency_key')=?",(user,body['idempotency_key'])).fetchall()
+                        for row in previous:
+                            existing=json.loads(row['data'])
                             if existing.get('idempotency_key')==body['idempotency_key']:
                                 if existing.get('request_fingerprint') and existing['request_fingerprint']!=digest(body): raise APIError(409,'Idempotency key already belongs to a different request')
                                 return existing
                 target=self.store.get('target',body.get('target_id',''),user)
                 suites=[s for s in self.suites(user) if s['slug']==body.get('suite_slug') and (not body.get('suite_version') or s['version']==body['suite_version'])]
                 if not suites: raise APIError(400,'Suite not found')
+                if len(suites)>1: raise APIError(409,'Select an explicit suite_version')
                 if target['kind']=='application' and suites[0]['slug']!='http-application' and not all(t.get('api_request') for t in suites[0].get('tasks',[])): raise APIError(422,'Application targets require an HTTP contract suite or the isolated artifact checker')
                 if sum(r['status'] in ('queued','running') for r in self.store.all('run',user))>=2: raise APIError(429,'At most two active runs per account')
                 seed=body.get('seed',73)
@@ -248,7 +264,9 @@ class ControlPlane:
             if method=='GET': return run
             if method=='POST' and len(parts)==4 and parts[3]=='cancel':
                 if run['status'] not in ('queued','running'): raise APIError(409,'Run already finished')
-                self.cancel[run['id']].set(); return {'ok':True,'status':'cancellation requested'}
+                cancellation=self.cancel.get(run['id'])
+                if cancellation is None: raise APIError(409,'Run already finished')
+                cancellation.set(); return {'ok':True,'status':'cancellation requested'}
         if path=='/api/worlds':
             if method=='GET': return self.store.all('world',user)
             if method=='POST':
@@ -310,6 +328,8 @@ class Handler(BaseHTTPRequestHandler):
     def handle_request(self):
         request_id=uid(); status=200
         try:
+            if self.headers.get('Transfer-Encoding'): raise APIError(400,'Transfer-Encoding is not supported')
+            if len(self.headers.get_all('Content-Length',[]))>1: raise APIError(400,'Duplicate Content-Length')
             host=self.headers.get('Host','').split(':')[0]
             if host not in ('localhost','127.0.0.1'): raise APIError(403,'Local API accepts loopback hosts only')
             origin=self.headers.get('Origin')

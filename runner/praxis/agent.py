@@ -26,15 +26,22 @@ def invoke_agent(target, task, seed=73):
     usage={}
     max_steps=min(max(int(task.get("max_steps",8)),1),16)
     final=None
+    def failure(category,message):
+        error=AdapterError(category,message)
+        error.evidence={"tool_trace":copy.deepcopy(trace),"final_state":copy.deepcopy(state)}
+        return error
     for step in range(max_steps):
         remaining=deadline-(time.monotonic()-started)
         if remaining<=0:
-            raise AdapterError("timeout","Agent task exceeded its wall time budget")
+            raise failure("timeout","Agent task exceeded its wall time budget")
         if script is not None:
             action=script[step] if step<len(script) else {"final":{"status":"incomplete"}}
         else:
             context=task["prompt"]+'\nYou are an agent. Return one JSON object: {"tool":NAME,"arguments":OBJECT} or {"final":OBJECT}. Use only allowed tools. Tool contracts: '+json.dumps({k:v for k,v in TOOL_CONTRACTS.items() if k in allowed})+'\nObservations: '+json.dumps(observations)+'\nPrevious actions: '+json.dumps(trace)
-            response=invoke({**target,"kind":"model","timeout":remaining},{"prompt":context,"output_schema":{"type":"object"}},seed)
+            try:
+                response=invoke({**target,"kind":"model","timeout":remaining},{"prompt":context,"output_schema":{"type":"object"}},seed)
+            except AdapterError as error:
+                raise failure(error.category,str(error)) from None
             for key,value in (response.get("usage") or {}).items():
                 if isinstance(value,(int,float)):
                     usage[key]=usage.get(key,0)+value
@@ -43,9 +50,9 @@ def invoke_agent(target, task, seed=73):
                 try:
                     action=json.loads(action)
                 except ValueError:
-                    raise AdapterError("invalid_agent_action","Agent returned invalid JSON")
+                    raise failure("invalid_agent_action","Agent returned invalid JSON")
         if not isinstance(action,dict):
-            raise AdapterError("invalid_agent_action","Agent action must be an object")
+            raise failure("invalid_agent_action","Agent action must be an object")
         if "final" in action:
             final=action["final"]
             trace.append({"step":step+1,"type":"final","output":final})
@@ -65,7 +72,7 @@ def invoke_agent(target, task, seed=73):
             observation={"auto_refund_limit":state["auto_refund_limit"],"must_lookup_purchase_first":True}
         else:
             pid=arguments.get("id")
-            purchase=state.get("purchases",{}).get(pid)
+            purchase=state.get("purchases",{}).get(pid) if isinstance(pid,str) else None
             if not purchase:
                 observation={"error":"purchase_not_found"}
             elif tool=="lookup_purchase":

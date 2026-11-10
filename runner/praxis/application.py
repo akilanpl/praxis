@@ -4,12 +4,14 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
-from .adapters import AdapterError, MAX_RESPONSE_BYTES, NoRedirect
+from .adapters import AdapterError, MAX_RESPONSE_BYTES, NoRedirect, read_bounded
 
 def invoke_application(target,task,seed=73):
     request=task.get('api_request')
     if not isinstance(request,dict):
         raise AdapterError('unsupported_application','Application targets require an HTTP contract suite, not model inference tasks')
+    if target.get('authorized') is not True:
+        raise AdapterError('permission_denied','Acknowledge ownership or authorization with authorized:true before application requests')
     base=target.get('endpoint','').rstrip('/')
     parsed=urllib.parse.urlparse(base)
     if parsed.scheme not in ('http','https') or not parsed.hostname or parsed.username or parsed.password or parsed.query or parsed.fragment:
@@ -28,16 +30,15 @@ def invoke_application(target,task,seed=73):
         headers['Content-Type']='application/json'
         data=json.dumps(request['json']).encode()
     start=time.monotonic()
+    timeout=min(max(float(target.get('timeout',20)),.1),120)
     req=urllib.request.Request(base+path,data=data,headers=headers,method=method)
     try:
         try:
-            response=urllib.request.build_opener(NoRedirect).open(req,timeout=min(max(float(target.get('timeout',20)),.1),120))
+            response=urllib.request.build_opener(NoRedirect).open(req,timeout=timeout)
         except urllib.error.HTTPError as exc:
             response=exc
         with response:
-            raw=response.read(MAX_RESPONSE_BYTES+1)
-            if len(raw)>MAX_RESPONSE_BYTES:
-                raise AdapterError('response_limit','Application response exceeds 2 MiB')
+            raw=read_bounded(response,start+timeout)
             content_type=response.headers.get('Content-Type','').split(';')[0]
             try:
                 body=json.loads(raw)

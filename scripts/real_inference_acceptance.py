@@ -8,7 +8,7 @@ import urllib.request
 from urllib.parse import urlparse
 from praxis.cli import report_html
 ROOT=Path(__file__).resolve().parents[1]
-FOLDER=ROOT/'evidence/release';FOLDER.mkdir(parents=True,exist_ok=True)
+FOLDER=Path(os.environ.get('PRAXIS_EVIDENCE_DIR',str(ROOT/'evidence/release')));FOLDER.mkdir(parents=True,exist_ok=True)
 BASE=os.environ.get('PRAXIS_ACCEPTANCE_URL','http://127.0.0.1:8787')
 ENDPOINT=os.environ.get('PRAXIS_INFERENCE_ENDPOINT','http://127.0.0.1:8788/v1')
 MODEL=os.environ.get('PRAXIS_INFERENCE_MODEL','onnx-community/SmolLM2-135M-Instruct-ONNX')

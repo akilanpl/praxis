@@ -17,7 +17,7 @@ ROOT=Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser()
 parser.add_argument('--fixture-only',action='store_true',help='Infrastructure test only; never real inference evidence')
 args=parser.parse_args()
-folder=ROOT/'evidence/release/browser';folder.mkdir(parents=True,exist_ok=True)
+folder=Path(os.environ.get('PRAXIS_EVIDENCE_DIR',str(ROOT/'evidence/release')))/'browser';folder.mkdir(parents=True,exist_ok=True)
 name=secrets.token_hex(4)
 base='http://127.0.0.1:8790'
 env=dict(os.environ,PRAXIS_DB=str(ROOT/'work'/('browser-'+name+'.sqlite')),PRAXIS_PORT='8790')

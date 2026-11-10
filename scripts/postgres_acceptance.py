@@ -8,7 +8,7 @@ import tempfile
 import time
 
 ROOT = Path(__file__).resolve().parents[1]
-EVIDENCE = ROOT / 'evidence/release'
+EVIDENCE = Path(os.environ.get('PRAXIS_EVIDENCE_DIR',str(ROOT/'evidence/release')))
 EVIDENCE.mkdir(parents=True, exist_ok=True)
 work = ROOT / 'work'
 work.mkdir(exist_ok=True)
