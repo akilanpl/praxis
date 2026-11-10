@@ -129,7 +129,8 @@ export function App() {
       if (!path.includes("/vote") && !path.includes("/auth/logout")) load();
       return x;
     } catch (e: any) {
-      if (activePath.current === p && activeToken.current === token) E(e.message);
+      if (activePath.current === p && activeToken.current === token)
+        E(e.message);
     } finally {
       pending.current = false;
       Busy(false);
@@ -777,37 +778,46 @@ export function App() {
                           : JSON.stringify(t.output, null, 2)}
                       </pre>
                     </details>
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Assertion</th>
-                          <th>Result</th>
-                          <th>Expected</th>
-                          <th>Observed</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {t.assertions?.map((a: any, i: number) => (
-                          <tr key={i}>
-                            <td>{a.name || a.type}</td>
-                            <td>{a.passed ? "Pass" : "Fail"}</td>
-                            <td>
-                              <code>{JSON.stringify(a.expected)}</code>
-                            </td>
-                            <td>
-                              {JSON.stringify(a.actual)?.length > 240 ? (
-                                <details>
-                                  <summary>Inspect observed output</summary>
-                                  <pre>{JSON.stringify(a.actual, null, 2)}</pre>
-                                </details>
-                              ) : (
-                                <code>{JSON.stringify(a.actual)}</code>
-                              )}
-                            </td>
+                    <div
+                      className="tablewrap assertion-table"
+                      role="region"
+                      aria-label={"Assertion results for " + t.id}
+                      tabIndex={0}
+                    >
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Assertion</th>
+                            <th>Result</th>
+                            <th>Expected</th>
+                            <th>Observed</th>
                           </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                        </thead>
+                        <tbody>
+                          {t.assertions?.map((a: any, i: number) => (
+                            <tr key={i}>
+                              <td>{a.name || a.type}</td>
+                              <td>{a.passed ? "Pass" : "Fail"}</td>
+                              <td>
+                                <code>{JSON.stringify(a.expected)}</code>
+                              </td>
+                              <td>
+                                {JSON.stringify(a.actual)?.length > 240 ? (
+                                  <details>
+                                    <summary>Inspect observed output</summary>
+                                    <pre>
+                                      {JSON.stringify(a.actual, null, 2)}
+                                    </pre>
+                                  </details>
+                                ) : (
+                                  <code>{JSON.stringify(a.actual)}</code>
+                                )}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
                   </article>
                 ))}
                 <article>

@@ -6,6 +6,7 @@ import subprocess
 ROOT=Path(__file__).resolve().parents[1]
 PATHS=('runner','tests','apps','packages','scripts','supabase','package.json','package-lock.json','pyproject.toml','requirements-lock.txt','.github','.pushgate','vitest.config.ts')
 def source_identity():
+    if not __debug__:raise RuntimeError("Acceptance requires Python assertions enabled")
     names=subprocess.check_output(['git','ls-files','-z','--',*PATHS],cwd=ROOT).decode().split('\0')
     hashes={name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in sorted(names) if name and (ROOT/name).is_file()}
     dirty=subprocess.run(['git','diff','--quiet','HEAD','--',*PATHS],cwd=ROOT).returncode!=0

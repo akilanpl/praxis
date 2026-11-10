@@ -37,12 +37,14 @@ def test_adapter_requires_literal_mutation_consent(value):
         with pytest.raises(AdapterError) as e:invoke_application({'endpoint':'http://localhost','authorized':True,'allow_mutation':value},{'api_request':{'path':'/orders','method':'POST'}})
     assert e.value.category=='permission_denied' and not call.called
 
-@pytest.mark.parametrize('credential',['tasks','passed','status'])
+@pytest.mark.parametrize('credential',['tasks','passed','status','completed','demo','a'])
 def test_redaction_preserves_envelope_and_hash(monkeypatch,credential):
     monkeypatch.setenv('PRAXIS_MODEL_API_KEY',credential)
     s=suite('structured-agent');s['tasks']=s['tasks'][:1]
     r=execute_run({'provider':'demo'},s)
     assert isinstance(r['tasks'],list) and isinstance(r['summary']['passed'],int)
+    assert r['status']=='completed' and r['trust']=='demo'
+    assert len(r['model_config_hash'])==64 and all(c in '0123456789abcdef' for c in r['model_config_hash'])
     assert r['evidence_hash']==digest({k:v for k,v in r.items() if k!='evidence_hash'})
 
 

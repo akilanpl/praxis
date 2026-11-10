@@ -18,6 +18,19 @@ from urllib.parse import urlparse, parse_qs
 
 ROOT = Path(__file__).resolve().parents[2]
 MAX_BODY = 2 * 1024 * 1024
+PASSWORD_ITERATIONS = 600000
+PASSWORD_PREFIX = 'pbkdf2_sha256$600000$'
+
+def password_hash(password,salt):
+    return PASSWORD_PREFIX+hashlib.pbkdf2_hmac('sha256',password.encode(),salt.encode(),PASSWORD_ITERATIONS).hex()
+
+def password_matches(password,salt,stored):
+    if stored.startswith(PASSWORD_PREFIX):
+        return hmac.compare_digest(stored,password_hash(password,salt))
+    if len(stored)==64 and all(c in '0123456789abcdef' for c in stored):
+        legacy=hashlib.pbkdf2_hmac('sha256',password.encode(),salt.encode(),240000).hex()
+        return hmac.compare_digest(stored,legacy)
+    return False
 
 class APIError(Exception):
     def __init__(self, status, message): self.status, self.message = status, message
@@ -99,15 +112,19 @@ class ControlPlane:
         if not row: raise APIError(401,'Sign in to the local workspace')
         return row['user_id']
     def account(self, path, body):
-        name=str(body.get('username','')).strip().lower(); password=body.get('password','')
+        if not isinstance(body.get('username'),str): raise APIError(400,'Username must be a string')
+        name=body['username'].strip().lower(); password=body.get('password','')
         if not 3<=len(name)<=80 or not isinstance(password,str) or not 10<=len(password)<=256: raise APIError(400,'Use a username of 3–80 characters and a password of 10–256 characters')
         with self.store.connect() as db:
             if path.endswith('register'):
                 salt=secrets.token_hex(16); user_id=uid()
-                try: db.execute('INSERT INTO users VALUES(?,?,?,?,?)',(user_id,name,salt,hashlib.pbkdf2_hmac('sha256',password.encode(),salt.encode(),240000).hex(),time.time()))
+                try: db.execute('INSERT INTO users VALUES(?,?,?,?,?)',(user_id,name,salt,password_hash(password,salt),time.time()))
                 except sqlite3.IntegrityError: raise APIError(409,'Username already exists')
             row=db.execute('SELECT * FROM users WHERE username=?',(name,)).fetchone()
-            if not row or not hmac.compare_digest(row['password'],hashlib.pbkdf2_hmac('sha256',password.encode(),row['salt'].encode(),240000).hex()): raise APIError(401,'Invalid username or password')
+            if not row or not password_matches(password,row['salt'],row['password']): raise APIError(401,'Invalid username or password')
+            if not row['password'].startswith(PASSWORD_PREFIX):
+                salt=secrets.token_hex(16)
+                db.execute('UPDATE users SET salt=?,password=? WHERE id=?',(salt,password_hash(password,salt),row['id']))
             token=secrets.token_urlsafe(32)
             db.execute('INSERT INTO sessions VALUES(?,?,?)',(hashlib.sha256(token.encode()).hexdigest(),row['id'],time.time()+86400))
         return {'token':token,'user':{'id':row['id'],'username':name},'mode':'secure local'}
@@ -345,6 +362,17 @@ class Handler(BaseHTTPRequestHandler):
     def setup(self):
         super().setup()
         self.connection.settimeout(15)
+    def read_body(self,length):
+        deadline=time.monotonic()+15
+        data=bytearray()
+        while len(data)<length:
+            remaining=deadline-time.monotonic()
+            if remaining<=0: raise APIError(408,'Request body deadline exceeded')
+            self.connection.settimeout(remaining)
+            chunk=self.rfile.read1(min(65536,length-len(data)))
+            if not chunk: raise APIError(400,'Truncated request body')
+            data.extend(chunk)
+        return bytes(data)
     def handle_request(self):
         request_id=uid(); status=200
         try:
@@ -363,7 +391,7 @@ class Handler(BaseHTTPRequestHandler):
                 body={}
                 if length:
                     if self.headers.get('Content-Type','').split(';',1)[0].strip().lower()!='application/json': raise APIError(415,'Expected application/json')
-                    try: body=json.loads(self.rfile.read(length),parse_constant=lambda value: (_ for _ in ()).throw(ValueError('Non-finite JSON value')))
+                    try: body=json.loads(self.read_body(length),parse_constant=lambda value: (_ for _ in ()).throw(ValueError('Non-finite JSON value')))
                     except (ValueError,UnicodeDecodeError,RecursionError): raise APIError(400,'Invalid JSON')
                     except TimeoutError: raise APIError(408,'Request body deadline exceeded')
                     if not isinstance(body,dict): raise APIError(400,'JSON object required')

@@ -39,7 +39,10 @@ def redact_values(value, credential):
     if not credential: return value
     if isinstance(value,str): return value.replace(credential,"[REDACTED]")
     if isinstance(value,list): return [redact_values(v,credential) for v in value]
-    if isinstance(value,dict): return {k:redact_values(v,credential) for k,v in value.items()}
+    if isinstance(value,dict):
+        protocol={"status":{"running","completed","cancelled","budget_exceeded"},"trust":{"demo","self-reported"},"target_kind":{"model","agent","application"}}
+        hashes={"hash","sha256","model_config_hash","suite_hash"}
+        return {k:v if k in hashes or (k in protocol and isinstance(v,str) and v in protocol[k]) else redact_values(v,credential) for k,v in value.items()}
     return value
 
 def digest(value):

@@ -42,3 +42,13 @@ class HTTPBoundaryTests(unittest.TestCase):
     def test_ambiguous_http_framing_rejected(self):
         for headers in ('Transfer-Encoding: chunked\r\n','Content-Length: 0\r\nContent-Length: 1\r\n'):
             self.assertIn('400',self.request('POST','/api/auth/login','Host: localhost\r\n'+headers).split('\r\n')[0])
+
+    def test_truncated_body_and_total_read_deadline(self):
+        from unittest.mock import patch
+        from praxis.server import APIError
+        text=self.request('POST','/api/auth/login','Host: localhost\r\nContent-Type: application/json\r\nContent-Length: 20\r\n',b'{}')
+        self.assertIn('400',text.split('\r\n')[0])
+        handler=Handler.__new__(Handler);handler.connection=SocketBuffer(b'');handler.rfile=io.BytesIO(b'{}')
+        with patch('praxis.server.time.monotonic',side_effect=[0,16]):
+            with self.assertRaises(APIError) as e:handler.read_body(2)
+        self.assertEqual(e.exception.status,408)
