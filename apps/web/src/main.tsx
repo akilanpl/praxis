@@ -1275,7 +1275,10 @@ export function App() {
                             >
                               {diagnostics[x.id]
                                 ? diagnostics[x.id].ok
-                                  ? "Connection verified"
+                                  ? x.kind !== "application" &&
+                                    x.provider?.startsWith("demo")
+                                    ? "Fixture invoked · no inference"
+                                    : "Connection verified"
                                   : "Connection failed"
                                 : "Not checked"}
                             </Badge>

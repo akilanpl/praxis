@@ -2531,3 +2531,18 @@ dialog > .actions {
     --warning-bg: #faf0d7;
   }
 }
+
+@media print {
+  .run-banner {
+    display: flex !important;
+  }
+  .run-banner .actions {
+    display: none !important;
+  }
+  .task-card {
+    break-inside: auto;
+  }
+  .task-heading {
+    break-after: avoid;
+  }
+}

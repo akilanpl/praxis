@@ -75,7 +75,7 @@ def main():
                 if route=='/apps/new':
                     page.get_by_label('Endpoint',exact=True).fill(f'http://127.0.0.1:{owned.server_port}');page.get_by_label('I own this endpoint',exact=False).check();page.get_by_label('Allow explicit POST',exact=False).check()
                 page.get_by_role('button',name='Save configuration',exact=True).click();page.wait_for_url('**'+route.removesuffix('/new'));target=next(t for t in request('GET','/api/targets') if t['name']==name);targets.append(target)
-            go(base+'/models');card=page.locator('article').filter(has=page.get_by_role('heading',name=configs[0][0],exact=True));card.get_by_role('button',name='Test connection').click();expect(card.get_by_text('Connection verified',exact=True)).to_be_visible();check('Target registration, consent and explicit diagnostics')
+            go(base+'/models');card=page.locator('article').filter(has=page.get_by_role('heading',name=configs[0][0],exact=True));card.get_by_role('button',name='Test connection').click();expect(card.get_by_text('Fixture invoked · no inference',exact=True)).to_be_visible();check('Target registration, consent and explicit diagnostics')
             go(base+'/targets');screenshot('targets-1440');audit('target registry')
             for index,target in enumerate(targets):
                 go(base+'/runs/new?target='+target['id']);page.get_by_label('Target ID').select_option(target['id']);suite='http-application' if target['kind']=='application' else 'agent-workflows' if target['kind']=='agent' else 'structured-agent';page.get_by_label('Suite slug').select_option(suite+'@1.0.0');page.get_by_label('Publish outputs for blind community comparisons').check()
@@ -91,7 +91,7 @@ def main():
             check('JSON export matches persisted result',json.loads((out/'evidence.json').read_text())['id']==failed['id']);check('Standalone HTML export is script-free', '<script' not in (out/'report.html').read_text().lower())
             page.emulate_media(media='print')
             print_color=page.get_by_role('cell',name='Fail',exact=True).first.locator('.badge').evaluate('(e)=>getComputedStyle(e).color')
-            check('Print failure badges use a readable dark foreground',print_color=='rgb(160, 55, 49)')
+            check('Print failure badges use a readable dark foreground',print_color=='rgb(160, 55, 49)');check('Printed report retains target and suite context',page.locator('.run-banner').is_visible())
             page.pdf(path=str(out/'printed-report.pdf'),format='A4',print_background=True)
             tool=shutil.which('pdftotext')
             if not tool:raise RuntimeError('pdftotext is required for actual print acceptance')

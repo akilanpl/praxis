@@ -180,6 +180,10 @@ it.each(["/models", "/agents", "/apps"])(
       screen.getByRole("button", { name: "Test connection" }),
     );
     await screen.findByRole("heading", { name: "Operation result" });
+    if (path !== "/apps")
+      expect(
+        await screen.findByText("Fixture invoked · no inference"),
+      ).toBeTruthy();
     await userEvent.type(screen.getByLabelText("Search records"), "absent");
     expect(
       screen.queryByRole("button", { name: "Test connection" }),

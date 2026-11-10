@@ -153,6 +153,7 @@ export default function Overview({
             <>
               <div
                 className="outcome-bar"
+                role="group"
                 aria-label="Execution status distribution"
               >
                 {Object.entries(states).map(([key, count]) => (
