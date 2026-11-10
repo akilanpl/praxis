@@ -11,7 +11,9 @@ folder=Path(tempfile.mkdtemp(prefix='wheel-release-',dir=str(ROOT/'work')))
 subprocess.run([sys.executable,'-m','venv','--without-pip',str(folder)],check=True)
 python=folder/'bin/python'
 wheel=ROOT/'dist/runner/praxis-0.1.0-py3-none-any.whl'
-subprocess.run([sys.executable,'-m','pip','--python',str(python),'install','--no-deps','--no-index',str(wheel)],check=True)
+install_env=dict(os.environ)
+install_env.pop('PYTHONPATH',None)
+subprocess.run([sys.executable,'-m','pip','--python',str(python),'install','--no-deps','--no-index',str(wheel)],env=install_env,check=True)
 env=dict(os.environ,PYTHONPATH=str(ROOT/'.venv/lib'/('python%d.%d'%sys.version_info[:2])/'site-packages'),PYTHONPYCACHEPREFIX=str(ROOT/'work/pycache'))
 code='''import json,praxis
 from praxis.engine import list_suites,execute_run
