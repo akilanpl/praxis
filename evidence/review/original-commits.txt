@@ -1,0 +1,6 @@
+a149af6751167c0920a04977a10298d0fddb74a1 fix: harden evaluation evidence and local execution boundaries
+b94f9a4237a2be54875a432c33d0bb24d39230aa feat: add separate Praxis engineering website and browser acceptance
+4587c7915b18438820fd64b41631e5b17b9d8a0e chore: make cloud acceptance fit constrained environments
+378d5d38782ee13921989bc71feef25f996f568d fix: retain independent release checks after missing receipts
+2a04e2df533f70c08a1c86a0dfd5b01131365797 docs: record cloud release acceptance and engineering handoff
+8a2fe33468d14363152d7deca5179c6ab1c91267 docs: record blocked GitHub publication and retry commands

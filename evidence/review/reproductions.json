@@ -1,0 +1,21 @@
+[
+  {
+    "finding": "R1",
+    "reproduction": "POST with suite retries=2 and timeout",
+    "observed_adapter_calls": 3,
+    "expected_calls": 1
+  },
+  {
+    "finding": "R2",
+    "reproduction": "Agent exhausts step budget without final action",
+    "task_passed": true,
+    "output": {
+      "status": "step_budget_exceeded"
+    }
+  },
+  {
+    "finding": "R3",
+    "reproduction": "Synthetic credential collides with envelope field name",
+    "error_type": "KeyError"
+  }
+]
