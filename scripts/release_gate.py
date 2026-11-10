@@ -34,6 +34,12 @@ def stage(name,command):
     report['stages'].append({'name':name,'command':[str(c) for c in command],'exit_code':code,'duration_ms':(time.monotonic()-begin)*1000})
     return code==0,output
 
+def receipt(path):
+    try:
+        return json.loads(path.read_text())
+    except (OSError,ValueError):
+        return {'status':'failed','checks':[],'error':'Acceptance receipt missing or invalid: '+str(path)}
+
 def family(name):
     n=name.lower()
     if any(w in n for w in ('concurrent','concurrency','uniqueness')):return 'C01'
@@ -87,7 +93,7 @@ try:
     ok,_=stage('python-audit',[P,'-m','pip_audit','--skip-editable','--cache-dir','work/pip-audit-cache','--format','json','--output',str(OUT/'python-audit.json')]);add('Python dependency advisory audit','S06','pass' if ok else 'fail','P0');report['security_clear']&=ok
     postgres_script='scripts/postgres_acceptance.py' if shutil.which('psql') else 'scripts/postgres_container_check.py'
     ok,_=stage('postgres',[P,postgres_script])
-    pg=json.loads((EVIDENCE/'postgres.json').read_text())
+    pg=receipt(EVIDENCE/'postgres.json')
     for item in pg.get('checks',[]):add(item['name'],'D01','pass' if item['passed'] else 'fail','P0')
     if not ok:add('Disposable native PostgreSQL environment','D01','notrun' if pg['status']=='blocked' else 'fail','P0');report['environment_started']=False
     for port,model in [(8788,'onnx-community/SmolLM2-135M-Instruct-ONNX'),(8789,'onnx-community/SmolLM2-360M-Instruct-ONNX')]:
@@ -101,7 +107,7 @@ try:
                 time.sleep(.2)
             if not healthy(port,model):report['environment_started']=False
     ok,_=stage('browser',[P,'scripts/browser_check.py'])
-    browser=json.loads((EVIDENCE/'browser/result.json').read_text())
+    browser=receipt(EVIDENCE/'browser/result.json')
     for item in browser.get('checks',[]):
         group='F04' if 'viewport' in item['name'] or 'navigation' in item['name'] else 'E04'
         add(item['name'],group,'pass' if item['passed'] else 'fail','P0')
