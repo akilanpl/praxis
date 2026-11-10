@@ -1,11 +1,12 @@
 M	.github/workflows/ci.yml
+M	.github/workflows/pushgate.yml
 M	CHANGELOG.md
 M	CLOUD_HANDOFF.md
 M	IMPLEMENTATION_STATUS.md
 M	README.md
 M	VERIFICATION.md
 M	apps/api/src/index.ts
-A	apps/api/test/review.test.ts
+A	apps/api/test/review.vitest.ts
 A	apps/web/src/api.ts
 M	apps/web/src/main.tsx
 M	apps/web/src/style.css
@@ -95,6 +96,7 @@ A	evidence/review/npm-audit.json
 A	evidence/review/original-changed-files.txt
 A	evidence/review/original-commits.txt
 A	evidence/review/provenance-publication.json
+A	evidence/review/publication-verification.json
 A	evidence/review/python-audit.json
 A	evidence/review/python-audit.log
 A	evidence/review/python-baseline-coverage.json
@@ -155,6 +157,7 @@ M	runner/praxis/server.py
 A	scripts/acceptance_receipts.py
 A	scripts/backup_workspace.py
 M	scripts/browser_check.py
+A	scripts/ci_failure_annotations.py
 A	scripts/coverage_acceptance.py
 A	scripts/db_reliability.py
 M	scripts/diff_coverage.py

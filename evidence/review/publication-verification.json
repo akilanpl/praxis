@@ -1,0 +1,29 @@
+{
+  "verified_commit": "b760fbbe59b3a2e8629651058bfc5f570e2d1326",
+  "cloud_workspace_gate": {
+    "status": "PASS",
+    "checks": 329,
+    "coverage": {
+      "line": 97.18969555035129,
+      "branch": 91.43356643356644,
+      "diff": 98.96694214876032,
+      "diff_status": "479/484 changed executable runtime lines"
+    },
+    "security_clear": true,
+    "source_dirty": false
+  },
+  "github_actions": [
+    {
+      "name": "Praxis verification",
+      "status": "PASS",
+      "url": "https://github.com/akilanpl/praxis/actions/runs/42787331622"
+    },
+    {
+      "name": "pushgate",
+      "status": "PASS",
+      "url": "https://github.com/akilanpl/praxis/actions/runs/42787331880"
+    }
+  ],
+  "publication": "Existing branch only; no new PR, merge, main push or deployment. Original six commits retained.",
+  "limitations": "Native PostgreSQL and local auth.uid fixture acceptance are not hosted Supabase Auth/RLS acceptance; SAST findings remain contextually triaged, not a zero-findings claim."
+}
