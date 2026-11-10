@@ -130,6 +130,8 @@ def main():
             browser=p.chromium.launch();context=browser.new_context();page=context.new_page()
             page.goto(base+'/settings');page.get_by_label('Account name').fill(username);page.get_by_label('Password').fill(password);page.get_by_label('Action').select_option('login');page.get_by_role('button',name='Continue',exact=True).click();page.wait_for_url('**/dashboard')
             page.goto(base+'/compare');expect(page.get_by_role('link',name='Explicit comparison fixture',exact=True)).to_be_visible();check('Browser comparison workflow')
+            page.goto(base+'/artifacts');page.get_by_label('Search records').fill(artifact['id'])
+            expect(page.get_by_text('local-first recovery evidence',exact=True)).to_be_visible();check('Uploaded artifact inspected through actual browser')
             page.goto(base+'/runs/'+agent_run['id']);expect(page.get_by_role('heading',name='Execution timeline')).to_be_visible()
             with page.expect_download() as download:page.get_by_role('button',name='Export evidence').click()
             download.value.save_as(str(out/'browser-export.json'));check('Browser JSON export',json.loads((out/'browser-export.json').read_text())['id']==agent_run['id'])

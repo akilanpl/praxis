@@ -1,0 +1,37 @@
+
+> praxis@0.1.0 test:typescript
+> vitest run --coverage
+
+
+ RUN  v5.1.0 /workspace/praxis
+      Coverage enabled with v8
+
+
+ Test Files  4 passed (4)
+      Tests  39 passed (39)
+   Start at  09:47:40
+   Duration  4.05s (tests 61%, environment 24%, import 8%, transform 5%, worker 3%)
+
+    Isolate  4 workers spawned · ~290ms startup each (spawn + environment, per file)
+             at least ~869ms faster with isolate: false — reuses workers across files instead of one per file
+
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   97.91 |    89.56 |   96.38 |   99.02 |                   
+ apps/web/src      |   96.41 |    86.43 |   95.31 |   98.31 |                   
+  main.tsx         |   96.21 |     85.8 |   95.23 |   98.21 | 303,1012,1173     
+-------------------|---------|----------|---------|---------|-------------------
+
+=============================== Coverage summary ===============================
+Statements   : 97.91% ( 328/335 )
+Branches     : 89.56% ( 395/441 )
+Functions    : 96.38% ( 80/83 )
+Lines        : 99.02% ( 306/309 )
+================================================================================
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

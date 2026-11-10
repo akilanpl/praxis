@@ -1,0 +1,351 @@
+{
+  "status": "PASS",
+  "scope": "actual Chromium, axe WCAG A/AA automated rules and targeted keyboard/DOM/manual visual checks; no WCAG certification or screen-reader certification",
+  "axe_version": "4.14.0",
+  "pages": [
+    {
+      "name": "signed-out settings",
+      "url_path": "/settings",
+      "violations": [],
+      "incomplete": [],
+      "passes": 18
+    },
+    {
+      "name": "dark /dashboard",
+      "url_path": "/dashboard",
+      "violations": [],
+      "incomplete": [],
+      "passes": 10
+    },
+    {
+      "name": "dark /models/new",
+      "url_path": "/models/new",
+      "violations": [],
+      "incomplete": [],
+      "passes": 18
+    },
+    {
+      "name": "dark /runs/new",
+      "url_path": "/runs/new",
+      "violations": [],
+      "incomplete": [],
+      "passes": 18
+    },
+    {
+      "name": "dark /runs/e1878bf3-ccff-487c-8b09-82609c96b018",
+      "url_path": "/runs/e1878bf3-ccff-487c-8b09-82609c96b018",
+      "violations": [],
+      "incomplete": [],
+      "passes": 21
+    },
+    {
+      "name": "dark /artifacts",
+      "url_path": "/artifacts",
+      "violations": [],
+      "incomplete": [],
+      "passes": 12
+    },
+    {
+      "name": "dark /compare",
+      "url_path": "/compare",
+      "violations": [],
+      "incomplete": [],
+      "passes": 12
+    },
+    {
+      "name": "dark /settings",
+      "url_path": "/settings",
+      "violations": [],
+      "incomplete": [],
+      "passes": 10
+    },
+    {
+      "name": "light dashboard",
+      "url_path": "/dashboard",
+      "violations": [],
+      "incomplete": [],
+      "passes": 10
+    },
+    {
+      "name": "light model form",
+      "url_path": "/models/new",
+      "violations": [],
+      "incomplete": [],
+      "passes": 18
+    },
+    {
+      "name": "light report",
+      "url_path": "/runs/e1878bf3-ccff-487c-8b09-82609c96b018",
+      "violations": [],
+      "incomplete": [],
+      "passes": 21
+    },
+    {
+      "name": "static website",
+      "url_path": "static website",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".mark"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                "a:nth-child(4) > span[aria-hidden=\"true\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                ".primary.button > span[aria-hidden=\"true\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                ".button[href$=\"#architecture\"] > span[aria-hidden=\"true\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                "li:nth-child(1) > span[aria-hidden=\"true\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                "li:nth-child(2) > span[aria-hidden=\"true\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                "li:nth-child(3) > span[aria-hidden=\"true\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                "li:nth-child(4) > span[aria-hidden=\"true\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                "li:nth-child(5) > span[aria-hidden=\"true\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                "li:nth-child(6) > span[aria-hidden=\"true\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                "li:nth-child(7) > span[aria-hidden=\"true\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                "li:nth-child(8) > span[aria-hidden=\"true\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                "li:nth-child(9) > span[aria-hidden=\"true\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                "li:nth-child(10) > span[aria-hidden=\"true\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                "li:nth-child(11) > span[aria-hidden=\"true\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                "li:nth-child(12) > span[aria-hidden=\"true\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                ".suite-row:nth-child(2) > .suite-count > span[aria-hidden=\"true\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                ".suite-row:nth-child(3) > .suite-count > span[aria-hidden=\"true\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                ".suite-row:nth-child(4) > .suite-count > span[aria-hidden=\"true\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                ".suite-row:nth-child(5) > .suite-count > span[aria-hidden=\"true\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                ".suite-row:nth-child(6) > .suite-count > span[aria-hidden=\"true\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                ".suite-row:nth-child(7) > .suite-count > span[aria-hidden=\"true\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                "article:nth-child(1) > a > span[aria-hidden=\"true\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                "article:nth-child(2) > a > span[aria-hidden=\"true\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            }
+          ]
+        }
+      ],
+      "passes": 24
+    }
+  ],
+  "checks": [
+    {
+      "name": "Single page heading signed-out settings",
+      "status": "PASS"
+    },
+    {
+      "name": "Workspace skip link is first keyboard stop",
+      "status": "PASS"
+    },
+    {
+      "name": "Workspace skip link reaches main",
+      "status": "PASS"
+    },
+    {
+      "name": "Keyboard traversal reaches labeled account input",
+      "status": "PASS"
+    },
+    {
+      "name": "Keyboard-only account form submission",
+      "status": "PASS"
+    },
+    {
+      "name": "Single page heading dark /dashboard",
+      "status": "PASS"
+    },
+    {
+      "name": "Single page heading dark /models/new",
+      "status": "PASS"
+    },
+    {
+      "name": "Single page heading dark /runs/new",
+      "status": "PASS"
+    },
+    {
+      "name": "Single page heading dark /runs/e1878bf3-ccff-487c-8b09-82609c96b018",
+      "status": "PASS"
+    },
+    {
+      "name": "Single page heading dark /artifacts",
+      "status": "PASS"
+    },
+    {
+      "name": "Single page heading dark /compare",
+      "status": "PASS"
+    },
+    {
+      "name": "Single page heading dark /settings",
+      "status": "PASS"
+    },
+    {
+      "name": "Validation error announced with alert role",
+      "status": "PASS"
+    },
+    {
+      "name": "Single page heading light dashboard",
+      "status": "PASS"
+    },
+    {
+      "name": "Single page heading light model form",
+      "status": "PASS"
+    },
+    {
+      "name": "Single page heading light report",
+      "status": "PASS"
+    },
+    {
+      "name": "Workspace report responsive 390",
+      "status": "PASS"
+    },
+    {
+      "name": "Workspace report responsive 768",
+      "status": "PASS"
+    },
+    {
+      "name": "Workspace report responsive 1280",
+      "status": "PASS"
+    },
+    {
+      "name": "Single page heading static website",
+      "status": "PASS"
+    },
+    {
+      "name": "Website first keyboard stop is skip link",
+      "status": "PASS"
+    },
+    {
+      "name": "Website skip link reaches main",
+      "status": "PASS"
+    },
+    {
+      "name": "Website visible focus outline",
+      "status": "PASS"
+    },
+    {
+      "name": "Website responsive 390",
+      "status": "PASS"
+    },
+    {
+      "name": "Website responsive 768",
+      "status": "PASS"
+    },
+    {
+      "name": "Website responsive 1280",
+      "status": "PASS"
+    },
+    {
+      "name": "No automated A/AA violations on audited pages",
+      "status": "PASS"
+    }
+  ]
+}

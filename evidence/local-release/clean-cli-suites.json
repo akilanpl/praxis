@@ -1,0 +1,44 @@
+[
+  {
+    "slug": "agent-workflows",
+    "version": "1.0.0",
+    "title": "Executable agent workflows",
+    "track": "tool-use",
+    "task_count": 4
+  },
+  {
+    "slug": "developer-contracts",
+    "version": "1.0.0",
+    "title": "Developer and application contracts",
+    "track": "contracts",
+    "task_count": 8
+  },
+  {
+    "slug": "grounded-research",
+    "version": "1.0.0",
+    "title": "Grounded research and uncertainty",
+    "track": "groundedness",
+    "task_count": 8
+  },
+  {
+    "slug": "http-application",
+    "version": "1.0.0",
+    "title": "Executable HTTP application contracts",
+    "track": "application",
+    "task_count": 4
+  },
+  {
+    "slug": "security-resilience",
+    "version": "1.0.0",
+    "title": "Security and failure recovery",
+    "track": "robustness",
+    "task_count": 8
+  },
+  {
+    "slug": "structured-agent",
+    "version": "1.0.0",
+    "title": "Structured agent reliability",
+    "track": "tool-use",
+    "task_count": 8
+  }
+]

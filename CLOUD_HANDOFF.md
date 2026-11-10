@@ -52,3 +52,5 @@ User explicitly approved the backup-only push despite the incomplete gate. Ordin
 Codex CLI authenticated successfully and listed zero existing tasks. Repository-specific cloud environment lookup returned HTTP 403, detail type repo_not_accessible, message Repository is not accessible. No cloud task was submitted. The user must enable access to this private repository in the Codex GitHub connection and create/select its cloud environment. Then submit a cloud task on feature/qa-hardening-release with: "Read CLOUD_HANDOFF.md completely and continue the final Praxis integration/acceptance mission. Preserve evidence, fix the incomplete gate, and do not claim public deployment or tests passed without execution."
 
 Do not substitute an unrelated cloud environment or change repository visibility to work around the missing authorization.
+
+Current local-first decision: controlled POSIX beta, with qualified Ubuntu/macOS fixture lifecycles and unsupported native Windows. Cloud hosting deferrals are separate. See [local qualification](docs/qa/LOCAL_RELEASE_QUALIFICATION.md) and [recovery operations](docs/operations/LOCAL_INSTALLATION_RECOVERY.md).

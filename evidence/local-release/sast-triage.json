@@ -1492,7 +1492,7 @@
     },
     {
       "path": "scripts/qualify_local.py",
-      "sha256": "0a72606d2e92fa5c397b172ad6ca63d2b00794fb1771db06c6b617cb213451dd"
+      "sha256": "5a24703b500a5cde9dc164905c41e0a8c70cc3fdbd22e65b4a8a6c1e1b071a31"
     },
     {
       "path": "scripts/real_inference_acceptance.py",

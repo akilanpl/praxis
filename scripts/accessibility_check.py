@@ -40,7 +40,12 @@ def main():
             audit('signed-out settings',base+'/settings')
             page.keyboard.press('Tab');check('Workspace skip link is first keyboard stop',page.locator('.skip').evaluate('(e)=>e===document.activeElement'))
             page.keyboard.press('Enter');check('Workspace skip link reaches main',page.evaluate('location.hash')=='#main')
-            page.get_by_label('Account name').fill('a11y-'+secrets.token_hex(4));page.get_by_label('Password').fill(secrets.token_urlsafe(24));page.get_by_role('button',name='Continue',exact=True).click();page.wait_for_url('**/dashboard')
+            for _ in range(15):
+                page.keyboard.press('Tab')
+                if page.locator('input[name=username]').evaluate('(e)=>e===document.activeElement'):break
+            check('Keyboard traversal reaches labeled account input',page.locator('input[name=username]').evaluate('(e)=>e===document.activeElement'))
+            page.keyboard.type('a11y-'+secrets.token_hex(4));page.keyboard.press('Tab');page.keyboard.type(secrets.token_urlsafe(24));page.keyboard.press('Tab');page.keyboard.press('Tab');page.keyboard.press('Enter');page.wait_for_url('**/dashboard')
+            check('Keyboard-only account form submission',True)
             token=page.evaluate('localStorage.token')
             account=app.auth('Bearer '+token)
             target=app.request('POST','/api/targets',{'name':'Accessibility fixture','kind':'model','provider':'demo'},'Bearer '+token)

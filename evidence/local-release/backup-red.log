@@ -1,0 +1,23 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______________ test_backup_manifest_cannot_omit_database_objects _______________
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-35/test_backup_manifest_cannot_om0')
+
+    def test_backup_manifest_cannot_omit_database_objects(tmp_path):
+        api=ControlPlane(tmp_path/'source/db.sqlite')
+        try:
+            account=api.account('/api/auth/register',{'username':'manifest-owner','password':'test-password-123'})
+            item=ingest(api.store,account['user']['id'],{'filename':'owned.txt','content_base64':base64.b64encode(b'preserve me').decode()})
+            destination=tmp_path/'snapshot';backup(api.store.path,destination)
+            manifest=json.loads((destination/'manifest.json').read_text());manifest['objects']=[]
+            (destination/'manifest.json').write_text(json.dumps(manifest))
+            (destination/'objects'/item['sha256']).unlink()
+>           with pytest.raises(ValueError,match='referenced'):verify(destination)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE ValueError
+
+tests/test_backup_recovery.py:46: Failed
+=========================== short test summary info ============================
+FAILED tests/test_backup_recovery.py::test_backup_manifest_cannot_omit_database_objects
+1 failed in 0.22s
