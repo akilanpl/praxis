@@ -1,0 +1,1529 @@
+{
+  "status": "PARTIAL",
+  "scope": "Every unsuppressed Bandit finding in runner and scripts; contextual source review, not an external penetration test. Test files are separately executed; frontend compiler/audits are separate tools.",
+  "findings": [
+    {
+      "finding": 1,
+      "file": "runner/praxis/server.py",
+      "line": 23,
+      "scanner_id": "B105",
+      "severity": "LOW",
+      "confidence": "MEDIUM",
+      "assessment": "Not exploitable: a password-format version prefix or empty in-memory session initialization, not an authentication credential.",
+      "local_first_impact": "Public protocol constants carry no authority; random credentials remain in memory and hashed at rest.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 2,
+      "file": "runner/praxis/worlds.py",
+      "line": 18,
+      "scanner_id": "B311",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Not exploitable for authentication: random.Random is exclusively the seeded reference-world simulation.",
+      "local_first_impact": "Predictable scenario state is intentional reproducibility; authentication uses secrets, not this PRNG.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 3,
+      "file": "scripts/browser_check.py",
+      "line": 10,
+      "scanner_id": "B404",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Import-only warning. Every subprocess call in this module was inspected separately below.",
+      "local_first_impact": "Operator executes reviewed development/qualification code; importing subprocess grants no workload permission.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 4,
+      "file": "scripts/browser_check.py",
+      "line": 26,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 5,
+      "file": "scripts/browser_check.py",
+      "line": 29,
+      "scanner_id": "B105",
+      "severity": "LOW",
+      "confidence": "MEDIUM",
+      "assessment": "Not exploitable: a password-format version prefix or empty in-memory session initialization, not an authentication credential.",
+      "local_first_impact": "Public protocol constants carry no authority; random credentials remain in memory and hashed at rest.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 6,
+      "file": "scripts/browser_check.py",
+      "line": 32,
+      "scanner_id": "B310",
+      "severity": "MEDIUM",
+      "confidence": "HIGH",
+      "assessment": "Request URL is constructed from a loopback-only owned service or fixed acceptance port; no untrusted uploaded URL or model output. The real runtime adapter separately validates endpoints and rejects redirects.",
+      "local_first_impact": "Verification tools require the named local service to be owned. Legacy start_host_browser.py is not part of the supported installer or executed by this cloud qualification.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 7,
+      "file": "scripts/browser_check.py",
+      "line": 41,
+      "scanner_id": "B310",
+      "severity": "MEDIUM",
+      "confidence": "HIGH",
+      "assessment": "Request URL is constructed from a loopback-only owned service or fixed acceptance port; no untrusted uploaded URL or model output. The real runtime adapter separately validates endpoints and rejects redirects.",
+      "local_first_impact": "Verification tools require the named local service to be owned. Legacy start_host_browser.py is not part of the supported installer or executed by this cloud qualification.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 8,
+      "file": "scripts/browser_check.py",
+      "line": 61,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 9,
+      "file": "scripts/browser_check.py",
+      "line": 80,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 10,
+      "file": "scripts/browser_check.py",
+      "line": 81,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 11,
+      "file": "scripts/browser_check.py",
+      "line": 92,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 12,
+      "file": "scripts/browser_check.py",
+      "line": 93,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 13,
+      "file": "scripts/browser_check.py",
+      "line": 94,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 14,
+      "file": "scripts/browser_check.py",
+      "line": 100,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 15,
+      "file": "scripts/browser_check.py",
+      "line": 103,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 16,
+      "file": "scripts/browser_check.py",
+      "line": 121,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 17,
+      "file": "scripts/browser_check.py",
+      "line": 122,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 18,
+      "file": "scripts/browser_check.py",
+      "line": 131,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 19,
+      "file": "scripts/browser_check.py",
+      "line": 134,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 20,
+      "file": "scripts/browser_check.py",
+      "line": 143,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 21,
+      "file": "scripts/browser_check.py",
+      "line": 153,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 22,
+      "file": "scripts/browser_check.py",
+      "line": 154,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 23,
+      "file": "scripts/browser_check.py",
+      "line": 155,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 24,
+      "file": "scripts/browser_check.py",
+      "line": 161,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 25,
+      "file": "scripts/browser_check.py",
+      "line": 162,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 26,
+      "file": "scripts/browser_check.py",
+      "line": 164,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 27,
+      "file": "scripts/browser_check.py",
+      "line": 166,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 28,
+      "file": "scripts/browser_check.py",
+      "line": 170,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 29,
+      "file": "scripts/browser_check.py",
+      "line": 171,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 30,
+      "file": "scripts/browser_check.py",
+      "line": 180,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 31,
+      "file": "scripts/browser_check.py",
+      "line": 182,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 32,
+      "file": "scripts/browser_check.py",
+      "line": 183,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 33,
+      "file": "scripts/build.py",
+      "line": 6,
+      "scanner_id": "B404",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Import-only warning. Every subprocess call in this module was inspected separately below.",
+      "local_first_impact": "Operator executes reviewed development/qualification code; importing subprocess grants no workload permission.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 34,
+      "file": "scripts/build.py",
+      "line": 32,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 35,
+      "file": "scripts/ci_failure_annotations.py",
+      "line": 5,
+      "scanner_id": "B404",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Import-only warning. Every subprocess call in this module was inspected separately below.",
+      "local_first_impact": "Operator executes reviewed development/qualification code; importing subprocess grants no workload permission.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 36,
+      "file": "scripts/ci_failure_annotations.py",
+      "line": 20,
+      "scanner_id": "B607",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Executable resolves from the trusted operator/CI PATH, not a user-submitted target or model response.",
+      "local_first_impact": "PATH and dependency supply-chain integrity remain operator prerequisites; no arbitrary-code sandbox claim.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 37,
+      "file": "scripts/ci_failure_annotations.py",
+      "line": 20,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 38,
+      "file": "scripts/coverage_acceptance.py",
+      "line": 5,
+      "scanner_id": "B404",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Import-only warning. Every subprocess call in this module was inspected separately below.",
+      "local_first_impact": "Operator executes reviewed development/qualification code; importing subprocess grants no workload permission.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 39,
+      "file": "scripts/coverage_acceptance.py",
+      "line": 19,
+      "scanner_id": "B607",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Executable resolves from the trusted operator/CI PATH, not a user-submitted target or model response.",
+      "local_first_impact": "PATH and dependency supply-chain integrity remain operator prerequisites; no arbitrary-code sandbox claim.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 40,
+      "file": "scripts/coverage_acceptance.py",
+      "line": 19,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 41,
+      "file": "scripts/db_reliability.py",
+      "line": 2,
+      "scanner_id": "B404",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Import-only warning. Every subprocess call in this module was inspected separately below.",
+      "local_first_impact": "Operator executes reviewed development/qualification code; importing subprocess grants no workload permission.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 42,
+      "file": "scripts/db_reliability.py",
+      "line": 8,
+      "scanner_id": "B608",
+      "severity": "MEDIUM",
+      "confidence": "LOW",
+      "assessment": "SQL interpolation uses only hardcoded UUID fixtures and constant local owner identities in db_reliability.py. No API/user/model values enter this SQL.",
+      "local_first_impact": "Disposable PostgreSQL acceptance only; production SQLite SQL uses bound parameters. Fixture SQL is not an arbitrary query endpoint.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 43,
+      "file": "scripts/db_reliability.py",
+      "line": 10,
+      "scanner_id": "B608",
+      "severity": "MEDIUM",
+      "confidence": "LOW",
+      "assessment": "SQL interpolation uses only hardcoded UUID fixtures and constant local owner identities in db_reliability.py. No API/user/model values enter this SQL.",
+      "local_first_impact": "Disposable PostgreSQL acceptance only; production SQLite SQL uses bound parameters. Fixture SQL is not an arbitrary query endpoint.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 44,
+      "file": "scripts/db_reliability.py",
+      "line": 11,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 45,
+      "file": "scripts/db_reliability.py",
+      "line": 16,
+      "scanner_id": "B608",
+      "severity": "MEDIUM",
+      "confidence": "LOW",
+      "assessment": "SQL interpolation uses only hardcoded UUID fixtures and constant local owner identities in db_reliability.py. No API/user/model values enter this SQL.",
+      "local_first_impact": "Disposable PostgreSQL acceptance only; production SQLite SQL uses bound parameters. Fixture SQL is not an arbitrary query endpoint.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 46,
+      "file": "scripts/db_reliability.py",
+      "line": 16,
+      "scanner_id": "B608",
+      "severity": "MEDIUM",
+      "confidence": "LOW",
+      "assessment": "SQL interpolation uses only hardcoded UUID fixtures and constant local owner identities in db_reliability.py. No API/user/model values enter this SQL.",
+      "local_first_impact": "Disposable PostgreSQL acceptance only; production SQLite SQL uses bound parameters. Fixture SQL is not an arbitrary query endpoint.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 47,
+      "file": "scripts/db_reliability.py",
+      "line": 17,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 48,
+      "file": "scripts/db_reliability.py",
+      "line": 21,
+      "scanner_id": "B608",
+      "severity": "MEDIUM",
+      "confidence": "LOW",
+      "assessment": "SQL interpolation uses only hardcoded UUID fixtures and constant local owner identities in db_reliability.py. No API/user/model values enter this SQL.",
+      "local_first_impact": "Disposable PostgreSQL acceptance only; production SQLite SQL uses bound parameters. Fixture SQL is not an arbitrary query endpoint.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 49,
+      "file": "scripts/db_reliability.py",
+      "line": 24,
+      "scanner_id": "B608",
+      "severity": "MEDIUM",
+      "confidence": "LOW",
+      "assessment": "SQL interpolation uses only hardcoded UUID fixtures and constant local owner identities in db_reliability.py. No API/user/model values enter this SQL.",
+      "local_first_impact": "Disposable PostgreSQL acceptance only; production SQLite SQL uses bound parameters. Fixture SQL is not an arbitrary query endpoint.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 50,
+      "file": "scripts/dev.py",
+      "line": 3,
+      "scanner_id": "B404",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Import-only warning. Every subprocess call in this module was inspected separately below.",
+      "local_first_impact": "Operator executes reviewed development/qualification code; importing subprocess grants no workload permission.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 51,
+      "file": "scripts/dev.py",
+      "line": 9,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 52,
+      "file": "scripts/dev.py",
+      "line": 10,
+      "scanner_id": "B607",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Executable resolves from the trusted operator/CI PATH, not a user-submitted target or model response.",
+      "local_first_impact": "PATH and dependency supply-chain integrity remain operator prerequisites; no arbitrary-code sandbox claim.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 53,
+      "file": "scripts/dev.py",
+      "line": 10,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 54,
+      "file": "scripts/diff_coverage.py",
+      "line": 4,
+      "scanner_id": "B404",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Import-only warning. Every subprocess call in this module was inspected separately below.",
+      "local_first_impact": "Operator executes reviewed development/qualification code; importing subprocess grants no workload permission.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 55,
+      "file": "scripts/diff_coverage.py",
+      "line": 19,
+      "scanner_id": "B607",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Executable resolves from the trusted operator/CI PATH, not a user-submitted target or model response.",
+      "local_first_impact": "PATH and dependency supply-chain integrity remain operator prerequisites; no arbitrary-code sandbox claim.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 56,
+      "file": "scripts/diff_coverage.py",
+      "line": 19,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 57,
+      "file": "scripts/evidence_identity.py",
+      "line": 5,
+      "scanner_id": "B404",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Import-only warning. Every subprocess call in this module was inspected separately below.",
+      "local_first_impact": "Operator executes reviewed development/qualification code; importing subprocess grants no workload permission.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 58,
+      "file": "scripts/evidence_identity.py",
+      "line": 10,
+      "scanner_id": "B607",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Executable resolves from the trusted operator/CI PATH, not a user-submitted target or model response.",
+      "local_first_impact": "PATH and dependency supply-chain integrity remain operator prerequisites; no arbitrary-code sandbox claim.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 59,
+      "file": "scripts/evidence_identity.py",
+      "line": 10,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 60,
+      "file": "scripts/evidence_identity.py",
+      "line": 12,
+      "scanner_id": "B607",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Executable resolves from the trusted operator/CI PATH, not a user-submitted target or model response.",
+      "local_first_impact": "PATH and dependency supply-chain integrity remain operator prerequisites; no arbitrary-code sandbox claim.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 61,
+      "file": "scripts/evidence_identity.py",
+      "line": 12,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 62,
+      "file": "scripts/evidence_identity.py",
+      "line": 13,
+      "scanner_id": "B607",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Executable resolves from the trusted operator/CI PATH, not a user-submitted target or model response.",
+      "local_first_impact": "PATH and dependency supply-chain integrity remain operator prerequisites; no arbitrary-code sandbox claim.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 63,
+      "file": "scripts/evidence_identity.py",
+      "line": 13,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 64,
+      "file": "scripts/integration_proof.py",
+      "line": 28,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 65,
+      "file": "scripts/integration_proof.py",
+      "line": 30,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 66,
+      "file": "scripts/integration_proof.py",
+      "line": 37,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 67,
+      "file": "scripts/integration_proof.py",
+      "line": 37,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 68,
+      "file": "scripts/integration_proof.py",
+      "line": 40,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 69,
+      "file": "scripts/integration_proof.py",
+      "line": 41,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 70,
+      "file": "scripts/integration_proof.py",
+      "line": 44,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 71,
+      "file": "scripts/integration_proof.py",
+      "line": 45,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 72,
+      "file": "scripts/integration_proof.py",
+      "line": 45,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 73,
+      "file": "scripts/integration_proof.py",
+      "line": 50,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 74,
+      "file": "scripts/postgres_acceptance.py",
+      "line": 8,
+      "scanner_id": "B404",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Import-only warning. Every subprocess call in this module was inspected separately below.",
+      "local_first_impact": "Operator executes reviewed development/qualification code; importing subprocess grants no workload permission.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 75,
+      "file": "scripts/postgres_acceptance.py",
+      "line": 27,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 76,
+      "file": "scripts/postgres_acceptance.py",
+      "line": 36,
+      "scanner_id": "B607",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Executable resolves from the trusted operator/CI PATH, not a user-submitted target or model response.",
+      "local_first_impact": "PATH and dependency supply-chain integrity remain operator prerequisites; no arbitrary-code sandbox claim.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 77,
+      "file": "scripts/postgres_acceptance.py",
+      "line": 36,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 78,
+      "file": "scripts/postgres_acceptance.py",
+      "line": 59,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 79,
+      "file": "scripts/postgres_container_check.py",
+      "line": 7,
+      "scanner_id": "B404",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Import-only warning. Every subprocess call in this module was inspected separately below.",
+      "local_first_impact": "Operator executes reviewed development/qualification code; importing subprocess grants no workload permission.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 80,
+      "file": "scripts/postgres_container_check.py",
+      "line": 21,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 81,
+      "file": "scripts/postgres_container_check.py",
+      "line": 29,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 82,
+      "file": "scripts/postgres_container_check.py",
+      "line": 30,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 83,
+      "file": "scripts/postgres_container_check.py",
+      "line": 41,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 84,
+      "file": "scripts/postgres_container_check.py",
+      "line": 46,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 85,
+      "file": "scripts/postgres_container_check.py",
+      "line": 51,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 86,
+      "file": "scripts/qualify_local.py",
+      "line": 16,
+      "scanner_id": "B404",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Import-only warning. Every subprocess call in this module was inspected separately below.",
+      "local_first_impact": "Operator executes reviewed development/qualification code; importing subprocess grants no workload permission.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 87,
+      "file": "scripts/qualify_local.py",
+      "line": 55,
+      "scanner_id": "B105",
+      "severity": "LOW",
+      "confidence": "MEDIUM",
+      "assessment": "Not exploitable: a password-format version prefix or empty in-memory session initialization, not an authentication credential.",
+      "local_first_impact": "Public protocol constants carry no authority; random credentials remain in memory and hashed at rest.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 88,
+      "file": "scripts/qualify_local.py",
+      "line": 60,
+      "scanner_id": "B310",
+      "severity": "MEDIUM",
+      "confidence": "HIGH",
+      "assessment": "Request URL is constructed from a loopback-only owned service or fixed acceptance port; no untrusted uploaded URL or model output. The real runtime adapter separately validates endpoints and rejects redirects.",
+      "local_first_impact": "Verification tools require the named local service to be owned. Legacy start_host_browser.py is not part of the supported installer or executed by this cloud qualification.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 89,
+      "file": "scripts/qualify_local.py",
+      "line": 71,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 90,
+      "file": "scripts/qualify_local.py",
+      "line": 93,
+      "scanner_id": "B607",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Executable resolves from the trusted operator/CI PATH, not a user-submitted target or model response.",
+      "local_first_impact": "PATH and dependency supply-chain integrity remain operator prerequisites; no arbitrary-code sandbox claim.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 91,
+      "file": "scripts/qualify_local.py",
+      "line": 93,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 92,
+      "file": "scripts/qualify_local.py",
+      "line": 102,
+      "scanner_id": "B607",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Executable resolves from the trusted operator/CI PATH, not a user-submitted target or model response.",
+      "local_first_impact": "PATH and dependency supply-chain integrity remain operator prerequisites; no arbitrary-code sandbox claim.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 93,
+      "file": "scripts/qualify_local.py",
+      "line": 102,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 94,
+      "file": "scripts/qualify_local.py",
+      "line": 107,
+      "scanner_id": "B310",
+      "severity": "MEDIUM",
+      "confidence": "HIGH",
+      "assessment": "Request URL is constructed from a loopback-only owned service or fixed acceptance port; no untrusted uploaded URL or model output. The real runtime adapter separately validates endpoints and rejects redirects.",
+      "local_first_impact": "Verification tools require the named local service to be owned. Legacy start_host_browser.py is not part of the supported installer or executed by this cloud qualification.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 95,
+      "file": "scripts/real_inference_acceptance.py",
+      "line": 18,
+      "scanner_id": "B105",
+      "severity": "LOW",
+      "confidence": "MEDIUM",
+      "assessment": "Not exploitable: a password-format version prefix or empty in-memory session initialization, not an authentication credential.",
+      "local_first_impact": "Public protocol constants carry no authority; random credentials remain in memory and hashed at rest.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 96,
+      "file": "scripts/real_inference_acceptance.py",
+      "line": 21,
+      "scanner_id": "B310",
+      "severity": "MEDIUM",
+      "confidence": "HIGH",
+      "assessment": "Request URL is constructed from a loopback-only owned service or fixed acceptance port; no untrusted uploaded URL or model output. The real runtime adapter separately validates endpoints and rejects redirects.",
+      "local_first_impact": "Verification tools require the named local service to be owned. Legacy start_host_browser.py is not part of the supported installer or executed by this cloud qualification.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 97,
+      "file": "scripts/real_inference_acceptance.py",
+      "line": 26,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 98,
+      "file": "scripts/real_inference_acceptance.py",
+      "line": 33,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 99,
+      "file": "scripts/real_inference_acceptance.py",
+      "line": 34,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 100,
+      "file": "scripts/real_inference_acceptance.py",
+      "line": 36,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 101,
+      "file": "scripts/real_inference_acceptance.py",
+      "line": 37,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 102,
+      "file": "scripts/real_inference_acceptance.py",
+      "line": 38,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 103,
+      "file": "scripts/real_inference_acceptance.py",
+      "line": 39,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 104,
+      "file": "scripts/release_gate.py",
+      "line": 8,
+      "scanner_id": "B404",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Import-only warning. Every subprocess call in this module was inspected separately below.",
+      "local_first_impact": "Operator executes reviewed development/qualification code; importing subprocess grants no workload permission.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 105,
+      "file": "scripts/release_gate.py",
+      "line": 19,
+      "scanner_id": "B607",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Executable resolves from the trusted operator/CI PATH, not a user-submitted target or model response.",
+      "local_first_impact": "PATH and dependency supply-chain integrity remain operator prerequisites; no arbitrary-code sandbox claim.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 106,
+      "file": "scripts/release_gate.py",
+      "line": 19,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 107,
+      "file": "scripts/release_gate.py",
+      "line": 20,
+      "scanner_id": "B607",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Executable resolves from the trusted operator/CI PATH, not a user-submitted target or model response.",
+      "local_first_impact": "PATH and dependency supply-chain integrity remain operator prerequisites; no arbitrary-code sandbox claim.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 108,
+      "file": "scripts/release_gate.py",
+      "line": 20,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 109,
+      "file": "scripts/release_gate.py",
+      "line": 34,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 110,
+      "file": "scripts/release_gate.py",
+      "line": 67,
+      "scanner_id": "B310",
+      "severity": "MEDIUM",
+      "confidence": "HIGH",
+      "assessment": "Request URL is constructed from a loopback-only owned service or fixed acceptance port; no untrusted uploaded URL or model output. The real runtime adapter separately validates endpoints and rejects redirects.",
+      "local_first_impact": "Verification tools require the named local service to be owned. Legacy start_host_browser.py is not part of the supported installer or executed by this cloud qualification.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 111,
+      "file": "scripts/release_gate.py",
+      "line": 118,
+      "scanner_id": "B607",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Executable resolves from the trusted operator/CI PATH, not a user-submitted target or model response.",
+      "local_first_impact": "PATH and dependency supply-chain integrity remain operator prerequisites; no arbitrary-code sandbox claim.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 112,
+      "file": "scripts/release_gate.py",
+      "line": 118,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 113,
+      "file": "scripts/release_gate.py",
+      "line": 142,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 114,
+      "file": "scripts/release_gate.py",
+      "line": 146,
+      "scanner_id": "B310",
+      "severity": "MEDIUM",
+      "confidence": "HIGH",
+      "assessment": "Request URL is constructed from a loopback-only owned service or fixed acceptance port; no untrusted uploaded URL or model output. The real runtime adapter separately validates endpoints and rejects redirects.",
+      "local_first_impact": "Verification tools require the named local service to be owned. Legacy start_host_browser.py is not part of the supported installer or executed by this cloud qualification.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 115,
+      "file": "scripts/release_gate.py",
+      "line": 146,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 116,
+      "file": "scripts/release_gate.py",
+      "line": 151,
+      "scanner_id": "B310",
+      "severity": "MEDIUM",
+      "confidence": "HIGH",
+      "assessment": "Request URL is constructed from a loopback-only owned service or fixed acceptance port; no untrusted uploaded URL or model output. The real runtime adapter separately validates endpoints and rejects redirects.",
+      "local_first_impact": "Verification tools require the named local service to be owned. Legacy start_host_browser.py is not part of the supported installer or executed by this cloud qualification.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 117,
+      "file": "scripts/release_gate.py",
+      "line": 151,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 118,
+      "file": "scripts/start_host_browser.py",
+      "line": 3,
+      "scanner_id": "B404",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Import-only warning. Every subprocess call in this module was inspected separately below.",
+      "local_first_impact": "Operator executes reviewed development/qualification code; importing subprocess grants no workload permission.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 119,
+      "file": "scripts/start_host_browser.py",
+      "line": 11,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 120,
+      "file": "scripts/start_host_browser.py",
+      "line": 14,
+      "scanner_id": "B310",
+      "severity": "MEDIUM",
+      "confidence": "HIGH",
+      "assessment": "Request URL is constructed from a loopback-only owned service or fixed acceptance port; no untrusted uploaded URL or model output. The real runtime adapter separately validates endpoints and rejects redirects.",
+      "local_first_impact": "Verification tools require the named local service to be owned. Legacy start_host_browser.py is not part of the supported installer or executed by this cloud qualification.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 121,
+      "file": "scripts/suite_acceptance.py",
+      "line": 19,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 122,
+      "file": "scripts/suite_acceptance.py",
+      "line": 29,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 123,
+      "file": "scripts/suite_acceptance.py",
+      "line": 30,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 124,
+      "file": "scripts/suite_acceptance.py",
+      "line": 31,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 125,
+      "file": "scripts/suite_acceptance.py",
+      "line": 37,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 126,
+      "file": "scripts/verify_wheel.py",
+      "line": 6,
+      "scanner_id": "B404",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Import-only warning. Every subprocess call in this module was inspected separately below.",
+      "local_first_impact": "Operator executes reviewed development/qualification code; importing subprocess grants no workload permission.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 127,
+      "file": "scripts/verify_wheel.py",
+      "line": 11,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 128,
+      "file": "scripts/verify_wheel.py",
+      "line": 16,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 129,
+      "file": "scripts/verify_wheel.py",
+      "line": 30,
+      "scanner_id": "B603",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "No request/model/artifact text reaches an executable or shell. Arguments are fixed tooling, sys.executable, reviewed paths or operator CLI selections; shell=True is absent.",
+      "local_first_impact": "A malicious local executable, interpreter or checkout is outside logical account isolation; use a trusted OS account and checkout.",
+      "exploitable_from_untrusted_evaluation_input": false
+    },
+    {
+      "finding": 130,
+      "file": "scripts/website_check.py",
+      "line": 21,
+      "scanner_id": "B101",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "assessment": "Verification assertion, not production authorization. Current-source acceptance guards reject optimized Python. The older integration proof now also refuses -O before workspace access, covered by a regression test.",
+      "local_first_impact": "Run qualification with assertions enabled. These assertions cannot confer trusted-runner status; no runtime security decision relies on assert.",
+      "exploitable_from_untrusted_evaluation_input": false
+    }
+  ],
+  "counts": {
+    "LOW": 115,
+    "MEDIUM": 15
+  },
+  "source_digests": [
+    {
+      "path": "runner/praxis/server.py",
+      "sha256": "42e41d330d505be23561d76417b9f613b80ec43c91ef669e71eda6c1e026631b"
+    },
+    {
+      "path": "runner/praxis/worlds.py",
+      "sha256": "7d7f9a2a937fad35e4757a06c7efe257bf01001792132bfbde43cd2ce5b490a2"
+    },
+    {
+      "path": "scripts/browser_check.py",
+      "sha256": "a423d99a785c28eb3738855b679fb861249ba0399b596b5ea3653e3676dbaf23"
+    },
+    {
+      "path": "scripts/build.py",
+      "sha256": "b215899582f326a9c2662563da7ab737449d3d6dd72c58b51ee2a19abd64fcce"
+    },
+    {
+      "path": "scripts/ci_failure_annotations.py",
+      "sha256": "692e6d7d5c826cf13307f5034d073a7fc46422ee57b2e234afed607519813e98"
+    },
+    {
+      "path": "scripts/coverage_acceptance.py",
+      "sha256": "f928109821e45fcd20d5a8da1fade440627aa59e87f8a56465533ca81c63ef1c"
+    },
+    {
+      "path": "scripts/db_reliability.py",
+      "sha256": "11b55e209759c293b0add4d900f56a54cb9f856d564a78983eca5b8c7dfaed31"
+    },
+    {
+      "path": "scripts/dev.py",
+      "sha256": "ec656ffdfebb27eed9d232d199935ccd755c80a7c6b9890eba3ad562be83ba61"
+    },
+    {
+      "path": "scripts/diff_coverage.py",
+      "sha256": "820b86c9d7edf3b73209b3be154785fc2e859bbef45bc0f9139d857fca49da11"
+    },
+    {
+      "path": "scripts/evidence_identity.py",
+      "sha256": "21b43e43e01971f460bd9da1cc79be74686c0fca14e94093e0a79a518046aa0c"
+    },
+    {
+      "path": "scripts/integration_proof.py",
+      "sha256": "7211f7f9f665389a263dfc0aaf7989a366f8d662559e9c7bc6822eb6f028b967"
+    },
+    {
+      "path": "scripts/postgres_acceptance.py",
+      "sha256": "89d7aaa74aa9dbc663086eae8b8dc71488df22caed09fd6e3d93156a711dc0ab"
+    },
+    {
+      "path": "scripts/postgres_container_check.py",
+      "sha256": "e718587ad460596f53028d37410d5ab8eb24fd067d63cff500c7083061486600"
+    },
+    {
+      "path": "scripts/qualify_local.py",
+      "sha256": "0a72606d2e92fa5c397b172ad6ca63d2b00794fb1771db06c6b617cb213451dd"
+    },
+    {
+      "path": "scripts/real_inference_acceptance.py",
+      "sha256": "f34202d3b5f21e32dbc67587f487882f254c8a971a487e0c357b67c952b34870"
+    },
+    {
+      "path": "scripts/release_gate.py",
+      "sha256": "ab48be01dbe968665aaf6b20974e30e7be2551200df4b93418e2cc48ad4d90f8"
+    },
+    {
+      "path": "scripts/start_host_browser.py",
+      "sha256": "d266cd58e33978a74f915133d8ac4a6ccf9d27dd427e4c4ae2b2803646e85e49"
+    },
+    {
+      "path": "scripts/suite_acceptance.py",
+      "sha256": "f2b7b5104c4ee516a96b789afe7773362aaf70502d1b07d7e79b0b571cb1907f"
+    },
+    {
+      "path": "scripts/verify_wheel.py",
+      "sha256": "5762b59f6169d5be6f0c6a4fec02712b833f2f5acdc9d3f673f6bdda4410d026"
+    },
+    {
+      "path": "scripts/website_check.py",
+      "sha256": "5ccc5da9031ed39905c132d2ddaf5b67e0b78d03eb56c12bcfa95030de00b233"
+    }
+  ],
+  "repairs_outside_scanner": "Backup manifests now must match DB artifact references and foreign keys; durable publication and escaped SQLite URIs. Infrastructure proof rejects optimized execution. Website groups now have semantic roles.",
+  "residual_risks": [
+    "Privileged/same-OS-user processes can read workspace/backup files and control PATH; local accounts are not OS isolation.",
+    "No arbitrary untrusted code execution support.",
+    "No physical power-cut/filesystem firmware durability certification; ENOSPC syscall tests are explicitly injected.",
+    "Raw scanner findings retained; no blanket rule suppressions, no zero-findings claim."
+  ]
+}

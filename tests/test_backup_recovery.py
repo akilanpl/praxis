@@ -34,6 +34,20 @@ def test_future_schema_refused_without_modifying_existing_database(tmp_path):
     with pytest.raises(ValueError):Store(db)
     with sqlite3.connect(db) as c:assert c.execute('PRAGMA user_version').fetchone()[0]==1
 
+def test_backup_manifest_cannot_omit_database_objects(tmp_path):
+    api=ControlPlane(tmp_path/'source/db.sqlite')
+    try:
+        account=api.account('/api/auth/register',{'username':'manifest-owner','password':'test-password-123'})
+        item=ingest(api.store,account['user']['id'],{'filename':'owned.txt','content_base64':base64.b64encode(b'preserve me').decode()})
+        destination=tmp_path/'snapshot';backup(api.store.path,destination)
+        manifest=json.loads((destination/'manifest.json').read_text());manifest['objects']=[]
+        (destination/'manifest.json').write_text(json.dumps(manifest))
+        (destination/'objects'/item['sha256']).unlink()
+        with pytest.raises(ValueError,match='referenced'):verify(destination)
+        with pytest.raises(ValueError):restore(destination,tmp_path/'restore')
+        assert not (tmp_path/'restore').exists()
+    finally:api.pool.shutdown(wait=True)
+
 def test_private_database_and_uploaded_object_permissions(tmp_path):
     import stat
     api=ControlPlane(tmp_path/'private/db.sqlite')

@@ -1,4 +1,5 @@
 """Execute persisted local infrastructure proof; no model inference is represented."""
+if not __debug__:raise RuntimeError("Verification requires Python assertions enabled")
 import base64
 import io
 import json

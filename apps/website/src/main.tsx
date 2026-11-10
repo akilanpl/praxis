@@ -110,6 +110,7 @@ function App() {
           </div>
           <div
             className="contract"
+            role="group"
             aria-label="Illustrative contract, not a live evaluation"
           >
             <div className="panel-label">
@@ -146,7 +147,7 @@ function App() {
             </p>
           </div>
         </section>
-        <div className="facts" aria-label="Repository coverage">
+        <div className="facts" role="group" aria-label="Repository coverage">
           <span>
             <strong>{suites.length.toString().padStart(2, "0")}</strong> public
             suites

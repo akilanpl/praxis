@@ -20,6 +20,7 @@
     "test:typescript": "vitest run --coverage"
   },
   "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
     "@huggingface/transformers": "4.3.2",
     "@testing-library/react": "16.3.0",
     "@testing-library/user-event": "14.6.1",
