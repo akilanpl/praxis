@@ -20,7 +20,7 @@ SHA=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
 BRANCH=subprocess.check_output(['git','branch','--show-current'],text=True).strip()
 OUT=ROOT/'.pushgate/reports';OUT.mkdir(parents=True,exist_ok=True)
 EVIDENCE=Path(os.environ.get('PRAXIS_EVIDENCE_DIR',str(ROOT/'work/acceptance'/SHA))).resolve();EVIDENCE.mkdir(parents=True,exist_ok=True)
-ENV=dict(os.environ,PRAXIS_TS_COVERAGE_DIR=str(OUT/'typescript'),PRAXIS_EVIDENCE_DIR=str(EVIDENCE),PYTHONPYCACHEPREFIX=str(ROOT/'work/pycache'),PIP_CACHE_DIR=str(ROOT/'work/pip-cache'))
+ENV=dict(os.environ,PYTHONPATH=str(ROOT/'runner'),PRAXIS_TS_COVERAGE_DIR=str(OUT/'typescript'),PRAXIS_EVIDENCE_DIR=str(EVIDENCE),PYTHONPYCACHEPREFIX=str(ROOT/'work/pycache'),PIP_CACHE_DIR=str(ROOT/'work/pip-cache'))
 if sys.platform=='darwin':ENV.setdefault('PRAXIS_BROWSER_CDP','http://127.0.0.1:9333')
 P=ROOT/'.venv/bin/python'
 report={'commit':SHA,'branch':BRANCH,'seed':73,'scope':'local code acceptance; no claim of hosted Auth or production deployment','tests':[],'stages':[],'environment_started':True,'security_clear':True,'coverage':{}}
