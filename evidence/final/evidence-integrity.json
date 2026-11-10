@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "scope": "current public suites; two newly captured real-model result digests, output hashes, ordered events and escaped printable HTML",
+  "checks": [
+    {
+      "name": "six source suites and forty scenarios validate",
+      "passed": true
+    },
+    {
+      "name": "real-SmolLM2-360M-Instruct-ONNX.json",
+      "passed": true,
+      "evidence_hash": "9913dd454c3775522767ee3d2109b7cc9fff4dee58a10633e043d2909fc9044f",
+      "tasks": 8,
+      "benchmark_passed": 0
+    },
+    {
+      "name": "real-SmolLM2-135M-Instruct-ONNX.json",
+      "passed": true,
+      "evidence_hash": "e494fd443a9b05f3c86229ac204e0140d4c69f15667fa1f05526d85e52fec9ef",
+      "tasks": 8,
+      "benchmark_passed": 0
+    }
+  ]
+}

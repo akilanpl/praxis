@@ -1,0 +1,184 @@
+{
+  "status": "passed",
+  "scope": "built repository website over loopback HTTP; no public deployment",
+  "checks": [
+    {
+      "name": "six public suite links from source",
+      "passed": true
+    },
+    {
+      "name": "forty source scenarios",
+      "passed": true
+    },
+    {
+      "name": "unique semantic page heading",
+      "passed": true
+    },
+    {
+      "name": "page metadata",
+      "passed": true
+    },
+    {
+      "name": "meaningful link: Skip to content",
+      "passed": true
+    },
+    {
+      "name": "anchor exists: #main",
+      "passed": true
+    },
+    {
+      "name": "meaningful link: \u25a3 PRAXIS",
+      "passed": true
+    },
+    {
+      "name": "meaningful link: Architecture",
+      "passed": true
+    },
+    {
+      "name": "anchor exists: #architecture",
+      "passed": true
+    },
+    {
+      "name": "meaningful link: Suites",
+      "passed": true
+    },
+    {
+      "name": "anchor exists: #suites",
+      "passed": true
+    },
+    {
+      "name": "meaningful link: Status",
+      "passed": true
+    },
+    {
+      "name": "anchor exists: #status",
+      "passed": true
+    },
+    {
+      "name": "meaningful link: GitHub \u2197\ufe0e",
+      "passed": true
+    },
+    {
+      "name": "meaningful link: Explore GitHub \u2197\ufe0e",
+      "passed": true
+    },
+    {
+      "name": "meaningful link: Explore the architecture \u2193",
+      "passed": true
+    },
+    {
+      "name": "anchor exists: #architecture",
+      "passed": true
+    },
+    {
+      "name": "meaningful link: Structured agent reliabilitystructured-agent / v1.0.008 \u2197\ufe0e",
+      "passed": true
+    },
+    {
+      "name": "meaningful link: Grounded research and uncertaintygrounded-research / v1.0.008 \u2197\ufe0e",
+      "passed": true
+    },
+    {
+      "name": "meaningful link: Security and failure recoverysecurity-resilience / v1.0.008 \u2197\ufe0e",
+      "passed": true
+    },
+    {
+      "name": "meaningful link: Developer and application contractsdeveloper-contracts / v1.0.008 \u2197\ufe0e",
+      "passed": true
+    },
+    {
+      "name": "meaningful link: Executable agent workflowsagent-workflows / v1.0.004 \u2197\ufe0e",
+      "passed": true
+    },
+    {
+      "name": "meaningful link: Executable HTTP application contractshttp-application / v1.0.004 \u2197\ufe0e",
+      "passed": true
+    },
+    {
+      "name": "meaningful link: Inspect recorded acceptance \u2197\ufe0e",
+      "passed": true
+    },
+    {
+      "name": "meaningful link: Inspect recorded acceptance \u2197\ufe0e",
+      "passed": true
+    },
+    {
+      "name": "meaningful link: Read the security model \u2197\ufe0e",
+      "passed": true
+    },
+    {
+      "name": "meaningful link: Setup instructions, real endpoint configuration and reports \u2197\ufe0e",
+      "passed": true
+    },
+    {
+      "name": "meaningful link: Read the current command results and evidence scope \u2197\ufe0e",
+      "passed": true
+    },
+    {
+      "name": "meaningful link: Explore Praxis on GitHub \u2197\ufe0e",
+      "passed": true
+    },
+    {
+      "name": "meaningful link: PRAXIS",
+      "passed": true
+    },
+    {
+      "name": "meaningful link: GitHub \u2197\ufe0e",
+      "passed": true
+    },
+    {
+      "name": "meaningful link: Documentation",
+      "passed": true
+    },
+    {
+      "name": "meaningful link: Architecture",
+      "passed": true
+    },
+    {
+      "name": "meaningful link: Verification",
+      "passed": true
+    },
+    {
+      "name": "meaningful link: License",
+      "passed": true
+    },
+    {
+      "name": "keyboard skip link",
+      "passed": true
+    },
+    {
+      "name": "skip reaches main",
+      "passed": true
+    },
+    {
+      "name": "no overflow at 390",
+      "passed": true
+    },
+    {
+      "name": "no overflow at 768",
+      "passed": true
+    },
+    {
+      "name": "no overflow at 1280",
+      "passed": true
+    },
+    {
+      "name": "architecture CTA",
+      "passed": true
+    },
+    {
+      "name": "no browser errors",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "no broken local assets",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "name": "no third-party scripts",
+      "passed": true
+    }
+  ]
+}

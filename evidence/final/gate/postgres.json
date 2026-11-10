@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "scope": "real PostgreSQL; local auth.uid/JWT claim fixture, NOT hosted Supabase Auth",
+  "network": "none",
+  "checks": [
+    {
+      "name": "tracked migration matches schema and applies to empty database",
+      "passed": true
+    },
+    {
+      "name": "ownership.sql",
+      "passed": true
+    },
+    {
+      "name": "persistence.sql",
+      "passed": true
+    },
+    {
+      "name": "RLS enabled on all 28 tables",
+      "passed": true
+    }
+  ],
+  "version": "PostgreSQL 17.11 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit",
+  "image": "postgres@sha256:3540c0362c809df084ffac0ae69fe794515f9de92692f02178bcdce0ef0302ac",
+  "server_stopped": true
+}

@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "scope": "actual local workerd; no hosted Auth or deployment",
+  "health": {
+    "status": 200,
+    "body": {
+      "service": "praxis",
+      "mode": "cloud-metadata",
+      "inference": false
+    }
+  },
+  "unconfigured": {
+    "status": 503,
+    "error": "Supabase is not configured"
+  }
+}

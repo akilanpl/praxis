@@ -2,6 +2,10 @@
 
 The complete integrated application currently runs locally. The Cloudflare Worker is a separate, deliberately limited metadata control plane: validated Supabase authentication, immutable target registration, versioned run requests, evidence submission and private run reads. It does not execute inference, custom URL requests, HTML or user code. Cloud Arena, cloud cancellation/background dispatch, official publication, R2 uploads and frontend Supabase sign-in are not connected. Do not deploy the local frontend against this Worker and describe it as feature complete.
 
+## Historical source review checkpoint
+
+The following paragraph describes the earlier environment, not current cloud acceptance. Current disposable PostgreSQL 17 results are in `evidence/final/postgres.json`; hosted Supabase Auth remains unverified.
+
 ## Reviewed source and verification
 
 The Worker validates access tokens by contacting Supabase Auth `/auth/v1/user`; it forwards the same user token to PostgREST, preserving database RLS. No service-role fallback exists. The Supabase URL is operator configured, never supplied by a request. User metadata never determines access. See [Supabase authentication](https://supabase.com/docs/reference/javascript/auth-getuser) and [row security](https://supabase.com/docs/guides/database/postgres/row-level-security). These official docs were reviewed during implementation. The changelog markdown could not be fetched by the available web reader (unsupported markdown response), and direct host DNS was unavailable; no claim of complete changelog review is made.
@@ -27,3 +31,9 @@ Authenticated endpoints require a Supabase bearer access token. `/api/health` is
 All responses have request IDs, no-store, nosniff and restrictive CSP. Cross-origin access is denied except the exact configured frontend origin. Configure Cloudflare edge rate limits before public exposure: application-level distributed quota enforcement is not implemented. The API exposes at most 100 records per list; cursor pagination remains unsupported. Revocation and account deletion require an operator process; validate existing sessions before sensitive lifecycle actions.
 
 Large artifacts remain local. R2 has no binding or public upload route until authenticated object authorization, MIME sniffing, retention and signed access are implemented. Browser previews must remain isolated from the primary origin.
+
+## Dedicated project website
+
+`npm run website:build` emits static `apps/website/dist`; it is separate from the local evaluation frontend and metadata Worker. No hosting resources, Site registration, production secrets or public deployment were created in this mission. Before approved hosting, configure the actual canonical origin/social URL, static security headers and real-URL acceptance. See `apps/website/README.md`.
+
+The current cloud audit verified schema/migration equality and executed ownership/persistence SQL against real network-isolated PostgreSQL 17 with synthetic auth claims. This is local database acceptance only, not hosted Supabase authentication or a remote migration. GitHub credentials may independently block branch/PR publication; see the final handoff for actual operations.

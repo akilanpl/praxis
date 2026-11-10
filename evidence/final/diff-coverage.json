@@ -1,0 +1,9 @@
+{
+  "status": "not verified",
+  "base": "8f1e8847b31fc0b81fd17c1bdacfa626dc737f1e",
+  "measurement": [
+    null,
+    "no executable-line coverage for apps/web/src/main.tsx"
+  ],
+  "scope": "Python line/branch coverage measured; changed frontend executable-line coverage not available. Feature gate retains conservative score cap."
+}

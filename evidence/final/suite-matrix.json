@@ -1,0 +1,126 @@
+{
+  "status": "passed",
+  "scope": "all 40 public scenarios in positive and negative executions; deterministic model/tool fixtures, actual HTTP against an explicitly owned regression server; no neural inference in this receipt",
+  "runs": [
+    {
+      "suite": "agent-workflows",
+      "version": "1.0.0",
+      "kind": "agent",
+      "case": "passing",
+      "passed": 4,
+      "total": 4,
+      "trust": "demo",
+      "evidence_hash": "024d30d292cb2084059429609b051e6448c2c471d050a457dbe40d636ce02fd8"
+    },
+    {
+      "suite": "agent-workflows",
+      "version": "1.0.0",
+      "kind": "agent",
+      "case": "failing",
+      "passed": 0,
+      "total": 4,
+      "trust": "demo",
+      "evidence_hash": "ccf13d294df721c5eabc9fcea0c4888074b3dc474a71cfa94f7d535bad51a255"
+    },
+    {
+      "suite": "developer-contracts",
+      "version": "1.0.0",
+      "kind": "model",
+      "case": "passing",
+      "passed": 8,
+      "total": 8,
+      "trust": "demo",
+      "evidence_hash": "b3c870fb265e18684380aeb1deb31c05eb067202907e8a6c26d711de433c64ba"
+    },
+    {
+      "suite": "developer-contracts",
+      "version": "1.0.0",
+      "kind": "model",
+      "case": "failing",
+      "passed": 0,
+      "total": 8,
+      "trust": "demo",
+      "evidence_hash": "a5e7696929001bf899e6bce027d2a4333eae1bd769e2c7ffc3ef9722aee48d73"
+    },
+    {
+      "suite": "grounded-research",
+      "version": "1.0.0",
+      "kind": "model",
+      "case": "passing",
+      "passed": 8,
+      "total": 8,
+      "trust": "demo",
+      "evidence_hash": "0c267faf0144168ce143e065c316ce527ec6b02062edc3ae5d8ca9b2106cf053"
+    },
+    {
+      "suite": "grounded-research",
+      "version": "1.0.0",
+      "kind": "model",
+      "case": "failing",
+      "passed": 0,
+      "total": 8,
+      "trust": "demo",
+      "evidence_hash": "c4d1c743e86b56403fad867f2b98387f0a73dbfd3b2b3ed6a51962eea0a80ac8"
+    },
+    {
+      "suite": "http-application",
+      "version": "1.0.0",
+      "kind": "application",
+      "case": "passing",
+      "passed": 4,
+      "total": 4,
+      "trust": "self-reported",
+      "evidence_hash": "a050521b9c9e65fc91c374b232343cc264e505e316971d1b726989788d1a8181"
+    },
+    {
+      "suite": "http-application",
+      "version": "1.0.0",
+      "kind": "application",
+      "case": "failing",
+      "passed": 0,
+      "total": 4,
+      "trust": "self-reported",
+      "evidence_hash": "086488f371b5d0396664157c6743030f9c65c9548adbd831ea0cc9f01eacc268"
+    },
+    {
+      "suite": "security-resilience",
+      "version": "1.0.0",
+      "kind": "model",
+      "case": "passing",
+      "passed": 8,
+      "total": 8,
+      "trust": "demo",
+      "evidence_hash": "653fff58585f596d6812a2a437d18babee943ee99e051301adf60c6a77c36535"
+    },
+    {
+      "suite": "security-resilience",
+      "version": "1.0.0",
+      "kind": "model",
+      "case": "failing",
+      "passed": 0,
+      "total": 8,
+      "trust": "demo",
+      "evidence_hash": "b20f20bdec2d5f115c551f0f12f07814ae592b05fa4e5d30ae7ca5ef23b2de90"
+    },
+    {
+      "suite": "structured-agent",
+      "version": "1.0.0",
+      "kind": "model",
+      "case": "passing",
+      "passed": 8,
+      "total": 8,
+      "trust": "demo",
+      "evidence_hash": "ed9d54f3508f7b6dea47ae05fd9e698cffa60cb6f660c2413b8688678d9efceb"
+    },
+    {
+      "suite": "structured-agent",
+      "version": "1.0.0",
+      "kind": "model",
+      "case": "failing",
+      "passed": 0,
+      "total": 8,
+      "trust": "demo",
+      "evidence_hash": "d0423cdd6ca2aed60ec411570fb2ea36b587cd6e9cfc6884f6a221abac2d47a7"
+    }
+  ]
+}

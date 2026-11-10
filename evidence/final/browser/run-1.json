@@ -1,0 +1,879 @@
+{
+  "conditions_hash": "65a796a48e0099893b6091a8b35f36b126307dc8a42aa086bcfa676b4c887c98",
+  "config_hash": "470afb57803faa2081e65b2afde3432f47631794954b9f5834c5a77dfba8f6c9",
+  "created_at": 1794277708.1746686,
+  "events": [
+    {
+      "elapsed_ms": 1.464,
+      "seed": 73,
+      "sequence": 0,
+      "suite": "structured-agent",
+      "type": "run_started"
+    },
+    {
+      "elapsed_ms": 2.985,
+      "sequence": 1,
+      "task_id": "route-outage",
+      "type": "task_started"
+    },
+    {
+      "elapsed_ms": 4.954,
+      "latency_ms": 1.95,
+      "passed": true,
+      "sequence": 2,
+      "task_id": "route-outage",
+      "type": "task_completed"
+    },
+    {
+      "elapsed_ms": 7.914,
+      "sequence": 3,
+      "task_id": "select-tool",
+      "type": "task_started"
+    },
+    {
+      "elapsed_ms": 10.262,
+      "latency_ms": 2.327,
+      "passed": true,
+      "sequence": 4,
+      "task_id": "select-tool",
+      "type": "task_completed"
+    },
+    {
+      "elapsed_ms": 13.871,
+      "sequence": 5,
+      "task_id": "refund-workflow",
+      "type": "task_started"
+    },
+    {
+      "elapsed_ms": 14.853,
+      "latency_ms": 0.95,
+      "passed": true,
+      "sequence": 6,
+      "task_id": "refund-workflow",
+      "type": "task_completed"
+    },
+    {
+      "elapsed_ms": 16.212,
+      "sequence": 7,
+      "task_id": "json-boundary",
+      "type": "task_started"
+    },
+    {
+      "elapsed_ms": 17.007,
+      "latency_ms": 0.759,
+      "passed": true,
+      "sequence": 8,
+      "task_id": "json-boundary",
+      "type": "task_completed"
+    },
+    {
+      "elapsed_ms": 18.991,
+      "sequence": 9,
+      "task_id": "deduplicate-events",
+      "type": "task_started"
+    },
+    {
+      "elapsed_ms": 44.215,
+      "latency_ms": 25.195,
+      "passed": true,
+      "sequence": 10,
+      "task_id": "deduplicate-events",
+      "type": "task_completed"
+    },
+    {
+      "elapsed_ms": 50.328,
+      "sequence": 11,
+      "task_id": "schedule-dependency",
+      "type": "task_started"
+    },
+    {
+      "elapsed_ms": 51.344,
+      "latency_ms": 0.996,
+      "passed": true,
+      "sequence": 12,
+      "task_id": "schedule-dependency",
+      "type": "task_completed"
+    },
+    {
+      "elapsed_ms": 52.251,
+      "sequence": 13,
+      "task_id": "inventory-reservation",
+      "type": "task_started"
+    },
+    {
+      "elapsed_ms": 52.989,
+      "latency_ms": 0.712,
+      "passed": true,
+      "sequence": 14,
+      "task_id": "inventory-reservation",
+      "type": "task_completed"
+    },
+    {
+      "elapsed_ms": 55.982,
+      "sequence": 15,
+      "task_id": "pagination",
+      "type": "task_started"
+    },
+    {
+      "elapsed_ms": 56.747,
+      "latency_ms": 0.747,
+      "passed": true,
+      "sequence": 16,
+      "task_id": "pagination",
+      "type": "task_completed"
+    },
+    {
+      "elapsed_ms": 57.629,
+      "passed": 8,
+      "sequence": 17,
+      "status": "completed",
+      "total": 8,
+      "type": "run_completed"
+    }
+  ],
+  "finished_at": 1794277708.247218,
+  "id": "07cd45be-bc07-4ef5-b397-3b1ca7836972",
+  "public": true,
+  "request_fingerprint": "3898b030a3f07b777e4b48c6edf3ff1685e424d7b88f9d41382d32cfa3b2765b",
+  "result": {
+    "adapter_version": "1",
+    "configuration": {
+      "execution": {
+        "max_output_tokens": 1024,
+        "max_retries": 1,
+        "max_scenario_count": 64,
+        "max_wall_seconds": 120
+      },
+      "target": {
+        "allow_mutation": false,
+        "authorized": false,
+        "capabilities": [
+          "text",
+          "json"
+        ],
+        "id": "556dcbe7-1a3d-4954-b8d5-17ffca69f5e8",
+        "kind": "model",
+        "model": "demo",
+        "name": "Explicit passing fixture",
+        "provider": "demo"
+      }
+    },
+    "cost": {
+      "estimated_usd": null,
+      "status": "unknown"
+    },
+    "duration_ms": 57.628,
+    "events": [
+      {
+        "elapsed_ms": 1.464,
+        "seed": 73,
+        "sequence": 0,
+        "suite": "structured-agent",
+        "type": "run_started"
+      },
+      {
+        "elapsed_ms": 2.985,
+        "sequence": 1,
+        "task_id": "route-outage",
+        "type": "task_started"
+      },
+      {
+        "elapsed_ms": 4.954,
+        "latency_ms": 1.95,
+        "passed": true,
+        "sequence": 2,
+        "task_id": "route-outage",
+        "type": "task_completed"
+      },
+      {
+        "elapsed_ms": 7.914,
+        "sequence": 3,
+        "task_id": "select-tool",
+        "type": "task_started"
+      },
+      {
+        "elapsed_ms": 10.262,
+        "latency_ms": 2.327,
+        "passed": true,
+        "sequence": 4,
+        "task_id": "select-tool",
+        "type": "task_completed"
+      },
+      {
+        "elapsed_ms": 13.871,
+        "sequence": 5,
+        "task_id": "refund-workflow",
+        "type": "task_started"
+      },
+      {
+        "elapsed_ms": 14.853,
+        "latency_ms": 0.95,
+        "passed": true,
+        "sequence": 6,
+        "task_id": "refund-workflow",
+        "type": "task_completed"
+      },
+      {
+        "elapsed_ms": 16.212,
+        "sequence": 7,
+        "task_id": "json-boundary",
+        "type": "task_started"
+      },
+      {
+        "elapsed_ms": 17.007,
+        "latency_ms": 0.759,
+        "passed": true,
+        "sequence": 8,
+        "task_id": "json-boundary",
+        "type": "task_completed"
+      },
+      {
+        "elapsed_ms": 18.991,
+        "sequence": 9,
+        "task_id": "deduplicate-events",
+        "type": "task_started"
+      },
+      {
+        "elapsed_ms": 44.215,
+        "latency_ms": 25.195,
+        "passed": true,
+        "sequence": 10,
+        "task_id": "deduplicate-events",
+        "type": "task_completed"
+      },
+      {
+        "elapsed_ms": 50.328,
+        "sequence": 11,
+        "task_id": "schedule-dependency",
+        "type": "task_started"
+      },
+      {
+        "elapsed_ms": 51.344,
+        "latency_ms": 0.996,
+        "passed": true,
+        "sequence": 12,
+        "task_id": "schedule-dependency",
+        "type": "task_completed"
+      },
+      {
+        "elapsed_ms": 52.251,
+        "sequence": 13,
+        "task_id": "inventory-reservation",
+        "type": "task_started"
+      },
+      {
+        "elapsed_ms": 52.989,
+        "latency_ms": 0.712,
+        "passed": true,
+        "sequence": 14,
+        "task_id": "inventory-reservation",
+        "type": "task_completed"
+      },
+      {
+        "elapsed_ms": 55.982,
+        "sequence": 15,
+        "task_id": "pagination",
+        "type": "task_started"
+      },
+      {
+        "elapsed_ms": 56.747,
+        "latency_ms": 0.747,
+        "passed": true,
+        "sequence": 16,
+        "task_id": "pagination",
+        "type": "task_completed"
+      },
+      {
+        "elapsed_ms": 57.629,
+        "passed": 8,
+        "sequence": 17,
+        "status": "completed",
+        "total": 8,
+        "type": "run_completed"
+      }
+    ],
+    "evidence_hash": "9c62a2a2e019b1413a3d9d867f57239f1165efac2e6944c0c2eaa5d3a489a838",
+    "id": "4dcab033-2024-4aa2-a2ea-133e165a683b",
+    "model_config_hash": "efd1eaf5bb4cc057fcf6a05acd4ff91432714bcc8e6b074658a4ce47fc59d174",
+    "not_run_tasks": [],
+    "runner_version": "0.1.0",
+    "seed": 73,
+    "status": "completed",
+    "suite_hash": "2f1b713a2732b49eb39518b31dca6c68871e13b98955369ee830f53b5ebe3b3c",
+    "suite_slug": "structured-agent",
+    "suite_version": "1.0.0",
+    "summary": {
+      "assertions_passed": 24,
+      "assertions_total": 24,
+      "confidence_interval": [
+        0.6756,
+        1
+      ],
+      "dimensions": {
+        "correctness": {
+          "passed": 1,
+          "total": 1
+        },
+        "schema": {
+          "passed": 1,
+          "total": 1
+        },
+        "state": {
+          "passed": 4,
+          "total": 4
+        },
+        "tool_selection": {
+          "passed": 2,
+          "total": 2
+        }
+      },
+      "executed": 8,
+      "failed": 0,
+      "latency_p50_ms": 0.996,
+      "latency_p95_ms": 25.195,
+      "not_run": 0,
+      "pass_rate": 1.0,
+      "passed": 8,
+      "total": 8,
+      "weighted_assertion_rate": 1.0
+    },
+    "target_id": "556dcbe7-1a3d-4954-b8d5-17ffca69f5e8",
+    "target_kind": "model",
+    "target_name": "Explicit passing fixture",
+    "tasks": [
+      {
+        "artifact": {
+          "hash": "f574841e82ba78807dfcaa68cf44123112d5e94d781a0bc34201c356ecba3a35",
+          "mime": "application/json",
+          "type": "json"
+        },
+        "assertions": [
+          {
+            "actual": "valid",
+            "expected": {
+              "additionalProperties": false,
+              "properties": {
+                "priority": {
+                  "type": "string"
+                },
+                "team": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "priority",
+                "team"
+              ],
+              "type": "object"
+            },
+            "name": "JSON schema",
+            "passed": true,
+            "weight": 1
+          },
+          {
+            "actual": "urgent",
+            "expected": "urgent",
+            "name": "correctness: priority",
+            "passed": true,
+            "weight": 1
+          },
+          {
+            "actual": "technical",
+            "expected": "technical",
+            "name": "correctness: team",
+            "passed": true,
+            "weight": 1
+          }
+        ],
+        "attempts": 1,
+        "category": "correctness",
+        "error": null,
+        "id": "route-outage",
+        "latency_ms": 1.95,
+        "output": {
+          "priority": "urgent",
+          "team": "technical"
+        },
+        "passed": true,
+        "prompt": "Policy: production outages are urgent technical tickets. A customer says all production requests return 503. Return priority and team.",
+        "provider_metadata": {},
+        "tool_trace": [],
+        "usage": null
+      },
+      {
+        "artifact": {
+          "hash": "08353681f43db972f95c191a8c7e66086f4959b8504339d13de0e8708a4c16c0",
+          "mime": "application/json",
+          "type": "json"
+        },
+        "assertions": [
+          {
+            "actual": "valid",
+            "expected": {
+              "additionalProperties": false,
+              "properties": {
+                "arguments": {
+                  "type": "object"
+                },
+                "tool": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "tool",
+                "arguments"
+              ],
+              "type": "object"
+            },
+            "name": "JSON schema",
+            "passed": true,
+            "weight": 1
+          },
+          {
+            "actual": "lookup_customer",
+            "expected": "lookup_customer",
+            "name": "tool_selection: tool",
+            "passed": true,
+            "weight": 1
+          },
+          {
+            "actual": {
+              "id": "C42"
+            },
+            "expected": {
+              "id": "C42"
+            },
+            "name": "tool_selection: arguments",
+            "passed": true,
+            "weight": 1
+          }
+        ],
+        "attempts": 1,
+        "category": "tool_selection",
+        "error": null,
+        "id": "select-tool",
+        "latency_ms": 2.327,
+        "output": {
+          "arguments": {
+            "id": "C42"
+          },
+          "tool": "lookup_customer"
+        },
+        "passed": true,
+        "prompt": "Available tools: calculator(expression), lookup_customer(id), send_email(to,body). Request: find customer C42. Return tool and arguments.",
+        "provider_metadata": {},
+        "tool_trace": [],
+        "usage": null
+      },
+      {
+        "artifact": {
+          "hash": "389e63cf162253630c648f20d17b3946031a44cc0c42a582e930687c8ca8d224",
+          "mime": "application/json",
+          "type": "json"
+        },
+        "assertions": [
+          {
+            "actual": "valid",
+            "expected": {
+              "additionalProperties": false,
+              "properties": {
+                "amount": {
+                  "type": "integer"
+                },
+                "tools": {
+                  "type": "array"
+                }
+              },
+              "required": [
+                "tools",
+                "amount"
+              ],
+              "type": "object"
+            },
+            "name": "JSON schema",
+            "passed": true,
+            "weight": 1
+          },
+          {
+            "actual": [
+              "lookup_purchase",
+              "issue_refund"
+            ],
+            "expected": [
+              "lookup_purchase",
+              "issue_refund"
+            ],
+            "name": "tool_selection: tools",
+            "passed": true,
+            "weight": 1
+          },
+          {
+            "actual": 12,
+            "expected": 12,
+            "name": "tool_selection: amount",
+            "passed": true,
+            "weight": 1
+          }
+        ],
+        "attempts": 1,
+        "category": "tool_selection",
+        "error": null,
+        "id": "refund-workflow",
+        "latency_ms": 0.95,
+        "output": {
+          "amount": 12,
+          "tools": [
+            "lookup_purchase",
+            "issue_refund"
+          ]
+        },
+        "passed": true,
+        "prompt": "Policy: refunds require purchase lookup before refund. A $12 purchase P7 is within 30 days. Return ordered tools and final amount.",
+        "provider_metadata": {},
+        "tool_trace": [],
+        "usage": null
+      },
+      {
+        "artifact": {
+          "hash": "ad8c9e65e179be816df6b46ed084eefc717fa906a2cc2ff72ab5226ca4efc17c",
+          "mime": "application/json",
+          "type": "json"
+        },
+        "assertions": [
+          {
+            "actual": "valid",
+            "expected": {
+              "additionalProperties": false,
+              "properties": {
+                "order": {
+                  "type": "string"
+                },
+                "paid": {
+                  "type": "boolean"
+                },
+                "quantity": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "order",
+                "quantity",
+                "paid"
+              ],
+              "type": "object"
+            },
+            "name": "JSON schema",
+            "passed": true,
+            "weight": 1
+          },
+          {
+            "actual": "ORD-8",
+            "expected": "ORD-8",
+            "name": "schema: order",
+            "passed": true,
+            "weight": 1
+          },
+          {
+            "actual": 3,
+            "expected": 3,
+            "name": "schema: quantity",
+            "passed": true,
+            "weight": 1
+          },
+          {
+            "actual": true,
+            "expected": true,
+            "name": "schema: paid",
+            "passed": true,
+            "weight": 1
+          }
+        ],
+        "attempts": 1,
+        "category": "schema",
+        "error": null,
+        "id": "json-boundary",
+        "latency_ms": 0.759,
+        "output": {
+          "order": "ORD-8",
+          "paid": true,
+          "quantity": 3
+        },
+        "passed": true,
+        "prompt": "Extract exactly these fields: order ORD-8, quantity three, paid yes. Output order, quantity integer, paid boolean.",
+        "provider_metadata": {},
+        "tool_trace": [],
+        "usage": null
+      },
+      {
+        "artifact": {
+          "hash": "394a9dee6064cf093a0babcada62902b5f5641a5f89c2ac61fa2e0d405a0e356",
+          "mime": "application/json",
+          "type": "json"
+        },
+        "assertions": [
+          {
+            "actual": "valid",
+            "expected": {
+              "additionalProperties": false,
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "processed": {
+                  "type": "array"
+                }
+              },
+              "required": [
+                "processed",
+                "count"
+              ],
+              "type": "object"
+            },
+            "name": "JSON schema",
+            "passed": true,
+            "weight": 1
+          },
+          {
+            "actual": [
+              "a",
+              "b",
+              "c"
+            ],
+            "expected": [
+              "a",
+              "b",
+              "c"
+            ],
+            "name": "state: processed",
+            "passed": true,
+            "weight": 1
+          },
+          {
+            "actual": 3,
+            "expected": 3,
+            "name": "state: count",
+            "passed": true,
+            "weight": 1
+          }
+        ],
+        "attempts": 1,
+        "category": "state",
+        "error": null,
+        "id": "deduplicate-events",
+        "latency_ms": 25.195,
+        "output": {
+          "count": 3,
+          "processed": [
+            "a",
+            "b",
+            "c"
+          ]
+        },
+        "passed": true,
+        "prompt": "Process event IDs [a,b,a,c,b] exactly once in arrival order. Return processed list and count.",
+        "provider_metadata": {},
+        "tool_trace": [],
+        "usage": null
+      },
+      {
+        "artifact": {
+          "hash": "f924630723c3f92dcd9ebccb22b1d1898338335446d2973b7f9d72ab65ec83f6",
+          "mime": "application/json",
+          "type": "json"
+        },
+        "assertions": [
+          {
+            "actual": "valid",
+            "expected": {
+              "additionalProperties": false,
+              "properties": {
+                "order": {
+                  "type": "array"
+                }
+              },
+              "required": [
+                "order"
+              ],
+              "type": "object"
+            },
+            "name": "JSON schema",
+            "passed": true,
+            "weight": 1
+          },
+          {
+            "actual": [
+              "fetch",
+              "validate",
+              "publish"
+            ],
+            "expected": [
+              "fetch",
+              "validate",
+              "publish"
+            ],
+            "name": "state: order",
+            "passed": true,
+            "weight": 1
+          }
+        ],
+        "attempts": 1,
+        "category": "state",
+        "error": null,
+        "id": "schedule-dependency",
+        "latency_ms": 0.996,
+        "output": {
+          "order": [
+            "fetch",
+            "validate",
+            "publish"
+          ]
+        },
+        "passed": true,
+        "prompt": "Tasks: fetch has no dependency; validate depends on fetch; publish depends on validate. Return execution order.",
+        "provider_metadata": {},
+        "tool_trace": [],
+        "usage": null
+      },
+      {
+        "artifact": {
+          "hash": "35c4fa60e627f67d9aabf1c15a896765210988853e7e3a01e86dacb0e8e6428a",
+          "mime": "application/json",
+          "type": "json"
+        },
+        "assertions": [
+          {
+            "actual": "valid",
+            "expected": {
+              "additionalProperties": false,
+              "properties": {
+                "available": {
+                  "type": "integer"
+                },
+                "reserved": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "available",
+                "reserved"
+              ],
+              "type": "object"
+            },
+            "name": "JSON schema",
+            "passed": true,
+            "weight": 1
+          },
+          {
+            "actual": 3,
+            "expected": 3,
+            "name": "state: available",
+            "passed": true,
+            "weight": 1
+          },
+          {
+            "actual": 2,
+            "expected": 2,
+            "name": "state: reserved",
+            "passed": true,
+            "weight": 1
+          }
+        ],
+        "attempts": 1,
+        "category": "state",
+        "error": null,
+        "id": "inventory-reservation",
+        "latency_ms": 0.712,
+        "output": {
+          "available": 3,
+          "reserved": 2
+        },
+        "passed": true,
+        "prompt": "Stock starts 5. Reserve 3, then release 1. Return available and reserved. Release restores stock.",
+        "provider_metadata": {},
+        "tool_trace": [],
+        "usage": null
+      },
+      {
+        "artifact": {
+          "hash": "59a24d8d43223b8af7a98eaba8fe92b25b61531aa55be6928d2c1cf11d659af8",
+          "mime": "application/json",
+          "type": "json"
+        },
+        "assertions": [
+          {
+            "actual": "valid",
+            "expected": {
+              "additionalProperties": false,
+              "properties": {
+                "calls": {
+                  "type": "integer"
+                },
+                "items": {
+                  "type": "array"
+                }
+              },
+              "required": [
+                "items",
+                "calls"
+              ],
+              "type": "object"
+            },
+            "name": "JSON schema",
+            "passed": true,
+            "weight": 1
+          },
+          {
+            "actual": [
+              1,
+              2,
+              3
+            ],
+            "expected": [
+              1,
+              2,
+              3
+            ],
+            "name": "state: items",
+            "passed": true,
+            "weight": 1
+          },
+          {
+            "actual": 2,
+            "expected": 2,
+            "name": "state: calls",
+            "passed": true,
+            "weight": 1
+          }
+        ],
+        "attempts": 1,
+        "category": "state",
+        "error": null,
+        "id": "pagination",
+        "latency_ms": 0.747,
+        "output": {
+          "calls": 2,
+          "items": [
+            1,
+            2,
+            3
+          ]
+        },
+        "passed": true,
+        "prompt": "Pages are {items:[1,2],next:B}, B:{items:[3],next:null}. Return all items and calls.",
+        "provider_metadata": {},
+        "tool_trace": [],
+        "usage": null
+      }
+    ],
+    "trust": "demo",
+    "usage": {}
+  },
+  "seed": 73,
+  "status": "completed",
+  "suite_hash": "2f1b713a2732b49eb39518b31dca6c68871e13b98955369ee830f53b5ebe3b3c",
+  "suite_slug": "structured-agent",
+  "suite_version": "1.0.0",
+  "target_id": "556dcbe7-1a3d-4954-b8d5-17ffca69f5e8",
+  "target_name": "Explicit passing fixture",
+  "trust": "demo"
+}
