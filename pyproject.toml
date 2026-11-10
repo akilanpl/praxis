@@ -10,7 +10,7 @@ requires-python = ">=3.12"
 dependencies = ["pydantic>=1.10,<3", "jsonschema>=4.17,<5"]
 
 [project.optional-dependencies]
-test = ["pytest>=9.0.3,<10", "pytest-cov>=7,<8", "pip-audit>=2.9,<3"]
+test = ["pytest>=9.0.3,<10", "pytest-cov>=7,<8", "pip-audit>=2.9,<3", "bandit==1.8.6", "defusedxml>=0.7.1,<1"]
 browser = ["playwright>=1.48,<2"]
 
 [project.scripts]
@@ -28,3 +28,7 @@ testpaths = ["tests"]
 
 [tool.setuptools.data-files]
 "share/praxis/scenarios" = ["packages/scenarios/structured-agent-v1.json", "packages/scenarios/grounded-research-v1.json", "packages/scenarios/security-resilience-v1.json", "packages/scenarios/developer-contracts-v1.json", "packages/scenarios/agent-workflows-v1.json", "packages/scenarios/http-application-v1.json"]
+
+[tool.coverage.run]
+branch = true
+concurrency = ["thread", "greenlet"]

@@ -1,10 +1,11 @@
 """HTTP application evaluation, executed only by a user-controlled local runner."""
 import json
+from http.client import HTTPException, RemoteDisconnected
 import time
 import urllib.error
 import urllib.parse
 import urllib.request
-from .adapters import AdapterError, MAX_RESPONSE_BYTES, NoRedirect, read_bounded
+from .adapters import AdapterError, NoRedirect, read_bounded, number
 
 def invoke_application(target,task,seed=73):
     request=task.get('api_request')
@@ -22,7 +23,7 @@ def invoke_application(target,task,seed=73):
     method=request.get('method','GET')
     if method not in ('GET','POST'):
         raise AdapterError('invalid_request','Only bounded GET and POST contract checks are allowed')
-    if method=='POST' and not target.get('allow_mutation',False):
+    if method=='POST' and target.get('allow_mutation') is not True:
         raise AdapterError('permission_denied','POST application tests require explicit allow_mutation on the local target')
     headers={'Accept':'application/json'}
     data=None
@@ -30,7 +31,7 @@ def invoke_application(target,task,seed=73):
         headers['Content-Type']='application/json'
         data=json.dumps(request['json']).encode()
     start=time.monotonic()
-    timeout=min(max(float(target.get('timeout',20)),.1),120)
+    timeout=number(target.get('timeout',20),.1,120)
     req=urllib.request.Request(base+path,data=data,headers=headers,method=method)
     try:
         try:
@@ -39,13 +40,19 @@ def invoke_application(target,task,seed=73):
             response=exc
         with response:
             raw=read_bounded(response,start+timeout)
-            content_type=response.headers.get('Content-Type','').split(';')[0]
+            content_type=response.headers.get('Content-Type','').split(';')[0].strip().lower()
             try:
-                body=json.loads(raw)
+                body=json.loads(raw,parse_constant=lambda _: (_ for _ in ()).throw(ValueError('Non-finite JSON')))
             except (ValueError,UnicodeError):
+                if content_type=='application/json' or content_type.endswith('+json'):
+                    raise AdapterError('invalid_response','Application returned malformed JSON') from None
                 body=raw.decode('utf-8',errors='replace')
             output={'status':response.code,'content_type':content_type,'body':body,'latency_ms':round((time.monotonic()-start)*1000,3)}
             return {'output':output,'usage':None,'adapter':'application-http-contract-v1','tool_trace':[{'type':'http_request','method':method,'path':path,'status':response.code}]}
+    except RemoteDisconnected:
+        raise AdapterError('connection_error','Application disconnected before a response') from None
+    except HTTPException:
+        raise AdapterError('invalid_response','Application returned malformed HTTP') from None
     except urllib.error.URLError as exc:
         raise AdapterError('timeout' if isinstance(exc.reason,TimeoutError) else 'connection_error','Application request failed or timed out') from None
     except (OSError,TimeoutError) as exc:

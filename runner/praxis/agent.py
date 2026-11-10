@@ -2,7 +2,7 @@
 import copy
 import json
 import time
-from .adapters import AdapterError, invoke
+from .adapters import AdapterError, invoke, number
 
 TOOL_CONTRACTS={
     "lookup_purchase":{"arguments":{"id":"purchase ID"},"mutates":False},
@@ -15,7 +15,7 @@ def invoke_agent(target, task, seed=73):
     if not task.get("environment"):
         raise AdapterError("capability_mismatch","This task has no executable agent environment; select agent-workflows")
     started=time.monotonic()
-    deadline=min(max(float(target.get("timeout",20)),0.1),120)
+    deadline=number(target.get("timeout",20),0.1,120)
     state=copy.deepcopy(task["environment"])
     allowed=task.get("allowed_tools",[])
     trace=[]
@@ -54,6 +54,8 @@ def invoke_agent(target, task, seed=73):
         if not isinstance(action,dict):
             raise failure("invalid_agent_action","Agent action must be an object")
         if "final" in action:
+            if not isinstance(action["final"],dict) or "tool" in action:
+                raise failure("invalid_agent_action","Final action must contain only a final object, not a tool")
             final=action["final"]
             trace.append({"step":step+1,"type":"final","output":final})
             break
@@ -95,5 +97,5 @@ def invoke_agent(target, task, seed=73):
         observations.append({"tool":tool,"result":observation})
         trace.append({"step":step+1,"type":"tool_call","tool":tool,"arguments":arguments,"authorized":tool in allowed and tool in TOOL_CONTRACTS,"observation":observation,"state_before":before,"state_after":copy.deepcopy(state)})
     if final is None:
-        final={"status":"step_budget_exceeded"}
+        raise failure("step_budget_exceeded","Agent exhausted its step budget without a final action")
     return {"output":final,"usage":usage or None,"adapter":"permissioned-agent-loop-v1","tool_trace":trace,"final_state":state,"agent_steps":len(trace)}

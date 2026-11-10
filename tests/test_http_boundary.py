@@ -10,6 +10,7 @@ class SocketBuffer:
     def __init__(self,request): self.input=io.BytesIO(request); self.output=io.BytesIO()
     def makefile(self,*args,**kwargs): return self.input
     def sendall(self,data): self.output.write(data)
+    def settimeout(self,value): self.timeout=value
 
 class HTTPBoundaryTests(unittest.TestCase):
     def setUp(self):

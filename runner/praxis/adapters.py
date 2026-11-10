@@ -1,5 +1,6 @@
 """User-controlled model connections. Credentials never enter results or configuration."""
 import json
+from http.client import HTTPException, RemoteDisconnected
 import math
 import os
 import socket
@@ -19,6 +20,14 @@ class AdapterError(RuntimeError):
 class NoRedirect(urllib.request.HTTPRedirectHandler):
     def redirect_request(self, req, fp, code, msg, headers, newurl):
         raise AdapterError("redirect_denied", "Provider redirects are not accepted")
+
+def number(value, lower, upper, integer=False):
+    if type(value) not in (int,float) or not math.isfinite(value) or (integer and type(value) is not int):
+        raise AdapterError("configuration","Adapter budgets must be finite numbers of the expected type")
+    return min(max(value,lower),upper)
+
+def valid_usage(item):
+    return item is None or (isinstance(item,dict) and all(valid_usage(v) for v in item.values())) or (type(item) in (int,float) and math.isfinite(item) and item>=0)
 
 def read_bounded(response, deadline):
     """Bound both total bytes and elapsed read time, including trickled responses."""
@@ -57,13 +66,15 @@ def _post(url, payload, key=None, timeout=20):
             if not isinstance(value, dict):
                 raise AdapterError("invalid_response", "Provider response must be a JSON object")
             usage=value.get("usage")
-            def valid_usage(item):
-                return item is None or (isinstance(item,dict) and all(valid_usage(v) for v in item.values())) or (type(item) in (int,float) and math.isfinite(item) and item>=0)
             if usage is not None and (not isinstance(usage,dict) or not valid_usage(usage)):
                 raise AdapterError("invalid_response", "Provider usage must contain nonnegative finite numbers")
             return value
     except urllib.error.HTTPError as exc:
         raise AdapterError("http_error", "Provider returned HTTP %s" % exc.code) from None
+    except RemoteDisconnected:
+        raise AdapterError("connection_error","Provider disconnected before a response") from None
+    except HTTPException:
+        raise AdapterError("invalid_response","Provider returned malformed HTTP") from None
     except urllib.error.URLError as exc:
         timeout_error=isinstance(exc.reason,(TimeoutError,socket.timeout))
         raise AdapterError("timeout" if timeout_error else "connection_error", "Provider connection failed or timed out") from None
@@ -85,12 +96,13 @@ def invoke(target: Dict[str, Any], task: Dict[str, Any], seed=73):
     if not endpoint or not model:
         raise AdapterError("configuration", "Model identifier and endpoint are required")
     prompt = task["prompt"] + "\nReturn only JSON matching this schema: " + json.dumps(task.get("output_schema", {}))
-    timeout = min(max(float(target.get("timeout", 20)), 0.1), 120)
-    max_tokens = min(max(int(target.get("max_tokens", 1024)), 1), 8192)
+    timeout = number(target.get("timeout",20),0.1,120)
+    max_tokens = number(target.get("max_tokens",1024),1,8192,integer=True)
+    temperature = number(target.get("temperature",0),0,2)
     key_name = target.get("key_env", "PRAXIS_MODEL_API_KEY")
     key = os.environ.get(key_name)
     if provider == "openai":
-        payload = {"model": model, "messages": [{"role": "user", "content": prompt}], "max_tokens": max_tokens, "temperature": float(target.get("temperature", 0))}
+        payload = {"model": model, "messages": [{"role": "user", "content": prompt}], "max_tokens": max_tokens, "temperature": temperature}
         if target.get("supports_seed") is True:
             payload["seed"] = seed
         data = _post(endpoint + "/chat/completions", payload, key, timeout)
@@ -102,13 +114,15 @@ def invoke(target: Dict[str, Any], task: Dict[str, Any], seed=73):
             raise AdapterError("invalid_response", "OpenAI-compatible content must be text")
         return {"output": output, "usage": data.get("usage"), "adapter": "openai-compatible-v1", "tool_trace": [], "provider_metadata": {k:data[k] for k in ("model","model_revision","runtime") if k in data}}
     if provider == "ollama":
-        data = _post(endpoint + "/api/chat", {"model": model, "messages": [{"role": "user", "content": prompt}], "stream": False, "format": "json", "options": {"temperature": float(target.get("temperature", 0)), "seed": seed, "num_predict": max_tokens}}, key, timeout)
+        data = _post(endpoint + "/api/chat", {"model": model, "messages": [{"role": "user", "content": prompt}], "stream": False, "format": "json", "options": {"temperature": temperature, "seed": seed, "num_predict": max_tokens}}, key, timeout)
         try:
             output = data["message"]["content"]
         except (KeyError, TypeError):
             raise AdapterError("invalid_response", "Ollama response lacks message.content")
         if not isinstance(output, str):
             raise AdapterError("invalid_response", "Ollama content must be text")
+        if not valid_usage({k:data.get(k) for k in ("prompt_eval_count","eval_count")}):
+            raise AdapterError("invalid_response","Ollama usage must contain nonnegative finite numbers")
         return {"output": output, "usage": {"prompt_tokens": data.get("prompt_eval_count"), "completion_tokens": data.get("eval_count")}, "adapter": "ollama-chat-v1", "tool_trace": []}
     if provider == "custom":
         data = _post(endpoint, {"protocol": "praxis.model.v1", "model": model, "input": prompt, "seed": seed, "max_tokens": max_tokens}, key, timeout)

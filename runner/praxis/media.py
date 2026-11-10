@@ -4,8 +4,10 @@ import binascii
 import hashlib
 import io
 import json
+import os
 import struct
 import wave
+import tempfile
 from pathlib import Path
 from .server import APIError
 
@@ -42,9 +44,20 @@ def ingest(store, owner, body):
         mime='text/plain'
         try: json.loads(content); mime='application/json'
         except ValueError: pass
-    sha=hashlib.sha256(raw).hexdigest(); folder=Path(store.path).parent/'objects';folder.mkdir(exist_ok=True)
+    sha=hashlib.sha256(raw).hexdigest(); folder=Path(store.path).parent/'objects';folder.mkdir(exist_ok=True,mode=0o700)
     dest=folder/sha
-    if not dest.exists(): dest.write_bytes(raw)
+    if not dest.exists() or hashlib.sha256(dest.read_bytes()).hexdigest()!=sha:
+        temporary=None
+        try:
+            with tempfile.NamedTemporaryFile(dir=folder,prefix='.upload-',delete=False) as output:
+                temporary=Path(output.name)
+                output.write(raw);output.flush();os.fsync(output.fileno())
+            os.replace(temporary,dest)
+            directory=os.open(folder,os.O_RDONLY|os.O_DIRECTORY)
+            try:os.fsync(directory)
+            finally:os.close(directory)
+        finally:
+            if temporary is not None: temporary.unlink(missing_ok=True)
     item={'filename':filename,'mime':mime,'sha256':sha,'size':len(raw),'trust':'self-reported','public':False,'inspection':'signature and bounded metadata only; no perceptual quality claim',**metadata}
     if content is not None: item['content']=content
     else: item['data_url']='data:'+mime+';base64,'+base64.b64encode(raw).decode()

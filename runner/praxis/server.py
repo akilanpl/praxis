@@ -31,9 +31,13 @@ def conditions(suite,target,seed):
 class Store:
     def __init__(self, path):
         self.path = str(path)
-        Path(self.path).parent.mkdir(parents=True, exist_ok=True)
+        Path(self.path).parent.mkdir(parents=True, exist_ok=True,mode=0o700)
+        descriptor=os.open(self.path,os.O_CREAT|os.O_RDWR,0o600)
+        os.close(descriptor)
+        os.chmod(self.path,0o600)
         self.lock = threading.RLock()
         with self.connect() as db:
+            if db.execute('PRAGMA user_version').fetchone()[0]!=0: raise ValueError('Unsupported SQLite schema version; use the matching runner or restore a verified backup')
             db.executescript('''
             PRAGMA journal_mode=WAL;
             CREATE TABLE IF NOT EXISTS users(id TEXT PRIMARY KEY, username TEXT UNIQUE NOT NULL, salt TEXT NOT NULL, password TEXT NOT NULL, created REAL NOT NULL);
@@ -63,9 +67,15 @@ class Store:
     def owner(self, item_id):
         with self.connect() as db: row=db.execute('SELECT owner FROM records WHERE id=?',(item_id,)).fetchone()
         return row['owner'] if row else None
-    def all(self, kind, owner=None):
+    def all(self, kind, owner=None, limit=500):
         with self.connect() as db:
-            rows=db.execute('SELECT data FROM records WHERE kind=?'+(' AND owner=?' if owner else '')+' ORDER BY created DESC LIMIT 500', (kind,owner) if owner else (kind,)).fetchall()
+            if owner:
+                query='SELECT data FROM records WHERE kind=? AND owner=? ORDER BY created DESC LIMIT ?'
+                args=(kind,owner,limit if limit is not None else -1)
+            else:
+                query='SELECT data FROM records WHERE kind=? ORDER BY created DESC LIMIT ?'
+                args=(kind,limit if limit is not None else -1)
+            rows=db.execute(query,args).fetchall()
         return [json.loads(r['data']) for r in rows]
 
 class ControlPlane:
@@ -104,6 +114,9 @@ class ControlPlane:
     def suites(self, user):
         from .engine import list_suites
         return list_suites()+self.store.all('suite',user)
+    def complete_suites(self, user):
+        from .engine import list_suites
+        return list_suites()+self.store.all('suite',user,limit=None)
     def execute(self, run, target, suite):
         from .engine import execute_run
         run.update(status='running'); self.store.update(run['id'],run)
@@ -128,7 +141,8 @@ class ControlPlane:
         self.cancel.pop(run['id'],None)
     def matchup(self, user):
         # A persisted blind assignment is reused until voted; no self voting.
-        for match in self.store.all('match',user):
+        history=self.store.all('match',user,limit=None)
+        for match in history:
             with self.store.connect() as db: voted=db.execute('SELECT 1 FROM votes WHERE match_id=? AND voter=?',(match['id'],user)).fetchone()
             if not voted: return self.blind(match)
         artifacts=[a for a in self.store.all('artifact') if a.get('public') and a.get('conditions') and self.store.owner(a['id'])!=user]
@@ -138,7 +152,7 @@ class ControlPlane:
             for b in artifacts:
                 if a['target_id']==b['target_id'] or (a['task_id'],a['conditions'],a['mime'],a['trust']) != (b['task_id'],b['conditions'],b['mime'],b['trust']): continue
                 pair=sorted([a['id'],b['id']])
-                if any(sorted([m['a_id'],m['b_id']])==pair for m in self.store.all('match',user)): continue
+                if any(sorted([m['a_id'],m['b_id']])==pair for m in history): continue
                 m=self.store.create('match',user,{'a_id':a['id'],'b_id':b['id'],'condition':{'task':a['task_id'],'suite':a['suite_slug'],'version':a['suite_version']},'demo':a['trust']=='demo'})
                 return self.blind(m)
         return {'empty':True,'reason':'No eligible pair. Two other-owned, consented outputs must share the exact task, suite, seed and artifact type, and use different targets.'}
@@ -146,7 +160,7 @@ class ControlPlane:
         return {'id':m['id'],'a':{k:self.store.get('artifact',m['a_id'])[k] for k in ('content','mime')},'b':{k:self.store.get('artifact',m['b_id'])[k] for k in ('content','mime')},'condition':m['condition'],'demo':m['demo']}
     def rankings(self):
         ratings={}; counts={}
-        matches={m['id']:m for m in self.store.all('match')}
+        matches={m['id']:m for m in self.store.all('match',limit=None)}
         with self.store.connect() as db: votes=db.execute('SELECT * FROM votes ORDER BY created').fetchall()
         for v in votes:
             m=matches.get(v['match_id'])
@@ -178,9 +192,10 @@ class ControlPlane:
                 self.auth_attempts.append(now)
                 return self.account(path,body)
         user=self.auth(authorization)
-        now=time.monotonic(); recent=[t for t in self.rate.get(user,[]) if now-t<60]
-        if len(recent)>=180: raise APIError(429,'Local request quota exceeded. Retry in one minute.')
-        self.rate[user]=recent+[now]
+        with self.store.lock:
+            now=time.monotonic(); recent=[t for t in self.rate.get(user,[]) if now-t<60]
+            if len(recent)>=180: raise APIError(429,'Local request quota exceeded. Retry in one minute.')
+            self.rate[user]=recent+[now]
         if path=='/api/me':
             with self.store.connect() as db: r=db.execute('SELECT id,username FROM users WHERE id=?',(user,)).fetchone()
             return dict(r)
@@ -227,11 +242,11 @@ class ControlPlane:
                     validation=validate_suite(body)
                     if not validation["valid"]: raise ValueError("; ".join(validation["errors"]))
                 except Exception as exc: raise APIError(400,str(exc)[:500])
-                if any(s['slug']==body['slug'] and s['version']==body['version'] for s in self.suites(user)): raise APIError(409,'Suite slug and version already exist. Create a new version.')
+                if any(s['slug']==body['slug'] and s['version']==body['version'] for s in self.complete_suites(user)): raise APIError(409,'Suite slug and version already exist. Create a new version.')
                 return self.store.create('suite',user,{k:v for k,v in body.items() if k not in ('id','created_at')})
         if len(parts)==3 and parts[1]=='suites' and method=='GET':
             slug,_,version=parts[2].partition('@')
-            matches=[s for s in self.suites(user) if s['slug']==slug and (not version or s['version']==version)]
+            matches=[s for s in self.complete_suites(user) if s['slug']==slug and (not version or s['version']==version)]
             if len(matches)>1: raise APIError(409,'Select an explicit suite version: slug@version')
             suite=next(iter(matches),None)
             if not suite: raise APIError(404,'Suite not found')
@@ -250,11 +265,13 @@ class ControlPlane:
                                 if existing.get('request_fingerprint') and existing['request_fingerprint']!=digest(body): raise APIError(409,'Idempotency key already belongs to a different request')
                                 return existing
                 target=self.store.get('target',body.get('target_id',''),user)
-                suites=[s for s in self.suites(user) if s['slug']==body.get('suite_slug') and (not body.get('suite_version') or s['version']==body['suite_version'])]
+                suites=[s for s in self.complete_suites(user) if s['slug']==body.get('suite_slug') and (not body.get('suite_version') or s['version']==body['suite_version'])]
                 if not suites: raise APIError(400,'Suite not found')
                 if len(suites)>1: raise APIError(409,'Select an explicit suite_version')
                 if target['kind']=='application' and suites[0]['slug']!='http-application' and not all(t.get('api_request') for t in suites[0].get('tasks',[])): raise APIError(422,'Application targets require an HTTP contract suite or the isolated artifact checker')
-                if sum(r['status'] in ('queued','running') for r in self.store.all('run',user))>=2: raise APIError(429,'At most two active runs per account')
+                with self.store.connect() as db:
+                    active=db.execute("SELECT count(*) FROM records WHERE kind='run' AND owner=? AND json_extract(data,'$.status') IN ('queued','running')",(user,)).fetchone()[0]
+                if active>=2: raise APIError(429,'At most two active runs per account')
                 seed=body.get('seed',73)
                 if type(seed) is not int or not -(2**31)<=seed<2**31: raise APIError(400,'Seed must be a 32 bit integer')
                 run=self.store.create('run',user,{'target_id':target['id'],'target_name':target['name'],'suite_slug':suites[0]['slug'],'suite_version':suites[0]['version'],'suite_hash':digest(suites[0]),'config_hash':target['config_hash'],'conditions_hash':conditions(suites[0],target,seed),'seed':seed,'status':'queued','trust':'demo' if target['provider'].startswith('demo') else 'self-reported','public':body.get('public') is True,'idempotency_key':str(body.get('idempotency_key',''))[:100],'request_fingerprint':digest(body),'events':[]})
@@ -325,9 +342,13 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self): self.handle_request()
     def do_POST(self): self.handle_request()
     def do_OPTIONS(self): self.handle_request()
+    def setup(self):
+        super().setup()
+        self.connection.settimeout(15)
     def handle_request(self):
         request_id=uid(); status=200
         try:
+            if any(len(self.headers.get_all(name,[]))>1 for name in ('Host','Origin','Authorization')): raise APIError(400,'Duplicate security header')
             if self.headers.get('Transfer-Encoding'): raise APIError(400,'Transfer-Encoding is not supported')
             if len(self.headers.get_all('Content-Length',[]))>1: raise APIError(400,'Duplicate Content-Length')
             host=self.headers.get('Host','').split(':')[0]
@@ -341,9 +362,10 @@ class Handler(BaseHTTPRequestHandler):
                 if length<0 or length>MAX_BODY: raise APIError(413,'Request exceeds 2 MB limit')
                 body={}
                 if length:
-                    if 'application/json' not in self.headers.get('Content-Type',''): raise APIError(415,'Expected application/json')
+                    if self.headers.get('Content-Type','').split(';',1)[0].strip().lower()!='application/json': raise APIError(415,'Expected application/json')
                     try: body=json.loads(self.rfile.read(length),parse_constant=lambda value: (_ for _ in ()).throw(ValueError('Non-finite JSON value')))
                     except (ValueError,UnicodeDecodeError,RecursionError): raise APIError(400,'Invalid JSON')
+                    except TimeoutError: raise APIError(408,'Request body deadline exceeded')
                     if not isinstance(body,dict): raise APIError(400,'JSON object required')
                 path=urlparse(self.path).path
                 if not path.startswith('/api/'):

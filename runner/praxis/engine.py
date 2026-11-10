@@ -23,6 +23,25 @@ if not SCENARIOS.is_dir():
     SCENARIOS = Path(sys.prefix) / "share" / "praxis" / "scenarios"
 OPERATORS = {"equals", "contains", "not_contains", "subset", "gte", "lte"}
 
+def redact_payload(value, credential):
+    """Redact untrusted values/keys without silently collapsing distinct keys."""
+    if not credential: return value
+    if isinstance(value,str): return value.replace(credential,"[REDACTED]")
+    if isinstance(value,list): return [redact_payload(v,credential) for v in value]
+    if isinstance(value,dict):
+        keys=[str(k).replace(credential,"[REDACTED]") for k in value]
+        if len(set(keys))!=len(keys): return "[REDACTED: colliding object keys]"
+        return {k:redact_payload(v,credential) for k,v in zip(keys,value.values())}
+    return value
+
+def redact_values(value, credential):
+    """Keep the report protocol's structural field names stable."""
+    if not credential: return value
+    if isinstance(value,str): return value.replace(credential,"[REDACTED]")
+    if isinstance(value,list): return [redact_values(v,credential) for v in value]
+    if isinstance(value,dict): return {k:redact_values(v,credential) for k,v in value.items()}
+    return value
+
 def digest(value):
     return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()).hexdigest()
 
@@ -53,12 +72,18 @@ def validate_suite(suite):
         ids.add(str(tid))
         if not isinstance(task.get("prompt"),str) or not task["prompt"] or len(task["prompt"]) > 100000:
             errors.append("task %s prompt invalid" % tid)
+        if not isinstance(task.get("category","correctness"),str) or not 1<=len(task.get("category","correctness"))<=120:
+            errors.append("task category must be a nonempty string of at most 120 characters")
         if "max_steps" in task and (type(task["max_steps"]) is not int or not 1 <= task["max_steps"] <= 16):
             errors.append("agent max_steps must be an integer in 1..16")
         if "allowed_tools" in task and (not isinstance(task["allowed_tools"],list) or any(not isinstance(t,str) for t in task["allowed_tools"])):
             errors.append("allowed_tools must be an array of names")
         if "environment" in task and not isinstance(task["environment"],dict):
             errors.append("environment must be an object")
+        if "api_request" in task:
+            request=task["api_request"]
+            if not isinstance(request,dict) or request.get("method","GET") not in ("GET","POST") or not isinstance(request.get("path","/"),str):
+                errors.append("api_request requires an object, GET/POST method and string path")
         schema = task.get("output_schema", {})
         try:
             Draft202012Validator.check_schema(schema)
@@ -76,8 +101,10 @@ def validate_suite(suite):
             errors.append("task %s requires 1..32 assertions" % tid)
         else:
             for check in checks:
-                if not isinstance(check,dict) or check.get("op") not in OPERATORS or not isinstance(check.get("path", ""),str) or len(check.get("path", "")) > 256:
+                if not isinstance(check,dict) or not isinstance(check.get("op"),str) or check.get("op") not in OPERATORS or not isinstance(check.get("path", ""),str) or len(check.get("path", "")) > 256:
                     errors.append("task %s assertion outside bounded DSL" % tid)
+                elif "expected" not in check or (check["op"] in ("gte","lte") and (type(check["expected"]) not in (int,float) or not math.isfinite(check["expected"]))):
+                    errors.append("assertions require expected; numeric comparisons require finite numbers")
                 elif isinstance(check.get("weight",1),bool) or not isinstance(check.get("weight",1),(int,float)) or not math.isfinite(check.get("weight",1)) or not 0 < check.get("weight",1) <= 100:
                     errors.append("task %s assertion weight must be finite and positive" % tid)
     execution=suite.get("execution",{})
@@ -145,6 +172,7 @@ def execute_run(target:Dict[str,Any],suite:Dict[str,Any],seed:int=73,on_event=No
     if not validation["valid"]:
         raise ValueError("Invalid suite: " + "; ".join(validation["errors"]))
     started=time.monotonic()
+    credential=os.environ.get(target.get("key_env","PRAXIS_MODEL_API_KEY"))
     events=[]
     def emit(kind, **fields):
         event={"sequence":len(events),"type":kind,"elapsed_ms":round((time.monotonic()-started)*1000,3),**fields}
@@ -177,6 +205,8 @@ def execute_run(target:Dict[str,Any],suite:Dict[str,Any],seed:int=73,on_event=No
         response={"output":None,"usage":None,"tool_trace":[]}
         attempts=0
         retries=min(max(int(limits.get("max_retries",0)),0),2)
+        if target.get("kind")=="application" and task.get("api_request",{}).get("method","GET")!="GET":
+            retries=0  # A timed-out POST may already have mutated the owned service.
         for attempt in range(retries+1):
             if (cancelled and cancelled()) or time.monotonic()-started >= wall:
                 error={"category":"cancelled" if cancelled and cancelled() else "timeout","message":"Execution stopped before another attempt"}
@@ -197,6 +227,11 @@ def execute_run(target:Dict[str,Any],suite:Dict[str,Any],seed:int=73,on_event=No
             except (TypeError,ValueError) as exc:
                 error={"category":"configuration","message":"Invalid numeric adapter configuration"}
                 break
+        for key in ("output","provider_metadata","final_state","usage"):
+            if key in response: response[key]=redact_payload(response[key],credential)
+        for event in response.get("tool_trace",[]):
+            for key in ("arguments","observation","state_before","state_after","output"):
+                if key in event: event[key]=redact_payload(event[key],credential)
         assertions=grade(task,response["output"]) if error is None else [{"name":"Provider execution","passed":False,"expected":"successful output","actual":error,"weight":1}]
         if error is None and task.get("api_request") and target.get("kind")!="application":
             assertions.append({"name":"Executable application required","passed":False,"expected":"application HTTP execution","actual":"model output only","weight":1})
@@ -234,14 +269,11 @@ def execute_run(target:Dict[str,Any],suite:Dict[str,Any],seed:int=73,on_event=No
     emit("run_completed",status=result["status"],passed=passed,total=total)
     # Providers may reflect the authorization credential in output/usage/metadata.
     # Preserve the redaction in the hashed record, never persist the credential.
-    credential=os.environ.get(target.get("key_env","PRAXIS_MODEL_API_KEY"))
     if credential:
-        def redact(value):
-            if isinstance(value,str): return value.replace(credential,"[REDACTED]")
-            if isinstance(value,list): return [redact(v) for v in value]
-            if isinstance(value,dict): return {redact(k):redact(v) for k,v in value.items()}
-            return value
-        result=redact(result)
+        for row in result["tasks"]:
+            for assertion in row["assertions"]:
+                for field in ("expected","actual"): assertion[field]=redact_payload(assertion.get(field),credential)
+        result=redact_values(result,credential)
         for row in result["tasks"]:
             row["artifact"]["hash"]=digest(row["output"])
     result["evidence_hash"]=digest({k:v for k,v in result.items() if k!="evidence_hash"})
